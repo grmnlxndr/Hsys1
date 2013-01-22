@@ -1,5 +1,0 @@
-_assetic:
-    resource: .
-    type: assetic
-_app:
-    resource: 'C:/wamp/www/Hsys1/Hsys1/app/config/routing_dev.yml'
