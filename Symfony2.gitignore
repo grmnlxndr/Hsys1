@@ -1,13 +1,13 @@
 # Bootstrap
-app/bootstrap*
+HSys1/app/bootstrap*
 
 # Symfony directories
-vendor/*
+HSys1/vendor/*
 */logs/*
 */cache/*
-web/uploads/*
-web/bundles/*
+HSys1/web/uploads/*
+HSys1/web/bundles/*
 
 # Configuration files
-app/config/parameters.ini
-app/config/parameters.yml
+HSys1/app/config/parameters.ini
+HSys1/app/config/parameters.yml
