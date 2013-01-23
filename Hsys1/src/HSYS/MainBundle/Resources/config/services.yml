@@ -1,6 +1,7 @@
 parameters:
 #    hsys_main.example.class: HSYS\MainBundle\Example
 
+
 services:
 #    hsys_main.example:
 #        class: %hsys_main.example.class%
