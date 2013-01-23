@@ -172,19 +172,5 @@ class Unidad {
         return $this->TipoHemocomponente;
     }
 
-    /**
-     * @ORM\ManyToOne(targetEntity="analisis", inversedBy="Unidad")
-     * @ORM\JoinColumn(name="analisis", referencedColumnName="id")
-     * @return integer
-     */
-    private $analisis;
-
-    public function setAnalisis(\HSYS\MainBundle\Entity\analisis $analisis) {
-        $this->analisis = $analisis;
-    }
-
-    public function getAnalisis() {
-        return $this->analisis;
-    }
-
+   
 }

@@ -131,7 +131,7 @@ class Donacion {
 
     /**
      * @ORM\ManyToOne(targetEntity="Donante", inversedBy="Donacion")
-     * @ORM\JoinColumn(name="Donante", referencedColumnName="id")
+     * @ORM\JoinColumn(name="Receptor", referencedColumnName="id")
      * @return integer
      */
     private $Receptor;
