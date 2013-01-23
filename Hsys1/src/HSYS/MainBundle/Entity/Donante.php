@@ -87,7 +87,7 @@ class Donante
      * @param string $nomapp
      * @return Donante
      */
-    public function setNombre($nomapp)
+    public function setNomapp($nomapp)
     {
         $this->nomapp = $nomapp;
     
@@ -99,7 +99,7 @@ class Donante
      *
      * @return string 
      */
-    public function getNombre()
+    public function getNomapp()
     {
         return $this->nomapp;
     }
