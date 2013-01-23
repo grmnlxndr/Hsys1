@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\DonacionRepository")
  */
-class Donacion
-{
+class Donacion {
+
     /**
      * @var integer
      *
@@ -42,14 +42,12 @@ class Donacion
      */
     private $comentario;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -59,10 +57,9 @@ class Donacion
      * @param \DateTime $fechextraccion
      * @return Donacion
      */
-    public function setFechextraccion($fechextraccion)
-    {
+    public function setFechextraccion($fechextraccion) {
         $this->fechextraccion = $fechextraccion;
-    
+
         return $this;
     }
 
@@ -71,8 +68,7 @@ class Donacion
      *
      * @return \DateTime 
      */
-    public function getFechextraccion()
-    {
+    public function getFechextraccion() {
         return $this->fechextraccion;
     }
 
@@ -82,10 +78,9 @@ class Donacion
      * @param string $idbolsa
      * @return Donacion
      */
-    public function setIdbolsa($idbolsa)
-    {
+    public function setIdbolsa($idbolsa) {
         $this->idbolsa = $idbolsa;
-    
+
         return $this;
     }
 
@@ -94,8 +89,7 @@ class Donacion
      *
      * @return string 
      */
-    public function getIdbolsa()
-    {
+    public function getIdbolsa() {
         return $this->idbolsa;
     }
 
@@ -105,10 +99,9 @@ class Donacion
      * @param string $comentario
      * @return Donacion
      */
-    public function setComentario($comentario)
-    {
+    public function setComentario($comentario) {
         $this->comentario = $comentario;
-    
+
         return $this;
     }
 
@@ -117,8 +110,70 @@ class Donacion
      *
      * @return string 
      */
-    public function getComentario()
-    {
+    public function getComentario() {
         return $this->comentario;
     }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Donante", inversedBy="Donacion")
+     * @ORM\JoinColumn(name="Donante", referencedColumnName="id")
+     * @return integer
+     */
+    private $Donante;
+
+    public function setDonante(\HSYS\MainBundle\Entity\Donante $Donante) {
+        $this->Donante = $Donante;
+    }
+
+    public function getDonante() {
+        return $this->Donante;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Donante", inversedBy="Donacion")
+     * @ORM\JoinColumn(name="Donante", referencedColumnName="id")
+     * @return integer
+     */
+    private $Receptor;
+
+    public function setReceptor(\HYSY\MainBundle\Entity\Donante $Receptor) {
+        $this->Receptor = $Receptor;
+    }
+
+    public function getReceptor() {
+        return $this->Receptor;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="Unidad", mappedBy="Donacion")
+     */
+    private $Unidades;
+
+    public function __construct() {
+        $this->Unidades = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function addUnidades(\HSYS\MainBundle\Entity\Unidad $Unidades) {
+        $this->Unidades[] = $Unidades;
+    }
+
+    public function getUnidades() {
+        return $this->Unidades;
+    }
+
+    /**
+     * @ORM\OneToOne(targetEntity="analisis", inversedBy="Donacion")
+     * @ORM\JoinColumn(name="analisis", referencedColumnName="id")
+     * @return integer
+     */
+    private $analisis;
+    
+    public function setAnalisis(\HSYS\MainBundle\Entity\analisis $analisis) {
+        $this->analisis = $analisis;
+    }
+
+    public function getAnalisis() {
+        return $this->analisis;
+    }
+
 }

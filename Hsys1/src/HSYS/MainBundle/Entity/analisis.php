@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\analisisRepository")
  */
-class analisis
-{
+class analisis {
+
     /**
      * @var integer
      *
@@ -140,14 +140,12 @@ class analisis
      */
     private $pci;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -157,10 +155,9 @@ class analisis
      * @param \DateTime $fechanalisis
      * @return analisis
      */
-    public function setFechanalisis($fechanalisis)
-    {
+    public function setFechanalisis($fechanalisis) {
         $this->fechanalisis = $fechanalisis;
-    
+
         return $this;
     }
 
@@ -169,8 +166,7 @@ class analisis
      *
      * @return \DateTime 
      */
-    public function getFechanalisis()
-    {
+    public function getFechanalisis() {
         return $this->fechanalisis;
     }
 
@@ -180,10 +176,9 @@ class analisis
      * @param string $chhai
      * @return analisis
      */
-    public function setChhai($chhai)
-    {
+    public function setChhai($chhai) {
         $this->chhai = $chhai;
-    
+
         return $this;
     }
 
@@ -192,8 +187,7 @@ class analisis
      *
      * @return string 
      */
-    public function getChhai()
-    {
+    public function getChhai() {
         return $this->chhai;
     }
 
@@ -203,10 +197,9 @@ class analisis
      * @param string $cheza
      * @return analisis
      */
-    public function setCheza($cheza)
-    {
+    public function setCheza($cheza) {
         $this->cheza = $cheza;
-    
+
         return $this;
     }
 
@@ -215,8 +208,7 @@ class analisis
      *
      * @return string 
      */
-    public function getCheza()
-    {
+    public function getCheza() {
         return $this->cheza;
     }
 
@@ -226,10 +218,9 @@ class analisis
      * @param string $anticore
      * @return analisis
      */
-    public function setAnticore($anticore)
-    {
+    public function setAnticore($anticore) {
         $this->anticore = $anticore;
-    
+
         return $this;
     }
 
@@ -238,8 +229,7 @@ class analisis
      *
      * @return string 
      */
-    public function getAnticore()
-    {
+    public function getAnticore() {
         return $this->anticore;
     }
 
@@ -249,10 +239,9 @@ class analisis
      * @param string $hbsag
      * @return analisis
      */
-    public function setHbsag($hbsag)
-    {
+    public function setHbsag($hbsag) {
         $this->hbsag = $hbsag;
-    
+
         return $this;
     }
 
@@ -261,8 +250,7 @@ class analisis
      *
      * @return string 
      */
-    public function getHbsag()
-    {
+    public function getHbsag() {
         return $this->hbsag;
     }
 
@@ -272,10 +260,9 @@ class analisis
      * @param string $hcvagac
      * @return analisis
      */
-    public function setHcvagac($hcvagac)
-    {
+    public function setHcvagac($hcvagac) {
         $this->hcvagac = $hcvagac;
-    
+
         return $this;
     }
 
@@ -284,8 +271,7 @@ class analisis
      *
      * @return string 
      */
-    public function getHcvagac()
-    {
+    public function getHcvagac() {
         return $this->hcvagac;
     }
 
@@ -295,10 +281,9 @@ class analisis
      * @param string $hivac
      * @return analisis
      */
-    public function setHivac($hivac)
-    {
+    public function setHivac($hivac) {
         $this->hivac = $hivac;
-    
+
         return $this;
     }
 
@@ -307,8 +292,7 @@ class analisis
      *
      * @return string 
      */
-    public function getHivac()
-    {
+    public function getHivac() {
         return $this->hivac;
     }
 
@@ -318,10 +302,9 @@ class analisis
      * @param string $agp2y
      * @return analisis
      */
-    public function setAgp2y($agp2y)
-    {
+    public function setAgp2y($agp2y) {
         $this->agp2y = $agp2y;
-    
+
         return $this;
     }
 
@@ -330,8 +313,7 @@ class analisis
      *
      * @return string 
      */
-    public function getAgp2y()
-    {
+    public function getAgp2y() {
         return $this->agp2y;
     }
 
@@ -341,10 +323,9 @@ class analisis
      * @param string $htlv
      * @return analisis
      */
-    public function setHtlv($htlv)
-    {
+    public function setHtlv($htlv) {
         $this->htlv = $htlv;
-    
+
         return $this;
     }
 
@@ -353,8 +334,7 @@ class analisis
      *
      * @return string 
      */
-    public function getHtlv()
-    {
+    public function getHtlv() {
         return $this->htlv;
     }
 
@@ -364,10 +344,9 @@ class analisis
      * @param string $brucelosis
      * @return analisis
      */
-    public function setBrucelosis($brucelosis)
-    {
+    public function setBrucelosis($brucelosis) {
         $this->brucelosis = $brucelosis;
-    
+
         return $this;
     }
 
@@ -376,8 +355,7 @@ class analisis
      *
      * @return string 
      */
-    public function getBrucelosis()
-    {
+    public function getBrucelosis() {
         return $this->brucelosis;
     }
 
@@ -387,10 +365,9 @@ class analisis
      * @param string $sifilis
      * @return analisis
      */
-    public function setSifilis($sifilis)
-    {
+    public function setSifilis($sifilis) {
         $this->sifilis = $sifilis;
-    
+
         return $this;
     }
 
@@ -399,8 +376,7 @@ class analisis
      *
      * @return string 
      */
-    public function getSifilis()
-    {
+    public function getSifilis() {
         return $this->sifilis;
     }
 
@@ -410,10 +386,9 @@ class analisis
      * @param string $abo
      * @return analisis
      */
-    public function setAbo($abo)
-    {
+    public function setAbo($abo) {
         $this->abo = $abo;
-    
+
         return $this;
     }
 
@@ -422,8 +397,7 @@ class analisis
      *
      * @return string 
      */
-    public function getAbo()
-    {
+    public function getAbo() {
         return $this->abo;
     }
 
@@ -433,10 +407,9 @@ class analisis
      * @param string $rhd
      * @return analisis
      */
-    public function setRhd($rhd)
-    {
+    public function setRhd($rhd) {
         $this->rhd = $rhd;
-    
+
         return $this;
     }
 
@@ -445,8 +418,7 @@ class analisis
      *
      * @return string 
      */
-    public function getRhd()
-    {
+    public function getRhd() {
         return $this->rhd;
     }
 
@@ -456,10 +428,9 @@ class analisis
      * @param string $du
      * @return analisis
      */
-    public function setDu($du)
-    {
+    public function setDu($du) {
         $this->du = $du;
-    
+
         return $this;
     }
 
@@ -468,8 +439,7 @@ class analisis
      *
      * @return string 
      */
-    public function getDu()
-    {
+    public function getDu() {
         return $this->du;
     }
 
@@ -479,10 +449,9 @@ class analisis
      * @param string $cde
      * @return analisis
      */
-    public function setCde($cde)
-    {
+    public function setCde($cde) {
         $this->cde = $cde;
-    
+
         return $this;
     }
 
@@ -491,8 +460,7 @@ class analisis
      *
      * @return string 
      */
-    public function getCde()
-    {
+    public function getCde() {
         return $this->cde;
     }
 
@@ -502,10 +470,9 @@ class analisis
      * @param string $fenotipo
      * @return analisis
      */
-    public function setFenotipo($fenotipo)
-    {
+    public function setFenotipo($fenotipo) {
         $this->fenotipo = $fenotipo;
-    
+
         return $this;
     }
 
@@ -514,8 +481,7 @@ class analisis
      *
      * @return string 
      */
-    public function getFenotipo()
-    {
+    public function getFenotipo() {
         return $this->fenotipo;
     }
 
@@ -525,10 +491,9 @@ class analisis
      * @param string $pci
      * @return analisis
      */
-    public function setPci($pci)
-    {
+    public function setPci($pci) {
         $this->pci = $pci;
-    
+
         return $this;
     }
 
@@ -537,8 +502,22 @@ class analisis
      *
      * @return string 
      */
-    public function getPci()
-    {
+    public function getPci() {
         return $this->pci;
     }
+
+    /**
+     * @ORM\OneToOne(targetEntity="Donacion", mappedBy="analisis")
+     * @return integer
+     */
+    private $Donacion;
+
+    public function setDonacion(\HSYS\MainBundle\Entity\Donacion $Donacion) {
+        $this->Donacion = $Donacion;
+    }
+
+    public function getDonacion() {
+        return $this->Donacion;
+    }
+
 }

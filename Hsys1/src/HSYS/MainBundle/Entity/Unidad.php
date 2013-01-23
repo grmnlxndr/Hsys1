@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\UnidadRepository")
  */
-class Unidad
-{
+class Unidad {
+
     /**
      * @var integer
      *
@@ -49,14 +49,12 @@ class Unidad
      */
     private $estado;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -66,10 +64,9 @@ class Unidad
      * @param \DateTime $vencimiento
      * @return Unidad
      */
-    public function setVencimiento($vencimiento)
-    {
+    public function setVencimiento($vencimiento) {
         $this->vencimiento = $vencimiento;
-    
+
         return $this;
     }
 
@@ -78,8 +75,7 @@ class Unidad
      *
      * @return \DateTime 
      */
-    public function getVencimiento()
-    {
+    public function getVencimiento() {
         return $this->vencimiento;
     }
 
@@ -89,10 +85,9 @@ class Unidad
      * @param float $volumen
      * @return Unidad
      */
-    public function setVolumen($volumen)
-    {
+    public function setVolumen($volumen) {
         $this->volumen = $volumen;
-    
+
         return $this;
     }
 
@@ -101,8 +96,7 @@ class Unidad
      *
      * @return float 
      */
-    public function getVolumen()
-    {
+    public function getVolumen() {
         return $this->volumen;
     }
 
@@ -112,10 +106,9 @@ class Unidad
      * @param string $idbolsa
      * @return Unidad
      */
-    public function setIdbolsa($idbolsa)
-    {
+    public function setIdbolsa($idbolsa) {
         $this->idbolsa = $idbolsa;
-    
+
         return $this;
     }
 
@@ -124,8 +117,7 @@ class Unidad
      *
      * @return string 
      */
-    public function getIdbolsa()
-    {
+    public function getIdbolsa() {
         return $this->idbolsa;
     }
 
@@ -135,10 +127,9 @@ class Unidad
      * @param string $estado
      * @return Unidad
      */
-    public function setEstado($estado)
-    {
+    public function setEstado($estado) {
         $this->estado = $estado;
-    
+
         return $this;
     }
 
@@ -147,8 +138,53 @@ class Unidad
      *
      * @return string 
      */
-    public function getEstado()
-    {
+    public function getEstado() {
         return $this->estado;
     }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Donacion", inversedBy="Unidad")
+     * @ORM\JoinColumn(name="Donacion", referencedColumnName="id")
+     * @return integer
+     */
+    private $Donacion;
+
+    public function setDonacion(\HSYS\MainBundle\Entity\Donacion $Donacion) {
+        $this->Donacion = $Donacion;
+    }
+
+    public function getDonacion() {
+        return $this->Donacion;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="TipoHemocomponente", inversedBy="Unidad")
+     * @ORM\JoinColumn(name="TipoHemocomponente", referencedColumnName="id")
+     * @return integer
+     */
+    private $TipoHemocomponente;
+
+    public function setTipoHemocomponente(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente) {
+        $this->TipoHemocomponente = $TipoHemocomponente;
+    }
+
+    public function getTipoHemocomponente() {
+        return $this->TipoHemocomponente;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="analisis", inversedBy="Unidad")
+     * @ORM\JoinColumn(name="analisis", referencedColumnName="id")
+     * @return integer
+     */
+    private $analisis;
+
+    public function setAnalisis(\HSYS\MainBundle\Entity\analisis $analisis) {
+        $this->analisis = $analisis;
+    }
+
+    public function getAnalisis() {
+        return $this->analisis;
+    }
+
 }

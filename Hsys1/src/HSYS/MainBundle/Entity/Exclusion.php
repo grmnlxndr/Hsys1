@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\ExclusionRepository")
  */
-class Exclusion
-{
+class Exclusion {
+
     /**
      * @var integer
      *
@@ -42,14 +42,12 @@ class Exclusion
      */
     private $fechfin;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -59,10 +57,9 @@ class Exclusion
      * @param \DateTime $fechini
      * @return Exclusion
      */
-    public function setFechini($fechini)
-    {
+    public function setFechini($fechini) {
         $this->fechini = $fechini;
-    
+
         return $this;
     }
 
@@ -71,8 +68,7 @@ class Exclusion
      *
      * @return \DateTime 
      */
-    public function getFechini()
-    {
+    public function getFechini() {
         return $this->fechini;
     }
 
@@ -82,10 +78,9 @@ class Exclusion
      * @param string $comentario
      * @return Exclusion
      */
-    public function setComentario($comentario)
-    {
+    public function setComentario($comentario) {
         $this->comentario = $comentario;
-    
+
         return $this;
     }
 
@@ -94,8 +89,7 @@ class Exclusion
      *
      * @return string 
      */
-    public function getComentario()
-    {
+    public function getComentario() {
         return $this->comentario;
     }
 
@@ -105,10 +99,9 @@ class Exclusion
      * @param \DateTime $fechfin
      * @return Exclusion
      */
-    public function setFechfin($fechfin)
-    {
+    public function setFechfin($fechfin) {
         $this->fechfin = $fechfin;
-    
+
         return $this;
     }
 
@@ -117,8 +110,37 @@ class Exclusion
      *
      * @return \DateTime 
      */
-    public function getFechfin()
-    {
+    public function getFechfin() {
         return $this->fechfin;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="TipoExclusion", inversedBy="Exclusion")
+     * @ORM\JoinColumn(name="TipoExclusion", referencedColumnName="id")
+     * @return integer
+     */
+    private $TipoExclusion;
+
+    public function setTipoExclusion(\HYSY\MainBundle\Entity\TipoExclusion $TipoExclusion) {
+        $this->TipoExclusion = $TipoExclusion;
+    }
+
+    public function getTipoExclusion() {
+        return $this->TipoExclusion;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Donante", inversedBy="Exclusion")
+     * @ORM\JoinColumn(name="Donante", referencedColumnName="id")
+     * @return integer
+     */
+    private $Donante;
+
+    public function setDonante(\HSYS\MainBundle\Entity\Donante $Donante) {
+        $this->Donante = $Donante;
+    }
+
+    public function getDonante() {
+        return $this->Donante;
     }
 }

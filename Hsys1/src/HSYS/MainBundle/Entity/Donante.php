@@ -24,9 +24,9 @@ class Donante
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=100)
+     * @ORM\Column(name="nomapp", type="string", length=100)
      */
-    private $nombre;
+    private $nomapp;
 
     /**
      * @var string
@@ -34,13 +34,6 @@ class Donante
      * @ORM\Column(name="dni", type="string", length=8)
      */
     private $dni;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="apellido", type="string", length=100)
-     */
-    private $apellido;
 
     /**
      * @var string
@@ -89,26 +82,26 @@ class Donante
     }
 
     /**
-     * Set nombre
+     * Set nomapp
      *
-     * @param string $nombre
+     * @param string $nomapp
      * @return Donante
      */
-    public function setNombre($nombre)
+    public function setNombre($nomapp)
     {
-        $this->nombre = $nombre;
+        $this->nomapp = $nomapp;
     
         return $this;
     }
 
     /**
-     * Get nombre
+     * Get nomapp
      *
      * @return string 
      */
     public function getNombre()
     {
-        return $this->nombre;
+        return $this->nomapp;
     }
 
     /**
@@ -132,29 +125,6 @@ class Donante
     public function getDni()
     {
         return $this->dni;
-    }
-
-    /**
-     * Set apellido
-     *
-     * @param string $apellido
-     * @return Donante
-     */
-    public function setApellido($apellido)
-    {
-        $this->apellido = $apellido;
-    
-        return $this;
-    }
-
-    /**
-     * Get apellido
-     *
-     * @return string 
-     */
-    public function getApellido()
-    {
-        return $this->apellido;
     }
 
     /**
@@ -270,5 +240,22 @@ class Donante
     public function getEstadocivil()
     {
         return $this->estadocivil;
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity="Exclusion", mappedBy="Donante")
+     */
+    private $Exclusion;
+
+    public function __construct() {
+        $this->Exclusion = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function addExclusion(\HSYS\MainBundle\Entity\Unidad $Exclusion) {
+        $this->Exclusion[] = $Exclusion;
+    }
+
+    public function getExclusion() {
+        return $this->Exclusion;
     }
 }
