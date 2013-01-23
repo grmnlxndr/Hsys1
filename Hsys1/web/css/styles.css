@@ -8,7 +8,7 @@ html, * {
 	margin:0;
 }
 body {
-	background-image:url('images/page_background.gif');
+	background-image:url('../images/page_background.gif');
 	background-repeat:repeat;
 	background-color:#323232;
 	margin:20px auto 10px auto;
@@ -105,7 +105,7 @@ div#wrap {
 	background-color:#FFFFFF;
 }
 div#header {
-	background-image:url('images/header_background.jpg');
+	background-image:url('../images/header_background.jpg');
 	background-repeat:repeat-x;
 	background-color:#F85C5D;
 	padding:20px 0;
@@ -156,7 +156,7 @@ div#usuario ul li a:hover{
 div#nav {
 	width:100%;
 	height:50px;
-	background-image:url('images/nav_background.gif');
+	background-image:url('../images/nav_background.gif');
 	background-repeat:repeat-x;
 	background-position:center bottom;
 }
@@ -180,7 +180,7 @@ div#nav ul li a {
 }
 div#nav ul li a.selected, div#nav ul li a.selected:hover {
 	background-color: #E23C3C;
-/*	background-image:url('images/arrow_selected.gif');*/
+/*	background-image:url('../images/arrow_selected.gif');*/
 /*	background-repeat:no-repeat; */
 /*	background-position:center bottom; */
 }
@@ -205,7 +205,7 @@ div#sidebar {
 	width:22%;
 	margin:5px 0px 5px 0px;
 	border:1px solid #232323;
-	background-image:url('images/sidebar_background.jpg');
+	background-image:url(../images/sidebar_background.jpg);
 	background-repeat:repeat-x;
 	padding:4px;
 	color:#FFFFFF;
