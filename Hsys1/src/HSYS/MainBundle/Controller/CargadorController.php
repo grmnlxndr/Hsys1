@@ -18,31 +18,36 @@ class CargadorController extends Controller {
 
         $em->persist($hemocomponente);
         $em->flush();
-
+        
+        $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Globulos Rojos");
         $hemocomponente->setDuracion(90);
 
         $em->persist($hemocomponente);
         $em->flush();
-
+        
+        $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Plaquetas");
         $hemocomponente->setDuracion(30);
 
         $em->persist($hemocomponente);
         $em->flush();
-
+        
+        $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Sobrenadante de Crio");
         $hemocomponente->setDuracion(365);
 
         $em->persist($hemocomponente);
         $em->flush();
-
+        
+        $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Plasma fresco");
         $hemocomponente->setDuracion(20);
 
         $em->persist($hemocomponente);
         $em->flush();
-
+        
+        $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Plasma Modificado");
         $hemocomponente->setDuracion(60);
 
@@ -59,86 +64,96 @@ class CargadorController extends Controller {
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Cuestionario");
         $exclusion->setGrado("grave");
         $exclusion->setDuracion("90");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Cuestionario");
         $exclusion->setGrado("permanente");
         $exclusion->setDuracion("0");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Serologia");
         $exclusion->setGrado("leve");
         $exclusion->setDuracion("30");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Serologia");
         $exclusion->setGrado("grave");
         $exclusion->setDuracion("90");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Serologia");
         $exclusion->setGrado("permanente");
         $exclusion->setDuracion("0");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Examen Fisico");
         $exclusion->setGrado("leve");
         $exclusion->setDuracion("30");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Examen Fisico");
         $exclusion->setGrado("grave");
         $exclusion->setDuracion("90");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Examen Fisico");
         $exclusion->setGrado("permanente");
         $exclusion->setDuracion("0");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Autoexclusion");
         $exclusion->setGrado("grave");
         $exclusion->setDuracion("365");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion por donacion");
         $exclusion->setGrado("leve");
         $exclusion->setDuracion("60");
 
         $em->persist($exclusion);
         $em->flush();
-        
+
+        $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Permanente");
         $exclusion->setGrado("permanente");
         $exclusion->setDuracion("0");
 
         $em->persist($exclusion);
         $em->flush();
-        
-        
-        return "todo listo.";
+
+        return 'echo todo listo';
     }
 
 }
