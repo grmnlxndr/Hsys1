@@ -2,6 +2,8 @@
 
 namespace HSYS\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use HSYS\MainBundle\Entity\analisis;
+use HSYS\MainBundle\Form\analisisType;
 
 class AnalisisController extends Controller
 {
