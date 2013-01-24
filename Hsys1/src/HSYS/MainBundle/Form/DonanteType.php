@@ -10,10 +10,25 @@ class DonanteType extends AbstractType
         $builder->add('nomapp')
                 ->add('dni')
                 ->add('factorsang')
-                ->add('fechnaci')
+                ->add('fechnaci', 'date', array(
+                    'widget' => 'choice',
+                    'empty_value' => array('year' => 'AAAA', 'month' => 'MM', 'day' => 'DD'),
+                    'years' => range(1902,2037),
+                    'months' => range(1,12),
+                    'format' => 'dd-MM-yyyy',
+                    'pattern' => '{{ day }}-{{ month }}-{{ year }}'
+                ))
                 ->add('sexo')
                 ->add('ocupacion')
-                ->add('estadocivil');
+                ->add('estadocivil')
+                ->add('paisnac')
+                ->add('provnac')
+                ->add('domicilio')
+                ->add('ciudad')
+                ->add('provincia')
+                ->add('pais')
+                ->add('telefono')
+                ;
                 
     }
     
