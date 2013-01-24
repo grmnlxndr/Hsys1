@@ -66,6 +66,9 @@
                 <td>{{ form_widget(form.domicilio) }}</td>
             </tr>
         </table>
+        
+        {{ form_rest(form) }}
         <input type="submit" />
     </form>
+{{ form_errors(form) }}
 {% endblock %}
