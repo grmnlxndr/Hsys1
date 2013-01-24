@@ -3,6 +3,7 @@ hsys_main_homepage:
   pattern:  /
   defaults: { _controller: HSYSMainBundle:Inicio:index }
 
+#DONANTES
 pagina_donante:
   pattern: /donante
   defaults: { _controller: HSYSMainBundle:Donante:index }
@@ -22,11 +23,26 @@ modificar_donante:
 excluir_donante:
   pattern: /donante/excluir/{id}
   defaults: { _controller: HSYSMainBundle:Donante:excluir }
+
+#EXTRACCIONES/DONACION
+pagina_donacion:
+  pattern: /donacion
+  defaults: { _controller: HSYSMainBundle:Donacion:index }  
   
 alta_donacion:
-  pattern: /donacion/nuevo
+  pattern: /donacion/nueva
   defaults: { _controller: HSYSMainBundle:Donacion:nuevo }
   
 confirmacion_donacion:
   pattern: /donacion/confirmacion
   defaults: { _controller: HSYSMainBundle:Donacion:confirmacion }
+  
+#SANGRE
+pagina_sangre:
+  pattern: /sangre
+  defaults: { _controller: HSYSMainBundle:Sangre:index }
+
+#SANGRE
+pagina_analisis:
+  pattern: /analisis
+  defaults: { _controller: HSYSMainBundle:Analisis:index }

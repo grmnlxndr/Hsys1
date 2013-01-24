@@ -10,6 +10,10 @@ use HSYS\MainBundle\Entity\Donacion;
 
 class DonacionController extends Controller {
 
+    public function indexAction() {
+        return $this->render('HSYSMainBundle:Donacion:index.html.twig');
+    }
+    
     public function nuevoAction() {
         $request = $this->getRequest();
 
