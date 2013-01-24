@@ -75,11 +75,13 @@ class DonanteController extends Controller {
 
     public function buscarAction() {
         $request = $this->getRequest();
-        $em = $this->getDoctrine()->getEntityManager();
-        $busqueda = $request->request->get('buscar');
-        $criterio = $request->request->get('criterio');
-        $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
-        return $this->render('HSYSMainBundle:Donante:buscar.html.twig', array('donantes' => $donantes,));
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $busqueda = $request->request->get('buscar');
+            $criterio = $request->request->get('criterio');
+            $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
+            return $this->render('HSYSMainBundle:Donante:buscar.html.twig', array('donantes' => $donantes,));
+        }
     }
 
 }
