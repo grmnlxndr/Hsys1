@@ -57,9 +57,26 @@ table.consulta{
 }
 table.consulta tr th{
         background-color: #CCCCCC;
-        border: 1px solid #B80201;
-        
+        border: 1px solid #B80201;  
 }
+table.consulta tr td{
+        border: 1px solid #CCCCCC;
+        text-align: center;
+}
+table.consulta tr td.link{
+        border: 1px solid #CCCCCC;
+        text-align: center;
+        font-weight: bold;
+        background-color: #CCCCCC;
+}
+table.consulta tr td.link:hover{
+        border: 1px solid #CCCCCC;
+        text-align: center;
+        font-weight: bolder;
+        background-color: #F85C5D;
+}
+
+
 
 /* forms */
 form {
