@@ -9,7 +9,7 @@ class analisisType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('fechanalisis')
                 ->add('chhai')
-                ->add('cheza')
+                ->add('cheia')
                 ->add('anticore')
                 ->add('hbsag')
                 ->add('hcvagac')
