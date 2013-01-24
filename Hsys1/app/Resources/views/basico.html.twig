@@ -10,23 +10,23 @@
 <div id="wrap">
 	<div id="header">
 		<h1>HSYS</h1>
-		<h2>Sistema de Gesti�n de Sangre</h2>
+		<h2>Sistema de Gestión de Sangre</h2>
 	</div>
     <div id="usuario">
     	<ul>
-        	<li class="trans"><img src="{{ asset('images/user_icon.png') }}/></li>
+        	<li class="trans"><img src="{{ asset('images/user_icon.png') }}"/></li>
         	<li class="trans"><p>{% block usuario %}{% endblock %}</p></li> 
         	<li><a href="TWIG LOGOUT" title="Salir">Salir</a></li>
     	</ul>
     </div>
 	<div id="nav">
 		<ul>
-        	<!--Cada boton tendr� un TWIG (block xxxx selected) para que aparezca class="selected", para indicar que pagina est� activa-->
+        	<!--Cada boton tendrá un TWIG (block xxxx selected) para que aparezca class="selected", para indicar que pagina est� activa-->
 			<li><!--TWIG BLOQUE SELECTED INICIO--><a href="{{ path('hsys_main_homepage') }}" {% block inicioSel %}{% endblock %} title="Inicio">Inicio</a></li>
 			<li><!--TWIG BLOQUE SELECTED DONANTES--><a href="{{ path('pagina_donante') }}" {% block donanteSel %}{% endblock %} title="Donantes">Donantes</a></li>
 			<li><!--TWIG BLOQUE SELECTED EXTRACCIONES--><a href="{{ path('pagina_donacion') }}" {% block extraccionesSel %}{% endblock %} title="Extracciones">Extracciones</a></li>
 			<li><!--TWIG BLOQUE SELECTED SANGRE--><a href="{{ path('pagina_sangre') }}" {% block sangreSel %}{% endblock %} title="Sangre">Sangre</a></li>
-			<li><!--TWIG BLOQUE SELECTED ANALISIS--><a href="{{ path('pagina_analisis') }}" {% block analisisSel %}{% endblock %} title="An�lisis">An�lisis</a></li>
+			<li><!--TWIG BLOQUE SELECTED ANALISIS--><a href="{{ path('pagina_analisis') }}" {% block analisisSel %}{% endblock %} title="Análisis">Análisis</a></li>
 		</ul>
 	</div>
 	<div id="content">
