@@ -24,6 +24,13 @@ class analisisType extends AbstractType
                 ->add('cde')
                 ->add('fenotipo')
                 ->add('pci')
+                ->add('reactivo', 'choice', array(
+                    'choices' => array(
+                        'SI' => 'SI',
+                        'NO' => 'NO',
+                        ),
+                    'empty_value' => 'SELECCIONE UNA OPCION',
+                ))
                 ;      
     }
     
