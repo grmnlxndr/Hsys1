@@ -1,0 +1,46 @@
+{% extends '::basico.html.twig' %}
+
+{% block title %}Donante{% endblock %}
+
+{% block sidebar %}
+<ul>
+    <li><a href="{{ path('alta_donante') }}" title="Nuevo Donante">Nuevo Donante</a></li>
+</ul>
+{% endblock %}
+
+{% block contenido %}
+
+<form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donante') }}">
+    <table>
+        <tr>
+            <td><label>Búsqueda: </label></td>
+            <td><input id="buscar" name="buscar" type="text" /></td>
+            <td><label for="criterio">Criterio: </label></td>
+            <td><select name="criterio" id="criterio">
+                    <option value="dni">DNI</option>
+                    <option value="id">Numero Donante</option>
+                    <option value="nomape">Apellido y Nombre</option>
+                </select></td>
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+
+<table>
+{% for donante in donantes %}
+        <tr>
+            <td><a>{{ donante.id }}</a></td>
+            <td><a>{{ donante.nomapp }}</a></td>
+            <td><a>{{ donante.dni }}</a></td>
+        </tr>
+{% else %}
+        NO SE HAN ENCONTRADO RESULTADOS
+{% endfor %}
+    </table>
+
+
+    <p>Bloque busqueda</p>
+    <p>Boton Nuevo Donante</p>
+    <p>Bloque tabla con los donantes</p>
+{% endblock %}

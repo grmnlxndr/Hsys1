@@ -10,7 +10,7 @@
 
 {% block contenido %}
 
-        <form id="buscar_form" name="buscar_form" method="post" action="">
+        <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donante') }}">
             <table>
                 <tr>
                     <td><label>Búsqueda: </label></td>
@@ -19,7 +19,7 @@
                     <td><select name="criterio" id="criterio">
                             <option value="dni">DNI</option>
                             <option value="id">Numero Donante</option>
-                            <option value="nomape">Apellido y Nombre</option>
+                            <option value="nomapp">Apellido y Nombre</option>
                         </select></td>
                     <td><input type="submit" value="Buscar"/></td>
                 </tr>
