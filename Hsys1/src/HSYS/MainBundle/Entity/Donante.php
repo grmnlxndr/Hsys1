@@ -33,6 +33,7 @@ class Donante {
      * 
      * 
      * @var integer
+     * @Assert\Max(99999999)
      * @Assert\Range(min = "0", max = "99999999",minMessage = "valor no aceptable", maxMessage = "valor no aceptable1", invalidMessage= "el DNI debe ser un numero de 8 cifras")
      * @ORM\Column(name="dni", type="integer", nullable=true)  
      * 
