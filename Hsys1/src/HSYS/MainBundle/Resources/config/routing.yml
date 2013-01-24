@@ -15,6 +15,10 @@ modificar_donante:
   pattern: /donante/modificar/{id}
   defaults: { _controller: HSYSMainBundle:Donante:modificar }
   
+excluir_donante:
+  pattern: /donante/excluir/{id}
+  defaults: { _controller: HSYSMainBundle:Donante:excluir }
+  
 alta_donacion:
   pattern: /donacion/nuevo
   defaults: { _controller: HSYSMainBundle:Donacion:nuevo }
