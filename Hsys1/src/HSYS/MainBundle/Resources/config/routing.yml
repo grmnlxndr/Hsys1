@@ -46,3 +46,8 @@ pagina_sangre:
 pagina_analisis:
   pattern: /analisis
   defaults: { _controller: HSYSMainBundle:Analisis:index }
+
+#autocargado
+autocargado:
+  pattern: /autocargado
+  defaults: { _controller: HSYSMainBundle:Cargador:carga }
