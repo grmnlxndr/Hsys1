@@ -59,6 +59,15 @@ class DonanteController extends Controller {
     public function confirmacionAction() {
         return $this->render('HSYSMainBundle:Donante:confirmacion.html.twig');
     }
+    
+    public function excluirAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $tiposExlusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findAll();
+        
+        return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'id' => $id));
+        #aca le tengo que pasar el donante y los tipos de exclusion que existe para excluir al forro ese por drogon
+    }
 
 }
 
