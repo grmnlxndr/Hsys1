@@ -31,11 +31,6 @@ class DonanteController extends Controller {
     public function modificarAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
-
-        if ($request->getMethod() == 'POST') {
-            $em->flush();
-            return $this->redirect($this->generateURL('confirmacion'));
-        }
         
         $donante = $em->getRepository('HSYSMainBundle:donante')->find($id);
         //hacer mas lindo el error
@@ -44,8 +39,20 @@ class DonanteController extends Controller {
                     'No se encontro el donate: ' . $id
             );
         }
-
+        
         $form = $this->createForm(new DonanteType(), $donante);
+
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $em->persist($donante);
+                $em->flush();
+                return $this->redirect($this->generateURL('confirmacion'));
+            } else {
+                return 'no es valido';
+                   }
+        }
+        
         return $this->render('HSYSMainBundle:Donante:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
     }
 

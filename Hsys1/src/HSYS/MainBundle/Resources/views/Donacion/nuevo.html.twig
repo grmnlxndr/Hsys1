@@ -1,9 +1,9 @@
 {% extends '::basico.html.twig' %}
 
-{% block title %}Modificar Donante {{ id }}{% endblock %}
+{% block title %}Nueva Donacion{% endblock %}
 
 {% block contenido %}
-    <form action="{{ path('modificar_donante', { 'id' : id }) }}" method="post">
+    <form action="{{ path('alta_donacion') }}" method="post">
         {{ form_widget(form) }}
         <input type="submit" />
     </form>
