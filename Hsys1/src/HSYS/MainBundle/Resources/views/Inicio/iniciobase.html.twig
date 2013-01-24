@@ -1,0 +1,14 @@
+{# empty Twig template #}
+{% extends '::basico.html.twig' %}
+
+{% block sidebar %}
+<ul>
+    <li><a href="{{ path('pagina_donante') }}" title="Donantes">Donantes</a></li>
+    <li><a href="{{ path('pagina_donacion') }}" title="Extracciones">Extracciones</a></li>
+    <li><a href="{{ path('pagina_sangre') }}" title="Sangre">Sangre</a></li>
+    <li><a href="{{ path('pagina_analsis') }}" title="Análisis">Análisis</a></li>
+    
+</ul>
+{% endblock %}
+
+{% block inicioSel %}class="selected"{% endblock %}
