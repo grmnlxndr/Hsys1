@@ -22,8 +22,8 @@
 	<div id="nav">
 		<ul>
         	<!--Cada boton tendr� un TWIG (block xxxx selected) para que aparezca class="selected", para indicar que pagina est� activa-->
-			<li><!--TWIG BLOQUE SELECTED INICIO--><a href="TWIG LINK INICIO" {% block inicioSel %}{% endblock %} title="Inicio">Inicio</a></li>
-			<li><!--TWIG BLOQUE SELECTED DONANTES--><a href="TWIG LINK DONANTES" {% block donanteSel %}{% endblock %} title="Donantes">Donantes</a></li>
+			<li><!--TWIG BLOQUE SELECTED INICIO--><a href="{{ path('hsys_main_homepage') }}" {% block inicioSel %}{% endblock %} title="Inicio">Inicio</a></li>
+			<li><!--TWIG BLOQUE SELECTED DONANTES--><a href="{{ path('pagina_donante') }}" {% block donanteSel %}{% endblock %} title="Donantes">Donantes</a></li>
 			<li><!--TWIG BLOQUE SELECTED EXTRACCIONES--><a href="TWIG LINK EXTRACCIONES" {% block extraccionesSel %}{% endblock %} title="Extracciones">Extracciones</a></li>
 			<li><!--TWIG BLOQUE SELECTED SANGRE--><a href="TWIG LINK SANGRE" {% block sangreSel %}{% endblock %} title="Sangre">Sangre</a></li>
 			<li><!--TWIG BLOQUE SELECTED ANALISIS--><a href="TWIG LINK ANALISIS" {% block analisisSel %}{% endblock %} title="An�lisis">An�lisis</a></li>

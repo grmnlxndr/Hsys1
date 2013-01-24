@@ -9,6 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class DonanteController extends Controller {
 
+    public function indexAction() {
+        return $this->render('HSYSMainBundle:Donante:index.html.twig');
+    }
+    
     public function nuevoAction() {
         $request = $this->getRequest();
 

@@ -1,15 +1,19 @@
 
 hsys_main_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: HSYSMainBundle:Default:index }
+  pattern:  /
+  defaults: { _controller: HSYSMainBundle:Inicio:index }
+
+pagina_donante:
+  pattern: /donante
+  defaults: { _controller: HSYSMainBundle:Donante:index }
 
 alta_donante:
-    pattern: /donante/nuevo
-    defaults: { _controller: HSYSMainBundle:Donante:nuevo }
+  pattern: /donante/nuevo
+  defaults: { _controller: HSYSMainBundle:Donante:nuevo }
 
 confirmacion:
-    pattern: /donante/confirmacion
-    defaults: { _controller: HSYSMainBundle:Donante:confirmacion }
+  pattern: /donante/confirmacion
+  defaults: { _controller: HSYSMainBundle:Donante:confirmacion }
     
 modificar_donante:
   pattern: /donante/modificar/{id}
