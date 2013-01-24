@@ -21,15 +21,18 @@
 </form>
 <br/>
 
-<table>
+<table class="consulta" style="width: 100%">
+    <tr>
+    <th> ID </th><th> Apellido y Nombre </th><th> DNI </th>
+</tr>
 {% for donante in donantes %}
-        <tr>
-            <td><a>{{ donante.id }}</a></td>
-            <td><a>{{ donante.nomapp }}</a></td>
-            <td><a>{{ donante.dni }}</a></td>
-        </tr>
+<tr>
+    <td><a>{{ donante.id }}</a></td>
+    <td><a>{{ donante.nomapp }}</a></td>
+    <td><a>{{ donante.dni }}</a></td>
+</tr>
 {% else %}
-        NO SE HAN ENCONTRADO RESULTADOS
+NO SE HAN ENCONTRADO RESULTADOS
 {% endfor %}
-    </table>
+</table>
 {% endblock %}
