@@ -1,0 +1,10 @@
+{% extends '::basico.html.twig' %}
+
+{% block title %}Modificar Donante {{ id }}{% endblock %}
+
+{% block contenido %}
+    <form action="{{ path('modificar_donante', { 'id' : 'id' }) }}" method="post">
+        {{ form_widget(form) }}
+        <input type="submit" />
+    </form>
+{% endblock %}

@@ -4,7 +4,7 @@ namespace HSYS\MainBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class altaDonanteType extends AbstractType
+class DonanteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('nomapp')
@@ -18,7 +18,7 @@ class altaDonanteType extends AbstractType
     }
     
     public function getName() {
-        return 'altaDonante_form';
+        return 'Donante_form';
     }
 }
 ?>

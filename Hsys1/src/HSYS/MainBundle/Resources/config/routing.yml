@@ -10,3 +10,8 @@ alta_donante:
 confirmacion:
     pattern: /donante/confirmacion
     defaults: {_controller: HSYSMainBundle:Donante:confirmacion }
+    
+modificar_donante:
+  pattern: /donante/modificar/{id}
+  defaults: {_controller: HSYSMainBundle:Donante:modificar }
+  
