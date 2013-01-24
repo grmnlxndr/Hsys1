@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityRepository;
 class DonanteRepository extends EntityRepository {
 
     public function findDonante($dato, $criterio){
-        $resultado;
+        $resultado= null;
         if ($criterio == "dni"){
             $resultado = $this->findDonantePorDNI($dato);
         };
@@ -32,7 +32,7 @@ class DonanteRepository extends EntityRepository {
         $dql = "select d from HSYSMainBundle:Donante d where d.dni like :dni";
 
         $query = $em->createQuery($dql);
-        $query->setParameter('dni', $dni);
+        $query->setParameter('dni', '%'.$dni.'%');
         
         $donantes = $query->getResult();
         return $donantes;
@@ -43,18 +43,18 @@ class DonanteRepository extends EntityRepository {
         $dql = "select d from HSYSMainBundle:Donante d where d.id like :id";
 
         $query = $em->createQuery($dql);
-        $query->setParameter('id', $id);
+        $query->setParameter('id', '%'.$id.'%');
         
         $donantes = $query->getResult();
         return $donantes;
     }
-    
+    //UPPER(u.name)
         public function findDonantePorNomApp($nomapp) {
         $em = $this->getEntityManager();
         $dql = "select d from HSYSMainBundle:Donante d where d.nomapp like :nomapp";
 
         $query = $em->createQuery($dql);
-        $query->setParameter('nomapp', $nomapp);
+        $query->setParameter('nomapp', '%'.$nomapp.'%');
         
         $donantes = $query->getResult();
         return $donantes;
