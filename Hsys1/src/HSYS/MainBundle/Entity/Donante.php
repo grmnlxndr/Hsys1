@@ -72,6 +72,99 @@ class Donante
 
 
     /**
+     * @var string
+     * @ORM/Column(name="paisnac", type= "string", length=40)
+     */
+    private $paisnac;
+    public function getPaisNac(){
+        return $this->paisnac;
+    }
+    public function setPaisNac($paisnac){
+        $this->paisnac = $paisnac;
+        return $this;
+    }
+    
+     /**
+     * @var string
+     * @ORM/Column(name="ProvNac", type= "string", length=50)
+     */
+    private $provNac;
+    public function getProvNac(){
+        return $this->provNac;
+    }
+    public function setProvNac($provNac){
+        $this->provNac = $provNac;
+        return $this;
+    }
+    
+     /**
+     * @var string
+     * @ORM/Column(name="domicilio", type= "string", length=60)
+     */
+    private $domicilio;
+    public function getDomicilio(){
+        return $this->domicilio;
+    }
+    public function setDomicilio($domicilio){
+        $this->domicilio = $domicilio;
+        return $this;
+    }
+    
+    /**
+     * @var string
+     * @ORM/Column(name="ciudad", type= "string", length=40)
+     */
+    private $ciudad;
+    public function getCiudad(){
+        return $this->ciudad;
+    }
+    public function setCiudad($ciudad){
+        $this->ciudad = $ciudad;
+        return $this;
+    }
+    
+    /**
+     * @var string
+     * @ORM/Column(name="provincia", type= "string", length=40)
+     */
+    private $provincia;
+    public function getProvincia(){
+        return $this->provincia;
+    }
+    public function setProvincia($provincia){
+        $this->provincia = $provincia;
+        return $this;
+    }
+    
+    /**
+     * @var string
+     * @ORM/Column(name="pais", type= "string", length=40)
+     */
+    private $pais;
+    public function getpPais(){
+        return $this->pais;
+    }
+    public function setPais($pais){
+        $this->pais = $pais;
+        return $this;
+    }
+    
+    /**
+     * @var string
+     * @ORM/Column(name="telefono", type= "string", length=30)
+     */
+    private $telefono;
+    public function getTelefono(){
+        return $this->telefono;
+    }
+    public function setTelefono($telefono){
+        $this->telefono = $telefono;
+        return $this;
+    }
+    
+    
+
+    /**
      * Get id
      *
      * @return integer 
