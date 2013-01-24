@@ -70,6 +70,12 @@ form input, textarea {
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	color:#B90302;
 }
+form select {
+        border:1px solid #CCCCCC;
+	padding:5px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	color:#B90302;
+}
 form input.button {
 	background-color:#B80201;
 	color:#FFFFFF;
@@ -223,6 +229,7 @@ div#sidebar ul li {
 	display:block !important;
 	display:inline; /* for ie */
 	border-bottom:1px solid #4B4B4B;
+        font-weight:bold;
 }
 div#sidebar ul li a {
 	display:block;
@@ -231,11 +238,13 @@ div#sidebar ul li a {
 	color:#FFFFFF;
 	margin:0;
 	font-family:Geneva, Arial, Helvetica, sans-serif;
+        font-weight:bold;
 }
 div#sidebar ul li a:hover {
 	color:#FFFFFF;
 	background-color:#B80201;
 	text-decoration:none;
+        font-weight:bold;
 }
 div#sidebar p, div#sidebar ul {
 	margin-bottom:20px;

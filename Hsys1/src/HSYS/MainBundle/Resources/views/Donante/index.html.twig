@@ -2,8 +2,31 @@
 
 {% block title %}Donante{% endblock %}
 
+{% block sidebar %}
+<ul>
+    <li><a href="{{ path('alta_donante') }}" title="Nuevo Donante">Nuevo Donante</a></li>
+</ul>
+{% endblock %}
+
 {% block contenido %}
-    <p>Bloque busqueda</p>
-    <p>Boton Nuevo Donante</p>
-    <p>Bloque tabla con los donantes</p>
+
+        <form id="buscar_form" name="buscar_form" method="post" action="">
+            <table>
+                <tr>
+                    <td><label>Búsqueda: </label></td>
+                    <td><input id="buscar" name="buscar" type="text" /></td>
+                    <td><label for="criterio">Criterio: </label></td>
+                    <td><select name="criterio" id="criterio">
+                            <option value="dni">DNI</option>
+                            <option value="id">Numero Donante</option>
+                            <option value="nomape">Apellido y Nombre</option>
+                        </select></td>
+                    <td><input type="submit" value="Buscar"/></td>
+                </tr>
+            </table>
+        </form>
+<br/>
+<p>Bloque busqueda</p>
+<p>Boton Nuevo Donante</p>
+<p>Bloque tabla con los donantes</p>
 {% endblock %}
