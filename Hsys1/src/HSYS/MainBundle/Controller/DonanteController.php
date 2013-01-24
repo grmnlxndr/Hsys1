@@ -12,7 +12,7 @@ class DonanteController extends Controller {
     public function indexAction() {
         return $this->render('HSYSMainBundle:Donante:index.html.twig');
     }
-    
+
     public function nuevoAction() {
         $request = $this->getRequest();
 
@@ -35,7 +35,7 @@ class DonanteController extends Controller {
     public function modificarAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
-        
+
         $donante = $em->getRepository('HSYSMainBundle:donante')->find($id);
         //hacer mas lindo el error
         if (!$donante) {
@@ -43,7 +43,7 @@ class DonanteController extends Controller {
                     'No se encontro el donate: ' . $id
             );
         }
-        
+
         $form = $this->createForm(new DonanteType(), $donante);
 
         if ($request->getMethod() == 'POST') {
@@ -54,23 +54,34 @@ class DonanteController extends Controller {
                 return $this->redirect($this->generateURL('confirmacion'));
             } else {
                 return 'no es valido';
-                   }
+            }
         }
-        
+
         return $this->render('HSYSMainBundle:Donante:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
     }
 
     public function confirmacionAction() {
         return $this->render('HSYSMainBundle:Donante:confirmacion.html.twig');
     }
-    
+
     public function excluirAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
-        
+
         $tiposExlusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findAll();
-        
+
         return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'id' => $id));
         #aca le tengo que pasar el donante y los tipos de exclusion que existe para excluir al forro ese por drogon
+    }
+
+    public function buscarAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $busqueda = $request->request->get('buscar');
+            $criterio = $request->request->get('criterio');
+            $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
+            return $this->render('HSYSMainBundle:Donante:buscar.html.twig', array('donantes' => $donantes,));
+        }
     }
 
 }

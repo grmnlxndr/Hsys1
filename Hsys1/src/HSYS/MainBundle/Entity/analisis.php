@@ -38,9 +38,9 @@ class analisis {
     /**
      * @var string
      *
-     * @ORM\Column(name="cheza", type="string", length=10, nullable=true)
+     * @ORM\Column(name="cheia", type="string", length=10, nullable=true)
      */
-    private $cheza;
+    private $cheia;
 
     /**
      * @var string
@@ -139,6 +139,13 @@ class analisis {
      * @ORM\Column(name="pci", type="string", length=10, nullable=true)
      */
     private $pci;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="reactivo", type="string", length=10, nullable=true)
+     */
+    private $reactivo;
 
     /**
      * Get id
@@ -192,24 +199,24 @@ class analisis {
     }
 
     /**
-     * Set cheza
+     * Set cheia
      *
-     * @param string $cheza
+     * @param string $cheia
      * @return analisis
      */
-    public function setCheza($cheza) {
-        $this->cheza = $cheza;
+    public function setCheia($cheia) {
+        $this->cheia = $cheia;
 
         return $this;
     }
 
     /**
-     * Get cheza
+     * Get cheia
      *
      * @return string 
      */
-    public function getCheza() {
-        return $this->cheza;
+    public function getCheia() {
+        return $this->cheia;
     }
 
     /**
@@ -496,7 +503,7 @@ class analisis {
 
         return $this;
     }
-
+    
     /**
      * Get pci
      *
@@ -505,7 +512,28 @@ class analisis {
     public function getPci() {
         return $this->pci;
     }
+    
+     /**
+     * Set reactivo
+     *
+     * @param string $reactivo
+     * @return analisis
+     */
+    public function setReactivo($reactivo) {
+        $this->pci = $reactivo;
 
+        return $this;
+    }
+
+    /**
+     * Get reactivo
+     *
+     * @return string 
+     */
+    public function getReactivo() {
+        return $this->reactivo;
+    }
+    
     /**
      * @ORM\OneToOne(targetEntity="Donacion", mappedBy="analisis")
      * @return integer
@@ -519,5 +547,7 @@ class analisis {
     public function getDonacion() {
         return $this->Donacion;
     }
+    
+    
 
 }

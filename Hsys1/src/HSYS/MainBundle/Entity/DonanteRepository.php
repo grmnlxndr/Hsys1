@@ -13,20 +13,23 @@ use Doctrine\ORM\EntityRepository;
 class DonanteRepository extends EntityRepository {
 
     public function findDonante($dato, $criterio){
+        $resultado;
         if ($criterio == "dni"){
-            $resultado = findDonanteporDNI($dato);
-        }elseif ($criterio == "id") {
-            $resultado = findDonanteporDNI($dato);
-        }elseif ($criterio == "nomapp") {
-            $resultado = findDonanteporDNI($dato);
-        }
+            $resultado = $this->findDonantePorDNI($dato);
+        };
+        if ($criterio == "id") {
+            $resultado = $this->findDonantePorNumero($dato);
+        };
+        if ($criterio == "nomapp") {
+            $resultado = $this->findDonantePorNomApp($dato);
+        };
         
         return $resultado;
 }
     
     public function findDonantePorDNI($dni) {
         $em = $this->getEntityManager();
-        $dql = "select * from HSYSMainBundle:Donate d where d.dni like :dni";
+        $dql = "select d from HSYSMainBundle:Donante d where d.dni like :dni";
 
         $query = $em->createQuery($dql);
         $query->setParameter('dni', $dni);
@@ -35,12 +38,12 @@ class DonanteRepository extends EntityRepository {
         return $donantes;
     }
     
-    public function findDonantePorNumero($numero) {
+    public function findDonantePorNumero($id) {
         $em = $this->getEntityManager();
-        $dql = "select * from HSYSMainBundle:Donate d where d.id like :numero";
+        $dql = "select d from HSYSMainBundle:Donante d where d.id like :id";
 
         $query = $em->createQuery($dql);
-        $query->setParameter('numero', $numero);
+        $query->setParameter('id', $id);
         
         $donantes = $query->getResult();
         return $donantes;
@@ -48,7 +51,7 @@ class DonanteRepository extends EntityRepository {
     
         public function findDonantePorNomApp($nomapp) {
         $em = $this->getEntityManager();
-        $dql = "select * from HSYSMainBundle:Donate d where d.nomapp like :nomapp";
+        $dql = "select d from HSYSMainBundle:Donante d where d.nomapp like :nomapp";
 
         $query = $em->createQuery($dql);
         $query->setParameter('nomapp', $nomapp);

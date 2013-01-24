@@ -24,6 +24,10 @@ excluir_donante:
   pattern: /donante/excluir/{id}
   defaults: { _controller: HSYSMainBundle:Donante:excluir }
 
+buscar_donante:
+  pattern: /donante/buscar
+  defaults: { _controller: HSYSMainBundle:Donante:buscar }
+
 #EXTRACCIONES/DONACION
 pagina_donacion:
   pattern: /donacion
