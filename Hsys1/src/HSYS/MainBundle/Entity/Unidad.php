@@ -24,28 +24,28 @@ class Unidad {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="vencimiento", type="date")
+     * @ORM\Column(name="vencimiento", type="date", nullable=true)
      */
     private $vencimiento;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="volumen", type="decimal")
+     * @ORM\Column(name="volumen", type="decimal", nullable=true)
      */
     private $volumen;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="idbolsa", type="string", length=20)
+     * @ORM\Column(name="idbolsa", type="string", length=20, nullable=true)
      */
     private $idbolsa;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="estado", type="string", length=30)
+     * @ORM\Column(name="estado", type="string", length=30, nullable=true)
      */
     private $estado;
 

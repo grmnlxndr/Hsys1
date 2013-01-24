@@ -3,6 +3,7 @@
 namespace HSYS\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Donante
@@ -24,98 +25,100 @@ class Donante {
     /**
      * @var string
      *
-     * @ORM\Column(name="nomapp", type="string", length=100)
+     * @ORM\Column(name="nomapp", type="string", length=100, nullable=true)
      */
     private $nomapp;
 
     /**
-     * @var string
+     * @var integer
      *
-     * @ORM\Column(name="dni", type="string", length=8)
+     * @ORM\Column(name="dni", type="string", length=8, nullable=true)  
+     * @Assert\Max(99999999)
+     * @Assert\Min(0)
      */
     private $dni;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="factorsang", type="string", length=20)
+     * @ORM\Column(name="factorsang", type="string", length=20, nullable=true)
      */
     private $factorsang;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechnaci", type="date")
+     * @ORM\Column(name="fechnaci", type="date", nullable=true)
      */
     private $fechnaci;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sexo", type="string", length=10)
+     * @ORM\Column(name="sexo", type="string", length=10, nullable=true)
      */
     private $sexo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ocupacion", type="string", length=100)
+     * @ORM\Column(name="ocupacion", type="string", length=100, nullable=true)
      */
     private $ocupacion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="estadocivil", type="string", length=50)
+     * @ORM\Column(name="estadocivil", type="string", length=50, nullable=true)
      */
     private $estadocivil;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="paisnac", type= "string", length=40)
+     * @ORM\Column(name="paisnac", type= "string", length=40, nullable=true)
      */
     private $paisnac;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="Provnac", type= "string", length=50)
+     * @ORM\Column(name="Provnac", type= "string", length=50, nullable=true)
      */
     private $provnac;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="domicilio", type= "string", length=60)
+     * @ORM\Column(name="domicilio", type= "string", length=60, nullable=true)
      */
     private $domicilio;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="ciudad", type= "string", length=40)
+     * @ORM\Column(name="ciudad", type= "string", length=40, nullable=true)
      */
     private $ciudad;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="provincia", type= "string", length=40)
+     * @ORM\Column(name="provincia", type= "string", length=40, nullable=true)
      */
     private $provincia;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="pais", type= "string", length=40)
+     * @ORM\Column(name="pais", type= "string", length=40, nullable=true)
      */
     private $pais;
 
     /**
      * @var string
      * 
-     * @ORM\Column(name="telefono", type= "string", length=30)
+     * @ORM\Column(name="telefono", type= "string", length=30, nullable=true)
      */
     private $telefono;
 
