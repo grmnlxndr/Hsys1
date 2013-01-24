@@ -9,8 +9,7 @@ class DonacionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('fechextraccion')
                 ->add('idbolsa')
-                ->add('comentario')
-                ->add('Donante');      
+                ->add('comentario');      
     }
     
     public function getName() {
