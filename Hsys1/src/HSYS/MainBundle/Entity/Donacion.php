@@ -24,21 +24,21 @@ class Donacion {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechextraccion", type="date")
+     * @ORM\Column(name="fechextraccion", type="date", nullable=true)
      */
     private $fechextraccion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="idbolsa", type="string", length=20)
+     * @ORM\Column(name="idbolsa", type="string", length=20, nullable=true)
      */
     private $idbolsa;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="comentario", type="string", length=150)
+     * @ORM\Column(name="comentario", type="string", length=150, nullable=true)
      */
     private $comentario;
 

@@ -24,119 +24,119 @@ class analisis {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechanalisis", type="date")
+     * @ORM\Column(name="fechanalisis", type="date", nullable=true)
      */
     private $fechanalisis;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="chhai", type="string", length=10)
+     * @ORM\Column(name="chhai", type="string", length=10, nullable=true)
      */
     private $chhai;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cheza", type="string", length=10)
+     * @ORM\Column(name="cheza", type="string", length=10, nullable=true)
      */
     private $cheza;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="anticore", type="string", length=10)
+     * @ORM\Column(name="anticore", type="string", length=10, nullable=true)
      */
     private $anticore;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="hbsag", type="string", length=10)
+     * @ORM\Column(name="hbsag", type="string", length=10, nullable=true)
      */
     private $hbsag;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="hcvagac", type="string", length=10)
+     * @ORM\Column(name="hcvagac", type="string", length=10, nullable=true)
      */
     private $hcvagac;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="hivac", type="string", length=10)
+     * @ORM\Column(name="hivac", type="string", length=10, nullable=true)
      */
     private $hivac;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="agp2y", type="string", length=10)
+     * @ORM\Column(name="agp2y", type="string", length=10, nullable=true)
      */
     private $agp2y;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="htlv", type="string", length=10)
+     * @ORM\Column(name="htlv", type="string", length=10, nullable=true)
      */
     private $htlv;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="brucelosis", type="string", length=10)
+     * @ORM\Column(name="brucelosis", type="string", length=10, nullable=true)
      */
     private $brucelosis;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="sifilis", type="string", length=10)
+     * @ORM\Column(name="sifilis", type="string", length=10, nullable=true)
      */
     private $sifilis;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="abo", type="string", length=10)
+     * @ORM\Column(name="abo", type="string", length=10, nullable=true)
      */
     private $abo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="rhd", type="string", length=10)
+     * @ORM\Column(name="rhd", type="string", length=10, nullable=true)
      */
     private $rhd;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="du", type="string", length=10)
+     * @ORM\Column(name="du", type="string", length=10, nullable=true)
      */
     private $du;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cde", type="string", length=10)
+     * @ORM\Column(name="cde", type="string", length=10, nullable=true)
      */
     private $cde;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="fenotipo", type="string", length=10)
+     * @ORM\Column(name="fenotipo", type="string", length=10, nullable=true)
      */
     private $fenotipo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pci", type="string", length=10)
+     * @ORM\Column(name="pci", type="string", length=10, nullable=true)
      */
     private $pci;
 

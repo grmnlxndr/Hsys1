@@ -24,21 +24,21 @@ class TipoExclusion
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=150)
+     * @ORM\Column(name="nombre", type="string", length=150, nullable=true)
      */
     private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="grado", type="string", length=100)
+     * @ORM\Column(name="grado", type="string", length=100, nullable=true)
      */
     private $grado;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="duracion", type="integer")
+     * @ORM\Column(name="duracion", type="integer", nullable=true)
      */
     private $duracion;
 

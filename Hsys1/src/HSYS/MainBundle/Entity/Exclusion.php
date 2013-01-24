@@ -24,21 +24,21 @@ class Exclusion {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechini", type="date")
+     * @ORM\Column(name="fechini", type="date", nullable=true)
      */
     private $fechini;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="comentario", type="string", length=255)
+     * @ORM\Column(name="comentario", type="string", length=255, nullable=true)
      */
     private $comentario;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechfin", type="date")
+     * @ORM\Column(name="fechfin", type="date", nullable=true)
      */
     private $fechfin;
 

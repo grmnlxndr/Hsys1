@@ -24,14 +24,14 @@ class TipoHemocomponente
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre", type="string", length=60)
+     * @ORM\Column(name="nombre", type="string", length=60, nullable=true)
      */
     private $nombre;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="duracion", type="integer")
+     * @ORM\Column(name="duracion", type="integer", nullable=true)
      */
     private $duracion;
 
