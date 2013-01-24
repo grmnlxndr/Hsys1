@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\DonanteRepository")
  */
-class Donante
-{
+class Donante {
+
     /**
      * @var integer
      *
@@ -70,107 +70,61 @@ class Donante
      */
     private $estadocivil;
 
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="paisnac", type= "string", length=40)
+     */
+    private $paisnac;
 
     /**
      * @var string
-     * @ORM/Column(name="paisnac", type= "string", length=40)
+     * 
+     * @ORM\Column(name="Provnac", type= "string", length=50)
      */
-    private $paisnac;
-    public function getPaisNac(){
-        return $this->paisnac;
-    }
-    public function setPaisNac($paisnac){
-        $this->paisnac = $paisnac;
-        return $this;
-    }
-    
-     /**
+    private $provnac;
+
+    /**
      * @var string
-     * @ORM/Column(name="ProvNac", type= "string", length=50)
-     */
-    private $provNac;
-    public function getProvNac(){
-        return $this->provNac;
-    }
-    public function setProvNac($provNac){
-        $this->provNac = $provNac;
-        return $this;
-    }
-    
-     /**
-     * @var string
-     * @ORM/Column(name="domicilio", type= "string", length=60)
+     * 
+     * @ORM\Column(name="domicilio", type= "string", length=60)
      */
     private $domicilio;
-    public function getDomicilio(){
-        return $this->domicilio;
-    }
-    public function setDomicilio($domicilio){
-        $this->domicilio = $domicilio;
-        return $this;
-    }
-    
+
     /**
      * @var string
-     * @ORM/Column(name="ciudad", type= "string", length=40)
+     * 
+     * @ORM\Column(name="ciudad", type= "string", length=40)
      */
     private $ciudad;
-    public function getCiudad(){
-        return $this->ciudad;
-    }
-    public function setCiudad($ciudad){
-        $this->ciudad = $ciudad;
-        return $this;
-    }
-    
+
     /**
      * @var string
-     * @ORM/Column(name="provincia", type= "string", length=40)
+     * 
+     * @ORM\Column(name="provincia", type= "string", length=40)
      */
     private $provincia;
-    public function getProvincia(){
-        return $this->provincia;
-    }
-    public function setProvincia($provincia){
-        $this->provincia = $provincia;
-        return $this;
-    }
-    
+
     /**
      * @var string
-     * @ORM/Column(name="pais", type= "string", length=40)
+     * 
+     * @ORM\Column(name="pais", type= "string", length=40)
      */
     private $pais;
-    public function getpPais(){
-        return $this->pais;
-    }
-    public function setPais($pais){
-        $this->pais = $pais;
-        return $this;
-    }
-    
+
     /**
      * @var string
-     * @ORM/Column(name="telefono", type= "string", length=30)
+     * 
+     * @ORM\Column(name="telefono", type= "string", length=30)
      */
     private $telefono;
-    public function getTelefono(){
-        return $this->telefono;
-    }
-    public function setTelefono($telefono){
-        $this->telefono = $telefono;
-        return $this;
-    }
-    
-    
 
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -180,10 +134,9 @@ class Donante
      * @param string $nomapp
      * @return Donante
      */
-    public function setNomapp($nomapp)
-    {
+    public function setNomapp($nomapp) {
         $this->nomapp = $nomapp;
-    
+
         return $this;
     }
 
@@ -192,8 +145,7 @@ class Donante
      *
      * @return string 
      */
-    public function getNomapp()
-    {
+    public function getNomapp() {
         return $this->nomapp;
     }
 
@@ -203,10 +155,9 @@ class Donante
      * @param string $dni
      * @return Donante
      */
-    public function setDni($dni)
-    {
+    public function setDni($dni) {
         $this->dni = $dni;
-    
+
         return $this;
     }
 
@@ -215,8 +166,7 @@ class Donante
      *
      * @return string 
      */
-    public function getDni()
-    {
+    public function getDni() {
         return $this->dni;
     }
 
@@ -226,10 +176,9 @@ class Donante
      * @param string $factorsang
      * @return Donante
      */
-    public function setFactorsang($factorsang)
-    {
+    public function setFactorsang($factorsang) {
         $this->factorsang = $factorsang;
-    
+
         return $this;
     }
 
@@ -238,8 +187,7 @@ class Donante
      *
      * @return string 
      */
-    public function getFactorsang()
-    {
+    public function getFactorsang() {
         return $this->factorsang;
     }
 
@@ -249,10 +197,9 @@ class Donante
      * @param \DateTime $fechnaci
      * @return Donante
      */
-    public function setFechnaci($fechnaci)
-    {
+    public function setFechnaci($fechnaci) {
         $this->fechnaci = $fechnaci;
-    
+
         return $this;
     }
 
@@ -261,8 +208,7 @@ class Donante
      *
      * @return \DateTime 
      */
-    public function getFechnaci()
-    {
+    public function getFechnaci() {
         return $this->fechnaci;
     }
 
@@ -272,10 +218,9 @@ class Donante
      * @param string $sexo
      * @return Donante
      */
-    public function setSexo($sexo)
-    {
+    public function setSexo($sexo) {
         $this->sexo = $sexo;
-    
+
         return $this;
     }
 
@@ -284,8 +229,7 @@ class Donante
      *
      * @return string 
      */
-    public function getSexo()
-    {
+    public function getSexo() {
         return $this->sexo;
     }
 
@@ -295,10 +239,9 @@ class Donante
      * @param string $ocupacion
      * @return Donante
      */
-    public function setOcupacion($ocupacion)
-    {
+    public function setOcupacion($ocupacion) {
         $this->ocupacion = $ocupacion;
-    
+
         return $this;
     }
 
@@ -307,8 +250,7 @@ class Donante
      *
      * @return string 
      */
-    public function getOcupacion()
-    {
+    public function getOcupacion() {
         return $this->ocupacion;
     }
 
@@ -318,10 +260,9 @@ class Donante
      * @param string $estadocivil
      * @return Donante
      */
-    public function setEstadocivil($estadocivil)
-    {
+    public function setEstadocivil($estadocivil) {
         $this->estadocivil = $estadocivil;
-    
+
         return $this;
     }
 
@@ -330,10 +271,150 @@ class Donante
      *
      * @return string 
      */
-    public function getEstadocivil()
-    {
+    public function getEstadocivil() {
         return $this->estadocivil;
     }
+    
+    /**
+     * Get paisnac
+     *
+     * @return string 
+     */
+    public function getPaisnac() {
+        return $this->paisnac;
+    }
+
+    /**
+     * Set paisnac
+     *
+     * @param string $paisnac
+     * @return Donante
+     */
+    public function setPaisnac($paisnac) {
+        $this->paisnac = $paisnac;
+        return $this;
+    }
+
+    /**
+     * Get ciudad
+     *
+     * @return string 
+     */
+    public function getCiudad() {
+        return $this->ciudad;
+    }
+
+     /**
+     * Set ciudad
+     *
+     * @param string $ciudad
+     * @return Donante
+     */
+    public function setCiudad($ciudad) {
+        $this->ciudad = $ciudad;
+        return $this;
+    }
+    
+    /**
+     * Get provnac
+     *
+     * @return string 
+     */
+    public function getProvnac() {
+        return $this->provnac;
+    }
+
+     /**
+     * Set provnac
+     *
+     * @param string $provNac
+     * @return Donante
+     */
+    public function setProvnac($provnac) {
+        $this->provnac = $provnac;
+        return $this;
+    }
+
+    /**
+     * Get domicilio
+     *
+     * @return string 
+     */
+    public function getDomicilio() {
+        return $this->domicilio;
+    }
+
+    /**
+     * Set domicilio
+     *
+     * @param string $domicilio
+     * @return Donante
+     */
+    public function setDomicilio($domicilio) {
+        $this->domicilio = $domicilio;
+        return $this;
+    }
+    
+    /**
+     * Get provincia
+     *
+     * @return string 
+     */
+    public function getProvincia() {
+        return $this->provincia;
+    }
+
+    /**
+     * Set provincia
+     *
+     * @param string $provincia
+     * @return Donante
+     */
+    public function setProvincia($provincia) {
+        $this->provincia = $provincia;
+        return $this;
+    }
+ 
+    /**
+     * Get pais
+     *
+     * @return string 
+     */
+    public function getPais() {
+        return $this->pais;
+    }
+
+    /**
+     * Set pais
+     *
+     * @param string $pais
+     * @return Donante
+     */
+    public function setPais($pais) {
+        $this->pais = $pais;
+        return $this;
+    }   
+
+    /**
+     * Get telefono
+     *
+     * @return string 
+     */
+    public function getTelefono() {
+        return $this->telefono;
+    }
+
+    /**
+     * Set telefono
+     *
+     * @param string $telefono
+     * @return Donante
+     */
+    public function setTelefono($telefono) {
+        $this->telefono = $telefono;
+        return $this;
+    }    
+    
     
     /**
      * @ORM\OneToMany(targetEntity="Exclusion", mappedBy="Donante")
@@ -351,4 +432,5 @@ class Donante
     public function getExclusion() {
         return $this->Exclusion;
     }
+
 }
