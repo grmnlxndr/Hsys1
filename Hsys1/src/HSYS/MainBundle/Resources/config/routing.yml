@@ -46,10 +46,18 @@ pagina_sangre:
   pattern: /sangre
   defaults: { _controller: HSYSMainBundle:Sangre:index }
 
-#SANGRE
+#ANALISIS
 pagina_analisis:
   pattern: /analisis
   defaults: { _controller: HSYSMainBundle:Analisis:index }
+
+alta_analisis:
+  pattern: /analisis/nuevo
+  defaults: { _controller: HSYSMainBundle:Analisis:nuevo }
+  
+confirmacion_analisis:
+  pattern: /analisis/confirmacion
+  defaults: { _controller: HSYSMainBundle:Analisis:confirmacion }
 
 #autocargado
 autocargado:

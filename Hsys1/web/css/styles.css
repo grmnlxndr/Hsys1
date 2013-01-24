@@ -49,6 +49,35 @@ p {
 	margin:6px 0 10px 0;
 }
 
+/* tables */
+table.consulta{
+        border: 2px solid #B80201;
+        background-color: #E2E2E2;
+        
+}
+table.consulta tr th{
+        background-color: #CCCCCC;
+        border: 1px solid #B80201;  
+}
+table.consulta tr td{
+        border: 1px solid #CCCCCC;
+        text-align: center;
+}
+table.consulta tr td.link{
+        border: 1px solid #CCCCCC;
+        text-align: center;
+        font-weight: bold;
+        background-color: #CCCCCC;
+}
+table.consulta tr td.link:hover{
+        border: 1px solid #CCCCCC;
+        text-align: center;
+        font-weight: bolder;
+        background-color: #F85C5D;
+}
+
+
+
 /* forms */
 form {
 	margin:3px;
@@ -204,7 +233,6 @@ div#page {
 	width:75%;
 	float:right;
 }
-
 /* sidebar - right hand column */
 div#sidebar {
 	float:left;

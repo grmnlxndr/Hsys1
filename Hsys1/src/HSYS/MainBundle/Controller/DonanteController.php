@@ -81,6 +81,8 @@ class DonanteController extends Controller {
             $criterio = $request->request->get('criterio');
             $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
             return $this->render('HSYSMainBundle:Donante:buscar.html.twig', array('donantes' => $donantes,));
+        } else {
+            return $this->redirect($this->generateUrl('pagina_donante'));
         }
     }
 
