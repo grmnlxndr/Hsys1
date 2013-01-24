@@ -32,9 +32,10 @@ class Donante {
     /**
      * @var integer
      *
-     * @ORM\Column(name="dni", type="string", length=8, nullable=true)  
+     * @ORM\Column(name="dni", type="integer", nullable=true)  
      * @Assert\Max(99999999)
      * @Assert\Min(0)
+     * invalidMessage= "el DNI debe ser un numero de 8 cifras"
      */
     private $dni;
 
