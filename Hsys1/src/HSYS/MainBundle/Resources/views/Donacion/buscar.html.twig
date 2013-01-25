@@ -1,0 +1,41 @@
+{% extends 'HSYSMainBundle:Donante:donantebase.html.twig' %}
+
+{% block title %}Buscar Donación{% endblock %}
+
+{% block contenido %}
+
+<form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donacion') }}">
+    <table>
+        <tr>
+            <td><label>Búsqueda: </label></td>
+            <td><input id="buscar" name="buscar" type="text" style="width: 120px"/></td>
+            <td><label for="criterio">Criterio: </label></td>
+            <td><select name="criterio" id="criterio" style="width: 120px">
+                    <option value="numDonacion">Número Donación</option>
+                    <option value="donante">Donante</option>
+                    <option value="fecha">Fecha</option>
+                </select></td>
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th> ID </th><th> Donante </th><th> Fecha </th><th> Ver </th><th> Crear un Fraccionamiento </th>
+    </tr>
+{% for donacion in donaciones %}
+    <tr>
+        <td><a>{{ donacion.id }}</a></td>
+        <td><a>{{ donacion.donante.nomapp }}</a></td>
+        <td><a>{{ donacion.fecha }}</a></td>
+        <td class="link"><a href="TWIIIG_VER">Ver</a></td>
+        <td class="link"><a href="{{ path('modificar_donante', {'id':donacion.id})  }}">Modificar</a></td>
+    </tr>
+{% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+{% endfor %}
+</table>
+{% endblock %}

@@ -61,6 +61,19 @@ class DonacionController extends Controller {
         return $this->render('HSYSMainBundle:Donacion:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
     }
 
+    
+    public function buscarAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $busqueda = $request->request->get('buscar');
+            $criterio = $request->request->get('criterio');
+            $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacion($busqueda, $criterio);
+            return $this->render('HSYSMainBundle:Donacion:buscar.html.twig', array('donaciones' => $donaciones,));
+        } else {
+            return $this->redirect($this->generateUrl('pagina_donacion'));
+        }
+    }
 }
 
 ?>
