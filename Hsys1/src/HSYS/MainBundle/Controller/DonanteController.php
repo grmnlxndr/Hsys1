@@ -25,7 +25,7 @@ class DonanteController extends Controller {
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($donante);
                 $em->flush();
-                return $this->redirect($this->generateURL('confirmacion'));
+                return $this->redirect($this->generateURL('confirmacion', array('accion' => 'agregado', 'id' => $donante->getId())));
 //aca poner respuesta no se como
             }
         }
@@ -51,7 +51,7 @@ class DonanteController extends Controller {
             if ($form->isValid()) {
                 $em->persist($donante);
                 $em->flush();
-                return $this->redirect($this->generateURL('confirmacion'));
+                return $this->redirect($this->generateURL('confirmacion', array('accion' => 'modificado', 'id' => $donante->getId())));
             } else {
                 return 'no es valido';
             }
@@ -60,8 +60,8 @@ class DonanteController extends Controller {
         return $this->render('HSYSMainBundle:Donante:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
     }
 
-    public function confirmacionAction() {
-        return $this->render('HSYSMainBundle:Donante:confirmacion.html.twig');
+    public function confirmacionAction($accion, $id) {
+        return $this->render('HSYSMainBundle:Donante:confirmacion.html.twig', array('accion' => $accion, 'id' => $id,));
     }
 
     public function excluirAction($id) {
