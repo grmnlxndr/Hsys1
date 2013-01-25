@@ -4,6 +4,15 @@
 
 {% block contenido %}
 
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('modificar_donante',{'id':donante.id}) }}">Modificar</a></li>
+        <li><a href= "{{ path('excluir_donante',{'id':donante.id}) }}">Excluir</a></li>
+        <li><a href="TWIIIG DONAR">Donar</a></li>
+        <li><a href="TWIIIG ELIMINAR">Eliminar</a></li>
+    </ul>
+</div>
+<br/>
 <table class="detalle">
     <tr>
         <th>ID: </th>
@@ -70,14 +79,5 @@
     </tr>
 </table>
 <br/>
-<div class="detalle">
-    <ul>
-        <li><a href="{{ path('modificar_donante',{'id':donante.id}) }}">Modificar</a></li>
-        <li><a href= "{{ path('excluir_donante',{'id':donante.id}) }}">Excluir</a></li>
-        <li><a href="TWIIIG DONAR">Donar</a></li>
-        <li><a href="TWIIIG ELIMINAR">Eliminar</a></li>
-    </ul>
-</div>
-
 
 {% endblock %}
