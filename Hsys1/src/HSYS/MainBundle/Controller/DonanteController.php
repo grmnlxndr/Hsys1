@@ -51,7 +51,7 @@ class DonanteController extends Controller {
             if ($form->isValid()) {
                 $em->persist($donante);
                 $em->flush();
-                return $this->redirect($this->generateURL('confirmacion', array('accion' => 'modificado', 'id' => $donante->getId())));
+                return $this->redirect($this->generateURL('ver_donante', array('id' => $donante->getId())));
             } else {
                 return 'no es valido';
             }

@@ -23,20 +23,20 @@ class DonanteType extends AbstractType
                 ))
                 ->add('sexo', 'choice', array(
                     'choices' => array(
-                        'masc' => 'Masculino',
-                        'feme' => 'Femenino',
-                        'otro' =>   'Otro',
+                        'Masculino' => 'Masculino',
+                        'Femenino' => 'Femenino',
+                        'Otro' =>   'Otro',
                         ),
                     'empty_value' => 'SELECCIONE UNA',
                 ))
                 ->add('ocupacion')
                 ->add('estadocivil', 'choice', array(
                     'choices' => array(
-                        'solt'=> 'Soltero',
-                        'casa'=> 'Casado',
-                        'divo'=> 'Divorciado',
-                        'viud'=> 'Viudo',
-                        'otro'=> 'Otro',
+                        'Soltero'=> 'Soltero',
+                        'Casado'=> 'Casado',
+                        'Divorciado'=> 'Divorciado',
+                        'Viudo'=> 'Viudo',
+                        'Otro'=> 'Otro',
                     ),
                     'empty_value' => 'SELECCIONE UNA',
                 ))
