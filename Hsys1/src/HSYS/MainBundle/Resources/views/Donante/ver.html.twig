@@ -4,68 +4,68 @@
 
 {% block contenido %}
 
-<table>
+<table class="detalle">
     <tr>
-        <td>ID: </td>
+        <th>ID: </th>
         <td>{{ donante.id }}</td>
     </tr>
     <tr>
-        <td>Apellido y Nombre:  </td>
+        <th>Apellido y Nombre:  </th>
         <td>{{ donante.nomapp }}</td>
     </tr>
     <tr>
-        <td>DNI: </td>
+        <th>DNI: </th>
         <td>{{ donante.dni }}</td>
     </tr>
     <tr>
-        <td>Factor Sangíneo: </td>
+        <th>Factor Sangíneo: </th>
         <td>{{ donante.factorsang }}</td>
     </tr>
     <tr>
-        <td>Fecha de Nacimiento: </td>
+        <th>Fecha de Nacimiento: </th>
         <td>{{ donante.fechnaci|date('d/m/Y') }}</td>
     </tr>
     <tr>
-        <td>Sexo: </td>
+        <th>Sexo: </th>
         <td>{{ donante.sexo }}</td>
     </tr>
     <tr>
-        <td>Ocupación: </td>
+        <th>Ocupación: </th>
         <td>{{ donante.ocupacion }}</td>
     </tr>
     <tr>
-        <td>Estado Civil: </td>
+        <th>Estado Civil: </th>
         <td>{{ donante.estadocivil }}</td>
     </tr>
     <tr>
-        <td>Teléfono: </td>
+        <th>Teléfono: </th>
         <td>{{ donante.telefono }}</td>
     </tr>
     <tr>
-        <td>País de Nacimiento: </td>
+        <th>País de Nacimiento: </th>
         <td>{{ donante.paisnac }}</td>
     </tr>
     <tr>
-        <td>Provincia de Nacimiento: </td>
+        <th>Provincia de Nacimiento: </th>
         <td>{{ donante.provnac }}</td>
     </tr>
     <tr>
-        <td>Domicilio Actual: </td>
+        <th>Domicilio Actual: </th>
     </tr>
     <tr>
-        <td>País: </td>
+        <th>País: </th>
         <td>{{ donante.pais }}</td>
     </tr>
     <tr>
-        <td>Provincia: </td>
+        <th>Provincia: </th>
         <td>{{ donante.provincia }}</td>
     </tr>
     <tr>
-        <td>Ciudad: </td>
+        <th>Ciudad: </th>
         <td>{{ donante.ciudad }}</td>
     </tr>
     <tr>
-        <td>Calle y Número: </td>
+        <th>Calle y Número: </th>
         <td>{{ donante.domicilio }}</td>
     </tr>
 </table>
