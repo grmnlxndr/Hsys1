@@ -18,4 +18,21 @@
     </table>
 </form>
 <br/>
+
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th> ID </th><th> Reactivo </th><th> Ver </th><th> Modificar </th>
+    </tr>
+{% for analisi in analisis %}
+    <tr>
+        <td><a>{{ analisi.id }}</a></td>
+        <td><a>{{ analisi.reactivo }}</a></td>
+        <td class="link"><a href="TWIIIG_VER">Ver</a></td>
+        <td class="link"><a href="{{ path('modificar_analisis', {'id':analisi.id})  }}">Modificar</a></td>
+    </tr>
+{% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+{% endfor %}
+</table>
 {% endblock %}
