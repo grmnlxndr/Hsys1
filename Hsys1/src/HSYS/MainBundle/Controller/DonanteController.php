@@ -85,6 +85,19 @@ class DonanteController extends Controller {
             return $this->redirect($this->generateUrl('pagina_donante'));
         }
     }
+    
+    public function verAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        //hacer mas lindo el error
+        if (!$donante) {
+            throw $this->createNotFoundException(
+                    'No se encontro el donate: ' . $id
+            );
+        }
+        return $this->render('HSYSMainBundle:Donante:ver.html.twig', array('donante' => $donante,));
+        
+    }
 
 }
 
