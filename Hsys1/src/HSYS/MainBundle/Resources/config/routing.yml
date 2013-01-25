@@ -28,6 +28,10 @@ buscar_donante:
   pattern: /donante/buscar
   defaults: { _controller: HSYSMainBundle:Donante:buscar }
 
+ver_donante:
+  pattern: /donante/ver/{id}
+  defaults: { _controller: HSYSMainBundle:Donante:ver }
+
 #EXTRACCIONES/DONACION
 pagina_donacion:
   pattern: /donacion
