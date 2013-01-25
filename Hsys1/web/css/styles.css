@@ -75,36 +75,68 @@ table.consulta tr td.link:hover{
     font-weight: bolder;
     background-color: #F85C5D;
 }
-div.consulta{
-    /*width: 100%;*/
-    background-color: #CCCCCC;
-    border: 2px solid #B80201;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 10px;
-}
 table.detalle{
     border: 2px solid #B80201;
     background-color: #E2E2E2;
+    width: 100%;
 }
 table.detalle tr th{
     background-color: #CCCCCC;
     border: 1px solid #B80201;
-    width: 100px;
+    width: 200px;
 }
 table.detalle tr td{
     border: 1px solid #CCCCCC;
-    text-align: center;
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
 }
-div.detalle{
+div.consulta{
     /*width: 100%;*/
-    background-color: #CCCCCC;
+    /*background-color: #CCCCCC;*/
     border: 2px solid #B80201;
     text-align: center;
     font-size: 24px;
     font-weight: bold;
+    color: #FFFFFF;
     padding: 10px;
+    background-image:url('../images/nav_background.gif');
+    background-repeat:repeat-x;
+    background-position:center bottom;
+}
+
+div.detalle{
+    /*width: 99.5%;*/
+    border: 2px solid #B80201;
+    text-align: center;
+    font-weight: bold;
+    height: 50px;
+    background-image:url('../images/nav_background.gif');
+    background-repeat:repeat-x;
+    background-position:center bottom;
+}
+div.detalle ul{
+    margin:0;
+    padding:0;
+}
+div.detalle ul li{
+    display:block;
+    float:left;
+    padding-right:10px;
+}
+div.detalle ul li a{
+    float:left;
+    padding:12px 10px;
+    height:26px;
+    font-weight:bold;
+    color:#FFFFFF;
+    text-decoration:none;
+    display:block;
+}
+
+div.detalle ul li a:hover{
+    background-color: #B80201;
+    color: #FFFFFF;
 }
 /* forms */
 form {

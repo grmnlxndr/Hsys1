@@ -520,7 +520,7 @@ class analisis {
      * @return analisis
      */
     public function setReactivo($reactivo) {
-        $this->pci = $reactivo;
+        $this->reactivo = $reactivo;
 
         return $this;
     }
