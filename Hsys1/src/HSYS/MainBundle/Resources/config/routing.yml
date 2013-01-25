@@ -41,6 +41,10 @@ confirmacion_donacion:
   pattern: /donacion/confirmacion
   defaults: { _controller: HSYSMainBundle:Donacion:confirmacion }
   
+buscar_donacion:
+  pattern: /donacion/buscar
+  defaults: { _controller: HSYSMainBundle:Donacion:buscar }
+  
 #SANGRE
 pagina_sangre:
   pattern: /sangre
