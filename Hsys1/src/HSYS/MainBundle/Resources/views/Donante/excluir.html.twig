@@ -32,7 +32,7 @@
                                     {% endfor %}
                                 </select> 
                             </td> 
-                            <td> <div id="tiempo">hola </div> </td>
+                            <td> <label id="tiempo"></label> </td>
                             
            </tr> 
      </table>
@@ -44,13 +44,10 @@
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 $("#tipodeexclusion").change(function(){
-var str = "";
-str = $("#tipodeexclusion option:selected").attr("value");
+var str = "Cantidad de dias: ";
+str += $("#tipodeexclusion option:selected").attr("value");
 $("#tiempo").text(str);
 });
-
-
-
 </script>
 
 
