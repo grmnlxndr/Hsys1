@@ -32,8 +32,7 @@
                                     {% endfor %}
                                 </select> 
                             </td> 
-                            <td> <label id="tiempo"></label> </td>
-                            
+                            <td> <label id="tiempo"></label> </td>  
            </tr> 
      </table>
   </div>
@@ -43,10 +42,16 @@
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
+$("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
+$("select").change(function(){ $("select option[value='X']").remove(); });
 $("#tipodeexclusion").change(function(){
-var str = "Cantidad de dias: ";
-str += $("#tipodeexclusion option:selected").attr("value");
-$("#tiempo").text(str);
+var srt = $("#tipodeexclusion option:selected").attr("value");
+if ("0" == srt) {
+    srt = "indefinido";
+    } else {
+    srt = ("Cantidad de dias: "+srt);
+        };
+   $("#tiempo").text(srt);     
 });
 </script>
 
