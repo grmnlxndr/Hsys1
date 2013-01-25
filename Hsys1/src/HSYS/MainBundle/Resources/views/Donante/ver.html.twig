@@ -50,7 +50,7 @@
         <td>{{ donante.provnac }}</td>
     </tr>
     <tr>
-        <th>Domicilio Actual: </th>
+        <th colspan="2">Domicilio Actual: </th>
     </tr>
     <tr>
         <th>País: </th>
@@ -69,6 +69,15 @@
         <td>{{ donante.domicilio }}</td>
     </tr>
 </table>
+<br/>
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('modificar_donante',{'id':donante.id}) }}">Modificar</a></li>
+        <li><a href= "{{ path('excluir_donante',{'id':donante.id}) }}">Excluir</a></li>
+        <li><a href="TWIIIG DONAR">Donar</a></li>
+        <li><a href="TWIIIG ELIMINAR">Eliminar</a></li>
+    </ul>
+</div>
 
 
 {% endblock %}
