@@ -30,6 +30,10 @@ class AnalisisController extends Controller
         return $this->render('HSYSMainBundle:Analisis:nuevo.html.twig', array('form' => $form->createView(),));
     }
     
+    public function confirmacionAction() {
+        return $this->render('HSYSMainBundle:Analisis:confirmacion.html.twig');
+    }
+    
     public function buscarAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -41,5 +45,33 @@ class AnalisisController extends Controller
         } else {
             return $this->redirect($this->generateUrl('pagina_analisis'));
         }
+    }
+    
+    public function modificarAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $analisis = $em->getRepository('HSYSMainBundle:analisis')->find($id);
+        //hacer mas lindo el error
+        if (!$analisis) {
+            throw $this->createNotFoundException(
+                    'No se encontro el analisis: ' . $id
+            );
+        }
+
+        $form = $this->createForm(new analisisType(), $analisis);
+
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+            if ($form->isValid()) {
+                $em->persist($analisis);
+                $em->flush();
+                return $this->redirect($this->generateURL('confirmacion_analisis'));
+            } else {
+                return 'no es valido';
+            }
+        }
+
+        return $this->render('HSYSMainBundle:Analisis:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
     }
 }
