@@ -12,4 +12,24 @@ use Doctrine\ORM\EntityRepository;
  */
 class analisisRepository extends EntityRepository
 {
+    
+    public function findAnalisis($dato, $criterio){
+        $resultado= null;
+        if ($criterio == "id"){
+            $resultado = $this->findAnalisisPorNumero($dato);
+        };
+        return $resultado;
+    }
+    
+     public function findAnalisisPorNumero($id) {
+        $em = $this->getEntityManager();
+        $dql = "select d from HSYSMainBundle:Analisis d where d.id like :id";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('id', '%'.$id.'%');
+        
+        $analisis = $query->getResult();
+        return $analisis;
+    }
+    
 }

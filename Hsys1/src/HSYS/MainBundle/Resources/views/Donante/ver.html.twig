@@ -1,0 +1,74 @@
+{% extends 'HSYSMainBundle:Donante:donantebase.html.twig' %}
+
+{% block title %}Ver Donante {{ donante.id }}{% endblock %}
+
+{% block contenido %}
+
+<table>
+    <tr>
+        <td>ID: </td>
+        <td>{{ donante.id }}</td>
+    </tr>
+    <tr>
+        <td>Apellido y Nombre:  </td>
+        <td>{{ donante.nomapp }}</td>
+    </tr>
+    <tr>
+        <td>DNI: </td>
+        <td>{{ donante.dni }}</td>
+    </tr>
+    <tr>
+        <td>Factor Sangíneo: </td>
+        <td>{{ donante.factorsang }}</td>
+    </tr>
+    <tr>
+        <td>Fecha de Nacimiento: </td>
+        <td>{{ donante.fechnaci|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+        <td>Sexo: </td>
+        <td>{{ donante.sexo }}</td>
+    </tr>
+    <tr>
+        <td>Ocupación: </td>
+        <td>{{ donante.ocupacion }}</td>
+    </tr>
+    <tr>
+        <td>Estado Civil: </td>
+        <td>{{ donante.estadocivil }}</td>
+    </tr>
+    <tr>
+        <td>Teléfono: </td>
+        <td>{{ donante.telefono }}</td>
+    </tr>
+    <tr>
+        <td>País de Nacimiento: </td>
+        <td>{{ donante.paisnac }}</td>
+    </tr>
+    <tr>
+        <td>Provincia de Nacimiento: </td>
+        <td>{{ donante.provnac }}</td>
+    </tr>
+    <tr>
+        <td>Domicilio Actual: </td>
+    </tr>
+    <tr>
+        <td>País: </td>
+        <td>{{ donante.pais }}</td>
+    </tr>
+    <tr>
+        <td>Provincia: </td>
+        <td>{{ donante.provincia }}</td>
+    </tr>
+    <tr>
+        <td>Ciudad: </td>
+        <td>{{ donante.ciudad }}</td>
+    </tr>
+    <tr>
+        <td>Calle y Número: </td>
+        <td>{{ donante.domicilio }}</td>
+    </tr>
+</table>
+
+
+{% endblock %}
