@@ -70,7 +70,7 @@ class DonacionController extends Controller {
             $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorId($numero);
             return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig', array('donaciones' => $donaciones,));
         } else {
-            return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig');
+            return $this->redirect($this->generateUrl('pagina_donacion'));
         }
     }
     
