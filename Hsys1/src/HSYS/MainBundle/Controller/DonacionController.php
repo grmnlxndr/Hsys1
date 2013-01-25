@@ -62,14 +62,39 @@ class DonacionController extends Controller {
     }
 
     
-    public function buscarAction() {
+    public function buscarNumeroAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
             $em = $this->getDoctrine()->getEntityManager();
-            $busqueda = $request->request->get('buscar');
-            $criterio = $request->request->get('criterio');
-            $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacion($busqueda, $criterio);
-            return $this->render('HSYSMainBundle:Donacion:buscar.html.twig', array('donaciones' => $donaciones,));
+            $numero = $request->request->get('numDonacion');
+            $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionNumero($numero);
+            return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig', array('donaciones' => $donaciones,));
+        } else {
+            return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig');
+        }
+    }
+    
+        
+    public function buscarDonanteAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $numero = $request->request->get('numDonacion');
+            $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionNumero($numero);
+            return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig', array('donaciones' => $donaciones,));
+        } else {
+            return $this->redirect($this->generateUrl('pagina_donacion'));
+        }
+    }
+    
+        
+    public function buscarFechaAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $numero = $request->request->get('numDonacion');
+            $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionNumero($numero);
+            return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig', array('donaciones' => $donaciones,));
         } else {
             return $this->redirect($this->generateUrl('pagina_donacion'));
         }

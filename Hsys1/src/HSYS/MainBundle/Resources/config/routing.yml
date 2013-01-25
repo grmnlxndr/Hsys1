@@ -33,6 +33,18 @@ pagina_donacion:
   pattern: /donacion
   defaults: { _controller: HSYSMainBundle:Donacion:index }  
   
+buscar_donacion_numero:
+  pattern: /donacion/buscarpornumero
+  defaults: { _controller: HSYSMainBundle:Donacion:buscarNumero }
+  
+buscar_donacion_donante:
+  pattern: /donacion/buscarpordonante
+  defaults: { _controller: HSYSMainBundle:Donacion:buscarDonante }
+  
+buscar_donacion_fecha:
+  pattern: /donacion/buscarporfecha
+  defaults: { _controller: HSYSMainBundle:Donacion:buscarFecha }
+  
 alta_donacion:
   pattern: /donacion/nueva
   defaults: { _controller: HSYSMainBundle:Donacion:nuevo }
@@ -40,11 +52,7 @@ alta_donacion:
 confirmacion_donacion:
   pattern: /donacion/confirmacion
   defaults: { _controller: HSYSMainBundle:Donacion:confirmacion }
-  
-buscar_donacion:
-  pattern: /donacion/buscar
-  defaults: { _controller: HSYSMainBundle:Donacion:buscar }
-  
+ 
 #SANGRE
 pagina_sangre:
   pattern: /sangre

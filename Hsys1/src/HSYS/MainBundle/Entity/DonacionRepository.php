@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class DonacionRepository extends EntityRepository
 {
+    public function findDonacionNumero($numero) {
+        $em = $this->getEntityManager();
+        $dql = "select d from HSYSMainBundle:Donacion d where d.id like :numero";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('id', '%' . $numero . '%');
+
+        $donaciones = $query->getResult();
+        return $donaciones;
+    }
 }

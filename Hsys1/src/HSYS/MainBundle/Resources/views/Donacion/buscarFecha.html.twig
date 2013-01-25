@@ -1,4 +1,4 @@
-{% extends 'HSYSMainBundle:Donante:donantebase.html.twig' %}
+{% extends 'HSYSMainBundle:Donacion:donacionbase.html.twig' %}
 
 {% block title %}Buscar Donación{% endblock %}
 
@@ -7,14 +7,10 @@
 <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donacion') }}">
     <table>
         <tr>
-            <td><label>Búsqueda: </label></td>
-            <td><input id="buscar" name="buscar" type="text" style="width: 120px"/></td>
-            <td><label for="criterio">Criterio: </label></td>
-            <td><select name="criterio" id="criterio" style="width: 120px">
-                    <option value="numDonacion">Número Donación</option>
-                    <option value="donante">Donante</option>
-                    <option value="fecha">Fecha</option>
-                </select></td>
+            <td><label>Desde: </label></td>
+            <td><input id="desde" name="desde" type="date" style="width: 120px"/></td>
+            <td><label>Hasta: </label></td>
+            <td><input id="hasta" name="hasta" type="date" style="width: 120px"/></td>
             <td><input type="submit" value="Buscar"/></td>
         </tr>
     </table>
@@ -31,7 +27,7 @@
         <td><a>{{ donacion.donante.nomapp }}</a></td>
         <td><a>{{ donacion.fecha }}</a></td>
         <td class="link"><a href="TWIIIG_VER">Ver</a></td>
-        <td class="link"><a href="{{ path('modificar_donante', {'id':donacion.id})  }}">Modificar</a></td>
+        <td class="link"><a href="{{ path('buscar_donante_fecha', {'id':donacion.id})  }}">Crear un Fraccionamiento</a></td>
     </tr>
 {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
