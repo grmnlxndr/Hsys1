@@ -74,6 +74,15 @@ alta_analisis:
 confirmacion_analisis:
   pattern: /analisis/confirmacion
   defaults: { _controller: HSYSMainBundle:Analisis:confirmacion }
+  
+modificar_analisis:
+  pattern: /analisis/modificar/{id}
+  defaults: { _controller: HSYSMainBundle:Analisis:modificar }  
+  
+buscar_analisis:
+  pattern: /analisis/buscar
+  defaults: { _controller: HSYSMainBundle:Analisis:buscar }
+  
 
 #autocargado
 autocargado:
