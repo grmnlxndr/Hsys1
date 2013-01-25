@@ -1,0 +1,35 @@
+{% extends 'HSYSMainBundle:Donacion:donacionbase.html.twig' %}
+
+{% block title %}Buscar Donación por Donante{% endblock %}
+
+{% block contenido %}
+
+<form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donacion_donante') }}">
+    <table>
+        <tr>
+            <td><label>Donante: </label></td>
+            <td><input id="donante" name="donante" type="text" style="width: 120px"/></td>
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th> ID </th><th> Donante </th><th> Fecha </th><th> Ver </th><th> Crear un Fraccionamiento </th>
+    </tr>
+{% for donacion in donaciones %}
+    <tr>
+        <td><a>{{ donacion.id }}</a></td>
+        <td><a>{{ donacion.donante.nomapp }}</a></td>
+        <td><a>{{ donacion.fecha }}</a></td>
+        <td class="link"><a href="TWIIIG_VER">Ver</a></td>
+        <td class="link"><a href="{{ path('buscar_donacion_donante', {'id':donacion.id})  }}">Crear un Fraccionamiento</a></td>
+    </tr>
+{% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+{% endfor %}
+</table>
+{% endblock %}

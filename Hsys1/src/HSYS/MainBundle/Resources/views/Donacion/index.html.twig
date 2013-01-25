@@ -4,21 +4,12 @@
 
 {% block contenido %}
 
-<form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donacion') }}">
+<form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donacion_numero') }}">
     <table>
         <tr>
             <td><label>Número Donación: </label></td>
             <td><input id="numDonacion" name="numDonacion" type="text" style="width: 120px"/></td>
-        </tr>
-        <tr>
-            <td><label>Donante: </label></td>
-            <td><input id="donante" name="donante" type="text" style="width: 120px"/></td>
-        </tr>
-        <tr>
-            <td><label>Desde: </label></td>
-            <td><input id="desde" name="desde" type="date" style="width: 120px"/></td>
-            <td><label>Hasta: </label></td>
-            <td><input id="hasta" name="hasta" type="date" style="width: 120px"/></td>
+            <td><input type="submit" value="Buscar"/></td>
         </tr>
     </table>
 </form>
