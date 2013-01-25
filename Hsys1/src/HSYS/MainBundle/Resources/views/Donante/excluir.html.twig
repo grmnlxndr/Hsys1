@@ -11,15 +11,15 @@
         <table>
             <tr>
                 <td><label>ID </label></td>
-                <td>{# donante #}</td>
+                <td>{{ donante.id }}</td>
             </tr>
             <tr>
                 <td><label>DNI </label></td>
-                <td>{# donante #}</td>
+                <td>{{ donante.dni }}</td>
             </tr>
             <tr>
                 <td><label>Apellido y nombre </label></td>
-                <td>{# donante #}</td>
+                <td>{{ donante.nomapp }}</td>
             </tr>
 
 
@@ -47,9 +47,9 @@ $("select").change(function(){ $("select option[value='X']").remove(); });
 $("#tipodeexclusion").change(function(){
 var srt = $("#tipodeexclusion option:selected").attr("value");
 if ("0" == srt) {
-    srt = "indefinido";
+    srt = "  Exclusion permanente.";
     } else {
-    srt = ("Cantidad de dias: "+srt);
+    srt = ("  Cantidad de dias: "+srt+".");
         };
    $("#tiempo").text(srt);     
 });
