@@ -8,8 +8,8 @@ class DonanteType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('nomapp')
-                ->add('dni','number', array(
-                    'max_length' => 8,                    
+                ->add('dni', 'text', array(
+                    'max_length' => '8',
                 ))
                 ->add('factorsang')
 //                ->add('fechnaci')
