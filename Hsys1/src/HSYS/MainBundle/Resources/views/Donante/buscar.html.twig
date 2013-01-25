@@ -8,12 +8,12 @@
     <table>
         <tr>
             <td><label>Búsqueda: </label></td>
-            <td><input id="buscar" name="buscar" type="text" /></td>
+            <td><input id="buscar" name="buscar" type="text" style="width: 120px"/></td>
             <td><label for="criterio">Criterio: </label></td>
-            <td><select name="criterio" id="criterio">
+            <td><select name="criterio" id="criterio" style="width: 120px">
                     <option value="dni">DNI</option>
                     <option value="id">Numero Donante</option>
-                    <option value="nomape">Apellido y Nombre</option>
+                    <option value="nomapp">Apellido y Nombre</option>
                 </select></td>
             <td><input type="submit" value="Buscar"/></td>
         </tr>
@@ -24,17 +24,18 @@
 <table class="consulta" style="width: 100%">
     <tr>
         <th> ID </th><th> Apellido y Nombre </th><th> DNI </th><th> Ver </th><th> Modificar </th>
-</tr>
+    </tr>
 {% for donante in donantes %}
-<tr>
-    <td><a>{{ donante.id }}</a></td>
-    <td><a>{{ donante.nomapp }}</a></td>
-    <td><a>{{ donante.dni }}</a></td>
-    <td class="link"><a href="TWIIIG_VER">Ver</a></td>
-    <td class="link"><a href="{{ path('modificar_donante', {'id':donante.id})  }}">Modificar</a></td>
-</tr>
+    <tr>
+        <td><a>{{ donante.id }}</a></td>
+        <td><a>{{ donante.nomapp }}</a></td>
+        <td><a>{{ donante.dni }}</a></td>
+        <td class="link"><a href="TWIIIG_VER">Ver</a></td>
+        <td class="link"><a href="{{ path('modificar_donante', {'id':donante.id})  }}">Modificar</a></td>
+    </tr>
 {% else %}
-NO SE HAN ENCONTRADO RESULTADOS
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
 {% endfor %}
 </table>
 {% endblock %}
