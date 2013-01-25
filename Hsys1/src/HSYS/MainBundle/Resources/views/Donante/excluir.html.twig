@@ -3,9 +3,15 @@
 {% block title %}Excluir Donante{% endblock %}
 
 {% block contenido %}
-    <form action="{{ path('excluir_donante', { 'id' : id }) }}" method="post">
-        {{ tiposExclusion }}
-        {# aca deberia listar los tipos de exclusion para elegir #}
-        <input type="submit" />
-    </form>
+<form action="{{ path('excluir_donante', { 'id' : id }) }}" method="post">
+
+    <select id="tipodeexclusion" name="tipodeexclusion">
+    {% for tipoexclusion in tiposexclusion %}
+        <option value="{{ tipoexclusion.id }}">{{ tipoexclusion }}</option>
+    {% endfor %}
+    </select>
+
+
+    <input type="submit" />
+</form>
 {% endblock %}

@@ -121,4 +121,11 @@ class TipoExclusion
     {
         return $this->duracion;
     }
+    
+    
+    public function __toString() {
+        $mensaje = $this->getGrado().' '.$this->getNombre();
+        
+        return $mensaje;
+    }
 }
