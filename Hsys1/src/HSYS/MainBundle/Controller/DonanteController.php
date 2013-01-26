@@ -82,16 +82,17 @@ class DonanteController extends Controller {
             $fechaformat = new \DateTime;
             $fechaformat->setDate(substr($fechactual, 0, 4), substr($fechactual, 5, 2), substr($fechactual, 8, 2));
             $exclusion->setFechini($fechaformat);
-            if ($tipoexclusion->getDuracion()==0){
+            if ($tipoexclusion->getDuracion()!=0){
                 $sumar = '+'.$tipoexclusion->getDuracion().' day';
-            } else {
-                $sumar = '+ 36525 day';
-            }
-            $nuevafecha = strtotime( $sumar , strtotime ($fechactual) ) ;
-            $nuevafecha = date('Y-m-j' , $nuevafecha);
-            $fechaformat1 = new \DateTime;
-            $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
-            $exclusion->setFechfin($fechaformat1);
+                $nuevafecha = strtotime( $sumar , strtotime ($fechactual) ) ;
+                $nuevafecha = date('Y-m-j' , $nuevafecha);
+                $fechaformat1 = new \DateTime;
+                $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
+                $exclusion->setFechfin($fechaformat1);
+            };
+                
+            
+            
             $exclusion->setComentario($comentarios);
             $em->persist($exclusion);
             $em->flush();

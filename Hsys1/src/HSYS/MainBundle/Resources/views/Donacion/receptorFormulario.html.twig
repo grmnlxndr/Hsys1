@@ -41,7 +41,7 @@
     <table>
         <tr>
             <td><label>Fecha extracción: </label></td>
-            <td><input  id="fecha" name="fecha" type="date" /></td><!required="required">
+            <td><input  id="fecha" name="fecha" type="date" value="{{ "now"|date('Y-m-d') }}"/></td><!required="required">
         </tr>
         <tr>
             <td><label>Número de Bolsa: </label></td>
