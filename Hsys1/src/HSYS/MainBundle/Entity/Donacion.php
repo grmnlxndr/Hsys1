@@ -136,7 +136,7 @@ class Donacion {
      */
     private $Receptor;
 
-    public function setReceptor(\HYSY\MainBundle\Entity\Donante $Receptor) {
+    public function setReceptor(\HSYS\MainBundle\Entity\Donante $Receptor) {
         $this->Receptor = $Receptor;
     }
 
