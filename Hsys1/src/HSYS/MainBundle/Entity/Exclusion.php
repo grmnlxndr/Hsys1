@@ -36,6 +36,7 @@ class Exclusion {
     private $comentario;
 
     /**
+     * //esto tiene que ser nulleable!.
      * @var \DateTime
      *
      * @ORM\Column(name="fechfin", type="date", nullable=true)
