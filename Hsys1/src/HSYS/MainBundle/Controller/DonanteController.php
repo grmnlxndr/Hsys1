@@ -77,11 +77,16 @@ class DonanteController extends Controller {
             $exclusion->setTipoExclusion($tipoexclusion);
             $donanteexcluido = $em->getRepository('HSYSMainBundle:Donante')->find($id);
             $exclusion->setDonante($donanteexcluido);
-            $fechactual = date('Y-m-j');
+            //$fechactual = date('Y-m-j');
+            $fechactual = $request->request->get('fechaingreso');
             $fechaformat = new \DateTime;
             $fechaformat->setDate(substr($fechactual, 0, 4), substr($fechactual, 5, 2), substr($fechactual, 8, 2));
             $exclusion->setFechini($fechaformat);
-            $sumar = '+'.$tipoexclusion->getDuracion().' day';
+            if ($tipoexclusion->getDuracion()==0){
+                $sumar = '+'.$tipoexclusion->getDuracion().' day';
+            } else {
+                $sumar = '+ 36525 day';
+            }
             $nuevafecha = strtotime( $sumar , strtotime ($fechactual) ) ;
             $nuevafecha = date('Y-m-j' , $nuevafecha);
             $fechaformat1 = new \DateTime;
