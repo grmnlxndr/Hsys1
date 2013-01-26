@@ -132,6 +132,20 @@ class DonanteController extends Controller {
         
     }
 
+    public function habilitarAction($id){
+        $em = $this->getDoctrine()->getEntityManager();
+        $donante = new Donante;
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        $exclusiones = new Exclusion;
+        $exclusiones = $donante->getExclusion();
+     
+        
+        
+        
+        return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('donante' => $donante, 'exclusiones' => $exclusiones ,));
+    }
+    
+    
 }
 
 ?>

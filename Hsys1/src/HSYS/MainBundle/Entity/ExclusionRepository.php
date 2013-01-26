@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ExclusionRepository extends EntityRepository
 {
+    public function findDonantePorDNI($iddonate) {
+        $em = $this->getEntityManager();
+        $dql = "select e, te from HSYSMainBundle:Exclusion e, HSYSMainBundle:TipoExclusion te where (e.TipoExclusion = te.id) and (e.donante = :iddonante) ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('iddonante', $iddonate);
+        
+        $exclusiones= $query->getResult();
+        return $exclusiones;
+    }
+    
 }

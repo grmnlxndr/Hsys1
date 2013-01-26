@@ -1,0 +1,17 @@
+{% extends 'HSYSMainBundle:Donante:donantebase.html.twig' %}
+
+{% block title %}Habilitar Donante {{ donante.id }}{% endblock %}
+
+{% block contenido %}
+
+<form id="habilitar_form" name="habilitar_form" method="post" action="{{ path('habilitar_donante', { 'id' : id }) }}">
+
+{% for exclusion in exclusiones %}
+{{ exclusion }}
+    
+{% endfor %}
+
+
+
+</form>
+{% endblock %}
