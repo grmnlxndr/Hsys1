@@ -151,7 +151,9 @@ class DonacionController extends Controller {
         $donacion = new Donacion();
         $donacion->setDonante($em->getRepository('HSYSMainBundle:Donante')->find($idDonante));
         $donacion->setIdbolsa($idbolsa);
-        //$donacion->setFechextraccion($fecha);
+        $fechaformat = new \DateTime;
+        $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
+        $donacion->setFechextraccion($fechaformat);
         $donacion->setComentario($comentarios);
         
         $em->persist($donacion);
