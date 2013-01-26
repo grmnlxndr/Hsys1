@@ -6,12 +6,17 @@
     <li><a href="{{ path('pagina_donacion') }}" title="Consultar Donante">Consultar Donación</a></li>
     <li>
         <ul>
-            <li><a href="{{ path('buscar_donacion_numero') }}" title="Consultar Donante">Por Número de Donación</a></li>
-            <li><a href="{{ path('buscar_donacion_donante') }}" title="Consultar Donante">Por Donante</a></li>
-            <li><a href="{{ path('buscar_donacion_fecha') }}" title="Consultar Donante">Por Fecha</a></li>
+            <li><a href="{{ path('buscar_donacion_numero') }}" title="Por Número de Donación">Por Número de Donación</a></li>
+            <li><a href="{{ path('buscar_donacion_donante') }}" title="Por Donante">Por Donante</a></li>
+            <li><a href="{{ path('buscar_donacion_fecha') }}" title="Por Fecha">Por Fecha</a></li>
         </ul>
     </li>
     <li><a href="{{ path('alta_donacion') }}" title="Nuevo Donante">Nueva Donación</a></li>
+    <li><ul>
+            <li><a href="{{ path('alta_donacion_voluntaria') }}" title="Voluntaria">Voluntaria</a></li>
+            <li><a href="{{ path('alta_donacion_receptor') }}" title="Con Receptor">Con Receptor</a></li>
+        </ul>
+    </li>
 </ul>
 {% endblock %}
 

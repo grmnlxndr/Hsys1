@@ -319,6 +319,13 @@ div#sidebar ul li {
     border-bottom:1px solid #4B4B4B;
     font-weight:bold;
 }
+div#sidebar ul li ul{
+    padding-left: 20px;
+}
+
+div#sidebar ul li ul li a{
+    font-weight: normal;
+}
 div#sidebar ul li a {
     display:block;
     width:100%;

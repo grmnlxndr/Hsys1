@@ -52,7 +52,43 @@ buscar_donacion_fecha:
 alta_donacion:
   pattern: /donacion/nueva
   defaults: { _controller: HSYSMainBundle:Donacion:nuevo }
+
+alta_donacion_voluntaria:
+  pattern: /donacion/voluntaria
+  defaults: { _controller: HSYSMainBundle:Donacion:voluntaria }
   
+alta_donacion_voluntaria_donante:
+  pattern: /donacion/voluntaria/donante
+  defaults: { _controller: HSYSMainBundle:Donacion:voluntariaDonante }
+
+alta_donacion_voluntaria_formulario:
+  pattern: /donacion/voluntaria/formulario/{id}
+  defaults: { _controller: HSYSMainBundle:Donacion:voluntariaFormulario }
+
+alta_donacion_voluntaria_confirmar:
+  pattern: /donacion/voluntaria/confirmar
+  defaults: { _controller: HSYSMainBundle:Donacion:voluntariaConfirmar }
+
+alta_donacion_receptor:
+  pattern: /donacion/receptor
+  defaults: { _controller: HSYSMainBundle:Donacion:receptor }
+  
+alta_donacion_receptor_donante:
+  pattern: /donacion/receptor/donante
+  defaults: { _controller: HSYSMainBundle:Donacion:receptorDonante }
+  
+alta_donacion_receptor_receptor:
+  pattern: /donacion/receptor/{don}/receptor
+  defaults: { _controller: HSYSMainBundle:Donacion:receptorReceptor }
+
+alta_donacion_receptor_formulario:
+   pattern: /donacion/receptor/formulario/{don}/{rec}
+   defaults: {_controller: HSYSMainBundle:Donacion:receptorFormulario }
+  
+alta_donacion_receptor_confirmar:
+  pattern: /donacion/receptor/confirmar
+  defaults: { _controller: HSYSMainBundle:Donacion:receptorConfirmar }
+
 confirmacion_donacion:
   pattern: /donacion/confirmacion
   defaults: { _controller: HSYSMainBundle:Donacion:confirmacion }
