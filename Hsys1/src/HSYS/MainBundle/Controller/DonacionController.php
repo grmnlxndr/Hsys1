@@ -251,7 +251,7 @@ class DonacionController extends Controller {
         $em->persist($donacion);
         $em->flush();
         
-        return $this->render('HSYSMainBundle:Donacion:index.html.twig');
+        return $this->render('HSYSMainBundle:Donacion:ver.html.twig', array('donacion' => $donacion));
     }
 }
 
