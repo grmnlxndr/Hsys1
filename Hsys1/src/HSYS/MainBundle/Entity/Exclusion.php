@@ -121,7 +121,7 @@ class Exclusion {
      */
     private $TipoExclusion;
 
-    public function setTipoExclusion(\HYSY\MainBundle\Entity\TipoExclusion $TipoExclusion) {
+    public function setTipoExclusion(\HSYS\MainBundle\Entity\TipoExclusion $TipoExclusion) {
         $this->TipoExclusion = $TipoExclusion;
     }
 
