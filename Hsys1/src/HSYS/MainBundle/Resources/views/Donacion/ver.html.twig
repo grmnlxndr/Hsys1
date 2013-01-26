@@ -1,0 +1,51 @@
+{% extends 'HSYSMainBundle:Donacion:donacionbase.html.twig' %}
+
+{% block title %}Ver Donación {{ donacion.id }}{% endblock %}
+
+{% block contenido %}
+
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('pagina_donacion',{'id':donacion.id}) }}">Modificar</a></li>
+        <li><a href= "{{ path('pagina_donacion',{'id':donacion.id}) }}">Anular</a></li>
+        <li><a href="{{ path('pagina_donacion',{'id':donacion.id}) }}">Crear una exlusión</a></li>
+    </ul>
+</div>
+<br/>
+<table class="detalle">
+    <tr>
+        <th>ID: </th>
+        <td>{{ donacion.id }}</td>
+    </tr>
+    <tr>
+        <th>Fecha de extracción:  </th>
+        <td>{{ donacion.fechextraccion|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+        <th>Número de Bolsa: </th>
+        <td>{{ donacion.idbolsa }}</td>
+    </tr>
+    <tr>
+        <th>Comentarios: </th>
+        <td>{{ donacion.comentario }}</td>
+    </tr>
+    <tr>
+        <th>ID del Donante: </th>
+        <td>{{ donacion.donante.id }}</td>
+    </tr>
+    <tr>
+        <th>Nombre del Donante: </th>
+        <td>{{ donacion.donante.nomapp }}</td>
+    </tr>
+    <tr>
+        <th>ID del Receptor: </th>
+        <td>{{ donacion.receptor.id }}</td>
+    </tr>
+    <tr>
+        <th>Nombre del Receptor: </th>
+        <td>{{ donacion.receptor.nomapp }}</td>
+    </tr>
+</table>
+<br/>
+
+{% endblock %}
