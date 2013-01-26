@@ -216,6 +216,43 @@ class DonacionController extends Controller {
         }
         return $this->render('HSYSMainBundle:Donacion:receptorFormulario.html.twig', array('donante' => $donante, 'receptor' => $receptor));
     }
+    
+    public function receptorConfirmarAction(){
+        $request = $this->getRequest();
+        $idDonante = $request->request->get('donante');
+        $idReceptor = $request->request->get('receptor');
+        $fecha = $request->request->get('fecha');
+        $idbolsa = $request->request->get('bolsa');
+        $volumen = $request->request->get('volumen');
+        $comentarios = $request->request->get('comentarios');
+             
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $bolsa = new Unidad();
+        $bolsa->setEstado('bloqueado');
+        $bolsa->setIdbolsa($idbolsa);
+        //$bolsa->setVencimiento($fecha);
+        $bolsa->setVolumen($volumen);
+        //buscar sangre entera y hacer
+        //$bolsa->setTipoHemocomponente($TipoHemocomponente);
+        $em->persist($bolsa);
+        $em->flush();
+        
+        
+        $donacion = new Donacion();
+        $donacion->setDonante($em->getRepository('HSYSMainBundle:Donante')->find($idDonante));
+        $donacion->setReceptor($em->getRepository('HSYSMainBundle:Donante')->find($idReceptor));
+        $donacion->setIdbolsa($idbolsa);
+        $fechaformat = new \DateTime;
+        $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
+        $donacion->setFechextraccion($fechaformat);
+        $donacion->setComentario($comentarios);
+        
+        $em->persist($donacion);
+        $em->flush();
+        
+        return $this->render('HSYSMainBundle:Donacion:index.html.twig');
+    }
 }
 
 ?>
