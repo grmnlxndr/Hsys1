@@ -57,7 +57,8 @@
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-    
+
+$('input[type="submit"]').attr('disabled','disabled');    
     
 $("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
 $("select").change(function(){ $("select option[value='X']").remove();
@@ -65,6 +66,7 @@ $("select").change(function(){ $("select option[value='X']").remove();
     $("#comentarcontenido").html( '<textarea id="comentarios" name="comentarios" form="formulario" rows="5" style="auto"></textarea>'  );
     $("#fechainiciotitulo").html('<label>Fecha de inicio</label>');
     $("#fechainicioinput").html('<input  id="fechaingreso" name="fechaingreso" type="date" value="{{ "now"|date('Y-m-d') }}"/>');
+    $('input[type="submit"]').removeAttr('disabled');
 });
 
 

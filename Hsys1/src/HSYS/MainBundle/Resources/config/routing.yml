@@ -32,6 +32,10 @@ ver_donante:
   pattern: /donante/ver/{id}
   defaults: { _controller: HSYSMainBundle:Donante:ver }
 
+  habilitar_donante:
+    pattern: /donante/habilitar/{id}
+    defaults: { _controller: HSYSMainBundle:Donante:habilitar }
+
 #EXTRACCIONES/DONACION
 pagina_donacion:
   pattern: /donacion
