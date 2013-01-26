@@ -160,6 +160,60 @@ class DonacionController extends Controller {
         return $this->render('HSYSMainBundle:Donacion:index.html.twig');
     }
 
+    public function receptorAction() {
+        return $this->render('HSYSMainBundle:Donacion:receptor.html.twig');
+    }
+    
+    public function receptorDonanteAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $busqueda = $request->request->get('buscar');
+            $criterio = $request->request->get('criterio');
+            $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
+            return $this->render('HSYSMainBundle:Donacion:receptorDonante.html.twig', array('donantes' => $donantes,));
+        } else {
+            return $this->redirect($this->generateUrl('pagina_donacion'));
+        }
+    }
+    
+    public function receptorReceptorAction($don) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($don);
+        
+        $request = $this->getRequest();
+                    
+        if ($request->getMethod() == 'POST') {
+            $busqueda = $request->request->get('buscar');
+            $criterio = $request->request->get('criterio');
+            $receptores = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
+            return $this->render('HSYSMainBundle:Donacion:receptorReceptorReceptor.html.twig', array('donante' => $donante, 'receptores' => $receptores,));
+        }
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($don);
+        //hacer mas lindo el error
+        if (!$donante) {
+            throw $this->createNotFoundException(
+                    'No se encontro el donate: ' . $don
+            );
+        }
+
+        return $this->render('HSYSMainBundle:Donacion:receptorReceptor.html.twig', array('donante' => $donante,));
+    }
+    
+
+    public function receptorFormularioAction($don, $rec) {
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($don);
+        $receptor = $em->getRepository('HSYSMainBundle:Donante')->find($rec);
+        //hacer mas lindo el error
+        if (!$receptor) {
+            throw $this->createNotFoundException(
+                    'No se encontro el receptor: ' . $rec
+            );
+        }
+        return $this->render('HSYSMainBundle:Donacion:receptorFormulario.html.twig', array('donante' => $donante, 'receptor' => $receptor));
+    }
 }
 
 ?>
