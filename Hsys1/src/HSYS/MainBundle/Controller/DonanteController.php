@@ -68,7 +68,6 @@ class DonanteController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
-        
         $tiposExlusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findAll();
 
         return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' =>$donante, 'id' => $id));
