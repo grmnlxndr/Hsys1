@@ -5,6 +5,7 @@ namespace HSYS\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use HSYS\MainBundle\Form\DonanteType;
 use HSYS\MainBundle\Entity\Donante;
+use HSYS\MainBundle\Entity\Exclusion;
 use Symfony\Component\HttpFoundation\Request;
 
 class DonanteController extends Controller {
@@ -66,10 +67,30 @@ class DonanteController extends Controller {
 
     public function excluirAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
+        $request = $this->getRequest();
+        if($request->getMethod() == 'POST') {
+            $idtipodeexclusion = $request->request->get('tipodeexclusion');
+            $comentario = $request->request->get('comentario');
+            $tipoexclusion = new \HSYS\MainBundle\Entity\TipoExclusion;
+            $tipoexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->find($idtipodeexclusion);
+            $exclusion = new Exclusion;
+            $exclusion->setTipoExclusion( $tipoexclusion);
+            
+            
+            $exclusion->setDonante((int) $id);
+            
+            
+            $exclusion->setFechini(new date());
+            $exclusion->setFechfin(\funciones::sumarfecha(new date(), $tipoexclusion->getDuracion()));
+            $exclusion->setComentario($comentario);
+            $em->persist($exclusion);
+            $em->flush();
+            
+            return $this->redirect($this->generateURL('confirmacion', array('accion' => "El donante se ha excluido ", 'id' => $id))); 
+        }
         
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
         $tiposExlusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findAll();
-
         return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' =>$donante, 'id' => $id));
         #aca le tengo que pasar el donante y los tipos de exclusion que existe para excluir al forro ese por drogon
     }

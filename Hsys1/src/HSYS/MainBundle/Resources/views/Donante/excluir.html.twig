@@ -5,7 +5,7 @@
 {% block contenido %}
 
 
-<form action="{{ path('excluir_donante', { 'id' : id }) }}" method="post">
+<form id="formulario" name="formulario" action="{{ path('excluir_donante', { 'id' : id }) }}" method="post">
     <div>  
         Donante a Excluir <br/>
         <table>
@@ -28,12 +28,22 @@
                 <td><label> Seleccione un tipo de exclusion: <label> </td>
                             <td> <select id="tipodeexclusion" name="tipodeexclusion">
                                     {% for tipoexclusion in tiposExclusion %}
-                                 <option id="{{ tipoexclusion.id }}" value="{{ tipoexclusion.duracion }}">{{ tipoexclusion }}</option>
+                                 <option id="{{ tipoexclusion.duracion }}" value="{{ tipoexclusion.id }}">{{ tipoexclusion }}</option>
                                     {% endfor %}
                                 </select> 
                             </td> 
-                            <td> <label id="tiempo"></label> </td>  
+            </tr>
+            <tr>
+                <td><label id="dias"></label></td>
+                <td> <label id="tiempo"></label> </td>  
            </tr> 
+           <tr>
+               <td><label id="total"></label></td>
+               <td><label id="fecha"></label></td>
+           </tr>
+           <tr><td><label>Comentario: </label></td>
+               <td><textarea id="comentario" form="formulario"></textarea></td>
+           </tr>
      </table>
   </div>
 
@@ -44,14 +54,22 @@
 <script>
 $("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
 $("select").change(function(){ $("select option[value='X']").remove(); });
+
 $("#tipodeexclusion").change(function(){
-var srt = $("#tipodeexclusion option:selected").attr("value");
+var srt = $("#tipodeexclusion option:selected").attr("id");
+var cantidad = srt;
+$("#dias").text("La cantidad de dias son: ");
+$("#total").text("Dura hasta");
 if ("0" == srt) {
-    srt = "  Exclusion permanente.";
+        $("#tiempo").text("Exclusion permanente.");
+        $("#fecha").text("Indeterminado.");
     } else {
-    srt = ("  Cantidad de dias: "+srt+".");
+        $("#tiempo").text(srt);
+        var fe = new Date();
+        var fechactual = fe.valueOf();
+        var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
+        $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
         };
-   $("#tiempo").text(srt);     
 });
 </script>
 
