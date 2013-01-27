@@ -5,13 +5,25 @@
 {% block contenido %}
 
 <form id="habilitar_form" name="habilitar_form" method="post" action="{{ path('habilitar_donante', { 'id' : id }) }}">
-
+    <table class="listadeexclusiones" style="width: 100%">
+    <tr>
+        <th> ID </th><th> Inicio </th><th> Fin </th><th> Tipo de Exclusion </th><th width =25%> Comentario </th>
+    </tr>
+    {#ver si se puede ordenar la lista #}
 {% for exclusion in exclusiones %}
-{{ exclusion }}
-    
+    <tr>
+        <td><a>{{ exclusion.id }}</a></td>
+        <td><a>{{ exclusion.fechini | date("m/d/Y") }}</a></td>
+        <td><a>{{ exclusion.fechfin | date("m/d/Y") }}</a></td>
+        <td><a>{{ exclusion.tipoexclusion }}</a></td>
+        <td><a>{{ exclusion.comentario }}</a></td>
+    </tr>
+    {% else %}
+    <div class="listadeexclusiones"><img src="{{ asset('images/error.png') }}"/>    EL DONANTE NO POSEE NINGUNA EXCLUSION</div>
+    <br/>
 {% endfor %}
+</table>
 
-
-
+        
 </form>
 {% endblock %}

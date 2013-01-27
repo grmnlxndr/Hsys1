@@ -138,11 +138,11 @@ class DonanteController extends Controller {
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
         $exclusiones = new Exclusion;
         $exclusiones = $donante->getExclusion();
-     
+     //ver si se puede ordenar la lista.... 
+       
         
         
-        
-        return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('donante' => $donante, 'exclusiones' => $exclusiones ,));
+        return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('id'=>$id, 'donante' => $donante, 'exclusiones' => $exclusiones ,));
     }
     
     

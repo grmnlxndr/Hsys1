@@ -146,6 +146,6 @@ class Exclusion {
     }
     
     public function __toString() {
-        return $this->Donante . " ". $this->fechini . " ". $this->fechfin. " ". $this->TipoExclusion;
+        return $this->fechini;
     }
 }
