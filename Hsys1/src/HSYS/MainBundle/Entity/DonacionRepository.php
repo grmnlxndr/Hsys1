@@ -55,7 +55,7 @@ class DonacionRepository extends EntityRepository
     //UPPER(u.name)
         public function findDonacionPorRangoDeFecha($desde, $hasta) {
         $em = $this->getEntityManager();
-        $dql = "select d from HSYSMainBundle:Donacion d where d.fechextraccion => :desde and d.fechextraccion =< :hasta";
+        $dql = "select d from HSYSMainBundle:Donacion d where d.fechextraccion >= :desde and d.fechextraccion <= :hasta";
 
         $query = $em->createQuery($dql);
         $query->setParameter('desde', $desde);
