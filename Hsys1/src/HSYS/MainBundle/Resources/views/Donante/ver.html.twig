@@ -79,6 +79,35 @@
         <td>{{ donante.domicilio }}</td>
     </tr>
 </table>
-<br/>
+</br>
+{% if habilitado %}
+            <label>El donante se encuentra habilitado</label>
+    {% else %}
+            <label>El donante se encuentra excluido </label>
+    {% endif %}
+</br>
+
+<div>
+    <table class="consulta" style="width: 100%">
+        <tr>
+            <th> ID </th><th> Inicio </th><th> Fin </th><th> Tipo de Exclusion </th><th width =20%> Comentario </th>
+        </tr>
+{% for exclusion in donante.exclusion %}
+        <tr>
+            <td valign="middle" align="center"><a>{{ exclusion.id }}</a></td>
+            <td valign="middle" align="center"><a>{{ exclusion.fechini | date("d/m/Y") }}</a></td>
+            <td valign="middle" align="center"><a>{% if exclusion.fechfin != null%}
+                                                    {{ exclusion.fechfin | date("d/m/Y") }}
+                                                {%else%}
+                            Permanente
+                                                {%endif%}</a></td>
+                    <td valign="middle" align="center"><a>{{ exclusion.tipoexclusion }}</a></td>
+                    <td valign="middle" align="center"><a>{{ exclusion.comentario }}</a></td>
+                </tr>
+{% endfor %}
+
+            </table>       
+        </div>
+        <br/>
 
 {% endblock %}
