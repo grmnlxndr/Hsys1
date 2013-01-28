@@ -35,6 +35,10 @@ habilitar_donante:
   pattern: /donante/habilitar/{id}
   defaults: { _controller: HSYSMainBundle:Donante:habilitar }
 
+eliminar_donante:
+  pattern: /donante/eliminar/{$id}
+  defaults: { _controller: HSYSMainBundle:Donate:eliminar }
+
 #EXTRACCIONES/DONACION
 pagina_donacion:
   pattern: /donacion
