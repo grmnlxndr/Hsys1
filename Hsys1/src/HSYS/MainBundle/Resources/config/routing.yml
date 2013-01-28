@@ -162,6 +162,10 @@ buscar_analisis:
   pattern: /analisis/buscar
   defaults: { _controller: HSYSMainBundle:Analisis:buscar }
 
+ver_analisis:
+  pattern: /analisis/ver/{id}
+  defaults: { _controller: HSYSMainBundle:Analisis:ver }
+
 #autocargado
 autocargado:
   pattern: /autocargado

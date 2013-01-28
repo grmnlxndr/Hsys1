@@ -75,6 +75,10 @@ class AnalisisController extends Controller
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
+                $fecha = $request->request->get('fecha');
+                $fechanalisis = new \DateTime();
+                $fechanalisis->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
+                $analisis->setFechanalisis($fechanalisis);
                 $em->persist($analisis);
                 $em->flush();
                 return $this->redirect($this->generateURL('confirmacion_analisis', array('accion' => 'agregado', 'id' => $analisis->getId())));
@@ -128,5 +132,18 @@ class AnalisisController extends Controller
         }
 
         return $this->render('HSYSMainBundle:Analisis:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
+    }
+    
+    public function verAnalisis($id){
+        $em = $this->getDoctrine()->getEntityManager();
+        $analsis = $em->getRepository('HSYSMainBundle:analisis')->find($id);
+        if (!$analsis){
+            
+        }
+        
+        $donacion = $analsis.getDonacion();
+        
+        return $this->render('HSYSMainBundle:Analisis:ver.html.twig', array('analisis' => $analisis, 'donacion' => $donacion,));
+        
     }
 }

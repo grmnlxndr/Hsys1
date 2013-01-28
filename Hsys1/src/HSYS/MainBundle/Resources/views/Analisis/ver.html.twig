@@ -1,0 +1,106 @@
+{% extends 'HSYSMainBundle:Analisis:analisisbase.html.twig' %}
+
+{% block title %}Ver Analisis {{ analisis.id }}{% endblock %}
+
+{% block contenido %}
+
+<div class="detalle">
+    <ul>
+        <li><a href="{# {{ path('modificar_donacion',{'id':donacion.id}) }} #}">Modificar</a></li>
+    </ul>
+</div>
+<br/>
+<table class="detalle">
+    <tr>
+        <th>ID: </th>
+        <td>{{ analisis.id }}</td>
+    </tr>
+    <tr>
+        <th>Fecha de analisis:  </th>
+        <td>{{ analisis.fechanalisis|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+        <th>ID de Bolsa: </th>
+        <td>{{ donacion.idbolsa }}</td>
+    </tr>
+    <tr>
+        <th>REACTIVO: </th>
+        {% if analisis.reactivo == 'SI' %}
+        <td style="background-color: red"><b>{{ analisis.reactivo }}</b></td>
+        {% else %}
+            <td><b>{{ analisis.reactivo }}</b></td>
+        {% endif %}
+        <td><b>{{ analisis.reactivo }}</b></td>
+    </tr>
+    <tr>
+        <th>ID de donación: </th>
+        <td>{{ donacion.id }}</td>
+    </tr>
+    <tr>
+        <th>Fecha de extracción:  </th>
+        <td>{{ donacion.fechextraccion|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+        <th>CHHAI: </th>
+        <td>{{ analisis.chhai }}</td>
+    </tr>
+    <tr>
+        <th>CHEIA: </th>
+        <td>{{ analisis.cheia }}</td>
+    </tr>
+    <tr>
+        <th>antiCORE: </th>
+        <td>{{ analisis.anticore }}</td>
+    </tr>
+    <tr>
+        <th>HBSAg: </th>
+        <td>{{ analisis.hbsag }}</td>
+    </tr>
+    <tr>
+        <th>HCVAg-Ac: </th>
+        <td>{{ analisis.hcvagac }}</td>
+    </tr>
+    <tr>
+        <th>HIV Ac: </th>
+        <td>{{ analisis.hivac }}</td>
+    </tr>
+    <tr>
+        <th>Ag P2Y: </th>
+        <td>{{ analisis.agp2y }}</td>
+    </tr>
+    <tr>
+        <th>HTLV: </th>
+        <td>{{ analisis.htlv }}</td>
+    </tr>
+    <tr>
+        <th>Brucelosis: </th>
+        <td>{{ analisis.brucelosis }}</td>
+    </tr>
+    <tr>
+        <th>ABO: </th>
+        <td>{{ analisis.abo }}</td>
+    </tr>
+    <tr>
+        <th>RH (D): </th>
+        <td>{{ analisis.rhd }}</td>
+    </tr>
+    <tr>
+        <th>DU: </th>
+        <td>{{ analisis.du }}</td>
+    </tr>
+    <tr>
+        <th>CDE: </th>
+        <td>{{ analisis.cde }}</td>
+    </tr>
+    <tr>
+        <th>Fenotipo: </th>
+        <td>{{ analisis.fenotipo }}</td>
+    </tr>
+    <tr>
+        <th>PCI: </th>
+        <td>{{ analisis.pci }}</td>
+    </tr>
+</table>
+<br/>
+
+{% endblock %}

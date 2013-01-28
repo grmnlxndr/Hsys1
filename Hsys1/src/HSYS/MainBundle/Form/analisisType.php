@@ -7,7 +7,15 @@ use Symfony\Component\Form\FormBuilderInterface;
 class analisisType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('fechanalisis')
+        $builder
+//                ->add('fechanalisis', 'date', array(
+//                    'widget' => 'choice',
+//                    'empty_value' => array('year' => 'AAAA', 'month' => 'MM', 'day' => 'DD'),
+//                    'years' => range(1902,2037),
+//                    'months' => range(1,12),
+//                    'format' => 'dd-MM-yyyy',
+//                    'pattern' => '{{ day }}-{{ month }}-{{ year }}'
+//                ))
                 ->add('chhai','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))
                 ->add('cheia','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))
                 ->add('anticore','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))

@@ -34,8 +34,9 @@
         <table>
             <tr>
                 <td><label>Fecha Analisis: </label></td>
-                <td>{{ form_widget(form.fechanalisis) }}</td>
-                <td>{{ form_errors(form.fechanalisis) }}</td>
+                {#<td>{{ form_widget(form.fechanalisis) }}</td>
+                <td>{{ form_errors(form.fechanalisis) }}</td>#}
+                <td><input type="date" id="fecha" name="fecha"/></td>
             </tr>
             <tr>
                 <td><label>CHHAI: </label></td>
