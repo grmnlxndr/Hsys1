@@ -123,13 +123,17 @@ class DonanteController extends Controller {
     public function verAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        $habilitado = false;
+        if ($donante->getExclusionesActivas() == null){
+           $habilitado = true;
+        }
         //hacer mas lindo el error
         if (!$donante) {
             throw $this->createNotFoundException(
                     'No se encontro el donate: ' . $id
             );
         }
-        return $this->render('HSYSMainBundle:Donante:ver.html.twig', array('donante' => $donante,));
+        return $this->render('HSYSMainBundle:Donante:ver.html.twig', array('donante' => $donante,'habilitado'=>$habilitado));
     }
 
     public function habilitarAction($id) {
