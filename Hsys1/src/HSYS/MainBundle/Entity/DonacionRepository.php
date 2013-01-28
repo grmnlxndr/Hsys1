@@ -65,6 +65,15 @@ class DonacionRepository extends EntityRepository
         return $donaciones;
     }
     
-    
+    public function findDonacionPorIdBolsa($idbolsa) {
+        $em = $this->getEntityManager();
+        $dql = "select d from HSYSMainBundle:Donacion d where d.idbolsa like :idbolsa";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('idbolsa', '%'.$idbolsa.'%');
+        
+        $donaciones = $query->getResult();
+        return $donaciones;
+    }
     
 }

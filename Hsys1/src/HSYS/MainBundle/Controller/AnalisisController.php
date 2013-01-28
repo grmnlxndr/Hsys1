@@ -25,6 +25,17 @@ class AnalisisController extends Controller
         }
         return $this->render('HSYSMainBundle:Analisis:nuevoDonacion.html.twig', array('donaciones' => $donaciones));
     }
+    
+    public function nuevoBolsaAction() {
+        $request = $this->getRequest();
+        $donaciones = null;
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $numero = $request->request->get('numBolsa');
+            $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorIdBolsa($numero);
+        }
+        return $this->render('HSYSMainBundle:Analisis:nuevoBolsa.html.twig', array('donaciones' => $donaciones));
+    }
             
     public function nuevoFormAction($id) {
         $request = $this->getRequest();
@@ -82,7 +93,7 @@ class AnalisisController extends Controller
             if ($form->isValid()) {
                 $em->persist($analisis);
                 $em->flush();
-                return $this->redirect($this->generateURL('confirmacion_analisis'));
+                return $this->redirect($this->generateURL('confirmacion_analisis', array('accion' => 'modificado', 'id' => $analisis->getId())));
             } else {
                 return 'no es valido';
             }
