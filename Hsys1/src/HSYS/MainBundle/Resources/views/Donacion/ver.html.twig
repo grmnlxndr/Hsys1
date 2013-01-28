@@ -6,9 +6,9 @@
 
 <div class="detalle">
     <ul>
-        <li><a href="{{ path('pagina_donacion',{'id':donacion.id}) }}">Modificar</a></li>
-        <li><a href= "{{ path('pagina_donacion',{'id':donacion.id}) }}">Anular</a></li>
-        <li><a href="{{ path('pagina_donacion',{'id':donacion.id}) }}">Crear una exlusión</a></li>
+        <li><a href="{{ path('modificar_donacion',{'id':donacion.id}) }}">Modificar</a></li>
+        <li><a href= "{{ path('anular_donacion',{'id':donacion.id}) }}">Anular</a></li>
+        <li><a href="{{ path('exclusion_donacion',{'id':donacion.id}) }}">Crear una exlusión</a></li>
     </ul>
 </div>
 <br/>
@@ -37,14 +37,16 @@
         <th>Nombre del Donante: </th>
         <td>{{ donacion.donante.nomapp }}</td>
     </tr>
-    <tr>
-        <th>ID del Receptor: </th>
-        <td>{{ donacion.receptor.id }}</td>
-    </tr>
-    <tr>
-        <th>Nombre del Receptor: </th>
-        <td>{{ donacion.receptor.nomapp }}</td>
-    </tr>
+    {% if donacion.receptor %}
+        <tr>
+            <th>ID del Receptor: </th>
+            <td>{{ donacion.receptor.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre del Receptor: </th>
+            <td>{{ donacion.receptor.nomapp }}</td>
+        </tr>
+    {% endif %}
 </table>
 <br/>
 

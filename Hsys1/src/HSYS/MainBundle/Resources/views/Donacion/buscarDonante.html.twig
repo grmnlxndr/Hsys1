@@ -3,33 +3,48 @@
 {% block title %}Buscar Donación por Donante{% endblock %}
 
 {% block contenido %}
-
+<h3>Buscar Donación por Donante:</h3>
 <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donacion_donante') }}">
     <table>
         <tr>
-            <td><label>Donante: </label></td>
+            <td><label>Número de Donante: </label></td>
             <td><input id="donante" name="donante" type="text" style="width: 120px"/></td>
             <td><input type="submit" value="Buscar"/></td>
         </tr>
     </table>
 </form>
 <br/>
+{% if donante  %}
+    <table class="detalle">
+        <tr>
+            <th>ID del Donante: </th>
+            <td>{{ donante.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre del Donante: </th>
+            <td>{{ donante.nomapp }}</td>
+        </tr>
+    </table>
+    <br/>
+{% endif %}
 
+{% if donaciones %}
 <table class="consulta" style="width: 100%">
     <tr>
-        <th> ID </th><th> Donante </th><th> Fecha </th><th> Ver </th><th> Crear un Fraccionamiento </th>
+        <th> ID </th><th> Fecha </th><th> Ver </th><th> Crear una exclusión </th><th> Anular </th>
     </tr>
 {% for donacion in donaciones %}
     <tr>
         <td><a>{{ donacion.id }}</a></td>
-        <td><a>{{ donacion.donante.nomapp }}</a></td>
-        <td><a>{{ donacion.fecha }}</a></td>
-        <td class="link"><a href="TWIIIG_VER">Ver</a></td>
-        <td class="link"><a href="{{ path('buscar_donacion_donante', {'id':donacion.id})  }}">Crear un Fraccionamiento</a></td>
+        <td><a>{{ donacion.fechextraccion|date('d/m/Y') }}</a></td>
+        <td class="link"><a href="{{ path('ver_donacion', {'id':donacion.id}) }}">Ver</a></td>
+        <td class="link"><a href="{{ path('exclusion_donacion', {'id':donacion.id})  }}"> Crear una exclusión </a></td>
+        <td class="link"><a href="{{ path('anular_donacion', {'id':donacion.id}) }}">Anular</a></td>
     </tr>
 {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
     <br/>
 {% endfor %}
 </table>
+{% endif %}
 {% endblock %}

@@ -95,6 +95,22 @@ alta_donacion_receptor_confirmar:
 confirmacion_donacion:
   pattern: /donacion/confirmacion
   defaults: { _controller: HSYSMainBundle:Donacion:confirmacion }
+  
+ver_donacion:
+  pattern: /donacion/ver/{id}
+  defaults: { _controller: HSYSMainBundle:Donacion:ver }
+  
+modificar_donacion:
+  pattern: /donacion/modificar/{id}
+  defaults: { _controller: HSYSMainBundle:Donacion:modificar }
+  
+anular_donacion:
+  pattern: /donacion/anular/{id}
+  defaults: { _controller: HSYSMainBundle:Donacion:anular }
+
+exclusion_donacion:
+  pattern: /donacion/exclusion/{id}
+  defaults: { _controller: HSYSMainBundle:Donacion:exclusion }
  
 #SANGRE
 pagina_sangre:
