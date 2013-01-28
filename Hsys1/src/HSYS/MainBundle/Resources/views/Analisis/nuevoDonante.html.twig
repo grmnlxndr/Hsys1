@@ -1,0 +1,35 @@
+{% extends 'HSYSMainBundle:Analisis:analisisbase.html.twig' %}
+
+{% block title %}Nuevo Análisis{% endblock %}
+
+{% block contenido %}
+<h3>Seleccione la donación a analizar:</h3>
+<form id="nuevo_donante" name="nuevo_donante" method="post" action="{{ path('alta_analisis_donante') }}">
+    <table>
+        <tr>
+            <td><label>Número de donante: </label></td>
+            <td><input id="numDonante" name="numDonante" type="text" style="width: 120px"/></td>
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+{% if donaciones %}
+    <table class="consulta" style="width: 100%">
+        <tr>
+            <th> ID </th><th> Donante </th><th> Fecha </th><th> Seleccionar </th>
+        </tr>
+    {% for donacion in donaciones %}
+        <tr>
+            <td><a>{{ donacion.id }}</a></td>
+            <td><a>{{ donacion.donante.nomapp }}</a></td>
+            <td><a>{{ donacion.fechextraccion|date('d/m/Y') }}</a></td>
+            <td class="link"><a href="{{ path('alta_analisis_form', {'id':donacion.id}) }}">Seleccionar</a></td>
+        </tr>
+    {% else %}
+        <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+        <br/>
+    {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}

@@ -35,8 +35,36 @@ class AnalisisController extends Controller
             $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorIdBolsa($numero);
         }
         return $this->render('HSYSMainBundle:Analisis:nuevoBolsa.html.twig', array('donaciones' => $donaciones));
+    }    
+        
+    public function nuevoDonanteAction() {
+        $request = $this->getRequest();
+        $donaciones = null;
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $numero = $request->request->get('numDonante');
+            $donante = $em->getRepository('HSYSMainBundle:Donante')->find($numero);
+            if ($donante) {
+                $donaciones = $donante->getDonaciones();
+            }
+        }
+        return $this->render('HSYSMainBundle:Analisis:nuevoDonante.html.twig', array('donaciones' => $donaciones));
     }
-            
+
+    public function nuevoFechaAction() {
+        $request = $this->getRequest();
+        $donaciones = null;
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $desde = $request->request->get('desde');
+            $hasta = $request->request->get('hasta');
+            if ($desde && $hasta) {
+                $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorRangoDeFecha($desde, $hasta);
+            }
+        }
+        return $this->render('HSYSMainBundle:Analisis:nuevoFecha.html.twig', array('donaciones' => $donaciones));
+    }
+    
     public function nuevoFormAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
