@@ -461,6 +461,7 @@ class Donante {
     }
 
     public function getExclusion() {
+//        return $this->orderMultiDimensionalArray($this->Exclusion, $criterio, false);
         return $this->Exclusion;
     }
 
@@ -493,7 +494,27 @@ class Donante {
         }
         return $exclusionesactivas;
     }
-        
+
+    //funcion sacada de http://notasweb.com/articulo/php/ordenar-array-multidimensional-por-un-campo-con-php.html
+    function orderMultiDimensionalArray ($toOrderArray, $field, $inverse = false) {  
+        $position = array();  
+        $newRow = array();  
+        foreach ($toOrderArray as $key => $row) {
+                $position[$key]  = $row[$field];  
+                $newRow[$key] = $row;  
+        }  
+        if ($inverse) {  
+            arsort($position);  
+        }  
+        else {  
+            asort($position);  
+        }  
+        $returnArray = array();  
+        foreach ($position as $key => $pos) {       
+            $returnArray[] = $newRow[$key];  
+        }  
+        return $returnArray;  
+    }  
     
 
 }
