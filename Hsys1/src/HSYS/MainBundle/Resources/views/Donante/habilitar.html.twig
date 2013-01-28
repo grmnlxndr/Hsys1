@@ -29,14 +29,18 @@
 <form id="habilitar_form" name="habilitar_form" method="post" action="{{ path('habilitar_donante', { 'id' : id }) }}">
     <table class="listadeexclusiones" style="width: 100%">
     <tr>
-        <th> ID </th><th> Inicio </th><th> Fin </th><th> Tipo de Exclusion </th><th width =25%> Comentario </th>
+        <th> ID </th><th> Inicio </th><th> Fin </th><th> Tipo de Exclusion </th><th width =20%> Comentario </th>
     </tr>
     {#ver si se puede ordenar la lista #}
 {% for exclusion in exclusiones %}
     <tr>
         <td valign="middle" align="center"><a>{{ exclusion.id }}</a></td>
-        <td valign="middle" align="center"><a>{{ exclusion.fechini | date("m/d/Y") }}</a></td>
-        <td valign="middle" align="center"><a>{{ exclusion.fechfin | date("m/d/Y") }}</a></td>
+        <td valign="middle" align="center"><a>{{ exclusion.fechini | date("d/m/Y") }}</a></td>
+        <td valign="middle" align="center"><a>{% if exclusion.fechfin != null%}
+                                                    {{ exclusion.fechfin | date("d/m/Y") }}
+                                                {%else%}
+                                                    Permanente
+                                                {%endif%}</a></td>
         <td valign="middle" align="center"><a>{{ exclusion.tipoexclusion }}</a></td>
         <td valign="middle" align="center"><a>{{ exclusion.comentario }}</a></td>
     </tr>
@@ -44,8 +48,27 @@
     <div class="listadeexclusiones"><img src="{{ asset('images/error.png') }}"/>    EL DONANTE NO POSEE NINGUNA EXCLUSION</div>
     <br/>
 {% endfor %}
+    
+    
 </table>
-
+ <input type="checkbox" name="aprobado" id="aprobado" onclick="habilitar()"> ¿Esta seguro que desea habilitar el donante?<br>
+ <input type="submit" value="Habilitar El Donante"/>
         
 </form>
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$('input[type="submit"]').attr('disabled','disabled');  
+function habilitar(){
+if (aprobado.checked) {    
+    $('input[type="submit"]').removeAttr('disabled');
+} else {
+    $('input[type="submit"]').attr('disabled','disabled');
+    }
+    };
+</script>
+</script>
+
 {% endblock %}
+

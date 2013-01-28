@@ -12,9 +12,20 @@ use Doctrine\ORM\EntityRepository;
  */
 class ExclusionRepository extends EntityRepository
 {
-    public function findDonantePorDNI($iddonate) {
+    public function findExclusionesdelDonante($iddonate) {
         $em = $this->getEntityManager();
-        $dql = "select e, te from HSYSMainBundle:Exclusion e, HSYSMainBundle:TipoExclusion te where (e.TipoExclusion = te.id) and (e.donante = :iddonante) ";
+        $dql = "select e from HSYSMainBundle:Exclusion e where (e.Donante = :iddonante) ORDER BY e.fechfin DESC";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('iddonante', $iddonate);
+        
+        $exclusiones= $query->getResult();
+        return $exclusiones;
+    }
+    
+        public function findExclusionesActivas($iddonate) {
+        $em = $this->getEntityManager();
+        $dql = "select e from HSYSMainBundle:Exclusion e where (e.Donante = :iddonante) and ((e.fechfin > CURRENT_DATE() or e.fechfin IS NULL))";
 
         $query = $em->createQuery($dql);
         $query->setParameter('iddonante', $iddonate);

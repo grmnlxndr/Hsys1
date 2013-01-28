@@ -134,10 +134,31 @@ class DonanteController extends Controller {
 
     public function habilitarAction($id){
         $em = $this->getDoctrine()->getEntityManager();
+        $request = $this->getRequest();
+        
+        if ($request->getMethod()=='POST'){
+            $exclusiones = $em ->getRepository('HSYSMainBundle:Exclusion')->findExclusionesActivas($id);
+            foreach ($exclusiones as $exclusion) {
+                $exclusion = new Exclusion;
+                $fechactual = new \DateTime;
+                $fechaformat->setDate(substr($fechactual, 0, 4), substr($fechactual, 5, 2), substr($fechactual, 8, 2));
+                $exclusion->setFechfin($fechaformat);
+                $exclusion->setComentario($exclusion->getComentario()." se modifico la fecha de fin");
+                $em->persist($exclusion);
+                $em->flush();
+                return $this->redirect($this->generateURL('confirmacion', array('accion' => "ha sido habilitado", 'id' => $id))); 
+                
+            }
+        }
+        
+        
+        
+        
+        
         $donante = new Donante;
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
         $exclusiones = new Exclusion;
-        $exclusiones = $donante->getExclusion();
+        $exclusiones = $em ->getRepository('HSYSMainBundle:Exclusion')->findExclusionesdelDonante($id);
      //ver si se puede ordenar la lista.... 
        
         

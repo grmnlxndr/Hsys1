@@ -282,7 +282,7 @@ class Donante {
     public function getEstadocivil() {
         return $this->estadocivil;
     }
-    
+
     /**
      * Get paisnac
      *
@@ -312,7 +312,7 @@ class Donante {
         return $this->ciudad;
     }
 
-     /**
+    /**
      * Set ciudad
      *
      * @param string $ciudad
@@ -322,7 +322,7 @@ class Donante {
         $this->ciudad = $ciudad;
         return $this;
     }
-    
+
     /**
      * Get provnac
      *
@@ -332,7 +332,7 @@ class Donante {
         return $this->provnac;
     }
 
-     /**
+    /**
      * Set provnac
      *
      * @param string $provNac
@@ -362,7 +362,7 @@ class Donante {
         $this->domicilio = $domicilio;
         return $this;
     }
-    
+
     /**
      * Get provincia
      *
@@ -382,7 +382,7 @@ class Donante {
         $this->provincia = $provincia;
         return $this;
     }
- 
+
     /**
      * Get pais
      *
@@ -401,7 +401,7 @@ class Donante {
     public function setPais($pais) {
         $this->pais = $pais;
         return $this;
-    }   
+    }
 
     /**
      * Get telefono
@@ -421,24 +421,50 @@ class Donante {
     public function setTelefono($telefono) {
         $this->telefono = $telefono;
         return $this;
-    }    
-    
-    
+    }
+
     /**
      * @ORM\OneToMany(targetEntity="Exclusion", mappedBy="Donante")
      */
     private $Exclusion;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Donacion", mappedBy="Donante")
+     */
+    private $Donaciones;
+
     public function __construct() {
         $this->Exclusion = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->Donaciones = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    public function addExclusion(\HSYS\MainBundle\Entity\Unidad $Exclusion) {
+    public function addExclusion(\HSYS\MainBundle\Entity\Exclusion $Exclusion) {
         $this->Exclusion[] = $Exclusion;
     }
 
     public function getExclusion() {
         return $this->Exclusion;
+    }
+
+    public function addDonaciones(\HSYS\MainBundle\Entity\Donacion $donaciones) {
+        $this->Donaciones[] = $donaciones;
+    }
+
+    public function getDonaciones() {
+        return $this->Donaciones;
+    }
+
+    public function habilitar() {
+        $exclusiones = $em->getRepository('HSYSMainBundle:Exclusion')->findExclusionesActivas($id);
+        foreach ($exclusiones as $exclusion) {
+            $exclusion = new Exclusion;
+            $fechactual = new \DateTime;
+            $fechaformat->setDate(substr($fechactual, 0, 4), substr($fechactual, 5, 2), substr($fechactual, 8, 2));
+            $exclusion->setFechfin($fechaformat);
+            $exclusion->setComentario($exclusion->getComentario() . " se modifico la fecha de fin");
+            $em->persist($exclusion);
+            $em->flush();
+        }
     }
 
 }
