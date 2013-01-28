@@ -12,26 +12,42 @@ class AnalisisController extends Controller
     }
     
     public function nuevoAction() {
+        return $this->render('HSYSMainBundle:Analisis:nuevo.html.twig');
+    }
+    
+    public function nuevoDonacionAction() {
         $request = $this->getRequest();
-
+        $donaciones = null;
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $numero = $request->request->get('numDonacion');
+            $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorId($numero);
+        }
+        return $this->render('HSYSMainBundle:Analisis:nuevoDonacion.html.twig', array('donaciones' => $donaciones));
+    }
+            
+    public function nuevoFormAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+        
         $analisis = new analisis();
         $form = $this->createForm(new analisisType(), $analisis);
-
+        
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-                $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($analisis);
                 $em->flush();
-                return $this->redirect($this->generateURL('confirmacion_analisis'));
-                //aca poner respuesta no se como
-            }
+                return $this->redirect($this->generateURL('confirmacion_analisis', array('accion' => 'agregado', 'id' => $analisis->getId())));
+            }    
         }
-        return $this->render('HSYSMainBundle:Analisis:nuevo.html.twig', array('form' => $form->createView(),));
+
+        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
+        return $this->render('HSYSMainBundle:Analisis:nuevoForm.html.twig', array('form' => $form->createView(), 'donacion' => $donacion));
     }
     
-    public function confirmacionAction() {
-        return $this->render('HSYSMainBundle:Analisis:confirmacion.html.twig');
+    public function confirmacionAction($accion, $id) {
+        return $this->render('HSYSMainBundle:Analisis:confirmacion.html.twig', array('accion' => $accion, 'id' => $id,));
     }
     
     public function buscarAction() {
