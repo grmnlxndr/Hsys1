@@ -3,5 +3,13 @@
 {% block title %}Confirmado{% endblock %}
 
 {% block contenido %}
-    Cambios guardados ;)
+<div class="consulta">
+    Enhorabuena, el análisis con el id "{{ id }}" ha sido correctamente {{ accion }}.
+</div>
+<br/>
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('pagina_analisis') }}">Haga clic aquí para continuar</a></li>
+    </ul>
+</div>
 {% endblock %}

@@ -3,103 +3,11 @@
 {% block title %}Nuevo Análisis{% endblock %}
 
 {% block contenido %}
-<form action="{{ path('alta_analisis') }}" method="post">
-        {# {{ form_widget(form) }} #}
-        <table>
-            <tr>
-                <td><label>Fecha Analisis: </label></td>
-                <td>{{ form_widget(form.fechanalisis) }}</td>
-                <td>{{ form_errors(form.fechanalisis) }}</td>
-            </tr>
-            <tr>
-                <td><label>CHHAI: </label></td>
-                <td>{{ form_widget(form.chhai) }}</td>
-                <td>{{ form_errors(form.chhai) }}</td>
-            </tr>
-            <tr>
-                <td><label>CHEIA: </label></td>
-                <td>{{ form_widget(form.cheia) }}</td>
-                <td>{{ form_errors(form.cheia) }}</td>
-            </tr>
-            <tr>
-                <td><label>antiCORE: </label></td>
-                <td>{{ form_widget(form.anticore) }}</td>
-                <td>{{ form_errors(form.anticore) }}</td>
-            </tr>
-            <tr>
-                <td><label>HBSAg: </label></td>
-                <td>{{ form_widget(form.hbsag) }}</td>
-                <td>{{ form_errors(form.hbsag) }}</td>
-            </tr>
-            <tr>
-                <td><label>HCVAg-Ac: </label></td>
-                <td>{{ form_widget(form.hcvagac) }}</td>
-                <td>{{ form_errors(form.hcvagac) }}</td>
-            </tr>
-            <tr>
-                <td><label>HIV Ac: </label></td>
-                <td>{{ form_widget(form.hivac) }}</td>
-                <td>{{ form_errors(form.hivac) }}</td>
-            </tr>
-            <tr>
-                <td><label>Ag P2Y: </label></td>
-                <td>{{ form_widget(form.agp2y) }}</td>
-                <td>{{ form_errors(form.agp2y) }}</td>
-            </tr>
-            <tr>
-                <td><label>HTLV: </label></td>
-                <td>{{ form_widget(form.htlv) }}</td>
-                <td>{{ form_errors(form.htlv) }}</td>
-            </tr>
-            <tr>
-                <td><label>Brucelosis: </label></td>
-                <td>{{ form_widget(form.brucelosis) }}</td>
-                <td>{{ form_errors(form.brucelosis) }}</td>
-            </tr>
-            <tr>
-                <td><label>Sífilis: </label></td>
-                <td>{{ form_widget(form.sifilis) }}</td>
-                <td>{{ form_errors(form.sifilis) }}</td>
-            </tr>
-            <tr>
-                <td><label>ABO: </label></td>
-                <td>{{ form_widget(form.abo) }}</td>
-                <td>{{ form_errors(form.abo) }}</td>
-            </tr>
-            <tr>
-                <td><label>RH (D): </label></td>
-                <td>{{ form_widget(form.rhd) }}</td>
-                <td>{{ form_errors(form.rhd) }}</td>
-            </tr>
-            <tr>
-                <td><label>Du: </label></td>
-                <td>{{ form_widget(form.du) }}</td>
-                <td>{{ form_errors(form.du) }}</td>
-            </tr>
-            <tr>
-                <td><label>CDE: </label></td>
-                <td>{{ form_widget(form.cde) }}</td>
-                <td>{{ form_errors(form.cde) }}</td>
-            </tr>
-            <tr>
-                <td><label>Fenotipo: </label></td>
-                <td>{{ form_widget(form.fenotipo) }}</td>
-                <td>{{ form_errors(form.fenotipo) }}</td>
-            </tr>
-            <tr>
-                <td><label>PCI: </label></td>
-                <td>{{ form_widget(form.pci) }}</td>
-                <td>{{ form_errors(form.pci) }}</td>
-            </tr>
-            <tr>
-                <td><label>Reactivo?: </label></td>
-                <td>{{ form_widget(form.reactivo) }}</td>
-                <td>{{ form_errors(form.reactivo) }}</td>
-            </tr>
-        </table>
-        
-        {{ form_rest(form) }}
-        <input type="submit" />
-    </form>
-{{ form_errors(form) }}
+<h3>Seleccione la donación a analizar:</h3>
+<ul>
+    <li><a href="{{ path('alta_analisis_donacion') }}" title="Buscar por Número de Donación">Buscar por Número de Donación</a></li>
+    <li><a href="{{ path('alta_analisis_bolsa') }}" title="Buscar por Número de Bolsa">Buscar por Número de Bolsa</a></li>
+    <li><a href="{{ path('alta_analisis_donante') }}" title="Buscar por Donante">Buscar por Donante</a></li>
+    <li><a href="{{ path('alta_analisis_fecha') }}" title="Buscar por Fecha">Buscar por Fecha</a></li>
+</ul>
 {% endblock %}

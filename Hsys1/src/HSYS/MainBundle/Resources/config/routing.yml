@@ -126,10 +126,30 @@ alta_analisis:
   pattern: /analisis/nuevo
   defaults: { _controller: HSYSMainBundle:Analisis:nuevo }
   
-confirmacion_analisis:
-  pattern: /analisis/confirmacion
-  defaults: { _controller: HSYSMainBundle:Analisis:confirmacion }
+alta_analisis_donacion:
+  pattern: /analisis/nuevo/buscarpordonacion
+  defaults: { _controller: HSYSMainBundle:Analisis:nuevoDonacion }
   
+alta_analisis_bolsa:
+  pattern: /analisis/nuevo/buscarporbolsa
+  defaults: { _controller: HSYSMainBundle:Analisis:nuevoBolsa }
+  
+alta_analisis_donante:
+  pattern: /analisis/nuevo/buscarpordonante
+  defaults: { _controller: HSYSMainBundle:Analisis:nuevoDonante }
+  
+alta_analisis_fecha:
+  pattern: /analisis/nuevo/buscarporfecha
+  defaults: { _controller: HSYSMainBundle:Analisis:nuevoFecha }
+
+alta_analisis_form:
+  pattern: /analisis/nuevo/formulario/{id}
+  defaults: { _controller: HSYSMainBundle:Analisis:nuevoForm }
+  
+confirmacion_analisis:
+  pattern: /analisis/confirmacion/{accion}/{id}
+  defaults: { _controller: HSYSMainBundle:Analisis:confirmacion }
+
 modificar_analisis:
   pattern: /analisis/modificar/{id}
   defaults: { _controller: HSYSMainBundle:Analisis:modificar }  
