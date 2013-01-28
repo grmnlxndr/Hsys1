@@ -4,6 +4,28 @@
 
 {% block contenido %}
 
+<form id="datosdonante" name="datosdonante">
+<table>
+            <tr>
+                <td><label>Datos del donante</label></td>
+            </tr>
+            <tr>
+                <td><label>ID </label></td>
+                <td>{{ donante.id }}</td>
+            </tr>
+            <tr>
+                <td><label>DNI </label></td>
+                <td>{{ donante.dni }}</td>
+            </tr>
+            <tr>
+                <td><label>Apellido y nombre </label></td>
+                <td>{{ donante.nomapp }}</td>
+            </tr>
+</table>
+</form>
+
+</br>
+
 <form id="habilitar_form" name="habilitar_form" method="post" action="{{ path('habilitar_donante', { 'id' : id }) }}">
     <table class="listadeexclusiones" style="width: 100%">
     <tr>
@@ -12,11 +34,11 @@
     {#ver si se puede ordenar la lista #}
 {% for exclusion in exclusiones %}
     <tr>
-        <td><a>{{ exclusion.id }}</a></td>
-        <td><a>{{ exclusion.fechini | date("m/d/Y") }}</a></td>
-        <td><a>{{ exclusion.fechfin | date("m/d/Y") }}</a></td>
-        <td><a>{{ exclusion.tipoexclusion }}</a></td>
-        <td><a>{{ exclusion.comentario }}</a></td>
+        <td valign="middle" align="center"><a>{{ exclusion.id }}</a></td>
+        <td valign="middle" align="center"><a>{{ exclusion.fechini | date("m/d/Y") }}</a></td>
+        <td valign="middle" align="center"><a>{{ exclusion.fechfin | date("m/d/Y") }}</a></td>
+        <td valign="middle" align="center"><a>{{ exclusion.tipoexclusion }}</a></td>
+        <td valign="middle" align="center"><a>{{ exclusion.comentario }}</a></td>
     </tr>
     {% else %}
     <div class="listadeexclusiones"><img src="{{ asset('images/error.png') }}"/>    EL DONANTE NO POSEE NINGUNA EXCLUSION</div>
