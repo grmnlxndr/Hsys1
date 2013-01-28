@@ -135,17 +135,21 @@ class DonanteController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         $request = $this->getRequest();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        $habilitado = false;
+        if ($donante->getExclusionesActivas()== null){
+           $habilitado = true;
+        }
         
         if ($request->getMethod() == 'POST') {
             $donante->habilitar();
-            $exclusiones = $donante->getExclusionesActivas();
             $em->persist($donante);
             $em->flush();
             return $this->redirect($this->generateURL('confirmacion', array('accion' => "ha sido habilitado", 'id' => $id)));
         }
         $exclusiones = new Exclusion;
+        //ordenar por en el metodo getExclusionesActivas().
         $exclusiones = $em->getRepository('HSYSMainBundle:Exclusion')->findExclusionesdelDonante($id);
-        return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('id' => $id, 'donante' => $donante, 'exclusiones' => $exclusiones,));
+        return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('id' => $id, 'donante' => $donante, 'exclusiones' => $exclusiones, 'habilitado' => $habilitado));
     }
 
 }
