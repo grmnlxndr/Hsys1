@@ -136,10 +136,9 @@ class DonanteController extends Controller {
         $request = $this->getRequest();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
         $habilitado = false;
-        if ($donante->getExclusionesActivas()== null){
+        if ($donante->getExclusionesActivas() == null){
            $habilitado = true;
         }
-        
         if ($request->getMethod() == 'POST') {
             $donante->habilitar();
             $em->persist($donante);
@@ -150,6 +149,13 @@ class DonanteController extends Controller {
         //ordenar por en el metodo getExclusionesActivas().
         $exclusiones = $em->getRepository('HSYSMainBundle:Exclusion')->findExclusionesdelDonante($id);
         return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('id' => $id, 'donante' => $donante, 'exclusiones' => $exclusiones, 'habilitado' => $habilitado));
+    }
+    
+    public function eliminarAction($id) {
+    
+        
+        
+        return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id' => $id));
     }
 
 }

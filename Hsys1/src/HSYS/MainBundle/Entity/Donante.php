@@ -460,7 +460,7 @@ class Donante {
             $nuevafecha = strtotime('-1 day', strtotime(date('Y-m-d')));
             $nuevafecha = date('Y-m-d', $nuevafecha);
             $exclusion->setFechfin(new \DateTime($nuevafecha));
-            $exclusion->setComentario($exclusion->getComentario() . " .....");
+//            $exclusion->setComentario($exclusion->getComentario() . " .....");
         }
     }
     

@@ -10,7 +10,7 @@
         <li><a href= "{{ path('excluir_donante',{'id':donante.id}) }}">Excluir</a></li>
         <li><a href="{{ path('habilitar_donante',{'id':donante.id}) }}">Habilitar</a></li>
         <li><a href="TWIIIG DONAR">Donar</a></li>
-        <li><a href="TWIIIG ELIMINAR">Eliminar</a></li>
+        <li><a href="{{ path('eliminar_donante',{'id':donante.id}) }}">Eliminar</a></li>
     </ul>
 </div>
 <br/>
