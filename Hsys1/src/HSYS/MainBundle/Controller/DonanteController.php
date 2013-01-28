@@ -151,11 +151,11 @@ class DonanteController extends Controller {
         return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('id' => $id, 'donante' => $donante, 'exclusiones' => $exclusiones, 'habilitado' => $habilitado));
     }
     
-    public function eliminarAction($id){
+    public function eliminarAction($id) {
     
         
         
-        return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id'=>$id,));
+        return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id' => $id));
     }
 
 }
