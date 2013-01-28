@@ -31,7 +31,8 @@ class ExclusionRepository extends EntityRepository
         $query->setParameter('iddonante', $iddonate);
         
         $exclusiones= $query->getResult();
+ 
         return $exclusiones;
     }
-    
+     
 }
