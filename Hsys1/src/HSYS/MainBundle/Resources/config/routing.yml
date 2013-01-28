@@ -111,10 +111,6 @@ modificar_donacion:
 anular_donacion:
   pattern: /donacion/anular/{id}
   defaults: { _controller: HSYSMainBundle:Donacion:anular }
-
-exclusion_donacion:
-  pattern: /donacion/exclusion/{id}
-  defaults: { _controller: HSYSMainBundle:Donacion:exclusion }
  
 #SANGRE
 pagina_sangre:
