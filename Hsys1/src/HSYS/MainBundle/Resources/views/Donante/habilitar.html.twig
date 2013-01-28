@@ -51,8 +51,12 @@
     
     
 </table>
+        {% if habilitado %}
+        <label>El donante se encuentra habilitado</label>
+        {% else %}
  <input type="checkbox" name="aprobado" id="aprobado" onclick="habilitar()"> ¿Esta seguro que desea habilitar el donante?<br>
  <input type="submit" value="Habilitar El Donante"/>
+        {% endif %}
         
 </form>
 

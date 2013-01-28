@@ -68,7 +68,7 @@ class DonanteController extends Controller {
     public function excluirAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $request = $this->getRequest();
-        if($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST') {
             $idtipodeexclusion = $request->request->get('tipodeexclusion');
             $comentarios = $request->request->get('comentarios');
             $tipoexclusion = new \HSYS\MainBundle\Entity\TipoExclusion;
@@ -82,27 +82,27 @@ class DonanteController extends Controller {
             $fechaformat = new \DateTime;
             $fechaformat->setDate(substr($fechactual, 0, 4), substr($fechactual, 5, 2), substr($fechactual, 8, 2));
             $exclusion->setFechini($fechaformat);
-            if ($tipoexclusion->getDuracion()!=0){
-                $sumar = '+'.$tipoexclusion->getDuracion().' day';
-                $nuevafecha = strtotime( $sumar , strtotime ($fechactual) ) ;
-                $nuevafecha = date('Y-m-j' , $nuevafecha);
+            if ($tipoexclusion->getDuracion() != 0) {
+                $sumar = '+' . $tipoexclusion->getDuracion() . ' day';
+                $nuevafecha = strtotime($sumar, strtotime($fechactual));
+                $nuevafecha = date('Y-m-j', $nuevafecha);
                 $fechaformat1 = new \DateTime;
                 $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
                 $exclusion->setFechfin($fechaformat1);
             };
-                
-            
-            
+
+
+
             $exclusion->setComentario($comentarios);
             $em->persist($exclusion);
             $em->flush();
-            
-            return $this->redirect($this->generateURL('confirmacion', array('accion' => "excluido", 'id' => $id))); 
+
+            return $this->redirect($this->generateURL('confirmacion', array('accion' => "excluido", 'id' => $id)));
         }
-        
+
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
         $tiposExlusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findAll();
-        return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' =>$donante, 'id' => $id));
+        return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' => $donante, 'id' => $id));
         #aca le tengo que pasar el donante y los tipos de exclusion que existe para excluir al forro ese por drogon
     }
 
@@ -118,7 +118,7 @@ class DonanteController extends Controller {
             return $this->redirect($this->generateUrl('pagina_donante'));
         }
     }
-    
+
     public function verAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
@@ -129,44 +129,29 @@ class DonanteController extends Controller {
             );
         }
         return $this->render('HSYSMainBundle:Donante:ver.html.twig', array('donante' => $donante,));
-        
     }
 
-    public function habilitarAction($id){
+    public function habilitarAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $request = $this->getRequest();
-        
-        if ($request->getMethod()=='POST'){
-            $exclusiones = $em ->getRepository('HSYSMainBundle:Exclusion')->findExclusionesActivas($id);
-            foreach ($exclusiones as $exclusion) {
-                $exclusion = new Exclusion;
-                $fechactual = new \DateTime;
-                $fechaformat->setDate(substr($fechactual, 0, 4), substr($fechactual, 5, 2), substr($fechactual, 8, 2));
-                $exclusion->setFechfin($fechaformat);
-                $exclusion->setComentario($exclusion->getComentario()." se modifico la fecha de fin");
-                $em->persist($exclusion);
-                $em->flush();
-                return $this->redirect($this->generateURL('confirmacion', array('accion' => "ha sido habilitado", 'id' => $id))); 
-                
-            }
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        $habilitado = false;
+        if ($donante->getExclusionesActivas()== null){
+           $habilitado = true;
         }
         
-        
-        
-        
-        
-        $donante = new Donante;
-        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        if ($request->getMethod() == 'POST') {
+            $donante->habilitar();
+            $em->persist($donante);
+            $em->flush();
+            return $this->redirect($this->generateURL('confirmacion', array('accion' => "ha sido habilitado", 'id' => $id)));
+        }
         $exclusiones = new Exclusion;
-        $exclusiones = $em ->getRepository('HSYSMainBundle:Exclusion')->findExclusionesdelDonante($id);
-     //ver si se puede ordenar la lista.... 
-       
-        
-        
-        return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('id'=>$id, 'donante' => $donante, 'exclusiones' => $exclusiones ,));
+        //ordenar por en el metodo getExclusionesActivas().
+        $exclusiones = $em->getRepository('HSYSMainBundle:Exclusion')->findExclusionesdelDonante($id);
+        return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('id' => $id, 'donante' => $donante, 'exclusiones' => $exclusiones, 'habilitado' => $habilitado));
     }
-    
-    
+
 }
 
 ?>

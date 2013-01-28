@@ -455,16 +455,27 @@ class Donante {
     }
 
     public function habilitar() {
-        $exclusiones = $em->getRepository('HSYSMainBundle:Exclusion')->findExclusionesActivas($id);
-        foreach ($exclusiones as $exclusion) {
-            $exclusion = new Exclusion;
-            $fechactual = new \DateTime;
-            $fechaformat->setDate(substr($fechactual, 0, 4), substr($fechactual, 5, 2), substr($fechactual, 8, 2));
-            $exclusion->setFechfin($fechaformat);
-            $exclusion->setComentario($exclusion->getComentario() . " se modifico la fecha de fin");
-            $em->persist($exclusion);
-            $em->flush();
+        $exclusiones = $this->getExclusionesActivas();
+        foreach ($exclusiones as $exclusion) {      
+            $nuevafecha = strtotime('-1 day', strtotime(date('Y-m-d')));
+            $nuevafecha = date('Y-m-d', $nuevafecha);
+            $exclusion->setFechfin(new \DateTime($nuevafecha));
+            $exclusion->setComentario($exclusion->getComentario() . " .....");
         }
     }
+    
+    public function getExclusionesActivas(){
+        $exclusionesactivas = array();
+       $exclusiones = $this->getExclusion();
+        $fechaactual = new \DateTime(date('Y-m-d'));
+        foreach ($exclusiones as $exclusion) {                
+            if (($exclusion->getFechfin() == null) || ($fechaactual <=  $exclusion->getFechfin())){
+               $exclusionesactivas [] = $exclusion; 
+            }
+        }
+        return $exclusionesactivas;
+    }
+        
+    
 
 }
