@@ -153,6 +153,9 @@ class DonanteController extends Controller {
     
     public function eliminarAction($id){
     
+        
+        
+        return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id'=>$id,));
     }
 
 }
