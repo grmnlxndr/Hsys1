@@ -128,6 +128,24 @@ class Donante {
     private $telefono;
 
     /**
+     *
+     * @var boolean
+     * 0 esta habiliado.
+     * 1 baja logica.
+     * @ORM\Column(name="baja", type="boolean")  
+     */
+    private $baja;
+    
+    public function getBaja() {
+        return $this->baja;
+    }
+    public function setBaja($baja) {
+        $this->baja = $baja;
+        return $this;
+    }
+            
+    
+    /**
      * Get id
      *
      * @return integer 
