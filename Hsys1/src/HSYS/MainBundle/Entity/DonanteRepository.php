@@ -29,7 +29,7 @@ class DonanteRepository extends EntityRepository {
     
     public function findDonantePorDNI($dni) {
         $em = $this->getEntityManager();
-        $dql = "select d from HSYSMainBundle:Donante d where d.dni like :dni";
+        $dql = "select d from HSYSMainBundle:Donante d where d.dni like :dni and d.baja = false";
 
         $query = $em->createQuery($dql);
         $query->setParameter('dni', '%'.$dni.'%');
@@ -40,7 +40,7 @@ class DonanteRepository extends EntityRepository {
     
     public function findDonantePorNumero($id) {
         $em = $this->getEntityManager();
-        $dql = "select d from HSYSMainBundle:Donante d where d.id like :id";
+        $dql = "select d from HSYSMainBundle:Donante d where d.id like :id and d.baja = false";
 
         $query = $em->createQuery($dql);
         $query->setParameter('id', '%'.$id.'%');
@@ -51,7 +51,7 @@ class DonanteRepository extends EntityRepository {
     //UPPER(u.name)
         public function findDonantePorNomApp($nomapp) {
         $em = $this->getEntityManager();
-        $dql = "select d from HSYSMainBundle:Donante d where d.nomapp like :nomapp";
+        $dql = "select d from HSYSMainBundle:Donante d where d.nomapp like :nomapp and d.baja=false";
 
         $query = $em->createQuery($dql);
         $query->setParameter('nomapp', '%'.$nomapp.'%');

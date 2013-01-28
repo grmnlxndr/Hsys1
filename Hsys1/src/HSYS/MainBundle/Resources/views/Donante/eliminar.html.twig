@@ -1,10 +1,47 @@
 {% extends 'HSYSMainBundle:Donante:donantebase.html.twig' %}
 
-{% block title %}Eliminar Donante {% endblock %}
+{% block title %}Eliminar Donante {{ donante.id }}{% endblock %}
 
 {% block contenido %}
 
+<form id="formulario" name="formulario" action="{{ path('eliminar_donante', { 'id' : id }) }}" method="post">
+    <div>  
+        Donante a Excluir <br/>
+        <table>
+            <tr>
+                <td><label>ID </label></td>
+                <td>{{ donante.id }}</td>
+            </tr>
+            <tr>
+                <td><label>DNI </label></td>
+                <td>{{ donante.dni }}</td>
+            </tr>
+            <tr>
+                <td><label>Apellido y nombre </label></td>
+                <td>{{ donante.nomapp }}</td>
+            </tr>
+        </table>
+    </div>
+    
+        {% if donante.baja %}
+        <label>El donante se encuentra eliminado</label>
+        {% else %}
+        <input type="checkbox" name="aprobado" id="aprobado" onclick="eliminar()"> ¿Esta seguro que desea eliminar el donante?<br>
+        <input type="submit" value="Eliminar El Donante"/>
+        {% endif %}
+        
+</form>
 
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$('input[type="submit"]').attr('disabled','disabled');  
+function eliminar(){
+if (aprobado.checked) {    
+    $('input[type="submit"]').removeAttr('disabled');
+} else {
+    $('input[type="submit"]').attr('disabled','disabled');
+    }
+    };
+</script>
 
 {% endblock %}
