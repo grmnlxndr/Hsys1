@@ -22,6 +22,7 @@ class DonanteController extends Controller {
 
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
+            $donante->setBaja(false);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($donante);
@@ -152,10 +153,16 @@ class DonanteController extends Controller {
     }
     
     public function eliminarAction($id) {
-    
-        
-        
-        return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id' => $id));
+        $em = $this->getDoctrine()->getEntityManager();
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        $request = $this->getRequest();
+        if ($request->getMethod()=='POST'){
+            $donante->setBaja(true);
+            $em->persist($donante);
+            $em->flush();
+            return $this->redirect($this->generateUrl('confirmacion', array('accion'=>"ha sido eliminado",'id'=>$id)));
+        }
+        return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id' => $id, 'donante'=>$donante));
     }
 
 }
