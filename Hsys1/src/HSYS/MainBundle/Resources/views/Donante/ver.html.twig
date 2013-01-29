@@ -7,10 +7,15 @@
 <div class="detalle">
     <ul>
         <li><a href="{{ path('modificar_donante',{'id':donante.id}) }}">Modificar</a></li>
-        <li><a href= "{{ path('excluir_donante',{'id':donante.id}) }}">Excluir</a></li>
+        <li><a href="{{ path('excluir_donante',{'id':donante.id}) }}">Excluir</a></li>
         <li><a href="{{ path('habilitar_donante',{'id':donante.id}) }}">Habilitar</a></li>
-        <li><a href="TWIIIG DONAR">Donar</a></li>
         <li><a href="{{ path('eliminar_donante',{'id':donante.id}) }}">Eliminar</a></li>
+    </ul>
+</div>
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('alta_donacion_voluntaria_formulario',{'id':donante.id}) }}">Donar (Voluntaria)</a></li>
+        <li><a href="{{ path('alta_donacion_receptor_receptor',{'don':donante.id}) }}">Donar (c/Receptor)</a></li>
     </ul>
 </div>
 <br/>
@@ -81,9 +86,9 @@
 </table>
 </br>
 {% if habilitado %}
-            <label>El donante se encuentra habilitado</label>
+<h3>El donante se encuentra habilitado</h3>
     {% else %}
-            <label>El donante se encuentra excluido </label>
+<div class="consulta"><img src="{{ asset('images/error.png') }}"/> El donante se encuentra excluido</div>
     {% endif %}
 </br>
 

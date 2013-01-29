@@ -3,8 +3,9 @@
 {% block title %}Nueva Donacion{% endblock %}
 
 {% block contenido %}
-    <form action="{{ path('alta_donacion') }}" method="post">
-        {{ form_widget(form) }}
-        <input type="submit" />
-    </form>
+<h3>Seleccione tipo de donación:</h3>
+<ul>
+    <li><a href="{{ path('alta_donacion_voluntaria') }}">Donación voluntaria</a></li>
+    <li><a href="{{ path('alta_donacion_receptor') }}">Donación con receptor</a></li>
+</ul>
 {% endblock %}

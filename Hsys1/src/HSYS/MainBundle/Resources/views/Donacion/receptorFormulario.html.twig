@@ -5,7 +5,9 @@
 {% block contenido %}
 
 <h3>Donante:</h3>
-
+{% if donante.excluido %}
+<div class="consulta"><img src="{{ asset('images/error.png') }}"/>    DONANTE EXCLUIDO</div>
+{% endif %}
 <table class="detalle">
     <tr>
         <th>ID: </th>
