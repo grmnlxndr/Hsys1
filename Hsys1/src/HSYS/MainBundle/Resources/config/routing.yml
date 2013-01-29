@@ -121,6 +121,14 @@ buscar_unidad_id:
   pattern: /sangre/buscarid
   defaults: { _controller: HSYSMainBundle:Sangre:buscarid }
 
+buscar_unidad_tipohemocomponente:
+  pattern: /sangre/buscartipohemocomponente
+  defaults: { _controller: HSYSMainBundle:Sangre:buscarTipoHemocomponente }
+
+buscar_unidad_estado:
+  pattern: /sangre/buscarestado
+  defaults: { _controller: HSYSMainBundle:Sangre:buscarEstado }
+
 #ANALISIS
 pagina_analisis:
   pattern: /analisis

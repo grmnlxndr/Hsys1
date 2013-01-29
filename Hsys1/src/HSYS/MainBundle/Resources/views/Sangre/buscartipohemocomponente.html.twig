@@ -1,18 +1,17 @@
 {% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
 
-{% block title %}Buscar Por Estado{% endblock %}
+{% block title %}Buscar{% endblock %}
 
 {% block contenido %}
-    <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_unidad_estado') }}">
+    <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_unidad_tipohemocomponente') }}">
     <table>
         <tr>
             <td><label for="criterio">Criterio: </label></td>
             <td><select name="buscar" id="buscar" style="width: 160px">
-                    {% for estado in estados %}
-                    <option value="{{estado}}">{{estado}}</option>
+                    {% for tipohemocomponente in tiposhemocomponentes %}
+                    <option value="{{tipohemocomponente.id}}">{{tipohemocomponente}}</option>
                     {% endfor %}
                 </select></td>
-            <td><label>Búsqueda: </label></td>  
             <td><input type="submit" value="Buscar"/></td>
         </tr>
     </table>
@@ -38,7 +37,6 @@
 {% endfor %}
 </table>
 {% endif %}
-
 
 
 {% endblock %}

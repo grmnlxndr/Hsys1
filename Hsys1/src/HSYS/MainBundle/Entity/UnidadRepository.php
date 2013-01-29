@@ -13,11 +13,12 @@ use Doctrine\ORM\EntityRepository;
 class UnidadRepository extends EntityRepository
 {
     public function findUnidadTipoHemocomponente($tipohemocomponente) {
+        
         $em = $this->getEntityManager();
-        $dql = "select u from HSYSMainBundle:Unidad u where u.tipohemocomponente like :tipohemocomponente";
+        $dql = "select u from HSYSMainBundle:Unidad u where u.TipoHemocomponente = :tipohemocomponente";
 
         $query = $em->createQuery($dql);
-        $query->setParameter('tipohemocomponente', '%'.$tipohemocomponente.'%');
+        $query->setParameter('tipohemocomponente', $tipohemocomponente);
         
         $unidades = $query->getResult();
         return $unidades;
