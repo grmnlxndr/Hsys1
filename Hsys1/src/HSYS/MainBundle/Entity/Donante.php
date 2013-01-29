@@ -494,6 +494,14 @@ class Donante {
         }
         return $exclusionesactivas;
     }
+    //true si esta excluido
+    public function excluido(){
+        if ($this->getExclusionesActivas()==null){
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     //funcion sacada de http://notasweb.com/articulo/php/ordenar-array-multidimensional-por-un-campo-con-php.html
     function orderMultiDimensionalArray ($toOrderArray, $field, $inverse = false) {  

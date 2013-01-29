@@ -24,6 +24,17 @@ class SangreController extends Controller
     }
     
     public function buscarTipoHemocomponenteAction(){
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+        $tiposhemocomponentes =$em->getRepository('HSYSMainBundle:TipoHemocomponente')->findAll();
+        $metodo = false;
+        $unidades = array();
+        if ($request->getMethod()=='POST'){
+            $metodo = true;
+            $criterio = $request->request->get('buscar');
+            $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadPorId($criterio);
+        };        
+        
         return $this->render('HSYSMainBundle:Sangre:buscartipohemocomponente.html.twig',array('unidades'=>$unidades, 'metodo'=>$metodo,'tiposhemocomponentes'=>$tiposhemocomponentes));
     }
     
