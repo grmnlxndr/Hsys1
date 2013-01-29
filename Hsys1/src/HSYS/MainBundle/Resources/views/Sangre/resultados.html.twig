@@ -1,0 +1,20 @@
+
+
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th> ID </th><th> Tipo De Hemocomponente </th><th> Fecha </th><th> Estado </th><th> Ver </th>
+    </tr>
+{% for unidad in unidades %}
+    <tr>
+        <td><a>{{ unidad.id }}</a></td>
+        <td><a>{{ unidad.tipohemocomponente }}</a></td>
+        <td><a>{{ unidad.vencimiento |date('d/m/Y') }}</a></td>
+        <td><a>{{ unidad.estado }}</a></td>
+        <td><a>VER</a></td>
+       {#<td class="link"><a href="{{ path('ver_unidad', {'id':unidad.id}) }}">Ver</a></td> #}
+    </tr>
+{% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+{% endfor %}
+</table>

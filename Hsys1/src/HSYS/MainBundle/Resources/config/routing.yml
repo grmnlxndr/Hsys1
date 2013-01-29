@@ -129,6 +129,13 @@ buscar_unidad_estado:
   pattern: /sangre/buscarestado
   defaults: { _controller: HSYSMainBundle:Sangre:buscarEstado }
 
+buscar_unidad_fecha:
+  pattern: /sangre/buscarfecha
+  defaults: { _controller: HSYSMainBundle:Sangre:buscarfecha }
+
+buscar_unidad_donacion:
+  pattern: /sangre/buscardonacion
+  defaults: { _controller: HSYSMainBundle:Sangre:buscardonacion }
 #ANALISIS
 pagina_analisis:
   pattern: /analisis

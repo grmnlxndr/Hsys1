@@ -1,13 +1,14 @@
 {% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
 
-{% block title %}Buscar por id{% endblock %}
+{% block title %}Buscar{% endblock %}
 
 {% block contenido %}
-<h3>Buscar Unidad por ID:</h3>
-    <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_unidad_id') }}">
+
+<h3>Buscar Unidad por Codigo de Donacion:</h3>
+    <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_unidad_donacion') }}">
     <table>
         <tr>
-            <td><label for="criterio">ID de unidad: </label></td>
+            <td><label for="criterio">Codigo de donacion: </label></td>
             <td><input id="buscar" name="buscar" type="text" style="width: 120px"/></td>   
             <td><input type="submit" value="Buscar"/></td>
         </tr>
@@ -15,7 +16,9 @@
 </form>
 <br/>
 {% if metodo %}
+
 {% include 'HSYSMainBundle:Sangre:resultados.html.twig' with {'unidades': unidades} %}
+
 {% endif %}
 
 {% endblock %}
