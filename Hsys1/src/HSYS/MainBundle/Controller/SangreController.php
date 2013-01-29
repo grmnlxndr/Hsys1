@@ -17,8 +17,8 @@ class SangreController extends Controller
         if ($request->getMethod()=='POST'){
             $metodo = true;
             $em = $this->getDoctrine()->getEntityManager();
-            $criterio = $request->request->get('buscar');
-            $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadPorId($criterio);
+            $buscar = $request->request->get('buscar');
+            $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadPorId($buscar);
         };
         return $this->render('HSYSMainBundle:Sangre:buscarid.html.twig', array('unidades'=>$unidades,'metodo'=>$metodo));
     }
@@ -31,11 +31,24 @@ class SangreController extends Controller
         $unidades = array();
         if ($request->getMethod()=='POST'){
             $metodo = true;
-            $criterio = $request->request->get('buscar');
-            $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadPorId($criterio);
+            $buscar = $request->request->get('buscar');
+            $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadTipoHemocomponente($buscar);
         };        
-        
         return $this->render('HSYSMainBundle:Sangre:buscartipohemocomponente.html.twig',array('unidades'=>$unidades, 'metodo'=>$metodo,'tiposhemocomponentes'=>$tiposhemocomponentes));
+    }
+    
+    public function buscarEstadoAction(){
+        $request = $this->getRequest();
+        $estados= \HSYS\MainBundle\Entity\estadoUnidad::$estados;
+        $metodo = false;
+        $unidades = array();
+        if ($request->getMethod()=='POST'){
+            $em = $this->getDoctrine()->getEntityManager();
+            $metodo = true;
+            $buscar = $request->request->get('buscar');
+            $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadPorEstado($buscar);
+        };        
+        return $this->render('HSYSMainBundle:Sangre:buscarestado.html.twig',array('unidades'=>$unidades, 'metodo'=>$metodo,'estados'=>$estados));
     }
     
 }
