@@ -67,8 +67,12 @@ class DonacionController extends Controller {
         if ($request->getMethod() == 'POST') {
             $em = $this->getDoctrine()->getEntityManager();
             $numero = $request->request->get('numDonacion');
-            $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorId($numero);
-            return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig', array('donaciones' => $donaciones,));
+            if ($numero == '') {
+                return $this->redirect($this->generateUrl('pagina_donacion'));
+            } else {
+                $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorId($numero);
+                return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig', array('donaciones' => $donaciones,));
+            }
         } else {
             return $this->redirect($this->generateUrl('pagina_donacion'));
         }
@@ -149,14 +153,21 @@ class DonacionController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
 
         $bolsa = new Unidad();
-        $bolsa->setEstado('bloqueado');
+        $bolsa->setEstado('Bloqueado');
         $bolsa->setIdbolsa($idbolsa);
         //$bolsa->setVencimiento($fecha);
         $bolsa->setVolumen($volumen);
+
         //buscar sangre entera y hacer
-        //$bolsa->setTipoHemocomponente($TipoHemocomponente);
-        $em->persist($bolsa);
-        $em->flush();
+        $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
+        $bolsa->setTipoHemocomponente($tipohemo);
+        $sumarU = '+' . $tipohemo->getDuracion() . ' day';
+        $vencimiento = strtotime($sumarU, strtotime($fecha));
+        $vencimiento = date('Y-m-j', $vencimiento);
+        $fechaformatvenc = new \DateTime;
+        $fechaformatvenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
+        $bolsa->setVencimiento($fechaformatvenc);
+        
 
 
         $donacion = new Donacion();
@@ -169,6 +180,11 @@ class DonacionController extends Controller {
         $donacion->setComentario($comentarios);
 
         $em->persist($donacion);
+        $em->flush();
+        
+        //guardo el id de donacion y flusheo la unidad
+        $bolsa->setDonacion($donacion);
+        $em->persist($bolsa);
         $em->flush();
 
         //Exclusion por donar
@@ -183,14 +199,14 @@ class DonacionController extends Controller {
         $fechaformat1 = new \DateTime;
         $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
         $exclusion->setFechfin($fechaformat1);
-        
-        $comentario = 'Excluido por donación voluntaria ID: '. $donacion->getId();
+
+        $comentario = 'Excluido por donación voluntaria ID: ' . $donacion->getId();
         $exclusion->setComentario($comentario);
-        
+
         $em->persist($exclusion);
         $em->flush();
 
-        return $this->render('HSYSMainBundle:Donacion:index.html.twig');
+        return $this->render('HSYSMainBundle:Donacion:ver.html.twig', array('donacion' => $donacion));
     }
 
     public function receptorAction() {
@@ -259,14 +275,20 @@ class DonacionController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
 
         $bolsa = new Unidad();
-        $bolsa->setEstado('bloqueado');
+        $bolsa->setEstado('Bloqueado');
         $bolsa->setIdbolsa($idbolsa);
         //$bolsa->setVencimiento($fecha);
         $bolsa->setVolumen($volumen);
         //buscar sangre entera y hacer
-        //$bolsa->setTipoHemocomponente($TipoHemocomponente);
-        $em->persist($bolsa);
-        $em->flush();
+        $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
+        $bolsa->setTipoHemocomponente($tipohemo);
+        $sumarU = '+' . $tipohemo->getDuracion() . ' day';
+        $vencimiento = strtotime($sumarU, strtotime($fecha));
+        $vencimiento = date('Y-m-j', $vencimiento);
+        $fechaformatvenc = new \DateTime;
+        $fechaformatvenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
+        $bolsa->setVencimiento($fechaformatvenc);
+       
 
 
         $donacion = new Donacion();
@@ -282,6 +304,12 @@ class DonacionController extends Controller {
         $em->persist($donacion);
         $em->flush();
         
+        
+        //guardo el id de donacion y flusheo la unidad
+        $bolsa->setDonacion($donacion);
+        $em->persist($bolsa);
+        $em->flush();
+        
         //Exclusion por donar
         $exclusion = new \HSYS\MainBundle\Entity\Exclusion;
         $tipodeexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findOneBy(array('nombre' => 'Exclusion por donacion'));
@@ -294,10 +322,10 @@ class DonacionController extends Controller {
         $fechaformat1 = new \DateTime;
         $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
         $exclusion->setFechfin($fechaformat1);
-        
-        $comentario = 'Excluido por donación con Receptor ID: '. $donacion->getId();
+
+        $comentario = 'Excluido por donación con Receptor ID: ' . $donacion->getId();
         $exclusion->setComentario($comentario);
-        
+
         $em->persist($exclusion);
         $em->flush();
 
