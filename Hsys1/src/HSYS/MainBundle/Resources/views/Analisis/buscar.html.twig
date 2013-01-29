@@ -27,7 +27,7 @@
     <tr>
         <td><a>{{ analisi.id }}</a></td>
         <td><a>{{ analisi.reactivo }}</a></td>
-        <td class="link"><a href="TWIIIG_VER">Ver</a></td>
+        <td class="link"><a href="{{ path('ver_analisis', {'id':analisi.id})  }}">Ver</a></td>
         <td class="link"><a href="{{ path('modificar_analisis', {'id':analisi.id})  }}">Modificar</a></td>
     </tr>
 {% else %}

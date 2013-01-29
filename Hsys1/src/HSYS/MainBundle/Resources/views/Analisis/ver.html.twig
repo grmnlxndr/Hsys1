@@ -22,7 +22,7 @@
     <tr>
         <th>ID de Bolsa: </th>
         <td>{{ donacion.idbolsa }}</td>
-    </tr>
+    </tr
     <tr>
         <th>REACTIVO: </th>
         {% if analisis.reactivo == 'SI' %}
@@ -30,7 +30,6 @@
         {% else %}
             <td><b>{{ analisis.reactivo }}</b></td>
         {% endif %}
-        <td><b>{{ analisis.reactivo }}</b></td>
     </tr>
     <tr>
         <th>ID de donación: </th>
@@ -39,6 +38,9 @@
     <tr>
         <th>Fecha de extracción:  </th>
         <td>{{ donacion.fechextraccion|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+        <th colspan="2">Detalle del Análisis: </th>
     </tr>
     <tr>
         <th>CHHAI: </th>

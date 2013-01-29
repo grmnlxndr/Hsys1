@@ -79,6 +79,10 @@ class AnalisisController extends Controller
                 $fechanalisis = new \DateTime();
                 $fechanalisis->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
                 $analisis->setFechanalisis($fechanalisis);
+                
+                $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
+                $donacion->setAnalisis($analisis);
+                
                 $em->persist($analisis);
                 $em->flush();
                 return $this->redirect($this->generateURL('confirmacion_analisis', array('accion' => 'agregado', 'id' => $analisis->getId())));
@@ -110,7 +114,7 @@ class AnalisisController extends Controller
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
 
-        $analisis = $em->getRepository('HSYSMainBundle:analisis')->find($id);
+        $analisis = $em->getRepository('HSYSMainBundle:Analisis')->find($id);
         //hacer mas lindo el error
         if (!$analisis) {
             throw $this->createNotFoundException(
@@ -134,16 +138,16 @@ class AnalisisController extends Controller
         return $this->render('HSYSMainBundle:Analisis:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
     }
     
-    public function verAnalisis($id){
+    public function verAction($id){
         $em = $this->getDoctrine()->getEntityManager();
-        $analsis = $em->getRepository('HSYSMainBundle:analisis')->find($id);
-        if (!$analsis){
-            
+        $analisis = $em->getRepository('HSYSMainBundle:Analisis')->find($id);
+        if (!$analisis){
+            return $this->redirect('pagina_analisis');
         }
         
-        $donacion = $analsis.getDonacion();
+        $donacion = $analisis->getDonacion();
         
-        return $this->render('HSYSMainBundle:Analisis:ver.html.twig', array('analisis' => $analisis, 'donacion' => $donacion,));
+        return $this->render('HSYSMainBundle:Analisis:ver.html.twig', array('analisis' => $analisis, 'donacion' => $donacion));
         
     }
 }
