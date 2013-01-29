@@ -16,22 +16,22 @@ class DonacionController extends Controller {
     }
 
     public function nuevoAction() {
-        $request = $this->getRequest();
-
-        $donacion = new Donacion();
-        $form = $this->createForm(new DonacionType(), $donacion);
-
-        if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($donacion);
-                $em->flush();
-                return $this->redirect($this->generateURL('confirmacion_donacion'));
-                //aca poner respuesta no se como
-            }
-        }
-        return $this->render('HSYSMainBundle:Donacion:nuevo.html.twig', array('form' => $form->createView(),));
+//        $request = $this->getRequest();
+//
+//        $donacion = new Donacion();
+//        $form = $this->createForm(new DonacionType(), $donacion);
+//
+//        if ($request->getMethod() == 'POST') {
+//            $form->bindRequest($request);
+//            if ($form->isValid()) {
+//                $em = $this->getDoctrine()->getEntityManager();
+//                $em->persist($donacion);
+//                $em->flush();
+//                return $this->redirect($this->generateURL('confirmacion_donacion'));
+//                //aca poner respuesta no se como
+//            }
+//        }
+        return $this->render('HSYSMainBundle:Donacion:nuevo.html.twig');
     }
 
     public function modificarAction($id) {
@@ -160,7 +160,8 @@ class DonacionController extends Controller {
 
 
         $donacion = new Donacion();
-        $donacion->setDonante($em->getRepository('HSYSMainBundle:Donante')->find($idDonante));
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($idDonante);
+        $donacion->setDonante($donante);
         $donacion->setIdbolsa($idbolsa);
         $fechaformat = new \DateTime;
         $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
@@ -168,6 +169,25 @@ class DonacionController extends Controller {
         $donacion->setComentario($comentarios);
 
         $em->persist($donacion);
+        $em->flush();
+
+        //Exclusion por donar
+        $exclusion = new \HSYS\MainBundle\Entity\Exclusion;
+        $tipodeexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findOneBy(array('nombre' => 'Exclusion por donacion'));
+        $exclusion->setTipoExclusion($tipodeexclusion);
+        $exclusion->setDonante($donante);
+        $exclusion->setFechini($fechaformat);
+        $sumar = '+' . $tipodeexclusion->getDuracion() . ' day';
+        $nuevafecha = strtotime($sumar, strtotime($fecha));
+        $nuevafecha = date('Y-m-j', $nuevafecha);
+        $fechaformat1 = new \DateTime;
+        $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
+        $exclusion->setFechfin($fechaformat1);
+        
+        $comentario = 'Excluido por donación voluntaria ID: '. $donacion->getId();
+        $exclusion->setComentario($comentario);
+        
+        $em->persist($exclusion);
         $em->flush();
 
         return $this->render('HSYSMainBundle:Donacion:index.html.twig');
@@ -250,7 +270,8 @@ class DonacionController extends Controller {
 
 
         $donacion = new Donacion();
-        $donacion->setDonante($em->getRepository('HSYSMainBundle:Donante')->find($idDonante));
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($idDonante);
+        $donacion->setDonante($donante);
         $donacion->setReceptor($em->getRepository('HSYSMainBundle:Donante')->find($idReceptor));
         $donacion->setIdbolsa($idbolsa);
         $fechaformat = new \DateTime;
@@ -259,6 +280,25 @@ class DonacionController extends Controller {
         $donacion->setComentario($comentarios);
 
         $em->persist($donacion);
+        $em->flush();
+        
+        //Exclusion por donar
+        $exclusion = new \HSYS\MainBundle\Entity\Exclusion;
+        $tipodeexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findOneBy(array('nombre' => 'Exclusion por donacion'));
+        $exclusion->setTipoExclusion($tipodeexclusion);
+        $exclusion->setDonante($donante);
+        $exclusion->setFechini($fechaformat);
+        $sumar = '+' . $tipodeexclusion->getDuracion() . ' day';
+        $nuevafecha = strtotime($sumar, strtotime($fecha));
+        $nuevafecha = date('Y-m-j', $nuevafecha);
+        $fechaformat1 = new \DateTime;
+        $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
+        $exclusion->setFechfin($fechaformat1);
+        
+        $comentario = 'Excluido por donación con Receptor ID: '. $donacion->getId();
+        $exclusion->setComentario($comentario);
+        
+        $em->persist($exclusion);
         $em->flush();
 
         return $this->render('HSYSMainBundle:Donacion:ver.html.twig', array('donacion' => $donacion));
