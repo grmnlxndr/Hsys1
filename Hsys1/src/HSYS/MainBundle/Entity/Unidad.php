@@ -44,7 +44,7 @@ class Unidad {
 
     /**
      * @var string
-     *
+     * los estados pueden ser: bloqueado, desbloqueado, transfundido, desechado (=vencimiento??), fraccionado (ojo esto es solo para sangre entera).
      * @ORM\Column(name="estado", type="string", length=30, nullable=true)
      */
     private $estado;

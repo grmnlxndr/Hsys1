@@ -117,6 +117,10 @@ pagina_sangre:
   pattern: /sangre
   defaults: { _controller: HSYSMainBundle:Sangre:index }
 
+buscar_unidad_id:
+  pattern: /sangre/buscarid
+  defaults: { _controller: HSYSMainBundle:Sangre:buscarid }
+
 #ANALISIS
 pagina_analisis:
   pattern: /analisis

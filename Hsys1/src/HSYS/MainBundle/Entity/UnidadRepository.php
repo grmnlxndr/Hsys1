@@ -12,4 +12,59 @@ use Doctrine\ORM\EntityRepository;
  */
 class UnidadRepository extends EntityRepository
 {
+    public function findUnidadTipoHemocomponente($tipohemocomponente) {
+        $em = $this->getEntityManager();
+        $dql = "select u from HSYSMainBundle:Unidad u where u.tipohemocomponente like :tipohemocomponente";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('tipohemocomponente', '%'.$tipohemocomponente.'%');
+        
+        $unidades = $query->getResult();
+        return $unidades;
+    }
+    
+        public function findUnidadPorEstado($estado) {
+        $em = $this->getEntityManager();
+        $dql = "select u from HSYSMainBundle:Unidad u where u.estado like :estado";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('estado', '%'.$estado.'%');
+        
+        $unidades = $query->getResult();
+        return $unidades;
+    }
+    
+        public function findUnidadRangoFecha($desde, $hasta) {
+        $em = $this->getEntityManager();
+        $dql = "select u from HSYSMainBundle:Unidad u where u.vencimiento >= :desde and u.vencimiento <= :hasta";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('desde', $desde);
+        $query->setParameter('hasta', $hasta);
+        
+        $unidades = $query->getResult();
+        return $unidades;
+    }
+    
+        public function findUnidadPorId($id) {
+        $em = $this->getEntityManager();
+        $dql = "select u from HSYSMainBundle:Unidad u where u.id like :id";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('id', '%'.$id.'%');
+        
+        $unidades = $query->getResult();
+        return $unidades;
+    }
+    
+        public function findUnidadPorDonacion($iddonacion) {
+        $em = $this->getEntityManager();
+        $dql = "select u from HSYSMainBundle:Unidad u where u.iddonacion like :iddonacion";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('iddonacion', '%'.$iddonacion.'%');
+        
+        $unidades = $query->getResult();
+        return $unidades;
+    }
 }

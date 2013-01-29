@@ -91,4 +91,8 @@ class TipoHemocomponente
     {
         return $this->duracion;
     }
+    
+    public function __toString() {
+        return $this->getNombre();
+    }
 }

@@ -1,0 +1,29 @@
+{% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
+
+{% block title %}Buscar{% endblock %}
+
+{% block contenido %}
+    <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_unidad') }}">
+    <table>
+        <tr>
+            <td><label for="criterio">Criterio: </label></td>
+            <td><select name="criterio" id="criterio" style="width: 160px">
+                    <option value="id">Numero de unidad</option>
+                    <option value="tipohemocomponente">Tipo de hemocomponente</option>
+                    <option value="rangofecha">Rango de Fecha</option>
+                    <option value="estado">Estado</option>
+                    <option value="donacion">Donacion</option>
+                </select></td>
+         </tr>
+         <tr>
+            <td><label>Búsqueda: </label></td>
+            <td><input id="buscar" name="buscar" type="text" style="width: 120px"/></td>   
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+
+
+
+{% endblock %}
