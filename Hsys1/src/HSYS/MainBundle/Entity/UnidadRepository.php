@@ -75,4 +75,29 @@ class UnidadRepository extends EntityRepository {
         return $unidades;
     }
 
+    public function findUnidadAvanzada($desde, $hasta, $estado, $tipo) {
+        if (!$desde) {
+            $desde = new \DateTime('1900-01-01');
+        }
+        if (!$hasta) {
+            $hasta = new \DateTime('2999-12-31');
+        }
+        $em = $this->getEntityManager();
+        if (!$tipo) {
+            $dql = "select u from HSYSMainBundle:Unidad u where u.vencimiento >= :desde and u.vencimiento <= :hasta and u.estado like :estado order by u.vencimiento asc";
+            $query = $em->createQuery($dql);
+        } else {
+            $dql = "select u from HSYSMainBundle:Unidad u where u.vencimiento >= :desde and u.vencimiento <= :hasta and u.estado like :estado and u.TipoHemocomponente = :tipo order by u.vencimiento asc";
+            $query = $em->createQuery($dql);
+            $query->setParameter('tipo', $tipo);
+        }
+
+        $query->setParameter('estado', '%' . $estado . '%');
+        $query->setParameter('desde', $desde);
+        $query->setParameter('hasta', $hasta);
+
+        $unidades = $query->getResult();
+        return $unidades;
+    }
+
 }

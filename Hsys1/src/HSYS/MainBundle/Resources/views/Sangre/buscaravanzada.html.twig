@@ -1,0 +1,46 @@
+{% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
+
+{% block title %}Búsqueda Avanzada{% endblock %}
+
+{% block contenido %}
+<h3>Búsqueda Avanzada de Unidades:</h3>
+<form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_unidad_avanzada') }}">
+    <table>
+        <tr>
+            <label>Desde: </label>
+            <input id="desde" name="desde" type="date" style="width: 120px" {#value="{{ "now"|date('Y-m-d') }}"#}/>
+            <label> Hasta: </label>
+            <input id="hasta" name="hasta" type="date" style="width: 120px" {#value="{{ "now"|date('Y-m-d') }}"#}/>
+        </tr>
+        <tr>
+            <td><label>Tipo Hemocomponente: </label></td>
+            <td><select name="tipo" id="tipo" style="width: 160px">
+                    <option value="">TODOS</option>
+                    {% for tipohemocomponente in tiposhemocomponentes %}
+                    <option value="{{tipohemocomponente.id}}">{{tipohemocomponente}}</option>
+                    {% endfor %}
+                </select></td>
+        </tr>
+        <tr>
+            <td><label>Estado: </label></td>
+            <td><select name="estado" id="estado" style="width: 160px">
+                    <option value="">TODOS</option>
+                    {% for estado in estados %}
+                    <option value="{{estado}}">{{estado}}</option>
+                    {% endfor %}
+                </select></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+
+{% if metodo %}
+{% include 'HSYSMainBundle:Sangre:resultados.html.twig' with {'unidades': unidades} %}
+{% endif %}
+
+
+
+{% endblock %}

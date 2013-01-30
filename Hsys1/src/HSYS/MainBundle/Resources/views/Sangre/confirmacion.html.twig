@@ -1,0 +1,15 @@
+{% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
+
+{% block title %}Confirmado{% endblock %}
+
+{% block contenido %}
+<div class="consulta">
+    Enhorabuena, la unidad con el id "{{ id }}" ha sido correctamente {{ accion }}.
+</div>
+<br/>
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('pagina_sangre') }}">Haga clic aquí para continuar</a></li>
+    </ul>
+</div>
+{% endblock %}
