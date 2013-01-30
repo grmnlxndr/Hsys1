@@ -153,6 +153,10 @@ crearfraccionamiento_unidad:
   pattern: /sangre/crearfraccionamiento/{id}
   defaults: { _controller: HSYSMainBundle:Sangre:crearfraccionamiento}
 
+confirmacionfracionamiento_unidad:
+  pattern: /sangre/confirmacionfraccionamiento/{id}
+  defaults: { _controller: HSYSMainBundle:Sangre:confirmacionfracionamiento}
+
 #ANALISIS
 pagina_analisis:
   pattern: /analisis

@@ -39,9 +39,9 @@
 </form>
 
 </br>
-<form id="verUnidad" name="verUnidad" method="post" action="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">
+<form id="verUnidad" name="verUnidad" method="post" action="{{path('confirmacionfracionamiento_unidad',{'id':unidad.id})}}">
     <h3> Unidades Fraccionadas </h3>
-{% include 'HSYSMainBundle:Sangre:resultados.html.twig' with {'unidades': unidades} %}
+    {% include 'HSYSMainBundle:Sangre:resultados.html.twig' with {'unidades': unidades} %}
 <input type="submit" value="Terminar"/></td>
 </form>
 
