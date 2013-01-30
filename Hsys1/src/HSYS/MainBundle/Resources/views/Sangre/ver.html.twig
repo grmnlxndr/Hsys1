@@ -1,0 +1,45 @@
+{% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
+
+{% block title %}Ver Unidad {{ Unidad.id }}{% endblock %}
+
+{% block contenido %}
+
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('modificarestado_unidad',{'id':Unidad.id}) }}">Modificar Estado</a></li>
+        {% if Unidad.tipohemocomponente =="Sangre Entera" %}
+        <li><a href="{{ path('crearfraccionamiento_unidad',{'id':Unidad.id}) }}">Crear Fraccionamiento</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+</br>
+<table class="detalle">
+    <tr>
+        <th>Codigo: </th>
+        <td>{{ Unidad.id }}</td>
+    </tr>
+    <tr>
+        <th>Fecha de vencimiento: </th>
+        <td>{{ Unidad.vencimiento | date("d/m/Y")  }}</td>
+    </tr>
+    <tr>
+        <th>Codigo de Bolsa: </th>
+        <td>{{ Unidad.idbolsa }}</td>
+    </tr>
+    <tr>
+        <th>Tipo de Hemocomponente: </th>
+        <td>{{ Unidad.tipohemocomponente }}</td>
+    </tr>
+    <tr>
+        <th>Estado: </th>
+        <td>{{ Unidad.estado }}</td>
+    </tr>
+    <tr>
+        <th>Volumen: </th>
+        <td>{{ Unidad.volumen }}</td>
+    </tr>
+</table>
+
+
+{% endblock %}

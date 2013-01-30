@@ -80,4 +80,16 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:Buscardonacion.html.twig', array('unidades' => $unidades, 'metodo' => $metodo));
     }
 
+    public function verAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $unidad = new \HSYS\MainBundle\Entity\Unidad;
+        $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
+        
+        
+        
+        return $this->render('HSYSMainBundle:Sangre:ver.html.twig', array('Unidad' => $unidad));  
+    }
+    
+    
 }
+?>

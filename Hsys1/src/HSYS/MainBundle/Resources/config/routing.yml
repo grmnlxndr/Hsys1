@@ -136,6 +136,19 @@ buscar_unidad_fecha:
 buscar_unidad_donacion:
   pattern: /sangre/buscardonacion
   defaults: { _controller: HSYSMainBundle:Sangre:buscardonacion }
+
+ver_unidad:
+  pattern: /sangre/ver/{id}
+  defaults: { _controller: HSYSMainBundle:Sangre:ver}
+
+modificarestado_unidad:
+  pattern: /sangre/modificarestado/{id}
+  defaults: { _controller: HSYSMainBundle:Sangre:modificarestado}
+
+crearfraccionamiento_unidad:
+  pattern: /sangre/crearfraccionamiento/{id}
+  defaults: { _controller: HSYSMainBundle:Sangre:crearfraccionamiento}
+
 #ANALISIS
 pagina_analisis:
   pattern: /analisis

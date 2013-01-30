@@ -10,8 +10,7 @@
         <td><a>{{ unidad.tipohemocomponente }}</a></td>
         <td><a>{{ unidad.vencimiento |date('d/m/Y') }}</a></td>
         <td><a>{{ unidad.estado }}</a></td>
-        <td><a>VER</a></td>
-       {#<td class="link"><a href="{{ path('ver_unidad', {'id':unidad.id}) }}">Ver</a></td> #}
+        <td class="link"><a href="{{ path('ver_unidad', {'id':unidad.id}) }}">Ver</a></td> 
     </tr>
 {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
