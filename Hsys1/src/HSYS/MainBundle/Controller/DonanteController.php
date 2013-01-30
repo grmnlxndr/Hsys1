@@ -91,9 +91,6 @@ class DonanteController extends Controller {
                 $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
                 $exclusion->setFechfin($fechaformat1);
             };
-
-
-
             $exclusion->setComentario($comentarios);
             $em->persist($exclusion);
             $em->flush();

@@ -7,7 +7,7 @@ use \HSYS\MainBundle\Entity\TipoHemocomponente;
 use \HSYS\MainBundle\Entity\TipoExclusion;
 
 class CargadorController extends Controller {
-
+//meter mas datos, como de donante y donaciones, unidades y esas cosas.
     public function cargaAction() {
         $em = $this->getDoctrine()->getEntityManager();
 

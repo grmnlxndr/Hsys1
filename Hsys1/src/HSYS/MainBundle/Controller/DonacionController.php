@@ -137,7 +137,7 @@ class DonacionController extends Controller {
         }
         return $this->render('HSYSMainBundle:Donacion:voluntariaFormulario.html.twig', array('donante' => $donante));
     }
-
+//el encargado de crear una unidad tiene que ser la donacion, el metodo ya esta pero falta implementarlo en este controlador
     public function voluntariaConfirmarAction() {
         $request = $this->getRequest();
         $idDonante = $request->request->get('donante');

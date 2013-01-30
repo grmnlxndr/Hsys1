@@ -503,6 +503,16 @@ class Donante {
         }
     }
 
+    
+    
+    public function excluir(\HSYS\MainBundle\Entity\TipoExclusion $tipoExclusion, $comentarios, $fechaingreso ){
+        //aca meter todo lo que esta en excluirAction
+    }
+
+
+
+
+    //esto es una prueba... quizas va a volar antes de que se encuentre la solucion. no tocar. Esteban :D
     //funcion sacada de http://notasweb.com/articulo/php/ordenar-array-multidimensional-por-un-campo-con-php.html
     function orderMultiDimensionalArray ($toOrderArray, $field, $inverse = false) {  
         $position = array();  
