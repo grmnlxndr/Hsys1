@@ -14,32 +14,5 @@
 </div>
 
 </br>
-<table class="detalle">
-    <tr>
-        <th>Codigo: </th>
-        <td>{{ Unidad.id }}</td>
-    </tr>
-    <tr>
-        <th>Fecha de vencimiento: </th>
-        <td>{{ Unidad.vencimiento | date("d/m/Y")  }}</td>
-    </tr>
-    <tr>
-        <th>Codigo de Bolsa: </th>
-        <td>{{ Unidad.idbolsa }}</td>
-    </tr>
-    <tr>
-        <th>Tipo de Hemocomponente: </th>
-        <td>{{ Unidad.tipohemocomponente }}</td>
-    </tr>
-    <tr>
-        <th>Estado: </th>
-        <td>{{ Unidad.estado }}</td>
-    </tr>
-    <tr>
-        <th>Volumen: </th>
-        <td>{{ Unidad.volumen }}</td>
-    </tr>
-</table>
-
-
+{% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidades': unidades} %}
 {% endblock %}
