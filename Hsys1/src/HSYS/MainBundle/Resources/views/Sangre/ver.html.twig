@@ -1,18 +1,18 @@
 {% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
 
-{% block title %}Ver Unidad {{ Unidad.id }}{% endblock %}
+{% block title %}Ver unidad {{ unidad.id }}{% endblock %}
 
 {% block contenido %}
 
 <div class="detalle">
     <ul>
-        <li><a href="{{ path('modificarestado_unidad',{'id':Unidad.id}) }}">Modificar Estado</a></li>
-        {% if Unidad.tipohemocomponente =="Sangre Entera" %}
-        <li><a href="{{ path('crearfraccionamiento_unidad',{'id':Unidad.id}) }}">Crear Fraccionamiento</a></li>
+        <li><a href="{{ path('modificarestado_unidad',{'id':unidad.id}) }}">Modificar Estado</a></li>
+        {% if unidad.tipohemocomponente =="Sangre Entera" %}
+        <li><a href="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">Crear Fraccionamiento</a></li>
         {% endif %}
     </ul>
 </div>
 
 </br>
-{% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidades': unidades} %}
+{% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
 {% endblock %}

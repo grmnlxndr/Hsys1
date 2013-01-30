@@ -4,23 +4,41 @@
 
 {% block contenido %}
  
-{% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidades': unidades} %}
+{% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
  
- <form id="buscar_form" name="buscar_form" method="post" action="{{ path('modificarestado_unidad') }}">
+ <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('modificarestado_unidad',{'id':unidad.id}) }}">
     <table>
         <tr>
-            <td><label for="criterio">Criterio: </label></td>
-            <td><select name="buscar" id="buscar" style="width: 160px">
+            <td><label for="cambiarestado">Cambiar a Estado: </label></td>
+            <td><select name="nuevoestado" id="nuevoestado" style="width: 160px">
                     {% for estado in estados %}
+                            {% if estado != unidad.estado %}
                     <option value="{{estado}}">{{estado}}</option>
+                        {% endif %}
                     {% endfor %}
                 </select></td>
-            <td><label>Búsqueda: </label></td>  
-            <td><input type="submit" value="Buscar"/></td>
-        </tr>
-    </table>
+            </tr>
+        </table>
+         <div name="confirmacion" id="confirmacion"></div>
+
+            <td><input type="submit" value="Cambiar de estado"/></td>
 </form>
 <br/>
 
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$('input[type="submit"]').attr('disabled','disabled');    
+$("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
+
+$("#nuevoestado").change(function(){
+    $("select option[value='X']").remove();
+    $('input[type="submit"]').removeAttr('disabled');    
+    var nuevoestado = $("#nuevoestado option:selected").attr("value");
+    var viejoestado = "{{unidad.estado}}";
+    $("#confirmacion").html("</br><td><label>Se cambia del estado: {{unidad.estado}} Al estado: "+nuevoestado+" </label></td></br></br>");
+});
+
+
+</script>
 
 {%endblock%}

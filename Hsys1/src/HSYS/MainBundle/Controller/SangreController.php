@@ -83,7 +83,7 @@ class SangreController extends Controller {
     public function verAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
-        return $this->render('HSYSMainBundle:Sangre:ver.html.twig', array('Unidad' => $unidad));  
+        return $this->render('HSYSMainBundle:Sangre:ver.html.twig', array('unidad' => $unidad));  
     }
     
     public function modificarestadoAction($id){
