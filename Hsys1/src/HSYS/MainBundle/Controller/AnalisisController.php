@@ -4,9 +4,15 @@ namespace HSYS\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use HSYS\MainBundle\Entity\analisis;
 use HSYS\MainBundle\Form\analisisType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class AnalisisController extends Controller
 {
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function indexAction() {
         return $this->render('HSYSMainBundle:Analisis:index.html.twig');
     }

@@ -16,8 +16,8 @@
     <div id="usuario">
     	<ul>
         	<li class="trans"><img src="{{ asset('images/user_icon.png') }}"/></li>
-        	<li class="trans"><p>{% block usuario %}{% endblock %}</p></li> 
-        	<li><a href="TWIG LOGOUT" title="Salir">Salir</a></li>
+        	<li class="trans"><p> {% if app.user.username is defined %} {{ app.user.username }} {% else %} Anonimo {% endif %}</p></li> 
+        	<li><a href="{{ path('logout')}}" title="Salir">Salir</a></li>
     	</ul>
     </div>
 	<div id="nav">
