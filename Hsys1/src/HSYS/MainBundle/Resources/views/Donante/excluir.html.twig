@@ -4,23 +4,26 @@
 
 {% block contenido %}
 
-
+<h3>Donante a Excluir:</h3>
 <form id="formulario" name="formulario" action="{{ path('excluir_donante', { 'id' : id }) }}" method="post">
     <div>  
-        Donante a Excluir <br/>
-        <table>
+
+        <table class="detalle">
             <tr>
-                <td><label>ID </label></td>
+                <th style="width: 140px">ID</th>
                 <td>{{ donante.id }}</td>
             </tr>
             <tr>
-                <td><label>DNI </label></td>
+                <th style="width: 140px">DNI</th>
                 <td>{{ donante.dni }}</td>
             </tr>
             <tr>
-                <td><label>Apellido y nombre </label></td>
+                <th style="width: 140px">Apellido y nombre</th>
                 <td>{{ donante.nomapp }}</td>
             </tr>
+
+        </table>
+        <table>
 
 
             <tr><td><br/></td></tr>
@@ -28,82 +31,82 @@
                 <td><label> Seleccione un tipo de exclusion: <label> </td>
                             <td> <select id="tipodeexclusion" name="tipodeexclusion">
                                     {% for tipoexclusion in tiposExclusion %}
-                                 <option id="{{ tipoexclusion.duracion }}" value="{{ tipoexclusion.id }}">{{ tipoexclusion }}</option>
+                                            <option id="{{ tipoexclusion.duracion }}" value="{{ tipoexclusion.id }}">{{ tipoexclusion }}</option>
                                     {% endfor %}
-                                </select> 
-                            </td> 
-            </tr>
-            <tr>
-                <td><label id="dias"></label></td>
-                <td> <label id="tiempo"></label> </td>  
-           </tr> 
-           <tr>
-               <td id="fechainiciotitulo"></td>
-               <td id="fechainicioinput"></td>
-               
-           </tr>
-           <tr>
-               <td><label id="total"></label></td>
-               <td><label id="fecha"></label></td>
-           </tr>
-           <tr><td id="comentartitulo" ></td>
-               <td id ="comentarcontenido" ></td>
-           </tr>
-     </table>
-  </div>
+                                        </select> 
+                                    </td> 
+                                    </tr>
+                                    <tr>
+                                        <td><label id="dias"></label></td>
+                                        <td> <label id="tiempo"></label> </td>  
+                                    </tr> 
+                                    <tr>
+                                        <td id="fechainiciotitulo"></td>
+                                        <td id="fechainicioinput"></td>
 
- <input type="submit" />
-</form>
+                                    </tr>
+                                    <tr>
+                                        <td><label id="total"></label></td>
+                                        <td><label id="fecha"></label></td>
+                                    </tr>
+                                    <tr><td id="comentartitulo" ></td>
+                                        <td id ="comentarcontenido" ></td>
+                                    </tr>
+                                    </table>
+                                    </div>
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script>
+                                    <input type="submit" />
+                                    </form>
 
-$('input[type="submit"]').attr('disabled','disabled');    
+                                    <script src="http://code.jquery.com/jquery-latest.js"></script>
+                                    <script>
+
+                                    $('input[type="submit"]').attr('disabled','disabled');    
     
-$("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
-$("select").change(function(){ $("select option[value='X']").remove();
-    $("#comentartitulo").html('<label>Comentario: </label>');   
-    $("#comentarcontenido").html( '<textarea id="comentarios" name="comentarios" form="formulario" rows="5" style="auto"></textarea>'  );
-    $("#fechainiciotitulo").html('<label>Fecha de inicio</label>');
-    $("#fechainicioinput").html('<input  id="fechaingreso" name="fechaingreso" type="date" value="{{ "now"|date('Y-m-d') }}"/>');
-    $('input[type="submit"]').removeAttr('disabled');
-});
+                                    $("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
+                                    $("select").change(function(){ $("select option[value='X']").remove();
+                                        $("#comentartitulo").html('<label>Comentario: </label>');   
+                                        $("#comentarcontenido").html( '<textarea id="comentarios" name="comentarios" form="formulario" rows="5" style="auto"></textarea>'  );
+                                        $("#fechainiciotitulo").html('<label>Fecha de inicio</label>');
+                                        $("#fechainicioinput").html('<input  id="fechaingreso" name="fechaingreso" type="date" value="{{ "now"|date('Y-m-d') }}"/>');
+                                        $('input[type="submit"]').removeAttr('disabled');
+                                    });
 
 
 
 
-$("#tipodeexclusion").change(function(){
-var srt = $("#tipodeexclusion option:selected").attr("id");
-var cantidad = srt;
-$("#dias").text("La cantidad de dias son: ");
-$("#total").text("Dura hasta");
-if ("0" == srt) {
-        $("#tiempo").text("Exclusion permanente.");
-        $("#fecha").text("Indeterminado.");
-    } else {
-        $("#tiempo").text(srt);
-        //var fe = new Date();
-        var fecha1 = $('#fechaingreso').get(0).value;
-        var fecha12 = fecha1.split('-');
-        var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
-        var fechactual = fe.valueOf();
-        var fechsalida = new Date(fechactual + ( cantidad * 86400000 ) );
-        $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
-        };
+                                    $("#tipodeexclusion").change(function(){
+                                    var srt = $("#tipodeexclusion option:selected").attr("id");
+                                    var cantidad = srt;
+                                    $("#dias").text("La cantidad de dias son: ");
+                                    $("#total").text("Dura hasta");
+                                    if ("0" == srt) {
+                                            $("#tiempo").text("Exclusion permanente.");
+                                            $("#fecha").text("Indeterminado.");
+                                        } else {
+                                            $("#tiempo").text(srt);
+                                            //var fe = new Date();
+                                            var fecha1 = $('#fechaingreso').get(0).value;
+                                            var fecha12 = fecha1.split('-');
+                                            var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
+                                            var fechactual = fe.valueOf();
+                                            var fechsalida = new Date(fechactual + ( cantidad * 86400000 ) );
+                                            $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
+                                            };
 
-$('#fechaingreso').change(function() {
-    var srt = $("#tipodeexclusion option:selected").attr("id");
-    if ("0" != srt){    
-        var fecha1 = $('#fechaingreso').get(0).value;
-        var fecha12 = fecha1.split('-');
-        var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
-        var fechactual = fe.valueOf();
-        var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
-        $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
-        }
-});
-});
-</script>
+                                    $('#fechaingreso').change(function() {
+                                        var srt = $("#tipodeexclusion option:selected").attr("id");
+                                        if ("0" != srt){    
+                                            var fecha1 = $('#fechaingreso').get(0).value;
+                                            var fecha12 = fecha1.split('-');
+                                            var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
+                                            var fechactual = fe.valueOf();
+                                            var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
+                                            $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
+                                            }
+                                    });
+                                    });
+                                        </script>
 
 
 {% endblock %}
