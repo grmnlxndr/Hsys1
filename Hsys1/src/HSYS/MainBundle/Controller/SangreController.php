@@ -82,13 +82,12 @@ class SangreController extends Controller {
     public function verAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
-        return $this->render('HSYSMainBundle:Sangre:ver.html.twig', array('unidad' => $unidad));  
+        return $this->render('HSYSMainBundle:Sangre:ver.html.twig', array('unidad' => $unidad));
     }
-    
-    public function modificarestadoAction($id){
+
+    public function modificarestadoAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
-        $unidad = new \HSYS\MainBundle\Entity\Unidad;
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
         if ($request->getMethod() == 'POST') {
@@ -96,13 +95,13 @@ class SangreController extends Controller {
             $unidad->setEstado($nuevoestado);
             $em->persist($unidad);
             $em->flush();
-            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion'=>'modificado el estado a "'.$unidad->getEstado().'"'));
+            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'modificado el estado a "' . $unidad->getEstado() . '"'));
         }
-        
-        return $this->render('HSYSMainBundle:Sangre:modificarestado.html.twig', array('unidad' => $unidad, 'estados'=>$estados));
+
+        return $this->render('HSYSMainBundle:Sangre:modificarestado.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
-    
-        public function buscaravanzadaAction() {
+
+    public function buscaravanzadaAction() {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
         $tiposhemocomponentes = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findAll();
@@ -113,12 +112,31 @@ class SangreController extends Controller {
             $em = $this->getDoctrine()->getEntityManager();
             $metodo = true;
             $desde = $request->request->get('desde');
-            $hasta = $request->request->get('hasta');            
+            $hasta = $request->request->get('hasta');
             $estado = $request->request->get('estado');
             $tipo = $request->request->get('tipo');
             $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadAvanzada($desde, $hasta, $estado, $tipo);
         };
         return $this->render('HSYSMainBundle:Sangre:buscaravanzada.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'estados' => $estados, 'tiposhemocomponentes' => $tiposhemocomponentes));
     }
+
+    public function crearfraccionamientoAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+        $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
+        $donacion = new \HSYS\MainBundle\Entity\Donacion;
+        $donacion = $unidad->getDonacion();
+        if ($request->getMethod() == 'POST') {
+            $volumen = $request->request->get('volumen');
+            $idtipohemo = $request->request->get('tipohemocomponente');
+            $tipohemocomponente = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->find($idtipohemo);
+            $donacion->crearUnidad($tipohemocomponente, $volumen);
+        }
+        $tiposhemocomponentes = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findAll();
+        $unidades = $donacion->getUnidades();
+        return $this->render('HSYSMainBundle:Sangre:crearfraccionamiento.html.twig', array('unidad' => $unidad, 'tiposhemocomponentes' => $tiposhemocomponentes, 'unidades' => $unidades));
+    }
+
 }
+
 ?>

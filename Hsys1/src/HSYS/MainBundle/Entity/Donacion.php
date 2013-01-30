@@ -145,7 +145,7 @@ class Donacion {
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="Unidad", mappedBy="Donacion")
+     * @ORM\OneToMany(targetEntity="Unidad", mappedBy="Donacion", cascade={"persist"})
      */
     private $Unidades;
 
@@ -161,10 +161,11 @@ class Donacion {
         return $this->Unidades;
     }
 
-    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $estado = "Bloqueado",$fecharealizacion = null){
+    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $fecharealizacion = null, $estado = "Bloqueado"){
         $nuevaunidad = new Unidad;
         if ($fecharealizacion == null){
-            $fecharealizacion = $this->fechextraccion;
+            $fecharealizacion1 = $this->fechextraccion;
+            $fecharealizacion = $fecharealizacion1->format('Y-m-d');
         }
         $sumar = '+' . $TipoHemocomponente->getDuracion() . ' day';
         $vencimiento = strtotime($sumar, strtotime($fecharealizacion));
@@ -177,7 +178,7 @@ class Donacion {
         $nuevaunidad->setIdbolsa($this->getIdbolsa());
         $nuevaunidad->setTipoHemocomponente($TipoHemocomponente);
         $nuevaunidad->setEstado($estado);
-        
+        $nuevaunidad->setDonacion($this);
         $this->addUnidades($nuevaunidad);
     }
     /**

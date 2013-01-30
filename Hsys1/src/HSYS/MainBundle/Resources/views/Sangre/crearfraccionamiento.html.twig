@@ -1,0 +1,62 @@
+{% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
+
+{% block title %}Crear un fraccionamiento{% endblock %}
+
+{% block contenido %}
+
+{% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
+</br>
+<form id="crearUnidad" name="crearUnidad" method="post" action="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">
+    <table class="detalle">
+        <h3>Agregar nueva unidad</h3>
+    <tr>
+        <th>Tipo de Hemocomponente: </th>
+        <td><select name="tipohemocomponente" id="tipohemocomponente" style="width: 160px">
+                    {% for tipohemocomponente in tiposhemocomponentes %}
+                    <option id="{{tipohemocomponente.duracion}}" value="{{tipohemocomponente.id}}">{{tipohemocomponente}}</option>
+                    {% endfor %}
+                    </select> 
+       </td>
+    </tr>
+    <tr> 
+        <th>Volumen: </th>
+        <td><input name="volumen" id="volumen" style="width: 160px"/> cc</td>
+    </tr>
+    <tr> 
+        <th>Fecha de extraccion: </th>
+        <td><input type="date" name="fechaextraccion" id="fechaextraccion" value="{{ unidad.donacion.fechextraccion | date('Y-m-d') }}" style="width: 160px" disabled=""/></td>
+    </tr>
+    <tr>
+        <th>Fecha de vencimiento: </th>
+        <td><label name="fechavencimiento" id="fechavencimiento"></label></td>
+    </tr>
+    <tr> 
+        <th>Estado: </th>
+        <td><label name="estado" id="estado" style="width: 160px">Bloqueado</label></td>
+    </tr>
+</table>
+<input type="submit" value="Crear unidad"/></td>
+</form>
+
+</br>
+<form id="verUnidad" name="verUnidad" method="post" action="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">
+    <h3> Unidades Fraccionadas </h3>
+{% include 'HSYSMainBundle:Sangre:resultados.html.twig' with {'unidades': unidades} %}
+<input type="submit" value="Terminar"/></td>
+</form>
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$("#tipohemocomponente").change(function(){
+        var srt = $("#tipohemocomponente option:selected").attr("id");
+        var cantidad = srt;
+        var fecha1 = $("#fechaextraccion").get(0).value;
+        var fecha12 = fecha1.split("-");
+        var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
+        var fechactual = fe.valueOf();
+        var fechsalida = new Date(fechactual + ( cantidad * 86400000 ) );
+        $("#fechavencimiento").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
+});
+</script>
+{% endblock %}
