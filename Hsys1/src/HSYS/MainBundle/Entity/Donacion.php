@@ -161,6 +161,25 @@ class Donacion {
         return $this->Unidades;
     }
 
+    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $estado = "Bloqueado",$fecharealizacion = null){
+        $nuevaunidad = new Unidad;
+        if ($fecharealizacion == null){
+            $fecharealizacion = $this->fechextraccion;
+        }
+        $sumar = '+' . $TipoHemocomponente->getDuracion() . ' day';
+        $vencimiento = strtotime($sumar, strtotime($fecharealizacion));
+        $vencimiento = date('Y-m-j', $vencimiento);
+        $fechaformatvenc = new \DateTime;
+        $fechaformatvenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
+        $nuevaunidad->setVencimiento($fechaformatvenc);
+        
+        $nuevaunidad->setVolumen($volumen);
+        $nuevaunidad->setIdbolsa($this->getIdbolsa());
+        $nuevaunidad->setTipoHemocomponente($TipoHemocomponente);
+        $nuevaunidad->setEstado($estado);
+        
+        $this->addUnidades($nuevaunidad);
+    }
     /**
      * @ORM\OneToOne(targetEntity="analisis", inversedBy="Donacion")
      * @ORM\JoinColumn(name="analisis", referencedColumnName="id")

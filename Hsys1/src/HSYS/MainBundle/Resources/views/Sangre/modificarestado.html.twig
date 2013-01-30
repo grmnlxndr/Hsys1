@@ -7,7 +7,8 @@
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
  
  <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('modificarestado_unidad',{'id':unidad.id}) }}">
-    <table>
+     <label>Seleccione el estado al que desea que cambie la unidad: </label>
+     <table>
         <tr>
             <td><label for="cambiarestado">Cambiar a Estado: </label></td>
             <td><select name="nuevoestado" id="nuevoestado" style="width: 160px">
@@ -21,13 +22,13 @@
         </table>
          <div name="confirmacion" id="confirmacion"></div>
 
-            <td><input type="submit" value="Cambiar de estado"/></td>
+         <td><input type="submit" value="Cambiar de Estado"/> <label id="respuesta" name="respuesta"></label></td>
 </form>
 <br/>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
-$('input[type="submit"]').attr('disabled','disabled');    
+$('input[type="submit"]').attr('disabled','disabled');   
 $("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
 
 $("#nuevoestado").change(function(){
@@ -35,9 +36,8 @@ $("#nuevoestado").change(function(){
     $('input[type="submit"]').removeAttr('disabled');    
     var nuevoestado = $("#nuevoestado option:selected").attr("value");
     var viejoestado = "{{unidad.estado}}";
-    $("#confirmacion").html("</br><td><label>Se cambia del estado: {{unidad.estado}} Al estado: "+nuevoestado+" </label></td></br></br>");
+    $("#confirmacion").html("</br><td>Se cambia del estado: <b>{{unidad.estado}}</b>, Al estado: <b>"+nuevoestado+"</b>. </td></br></br>");
 });
-
 
 </script>
 
