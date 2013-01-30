@@ -104,11 +104,7 @@ class DonacionController extends Controller {
             $em = $this->getDoctrine()->getEntityManager();
             $desde = $request->request->get('desde');
             $hasta = $request->request->get('hasta');
-            if ($desde && $hasta) {
-                $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorRangoDeFecha($desde, $hasta);
-            } else {
-                $donaciones = null;
-            }
+            $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorRangoDeFecha($desde, $hasta);
         }
         return $this->render('HSYSMainBundle:Donacion:buscarFecha.html.twig', array('donaciones' => $donaciones));
     }
