@@ -54,7 +54,6 @@ class SangreController extends Controller {
 
     public function buscarFechaAction() {
         $request = $this->getRequest();
-        $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
         $metodo = false;
         $unidades = array();
         if ($request->getMethod() == 'POST') {
@@ -64,7 +63,7 @@ class SangreController extends Controller {
             $hasta = $request->request->get('hasta');
             $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadRangoFecha($desde, $hasta);
         };
-        return $this->render('HSYSMainBundle:Sangre:buscarfecha.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'estados' => $estados));
+        return $this->render('HSYSMainBundle:Sangre:buscarfecha.html.twig', array('unidades' => $unidades, 'metodo' => $metodo));
     }
 
     public function buscardonacionAction() {
@@ -87,14 +86,39 @@ class SangreController extends Controller {
     }
     
     public function modificarestadoAction($id){
+        $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = new \HSYS\MainBundle\Entity\Unidad;
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
-        
+        if ($request->getMethod() == 'POST') {
+            $nuevoestado = $request->request->get('nuevoestado');
+            $unidad->setEstado($nuevoestado);
+            $em->persist($unidad);
+            $em->flush();
+            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion'=>'modificado el estado a "'.$unidad->getEstado().'"'));
+        }
         
         return $this->render('HSYSMainBundle:Sangre:modificarestado.html.twig', array('unidad' => $unidad, 'estados'=>$estados));
     }
     
+        public function buscaravanzadaAction() {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+        $tiposhemocomponentes = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findAll();
+        $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
+        $metodo = false;
+        $unidades = array();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $metodo = true;
+            $desde = $request->request->get('desde');
+            $hasta = $request->request->get('hasta');            
+            $estado = $request->request->get('estado');
+            $tipo = $request->request->get('tipo');
+            $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadAvanzada($desde, $hasta, $estado, $tipo);
+        };
+        return $this->render('HSYSMainBundle:Sangre:buscaravanzada.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'estados' => $estados, 'tiposhemocomponentes' => $tiposhemocomponentes));
+    }
 }
 ?>
