@@ -109,7 +109,6 @@ class SangreController extends Controller {
         $metodo = false;
         $unidades = array();
         if ($request->getMethod() == 'POST') {
-            $em = $this->getDoctrine()->getEntityManager();
             $metodo = true;
             $desde = $request->request->get('desde');
             $hasta = $request->request->get('hasta');
@@ -118,6 +117,20 @@ class SangreController extends Controller {
             $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadAvanzada($desde, $hasta, $estado, $tipo);
         };
         return $this->render('HSYSMainBundle:Sangre:buscaravanzada.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'estados' => $estados, 'tiposhemocomponentes' => $tiposhemocomponentes));
+    }
+    
+    public function buscarfactorsanguineoAction(){
+        $request = $this->getRequest();
+        $factorsang =  \HSYS\MainBundle\Entity\factorsang::$factorsang;
+        $metodo = false;
+        $unidades = array();
+        if ($request->getMethod() =='POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $metodo = true;
+            $buscar = $request->request->get('buscar');
+            $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadFactorSangui($buscar);
+        }
+        return $this->render('HSYSMainBundle:Sangre:buscarfactorsangui.html.twig', array('unidades'=>$unidades,'metodo'=>$metodo,'factorsang'=>$factorsang));
     }
 
     public function crearfraccionamientoAction($id) {

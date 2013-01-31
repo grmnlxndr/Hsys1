@@ -18,7 +18,8 @@ class DonanteType extends AbstractType
                                                                    'AB+'=>'AB+',
                                                                    'AB-'=>'AB-',
                                                                    '0+'=>'0+',
-                                                                   '0-'=>'0-'), 'empty_value' =>'SELECCIONE UNO' ))
+                                                                   '0-'=>'0-',
+                                                                   'ns/nc'=>'ns/nc'), 'empty_value' =>'SELECCIONE UNO' ))
 //                ->add('fechnaci')
                 ->add('fechnaci', 'date', array(
                     'widget' => 'choice',

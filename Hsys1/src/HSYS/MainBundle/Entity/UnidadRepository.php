@@ -100,4 +100,15 @@ class UnidadRepository extends EntityRepository {
         return $unidades;
     }
 
+     public function findUnidadFactorSangui($factorsangui) {
+        $em = $this->getEntityManager();
+        $dql = "select u from HSYSMainBundle:Unidad u where u.factorsang like :factorsang order by u.vencimiento asc";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('factorsang', '%' . $factorsangui . '%');
+
+        $unidades = $query->getResult();
+        return $unidades;
+    }
+    
 }

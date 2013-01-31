@@ -1,0 +1,27 @@
+{% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
+
+{% block title %}Buscar Por Factor Sanguineo{% endblock %}
+
+{% block contenido %}
+ <h3>Buscar unidad Por Factor Sanguineo:</h3>
+    <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_unidad_factorsanguineo') }}">
+    <table>
+        <tr>
+            <td><label for="criterio">Criterio: </label></td>
+            <td><select name="buscar" id="buscar" style="width: 160px">
+                    {% for factor in factorsang %}
+                    <option value="{{factor}}">{{factor}}</option>
+                    {% endfor %}
+                </select></td>
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+{% if metodo %}
+{% include 'HSYSMainBundle:Sangre:resultados.html.twig' with {'unidades': unidades} %}
+{% endif %}
+
+
+
+{% endblock %}

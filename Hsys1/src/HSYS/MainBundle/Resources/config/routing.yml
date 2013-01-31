@@ -137,6 +137,10 @@ buscar_unidad_donacion:
   pattern: /sangre/buscardonacion
   defaults: { _controller: HSYSMainBundle:Sangre:buscardonacion }
 
+buscar_unidad_factorsanguineo:
+  pattern: /sangre/buscarfactorsanguineo
+  defaults: { _controller: HSYSMainBundle:Sangre:buscarfactorsanguineo }
+
 buscar_unidad_avanzada:
   pattern: /sangre/buscaravanzada
   defaults: { _controller: HSYSMainBundle:Sangre:buscaravanzada }
