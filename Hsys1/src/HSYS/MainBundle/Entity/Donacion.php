@@ -161,7 +161,7 @@ class Donacion {
         return $this->Unidades;
     }
 
-    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $factorsang = null, $fecharealizacion = null, $estado = "Bloqueado"){
+    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $fecharealizacion = null, $factorsang = null, $estado = "Bloqueado"){
         $nuevaunidad = new Unidad;
         if ($fecharealizacion == null){
             $fecharealizacion1 = $this->fechextraccion;

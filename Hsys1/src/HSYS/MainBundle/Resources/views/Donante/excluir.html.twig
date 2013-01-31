@@ -101,7 +101,7 @@
                                             var fecha12 = fecha1.split('-');
                                             var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
                                             var fechactual = fe.valueOf();
-                                            var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
+                                            var fechsalida = new Date(fechactual +( srt * 86400000 ) );
                                             $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
                                             }
                                     });

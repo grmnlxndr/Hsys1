@@ -507,6 +507,19 @@ class Donante {
     
     public function excluir(\HSYS\MainBundle\Entity\TipoExclusion $tipoExclusion, $comentarios, $fechaingreso ){
         //aca meter todo lo que esta en excluirAction
+        $exclusion = new Exclusion;
+        $exclusion->setTipoExclusion($tipodeexclusion);
+        $exclusion->setDonante($donante);
+        $exclusion->setFechini($fechaformat);
+        $sumar = '+' . $tipodeexclusion->getDuracion() . ' day';
+        $nuevafecha = strtotime($sumar, strtotime($fecha));
+        $nuevafecha = date('Y-m-j', $nuevafecha);
+        $fechaformat1 = new \DateTime;
+        $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
+        $exclusion->setFechfin($fechaformat1);
+
+        $comentario = 'Excluido por donación con Receptor ID: ' . $donacion->getId();
+        $exclusion->setComentario($comentario);
     }
 
 
