@@ -173,4 +173,32 @@ class Unidad {
     }
 
    
+    
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="factorsang", type="string", length=20, nullable=true)
+     */
+    private $factorsang;
+    
+     /**
+     * Set factorsang
+     *
+     * @param string $factorsang
+     * @return Unidad
+     */
+    public function setFactorsang($factorsang) {
+        $this->factorsang = $factorsang;
+
+        return $this;
+    }
+
+    /**
+     * Get factorsang
+     *
+     * @return string 
+     */
+    public function getFactorsang() {
+        return $this->factorsang;
+    }
 }

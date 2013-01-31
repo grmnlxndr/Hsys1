@@ -11,7 +11,14 @@ class DonanteType extends AbstractType
                 ->add('dni', 'text', array(
                     'max_length' => '8',
                 ))
-                ->add('factorsang')
+                ->add('factorsang','choice',array('choices'=>array('A+'=>'A+',
+                                                                    'A-'=>'A-',
+                                                                   'B+'=>'B+',
+                                                                   'B-'=>'B-',
+                                                                   'AB+'=>'AB+',
+                                                                   'AB-'=>'AB-',
+                                                                   '0+'=>'0+',
+                                                                   '0-'=>'0-'), 'empty_value' =>'SELECCIONE UNO' ))
 //                ->add('fechnaci')
                 ->add('fechnaci', 'date', array(
                     'widget' => 'choice',

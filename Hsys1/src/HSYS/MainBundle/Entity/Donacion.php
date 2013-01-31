@@ -161,7 +161,7 @@ class Donacion {
         return $this->Unidades;
     }
 
-    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $fecharealizacion = null, $estado = "Bloqueado"){
+    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $factorsang = null, $fecharealizacion = null, $estado = "Bloqueado"){
         $nuevaunidad = new Unidad;
         if ($fecharealizacion == null){
             $fecharealizacion1 = $this->fechextraccion;
@@ -174,6 +174,10 @@ class Donacion {
         $fechaformatvenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
         $nuevaunidad->setVencimiento($fechaformatvenc);
         
+        if ($factorsang == null) {
+            $factorsang = $this->getDonante()->getfactorsang();
+        }
+        $nuevaunidad->setFactorsang($factorsang);        
         $nuevaunidad->setVolumen($volumen);
         $nuevaunidad->setIdbolsa($this->getIdbolsa());
         $nuevaunidad->setTipoHemocomponente($TipoHemocomponente);
