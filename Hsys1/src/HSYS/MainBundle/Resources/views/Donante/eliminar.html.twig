@@ -3,21 +3,20 @@
 {% block title %}Eliminar Donante {{ donante.id }}{% endblock %}
 
 {% block contenido %}
-
+<h3>Donante a Eliminar</h3>
 <form id="formulario" name="formulario" action="{{ path('eliminar_donante', { 'id' : id }) }}" method="post">
     <div>  
-        Donante a Excluir <br/>
         <table>
             <tr>
-                <td><label>ID </label></td>
+                <td><label>ID:&nbsp; </label></td>
                 <td>{{ donante.id }}</td>
             </tr>
             <tr>
-                <td><label>DNI </label></td>
+                <td><label>DNI:&nbsp; </label></td>
                 <td>{{ donante.dni }}</td>
             </tr>
             <tr>
-                <td><label>Apellido y nombre </label></td>
+                <td><label>Apellido y nombre:&nbsp; </label></td>
                 <td>{{ donante.nomapp }}</td>
             </tr>
         </table>

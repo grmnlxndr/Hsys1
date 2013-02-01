@@ -27,7 +27,8 @@ class DonanteController extends Controller {
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($donante);
                 $em->flush();
-                return $this->redirect($this->generateURL('confirmacion', array('accion' => 'agregado', 'id' => $donante->getId())));
+                //return $this->redirect($this->generateURL('confirmacion', array('accion' => 'agregado', 'id' => $donante->getId())));
+                return $this->redirect($this->generateUrl('ver_donante', array('id' => $donante->getId())));
 //aca poner respuesta no se como
             }
         }
