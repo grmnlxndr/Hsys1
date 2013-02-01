@@ -3,31 +3,31 @@
 {% block title %}Habilitar Donante {{ donante.id }}{% endblock %}
 
 {% block contenido %}
-
+<h3>Habilitar Donante</h3>
 <form id="datosdonante" name="datosdonante">
-<table>
+<table class="detalle">
             <tr>
-                <td><label>Datos del donante</label></td>
+                <th colspan="2"><label>Datos del donante</label></th>
             </tr>
             <tr>
-                <td><label>ID </label></td>
+                <th><label>ID </label></th>
                 <td>{{ donante.id }}</td>
             </tr>
             <tr>
-                <td><label>DNI </label></td>
+                <th><label>DNI </label></th>
                 <td>{{ donante.dni }}</td>
             </tr>
             <tr>
-                <td><label>Apellido y nombre </label></td>
+                <th><label>Apellido y nombre </label></th>
                 <td>{{ donante.nomapp }}</td>
             </tr>
 </table>
 </form>
 
 </br>
-
+<h3>Exclusiones Activas del Donante</h3>
 <form id="habilitar_form" name="habilitar_form" method="post" action="{{ path('habilitar_donante', { 'id' : id }) }}">
-    <table class="listadeexclusiones" style="width: 100%">
+    <table class="detalle" style="width: 100%">
     <tr>
         <th> ID </th><th> Inicio </th><th> Fin </th><th> Tipo de Exclusion </th><th width =20%> Comentario </th>
     </tr>
@@ -47,9 +47,8 @@
     <div class="listadeexclusiones"><img src="{{ asset('images/error.png') }}"/>    EL DONANTE NO POSEE NINGUNA EXCLUSION</div>
     <br/>
 {% endfor %}
-    
-    
 </table>
+        </br>
         {% if habilitado %}
         <label>El donante se encuentra habilitado</label>
         {% else %}

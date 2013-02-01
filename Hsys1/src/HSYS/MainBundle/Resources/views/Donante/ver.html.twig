@@ -19,6 +19,10 @@
     </ul>
 </div>
 <br/>
+{% if donante.baja %}
+<div class="consulta"> <img src="{{ asset('images/error.png') }}"/>    El donante se encuentra eliminado</div>
+</br>
+{% endif %}
 <table class="detalle">
     <tr>
         <th>ID: </th>
