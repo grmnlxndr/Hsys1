@@ -145,7 +145,5 @@ class Exclusion {
         return $this->Donante;
     }
     
-    public function __toString() {
-        return $this->fechini;
-    }
+
 }

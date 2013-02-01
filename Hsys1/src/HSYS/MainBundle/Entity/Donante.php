@@ -442,7 +442,7 @@ class Donante {
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="Exclusion", mappedBy="Donante")
+     * @ORM\OneToMany(targetEntity="Exclusion", mappedBy="Donante", cascade={"persist"})
      */
     private $Exclusion;
 
@@ -505,21 +505,24 @@ class Donante {
 
     
     
-    public function excluir(\HSYS\MainBundle\Entity\TipoExclusion $tipoExclusion, $comentarios, $fechaingreso ){
+    public function excluir(\HSYS\MainBundle\Entity\TipoExclusion $tipoExclusion, $comentario, $fechaingreso ){
         //aca meter todo lo que esta en excluirAction
         $exclusion = new Exclusion;
-        $exclusion->setTipoExclusion($tipodeexclusion);
-        $exclusion->setDonante($donante);
-        $exclusion->setFechini($fechaformat);
-        $sumar = '+' . $tipodeexclusion->getDuracion() . ' day';
-        $nuevafecha = strtotime($sumar, strtotime($fecha));
+        $exclusion->setTipoExclusion($tipoExclusion);
+        $exclusion->setDonante($this);
+        $exclusion->setFechini($fechaingreso);
+        $sumar = '+' . $tipoExclusion->getDuracion() . ' day';
+        //aca estaba la fecha xD
+        if ($tipoExclusion->getDuracion() != 0) {
+        $nuevafecha = strtotime($sumar, strtotime($fechaingreso->format('Y-m-d')));
         $nuevafecha = date('Y-m-j', $nuevafecha);
         $fechaformat1 = new \DateTime;
         $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
         $exclusion->setFechfin($fechaformat1);
-
-        $comentario = 'Excluido por donación con Receptor ID: ' . $donacion->getId();
+        }
         $exclusion->setComentario($comentario);
+        $exclusion->setDonante($this);
+        $this->addExclusion($exclusion);
     }
 
 

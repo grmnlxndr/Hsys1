@@ -72,28 +72,32 @@ class DonanteController extends Controller {
         if ($request->getMethod() == 'POST') {
             $idtipodeexclusion = $request->request->get('tipodeexclusion');
             $comentarios = $request->request->get('comentarios');
-            $tipoexclusion = new \HSYS\MainBundle\Entity\TipoExclusion;
-            $tipoexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->find($idtipodeexclusion);
-            $exclusion = new Exclusion;
-            $exclusion->setTipoExclusion($tipoexclusion);
-            $donanteexcluido = $em->getRepository('HSYSMainBundle:Donante')->find($id);
-            $exclusion->setDonante($donanteexcluido);
-            //$fechactual = date('Y-m-j');
             $fechactual = $request->request->get('fechaingreso');
             $fechaformat = new \DateTime;
             $fechaformat->setDate(substr($fechactual, 0, 4), substr($fechactual, 5, 2), substr($fechactual, 8, 2));
-            $exclusion->setFechini($fechaformat);
-            if ($tipoexclusion->getDuracion() != 0) {
-                $sumar = '+' . $tipoexclusion->getDuracion() . ' day';
-                $nuevafecha = strtotime($sumar, strtotime($fechactual));
-                $nuevafecha = date('Y-m-j', $nuevafecha);
-                $fechaformat1 = new \DateTime;
-                $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
-                $exclusion->setFechfin($fechaformat1);
-            };
-            $exclusion->setComentario($comentarios);
-            $em->persist($exclusion);
+            $tipoexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->find($idtipodeexclusion);
+            $donanteexcluido = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+            
+            $donanteexcluido->excluir($tipoexclusion, $comentarios, $fechaformat);
+            $em->persist($donanteexcluido);
             $em->flush();
+            
+//            $exclusion = new Exclusion;
+//            $exclusion->setTipoExclusion($tipoexclusion);
+//            $exclusion->setDonante($donanteexcluido);
+//            
+//            $exclusion->setFechini($fechaformat);
+//            if ($tipoexclusion->getDuracion() != 0) {
+//                $sumar = '+' . $tipoexclusion->getDuracion() . ' day';
+//                $nuevafecha = strtotime($sumar, strtotime($fechactual));
+//                $nuevafecha = date('Y-m-j', $nuevafecha);
+//                $fechaformat1 = new \DateTime;
+//                $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
+//                $exclusion->setFechfin($fechaformat1);
+//            };
+//            $exclusion->setComentario($comentarios);
+//            $em->persist($exclusion);
+//            $em->flush();
 
             return $this->redirect($this->generateURL('confirmacion', array('accion' => "excluido", 'id' => $id)));
         }
