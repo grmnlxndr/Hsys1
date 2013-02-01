@@ -135,16 +135,16 @@ class Donante {
      * @ORM\Column(name="baja", type="boolean")  
      */
     private $baja;
-    
+
     public function getBaja() {
         return $this->baja;
     }
+
     public function setBaja($baja) {
         $this->baja = $baja;
         return $this;
     }
-            
-    
+
     /**
      * Get id
      *
@@ -475,80 +475,72 @@ class Donante {
 
     public function habilitar() {
         $exclusiones = $this->getExclusionesActivas();
-        foreach ($exclusiones as $exclusion) {      
+        foreach ($exclusiones as $exclusion) {
             $nuevafecha = strtotime('-1 day', strtotime(date('Y-m-d')));
             $nuevafecha = date('Y-m-d', $nuevafecha);
             $exclusion->setFechfin(new \DateTime($nuevafecha));
 //            $exclusion->setComentario($exclusion->getComentario() . " .....");
         }
     }
-    
-    public function getExclusionesActivas(){
+
+    public function getExclusionesActivas() {
         $exclusionesactivas = array();
-       $exclusiones = $this->getExclusion();
+        $exclusiones = $this->getExclusion();
         $fechaactual = new \DateTime(date('Y-m-d'));
-        foreach ($exclusiones as $exclusion) {                
-            if (($exclusion->getFechfin() == null) || ($fechaactual <=  $exclusion->getFechfin())){
-               $exclusionesactivas [] = $exclusion; 
+        foreach ($exclusiones as $exclusion) {
+            if (($exclusion->getFechfin() == null) || ($fechaactual <= $exclusion->getFechfin())) {
+                $exclusionesactivas [] = $exclusion;
             }
         }
         return $exclusionesactivas;
     }
+
     //true si esta excluido
-    public function excluido(){
-        if ($this->getExclusionesActivas()==null){
+    public function excluido() {
+        if ($this->getExclusionesActivas() == null) {
             return false;
         } else {
             return true;
         }
     }
 
-    
-    
-    public function excluir(\HSYS\MainBundle\Entity\TipoExclusion $tipoExclusion, $comentario, $fechaingreso ){
-        //aca meter todo lo que esta en excluirAction
+    public function excluir(\HSYS\MainBundle\Entity\TipoExclusion $tipoExclusion, $comentario, $fechaingreso) {
         $exclusion = new Exclusion;
         $exclusion->setTipoExclusion($tipoExclusion);
         $exclusion->setDonante($this);
         $exclusion->setFechini($fechaingreso);
         $sumar = '+' . $tipoExclusion->getDuracion() . ' day';
-        //aca estaba la fecha xD
         if ($tipoExclusion->getDuracion() != 0) {
-        $nuevafecha = strtotime($sumar, strtotime($fechaingreso->format('Y-m-d')));
-        $nuevafecha = date('Y-m-j', $nuevafecha);
-        $fechaformat1 = new \DateTime;
-        $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
-        $exclusion->setFechfin($fechaformat1);
+            $nuevafecha = strtotime($sumar, strtotime($fechaingreso->format('Y-m-d')));
+            $nuevafecha = date('Y-m-j', $nuevafecha);
+            $fechaformat1 = new \DateTime;
+            $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
+            $exclusion->setFechfin($fechaformat1);
         }
         $exclusion->setComentario($comentario);
         $exclusion->setDonante($this);
         $this->addExclusion($exclusion);
     }
 
-
-
-
     //esto es una prueba... quizas va a volar antes de que se encuentre la solucion. no tocar. Esteban :D
     //funcion sacada de http://notasweb.com/articulo/php/ordenar-array-multidimensional-por-un-campo-con-php.html
-    function orderMultiDimensionalArray ($toOrderArray, $field, $inverse = false) {  
-        $position = array();  
-        $newRow = array();  
+    function orderMultiDimensionalArray($toOrderArray, $field, $inverse = false) {
+        $position = array();
+        $newRow = array();
         foreach ($toOrderArray as $key => $row) {
-                $position[$key]  = $row[$field];  
-                $newRow[$key] = $row;  
-        }  
-        if ($inverse) {  
-            arsort($position);  
-        }  
-        else {  
-            asort($position);  
-        }  
-        $returnArray = array();  
-        foreach ($position as $key => $pos) {       
-            $returnArray[] = $newRow[$key];  
-        }  
-        return $returnArray;  
-    }  
-    
+            $position[$key] = $row[$field];
+            $newRow[$key] = $row;
+        }
+        if ($inverse) {
+            arsort($position);
+        } else {
+            asort($position);
+        }
+        $returnArray = array();
+        foreach ($position as $key => $pos) {
+            $returnArray[] = $newRow[$key];
+        }
+        return $returnArray;
+    }
 
 }

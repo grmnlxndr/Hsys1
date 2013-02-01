@@ -82,23 +82,6 @@ class DonanteController extends Controller {
             $em->persist($donanteexcluido);
             $em->flush();
             
-//            $exclusion = new Exclusion;
-//            $exclusion->setTipoExclusion($tipoexclusion);
-//            $exclusion->setDonante($donanteexcluido);
-//            
-//            $exclusion->setFechini($fechaformat);
-//            if ($tipoexclusion->getDuracion() != 0) {
-//                $sumar = '+' . $tipoexclusion->getDuracion() . ' day';
-//                $nuevafecha = strtotime($sumar, strtotime($fechactual));
-//                $nuevafecha = date('Y-m-j', $nuevafecha);
-//                $fechaformat1 = new \DateTime;
-//                $fechaformat1->setDate(substr($nuevafecha, 0, 4), substr($nuevafecha, 5, 2), substr($nuevafecha, 8, 2));
-//                $exclusion->setFechfin($fechaformat1);
-//            };
-//            $exclusion->setComentario($comentarios);
-//            $em->persist($exclusion);
-//            $em->flush();
-
             return $this->redirect($this->generateURL('confirmacion', array('accion' => "excluido", 'id' => $id)));
         }
 

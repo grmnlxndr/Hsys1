@@ -152,8 +152,15 @@ class CargadorController extends Controller {
 
         $em->persist($exclusion);
         $em->flush();
+        
+        $exclusion = new TipoExclusion;
+        $exclusion->setNombre("Exclusion generica");
+        $exclusion->setGrado("generica");
+        
+        $em->persist($exclusion);
+        $em->flush();
 
-        return 'echo todo listo';
+        return array('Listo' => 'tosta hecho');
     }
 
 }
