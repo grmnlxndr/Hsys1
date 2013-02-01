@@ -153,7 +153,7 @@ class DonanteController extends Controller {
             $donante->setBaja(true);
             $em->persist($donante);
             $em->flush();
-            return $this->redirect($this->generateUrl('confirmacion', array('accion'=>"ha sido eliminado",'id'=>$id)));
+            return $this->redirect($this->generateUrl('confirmacion', array('accion'=>"eliminado",'id'=>$id)));
         }
         return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id' => $id, 'donante'=>$donante));
     }
