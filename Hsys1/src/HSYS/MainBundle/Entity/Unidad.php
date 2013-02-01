@@ -201,4 +201,27 @@ class Unidad {
     public function getFactorsang() {
         return $this->factorsang;
     }
+    
+    public function estadosPosibles() {
+        if ($this->estado == "Bloqueado") {
+            return array("Desbloqueado", "Desechado", "Fraccionado");
+        } else {
+            if ($this->estado == "Desbloqueado") {
+                return array("Transfundido", "Desechado", "Fraccionado");
+            } else {
+                if ($this->estado == "Transfundido") {
+                    return array();
+                } else {
+                    if ($this->estado == "Desechado") {
+                        return array();
+                    } else {
+                        if ($this->estado == "Fraccionado") {
+                            return array();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

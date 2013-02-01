@@ -16,7 +16,7 @@ security:
    security: false
   secured_area:
    pattern: ^/
-  # anonymous: ~
+   anonymous: ~
   # http_basic:
     #realm: "Introduzca Usuario y Contrasena"
    form_login:
