@@ -1,0 +1,28 @@
+{% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
+
+{% block title %}Trasnfundir Unidad{% endblock %}
+
+{% block contenido %}
+ 
+{% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
+ 
+ <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('transfundir_unidad',{'id':unidad.id}) }}">
+     
+       <input type="checkbox" name="transfundir" id="transfundir" onclick="habilitar()"><label>¿Está seguro que desea transfundir la unidad {{unidad.id}}? </label><br>
+        <input type="submit" value="Transfundir"/>
+
+</form>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+$('input[type="submit"]').attr('disabled','disabled');  
+function habilitar(){
+if (transfundir.checked) {    
+    $('input[type="submit"]').removeAttr('disabled');
+} else {
+    $('input[type="submit"]').attr('disabled','disabled');
+    }
+    };
+</script>
+</script>
+{%endblock%}

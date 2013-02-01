@@ -153,6 +153,18 @@ modificarestado_unidad:
   pattern: /sangre/modificarestado/{id}
   defaults: { _controller: HSYSMainBundle:Sangre:modificarestado}
 
+desbloquear_unidad:
+  pattern: /sangre/desbloquear/{id}
+  defaults: { _controller: HSYSMainBundle:Sangre:desbloquear }
+  
+transfundir_unidad:
+  pattern: /sangre/transfundir/{id}
+  defaults: { _controller: HSYSMainBundle:Sangre:transfundir }
+
+desechar_unidad:
+  pattern: /sangre/desechar/{id}
+  defaults: { _controller: HSYSMainBundle:Sangre:desechar }
+
 crearfraccionamiento_unidad:
   pattern: /sangre/crearfraccionamiento/{id}
   defaults: { _controller: HSYSMainBundle:Sangre:crearfraccionamiento}

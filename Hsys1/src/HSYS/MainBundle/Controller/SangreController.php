@@ -82,25 +82,70 @@ class SangreController extends Controller {
     public function verAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
-        return $this->render('HSYSMainBundle:Sangre:ver.html.twig', array('unidad' => $unidad));
+        $estados = $unidad->estadosPosibles();
+        return $this->render('HSYSMainBundle:Sangre:ver.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
 
-    public function modificarestadoAction($id) {
+//    public function modificarestadoAction($id) {
+//        $request = $this->getRequest();
+//        $em = $this->getDoctrine()->getEntityManager();
+//        $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
+//        $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
+//        if ($request->getMethod() == 'POST') {
+//            $nuevoestado = $request->request->get('nuevoestado');
+//            $unidad->setEstado($nuevoestado);
+//            $em->persist($unidad);
+//            $em->flush();
+//            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'modificado el estado a "' . $unidad->getEstado() . '"'));
+//        }
+//
+//        return $this->render('HSYSMainBundle:Sangre:modificarestado.html.twig', array('unidad' => $unidad, 'estados' => $estados));
+//    }
+    
+    
+    public function desbloquearAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
         if ($request->getMethod() == 'POST') {
-            $nuevoestado = $request->request->get('nuevoestado');
-            $unidad->setEstado($nuevoestado);
+            $unidad->setEstado("Desbloqueado");
             $em->persist($unidad);
             $em->flush();
-            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'modificado el estado a "' . $unidad->getEstado() . '"'));
+            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'desbloqueada'));
         }
 
-        return $this->render('HSYSMainBundle:Sangre:modificarestado.html.twig', array('unidad' => $unidad, 'estados' => $estados));
+        return $this->render('HSYSMainBundle:Sangre:desbloquear.html.twig', array('unidad' => $unidad, 'estados' => $estados));
+    }
+    
+    public function transfundirAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+        $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
+        $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
+        if ($request->getMethod() == 'POST') {
+            $unidad->setEstado("Transfundido");
+            $em->persist($unidad);
+            $em->flush();
+            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'transfundida'));
+        }
+        return $this->render('HSYSMainBundle:Sangre:transfundir.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
 
+    public function desecharAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+        $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
+        $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
+        if ($request->getMethod() == 'POST') {
+            $unidad->setEstado("Desechado");
+            $em->persist($unidad);
+            $em->flush();
+            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'desechada'));
+        }
+        return $this->render('HSYSMainBundle:Sangre:desechar.html.twig', array('unidad' => $unidad, 'estados' => $estados));
+    }
+    
     public function buscaravanzadaAction() {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();

@@ -6,8 +6,16 @@
 
 <div class="detalle">
     <ul>
-        <li><a href="{{ path('modificarestado_unidad',{'id':unidad.id}) }}">Modificar Estado</a></li>
-        {% if unidad.tipohemocomponente =="Sangre Entera" %}
+        {% if "Desbloqueado" in estados %}
+        <li><a href="{{ path('desbloquear_unidad',{'id':unidad.id}) }}">Desbloquear</a></li>
+        {% endif %}
+        {% if "Transfundido" in estados %}
+        <li><a href="{{ path('transfundir_unidad',{'id':unidad.id}) }}">Transfundir</a></li>
+        {% endif %}
+        {% if "Desechado" in estados %}
+        <li><a href="{{ path('desechar_unidad',{'id':unidad.id}) }}">Desechar</a></li>
+        {% endif %}
+        {% if unidad.tipohemocomponente == "Sangre Entera" and "Fraccionado" in estados %}
         <li><a href="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">Crear Fraccionamiento</a></li>
         {% endif %}
     </ul>
