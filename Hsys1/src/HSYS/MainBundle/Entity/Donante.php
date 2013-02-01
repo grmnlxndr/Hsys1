@@ -504,13 +504,20 @@ class Donante {
         }
     }
 
-    public function excluir(\HSYS\MainBundle\Entity\TipoExclusion $tipoExclusion, $comentario, $fechaingreso) {
+    public function excluir(\HSYS\MainBundle\Entity\TipoExclusion $tipoExclusion, $comentario, $fechaingreso, $duracion = null) {
+        
         $exclusion = new Exclusion;
         $exclusion->setTipoExclusion($tipoExclusion);
         $exclusion->setDonante($this);
         $exclusion->setFechini($fechaingreso);
-        $sumar = '+' . $tipoExclusion->getDuracion() . ' day';
-        if ($tipoExclusion->getDuracion() != 0) {
+        echo $duracion. "</br>";
+        if ($duracion == null){
+            $duracion = $tipoExclusion->getDuracion();
+        }
+        echo $duracion."</br> </br>";
+        if ($duracion != 0) {
+            echo "aca entro entonces  XD </br>";
+            $sumar = '+' . $duracion  . ' day';
             $nuevafecha = strtotime($sumar, strtotime($fechaingreso->format('Y-m-d')));
             $nuevafecha = date('Y-m-j', $nuevafecha);
             $fechaformat1 = new \DateTime;

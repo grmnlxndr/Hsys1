@@ -37,8 +37,8 @@
                                     </td> 
                                     </tr>
                                     <tr>
-                                        <td><label id="dias"></label></td>
-                                        <td> <label id="tiempo"></label> </td>  
+                                        <td id="dias"></td>
+                                        <td id="tiempodinamico"></td>  
                                     </tr> 
                                     <tr>
                                         <td id="fechainiciotitulo"></td>
@@ -46,7 +46,7 @@
 
                                     </tr>
                                     <tr>
-                                        <td><label id="total"></label></td>
+                                        <td id="total"></td>
                                         <td><label id="fecha"></label></td>
                                     </tr>
                                     <tr><td id="comentartitulo" ></td>
@@ -65,10 +65,14 @@
     
                                     $("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
                                     $("select").change(function(){ $("select option[value='X']").remove();
+                                        
                                         $("#comentartitulo").html('<label>Comentario: </label>');   
                                         $("#comentarcontenido").html( '<textarea id="comentarios" name="comentarios" form="formulario" rows="5" style="auto"></textarea>'  );
                                         $("#fechainiciotitulo").html('<label>Fecha de inicio</label>');
                                         $("#fechainicioinput").html('<input  id="fechaingreso" name="fechaingreso" type="date" value="{{ "now"|date('Y-m-d') }}"/>');
+                                        
+                                        $("#dias").html('<label>La cantidad de dias son: </label>');
+                                        $("#total").html('<label>Dura hasta</label>');
                                         $('input[type="submit"]').removeAttr('disabled');
                                     });
 
@@ -78,22 +82,28 @@
                                     $("#tipodeexclusion").change(function(){
                                     var srt = $("#tipodeexclusion option:selected").attr("id");
                                     var cantidad = srt;
-                                    $("#dias").text("La cantidad de dias son: ");
-                                    $("#total").text("Dura hasta");
+                                    if (srt == "") {
+                                        $("#tiempodinamico").html('<input type="number" name="tiempo" id="tiempo" min ="1" value="1"/>');
+                                    } else{
+                                       $("#tiempodinamico").html('<input name="tiempo" id="tiempo" min ="1" disabled/>');
+                                    };
                                     if ("0" == srt) {
-                                            $("#tiempo").text("Exclusion permanente.");
+                                            $("#tiempo").val("Exclusion permanente.");
                                             $("#fecha").text("Indeterminado.");
                                         } else {
-                                            $("#tiempo").text(srt);
+                                            $("#tiempo").val(srt);
                                             //var fe = new Date();
                                             var fecha1 = $('#fechaingreso').get(0).value;
                                             var fecha12 = fecha1.split('-');
                                             var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
                                             var fechactual = fe.valueOf();
+                                            var cantidad = $("#tiempo").val();
                                             var fechsalida = new Date(fechactual + ( cantidad * 86400000 ) );
                                             $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
                                             };
-
+                                        
+                                    
+                                     
                                     $('#fechaingreso').change(function() {
                                         var srt = $("#tipodeexclusion option:selected").attr("id");
                                         if ("0" != srt){    
@@ -101,10 +111,23 @@
                                             var fecha12 = fecha1.split('-');
                                             var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
                                             var fechactual = fe.valueOf();
-                                            var fechsalida = new Date(fechactual +( srt * 86400000 ) );
+                                            var cantidad = $("#tiempo").val();
+                                            var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
+                                            $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
+                                            }        
+                                    });
+                                    $('#tiempo').change(function() {
+                                        var srt = $("#tipodeexclusion option:selected").attr("id");
+                                        if ("0" != srt){    
+                                            var fecha1 = $('#fechaingreso').get(0).value;
+                                            var fecha12 = fecha1.split('-');
+                                            var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
+                                            var fechactual = fe.valueOf();
+                                            var cantidad = $("#tiempo").val();
+                                            var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
                                             $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
                                             }
-                                    });
+                                            });
                                     });
                                         </script>
 

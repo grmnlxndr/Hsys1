@@ -78,7 +78,11 @@ class DonanteController extends Controller {
             $tipoexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->find($idtipodeexclusion);
             $donanteexcluido = $em->getRepository('HSYSMainBundle:Donante')->find($id);
             
-            $donanteexcluido->excluir($tipoexclusion, $comentarios, $fechaformat);
+            $duracion = null;
+            if ($tipoexclusion->getDuracion() == null){
+                $duracion = $request->request->get('tiempo');
+            }
+            $donanteexcluido->excluir($tipoexclusion, $comentarios, $fechaformat, $duracion);
             $em->persist($donanteexcluido);
             $em->flush();
             
