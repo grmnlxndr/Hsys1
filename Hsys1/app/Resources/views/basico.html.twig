@@ -15,7 +15,13 @@
 	</div>
     <div id="usuario">
     	<ul>
-        	<li class="trans"><img src="{{ asset('images/user_icon.png') }}"/></li>
+            <li style="alignment-adjust: middle" class="trans">
+                    <a href="{{path('login')}}">
+                        <img src="{{ asset('images/user_icon.png') }}" />
+                    </a>
+                </li>
+                
+                
         	<li class="trans"><p> {% if app.user.username is defined %} {{ app.user.username }} {% else %} Anonimo {% endif %}</p></li> 
         	<li><a href="{{ path('logout')}}" title="Salir">Salir</a></li>
     	</ul>

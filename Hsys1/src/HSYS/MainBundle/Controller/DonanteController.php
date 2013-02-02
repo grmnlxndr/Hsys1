@@ -1,7 +1,8 @@
 <?php
 
 namespace HSYS\MainBundle\Controller;
-
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use HSYS\MainBundle\Form\DonanteType;
 use HSYS\MainBundle\Entity\Donante;
@@ -9,11 +10,16 @@ use HSYS\MainBundle\Entity\Exclusion;
 use Symfony\Component\HttpFoundation\Request;
 
 class DonanteController extends Controller {
-
+    
+    /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
     public function indexAction() {
         return $this->render('HSYSMainBundle:Donante:index.html.twig');
     }
-
+    /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
     public function nuevoAction() {
         $request = $this->getRequest();
 
@@ -34,7 +40,9 @@ class DonanteController extends Controller {
         }
         return $this->render('HSYSMainBundle:Donante:nuevo.html.twig', array('form' => $form->createView(),));
     }
-
+    /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
     public function modificarAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -62,11 +70,15 @@ class DonanteController extends Controller {
 
         return $this->render('HSYSMainBundle:Donante:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
     }
-
+    /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
     public function confirmacionAction($accion, $id) {
         return $this->render('HSYSMainBundle:Donante:confirmacion.html.twig', array('accion' => $accion, 'id' => $id,));
     }
-
+    /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
     public function excluirAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $request = $this->getRequest();
@@ -95,7 +107,9 @@ class DonanteController extends Controller {
         return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' => $donante, 'id' => $id));
         #aca le tengo que pasar el donante y los tipos de exclusion que existe para excluir al forro ese por drogon
     }
-
+    /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
     public function buscarAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -108,7 +122,9 @@ class DonanteController extends Controller {
             return $this->redirect($this->generateUrl('pagina_donante'));
         }
     }
-
+    /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
     public function verAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
@@ -124,7 +140,9 @@ class DonanteController extends Controller {
         }
         return $this->render('HSYSMainBundle:Donante:ver.html.twig', array('donante' => $donante,'habilitado'=>$habilitado));
     }
-
+    /**
+    * 	@Secure(roles="ROLE_ADMIN")
+    */
     public function habilitarAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $donante = new Donante();
@@ -145,7 +163,9 @@ class DonanteController extends Controller {
         $exclusiones = $donante->getExclusionesActivas();
         return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('id' => $id, 'donante' => $donante, 'exclusiones' => $exclusiones, 'habilitado' => $habilitado));
     }
-    
+    /**
+    * 	@Secure(roles="ROLE_ADMIN")
+    */
     public function eliminarAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);

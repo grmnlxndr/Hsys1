@@ -159,7 +159,29 @@ class CargadorController extends Controller {
         
         $em->persist($exclusion);
         $em->flush();
-
+            
+        
+        // Carga de Roles.....
+        $role = new \HSYS\MainBundle\Entity\Role();
+        $role->setName("ROLE_ADMIN");
+        $em->persist($role);
+        $em->flush();
+        
+        $role = new \HSYS\MainBundle\Entity\Role();
+        $role->setName("ROLE_BIOQUIMICO");
+        $em->persist($role);
+        $em->flush();
+        
+        $role = new \HSYS\MainBundle\Entity\Role();
+        $role->setName("ROLE_MEDICO");
+        $em->persist($role);
+        $em->flush();
+        
+        $role = new \HSYS\MainBundle\Entity\Role();  
+        $role->setName("ROLE_PERSONAL");
+        $em->persist($role);
+        $em->flush();
+        
         return array('Listo' => 'tosta hecho');
     }
 
