@@ -17,6 +17,7 @@ security:
   secured_area:
    pattern: ^/
    anonymous: ~
+  # access_denied_handler: kernel.listener.access_denied.handler
   # http_basic:
     #realm: "Introduzca Usuario y Contrasena"
    form_login:

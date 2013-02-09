@@ -1,0 +1,18 @@
+{% extends 'HSYSMainBundle:Inicio:iniciobase.html.twig' %}
+
+{%block contenido %}
+<body>
+  <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    Acceso Denegado: Usted no posee los permisos necesarios</div>
+
+<div>
+    
+    <h4>Para continuar debe Iniciar Sesion:</h4>
+   <a href="{{ path('login') }}">Iniciar Sesion</a>
+</div>
+</body>
+
+    
+
+
+{%endblock%}
+
