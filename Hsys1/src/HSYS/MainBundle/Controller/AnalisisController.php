@@ -123,6 +123,7 @@ class AnalisisController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
 
         $analisis = $em->getRepository('HSYSMainBundle:Analisis')->find($id);
+        $fechanalisis = $analisis->getfechanalisis();
         //hacer mas lindo el error
         if (!$analisis) {
             throw $this->createNotFoundException(
@@ -135,6 +136,11 @@ class AnalisisController extends Controller
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
+                $fecha = $request->request->get('fecha');
+                $fechanalisis = new \DateTime();
+                $fechanalisis->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
+                $analisis->setFechanalisis($fechanalisis);
+                
                 $em->persist($analisis);
                 $em->flush();
                 return $this->redirect($this->generateURL('confirmacion_analisis', array('accion' => 'modificado', 'id' => $analisis->getId())));
@@ -142,8 +148,8 @@ class AnalisisController extends Controller
                 return 'no es valido';
             }
         }
-
-        return $this->render('HSYSMainBundle:Analisis:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
+        $donacion = $analisis->getDonacion();
+        return $this->render('HSYSMainBundle:Analisis:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,'fechanalisis'=>$fechanalisis,'donacion'=>$donacion));
     }
     
     public function verAction($id){

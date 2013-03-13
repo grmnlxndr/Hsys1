@@ -4,7 +4,7 @@
 
 
 {% block contenido %}
-<h3>Donación:</h3>
+<h3>Datos de la Donación:</h3>
 
 <table class="detalle">
     <tr>
@@ -29,6 +29,7 @@
     </tr>
 </table>
 <br/>
+<h4>Resultados del analisis:</h4>
 <form action="{{ path('alta_analisis_form', {'id':donacion.id}) }}" method="post">
         {# {{ form_widget(form) }} #}
         <table>
@@ -36,7 +37,7 @@
                 <td><label>Fecha Analisis: </label></td>
                 {#<td>{{ form_widget(form.fechanalisis) }}</td>
                 <td>{{ form_errors(form.fechanalisis) }}</td>#}
-                <td><input type="date" id="fecha" name="fecha"/></td>
+                <td><input type="date" id="fecha" name="fecha" value="{{"now" | date('Y-m-d')}}"/></td>
             </tr>
             <tr>
                 <td><label>CHHAI: </label></td>

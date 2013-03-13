@@ -3,13 +3,39 @@
 {% block title %}Nuevo Análisis{% endblock %}
 
 {% block contenido %}
+
+<h3>Datos de la Donacion:</h3>
+
+<table class="detalle">
+    <tr>
+        <th>ID: </th>
+        <td>{{ donacion.id }}</td>
+    </tr>
+    <tr>
+        <th>Número de bolsa:  </th>
+        <td>{{ donacion.idbolsa }}</td>
+    </tr>
+    <tr>
+        <th>Fecha extracción: </th>
+        <td>{{ donacion.fechextraccion|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+        <th>Donante: </th>
+        <td>{{ donacion.Donante.nomapp }}</td>
+    </tr>
+    <tr>
+        <th>Factor sanguineo: </th>
+        <td>{{ donacion.Donante.factorsang }}</td>
+    </tr>
+</table>
+<br/>
+<h4>Datos a modificar del Analisis:</h4>
 <form action="{{ path('modificar_analisis', {'id': id}) }}" method="post">
         {# {{ form_widget(form) }} #}
         <table>
             <tr>
                 <td><label>Fecha Analisis: </label></td>
-                <td>{{ form_widget(form.fechanalisis) }}</td>
-                <td>{{ form_errors(form.fechanalisis) }}</td>
+                <td><input type="date" id="fecha" name="fecha" value="{{fechanalisis |date('Y-m-d') }}" /></td>
             </tr>
             <tr>
                 <td><label>CHHAI: </label></td>
