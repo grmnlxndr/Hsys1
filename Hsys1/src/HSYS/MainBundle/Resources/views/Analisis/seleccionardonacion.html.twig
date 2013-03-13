@@ -1,0 +1,20 @@
+{% if donaciones is defined %}
+    <table class="consulta" style="width: 100%">
+        <tr>
+            <th> ID </th><th> ID Bolsa </th><th> Donante </th><th> Fecha </th><th>AB0/RH</th><th> Seleccionar </th>
+        </tr>
+    {% for donacion in donaciones %}
+        <tr>
+            <td><a>{{ donacion.id }}</a></td>
+            <td><a>{{ donacion.idbolsa}}</a></td>
+            <td><a>{{ donacion.donante.nomapp }}</a></td>
+            <td><a>{{ donacion.fechextraccion|date('d/m/Y') }}</a></td>
+            <td><a>{{ donacion.donante.factorsang}}</a></td>
+            <td class="link"><a href="{{ path('alta_analisis_form', {'id':donacion.id}) }}">Seleccionar</a></td>
+        </tr>
+    {% else %}
+        <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+        <br/>
+    {% endfor %}
+    </table>
+{% endif %}
