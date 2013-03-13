@@ -49,6 +49,7 @@ class AnalisisController extends Controller
             $em = $this->getDoctrine()->getEntityManager();
             $numero = $request->request->get('numDonante');
             $donante = $em->getRepository('HSYSMainBundle:Donante')->find($numero);
+            $donaciones = null;
             if ($donante) {
                 $donaciones = $donante->getDonaciones();
             }
@@ -63,6 +64,7 @@ class AnalisisController extends Controller
             $em = $this->getDoctrine()->getEntityManager();
             $desde = $request->request->get('desde');
             $hasta = $request->request->get('hasta');
+            $donaciones = null;
             if ($desde && $hasta) {
                 $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorRangoDeFecha($desde, $hasta);
             }
