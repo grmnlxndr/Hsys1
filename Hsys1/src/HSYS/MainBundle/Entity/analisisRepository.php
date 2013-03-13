@@ -18,6 +18,9 @@ class analisisRepository extends EntityRepository
         if ($criterio == "id"){
             $resultado = $this->findAnalisisPorNumero($dato);
         };
+        if ($criterio == "fecha") {
+            $resultado = $this->findAnalisisPorFecha($dato);
+        }
         return $resultado;
     }
     
@@ -27,6 +30,17 @@ class analisisRepository extends EntityRepository
 
         $query = $em->createQuery($dql);
         $query->setParameter('id', '%'.$id.'%');
+        
+        $analisis = $query->getResult();
+        return $analisis;
+    }
+    
+    public function findAnalisisPorFecha($fecha) {
+        $em = $this->getEntityManager();
+        $dql = "select d from HSYSMainBundle:Analisis d where d.fechanalisis = :fechanalisis";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('fechanalisis', $fecha);
         
         $analisis = $query->getResult();
         return $analisis;

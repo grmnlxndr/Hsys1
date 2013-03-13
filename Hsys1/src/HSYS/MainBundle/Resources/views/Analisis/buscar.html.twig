@@ -1,7 +1,3 @@
-{% extends 'HSYSMainBundle:Analisis:analisisbase.html.twig' %}
-
-{% block title %}Análisis{% endblock %}
-
 {% block contenido %}
 
 <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_analisis') }}">
@@ -9,9 +5,10 @@
         <tr>
             <td><label>Búsqueda: </label></td>
             <td><input id="buscar" name="buscar" type="text" style="width: 120px"/></td>
-            <td><label for="criterio">Criterio: </label></td>
-            <td><select name="criterio" id="criterio" style="width: 120px">
-                    <option value="id">Número Análisis</option>
+            <td><label>Criterio: </label></td>
+            <td><select name="criterio" id="criterio" style="width: 150px">
+                    <option value="id" id="id">Número Análisis</option>
+                    <option value="fecha" id="fecha">Fecha de Análisis</option>
                 </select></td>
             <td><input type="submit" value="Buscar"/></td>
         </tr>
@@ -19,13 +16,15 @@
 </form>
 <br/>
 
+{% if analisis is defined %}
 <table class="consulta" style="width: 100%">
     <tr>
-        <th> ID </th><th> Reactivo </th><th> Ver </th><th> Modificar </th>
+        <th> ID </th> <th> Fecha </th> <th> Reactivo </th><th> Ver </th><th> Modificar </th>
     </tr>
 {% for analisi in analisis %}
     <tr>
         <td><a>{{ analisi.id }}</a></td>
+        <td><a>{{ analisi.fechanalisis | date('d/m/Y')}}</a></td>
         <td><a>{{ analisi.reactivo }}</a></td>
         <td class="link"><a href="{{ path('ver_analisis', {'id':analisi.id})  }}">Ver</a></td>
         <td class="link"><a href="{{ path('modificar_analisis', {'id':analisi.id})  }}">Modificar</a></td>
@@ -35,4 +34,22 @@
     <br/>
 {% endfor %}
 </table>
+{% endif %}
+
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script>
+    $("#criterio").change(function(){
+        var input_form = document.buscar_form.buscar;
+        var opcion = $("#criterio option:selected").attr("id");
+        if ( opcion == "id" ){
+            input_form.setAttribute("type", "text");
+            input_form.setAttribute("value", "");
+        } else {
+            input_form.setAttribute("type", "date");
+            input_form.setAttribute("value", "{{ "now"|date('Y-m-d') }}");
+            };
+        });
+</script>
 {% endblock %}
+

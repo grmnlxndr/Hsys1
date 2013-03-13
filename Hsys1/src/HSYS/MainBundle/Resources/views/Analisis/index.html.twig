@@ -3,19 +3,5 @@
 {% block title %}Análisis{% endblock %}
 
 {% block contenido %}
-
-<form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_analisis') }}">
-    <table>
-        <tr>
-            <td><label>Búsqueda: </label></td>
-            <td><input id="buscar" name="buscar" type="text" style="width: 120px"/></td>
-            <td><label for="criterio">&nbsp;&nbsp;Criterio: </label></td>
-            <td><select name="criterio" id="criterio" style="width: 140px">
-                    <option value="id">Número Análisis</option>
-                </select></td>
-            <td><input type="submit" value="Buscar"/></td>
-        </tr>
-    </table>
-</form>
-<br/>
+{% include 'HSYSMainBundle:analisis:buscar.html.twig' %}
 {% endblock %}
