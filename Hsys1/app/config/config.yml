@@ -17,7 +17,8 @@ framework:
     trust_proxy_headers: false # Deprecated in 2.0; will be removed in 2.3 (used trusted_proxies instead)
     trusted_proxies: ~
     session:
-      lifetime: 20
+      lifetime: 1200
+      cookie_lifetime: 1200
 
 # Twig Configuration
 twig:
