@@ -6,20 +6,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class DonanteType extends AbstractType
 {
+   
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('nomapp')
                 ->add('dni', 'text', array(
                     'max_length' => '8',
                 ))
-                ->add('factorsang','choice',array('choices'=>array('A+'=>'A+',
-                                                                    'A-'=>'A-',
-                                                                   'B+'=>'B+',
-                                                                   'B-'=>'B-',
-                                                                   'AB+'=>'AB+',
-                                                                   'AB-'=>'AB-',
-                                                                   '0+'=>'0+',
-                                                                   '0-'=>'0-',
-                                                                   'ns/nc'=>'ns/nc'), 'empty_value' =>'SELECCIONE UNO' ))
+                ->add('factorsang','choice',array('choices'=> (\HSYS\MainBundle\Entity\factorsang::$factorsang), 'empty_value' =>'SELECCIONE UNO' ))
 //                ->add('fechnaci')
                 ->add('fechnaci', 'date', array(
                     'widget' => 'choice',
@@ -37,7 +30,7 @@ class DonanteType extends AbstractType
                         ),
                     'empty_value' => 'SELECCIONE UNA',
                 ))
-                ->add('ocupacion')
+                ->add('ocupacion', 'choice', array('choices'=>(\HSYS\MainBundle\Entity\ocupacion::$ocupacion),'empty_value'=>'SELECCIONE UNA'))
                 ->add('estadocivil', 'choice', array(
                     'choices' => array(
                         'Soltero'=> 'Soltero',
@@ -56,7 +49,7 @@ class DonanteType extends AbstractType
                 ->add('pais')
                 ->add('telefono')
                 ;
-                
+    
     }
     
     public function getName() {
