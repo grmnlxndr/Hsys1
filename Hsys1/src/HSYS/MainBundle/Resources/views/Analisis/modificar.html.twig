@@ -1,6 +1,6 @@
 {% extends 'HSYSMainBundle:Analisis:analisisbase.html.twig' %}
 
-{% block title %}Nuevo Análisis{% endblock %}
+{% block title %}Nuevo Análisis de Serología{% endblock %}
 
 {% block contenido %}
 
@@ -29,12 +29,12 @@
     </tr>
 </table>
 <br/>
-<h4>Datos a modificar del Analisis:</h4>
+<h4>Datos a modificar del Analisis de Serología:</h4>
 <form action="{{ path('modificar_analisis', {'id': id}) }}" method="post">
         {# {{ form_widget(form) }} #}
         <table>
             <tr>
-                <td><label>Fecha Analisis: </label></td>
+                <td><label>Fecha del Analisis de Serología: </label></td>
                 <td><input type="date" id="fecha" name="fecha" value="{{fechanalisis |date('Y-m-d') }}" /></td>
             </tr>
             <tr>
@@ -125,7 +125,7 @@
         </table>
         
         {{ form_rest(form) }}
-        <input type="checkbox" name="aprobado" id="aprobado" onclick="habilitar()"> ¿Esta seguro que desea modificar el Analisis?<br>
+        <input type="checkbox" name="aprobado" id="aprobado" onclick="habilitar()"> ¿Esta seguro que desea modificar el Analisis de Serología?<br>
         <input type="submit" />
     </form>
 {{ form_errors(form) }}

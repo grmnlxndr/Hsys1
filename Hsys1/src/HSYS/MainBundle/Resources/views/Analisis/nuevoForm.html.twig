@@ -1,6 +1,6 @@
 {% extends 'HSYSMainBundle:Analisis:analisisbase.html.twig' %}
 
-{% block title %}Nuevo Análisis{% endblock %}
+{% block title %}Nuevo Análisis de Serología{% endblock %}
 
 
 {% block contenido %}
@@ -29,12 +29,12 @@
     </tr>
 </table>
 <br/>
-<h4>Resultados del analisis:</h4>
+<h4>Resultados del analisis de serología:</h4>
 <form action="{{ path('alta_analisis_form', {'id':donacion.id}) }}" method="post">
         {# {{ form_widget(form) }} #}
         <table>
             <tr>
-                <td><label>Fecha Analisis: </label></td>
+                <td><label>Fecha Analisis de Serología: </label></td>
                 {#<td>{{ form_widget(form.fechanalisis) }}</td>
                 <td>{{ form_errors(form.fechanalisis) }}</td>#}
                 <td><input type="date" id="fecha" name="fecha" value="{{"now" | date('Y-m-d')}}"/></td>
