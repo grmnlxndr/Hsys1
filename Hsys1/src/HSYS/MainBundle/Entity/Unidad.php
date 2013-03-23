@@ -207,7 +207,7 @@ class Unidad {
             return array("Desbloqueado", "Descartado", "Fraccionado");
         } else {
             if ($this->estado == "Desbloqueado") {
-                return array("Transfundido", "Descartado", "Fraccionado");
+                return array("Transfundido", "Descartado", "Fraccionado", "Bloqueado");
             } else {
                 if ($this->estado == "Transfundido") {
                     return array();

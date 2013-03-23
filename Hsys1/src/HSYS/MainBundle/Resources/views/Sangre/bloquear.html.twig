@@ -1,0 +1,31 @@
+{% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
+
+{% block title %}Bloquear Unidad{% endblock %}
+
+{% block contenido %}
+ 
+<h3>Bloquear la unidad ID: {{ unidad.id }}</h3><br/>
+
+
+{% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
+ 
+ <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('bloquear_unidad',{'id':unidad.id}) }}">
+     
+       <input type="checkbox" name="bloquear" id="bloquear" onclick="habilitar()"><label>¿Está seguro que desea bloquear la unidad {{unidad.id}}? </label><br>
+        <input type="submit" value="Bloquear"/>
+
+</form>
+
+<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+<script>
+$('input[type="submit"]').attr('disabled','disabled');  
+function habilitar(){
+if (bloquear.checked) {    
+    $('input[type="submit"]').removeAttr('disabled');
+} else {
+    $('input[type="submit"]').attr('disabled','disabled');
+    }
+    };
+</script>
+</script>
+{%endblock%}
