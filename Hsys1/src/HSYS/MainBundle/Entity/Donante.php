@@ -121,6 +121,13 @@ class Donante {
      * @ORM\Column(name="pais", type= "string", length=40, nullable=true)
      */
     private $pais;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="codpostal", type= "string", length=40, nullable=true)
+     */
+    private $codpostal;
 
     /**
      * @var string
@@ -128,6 +135,28 @@ class Donante {
      * @ORM\Column(name="telefono", type= "string", length=30, nullable=true)
      */
     private $telefono;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="celular", type= "string", length=30, nullable=true)
+     */
+    private $celular;
+    
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="donantevoluntario", type= "boolean", nullable=true)
+     */
+    private $donantevoluntario;
+    
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="email", type= "string", length=60, nullable=true)
+     * @Assert\Email(message = "El mail '{{ value }}' ingresado no tiene el formato correcto.")
+     */
+    private $email;
 
     /**
      *
@@ -422,6 +451,26 @@ class Donante {
         $this->pais = $pais;
         return $this;
     }
+    
+    /**
+     * Get codpostal
+     *
+     * @return string 
+     */
+    public function getCodpostal() {
+        return $this->codpostal;
+    }
+
+    /**
+     * Set codpostal
+     *
+     * @param string $codpostal
+     * @return Donante
+     */
+    public function setCodpostal($codpostal) {
+        $this->codpostal = $codpostal;
+        return $this;
+    }
 
     /**
      * Get telefono
@@ -442,7 +491,67 @@ class Donante {
         $this->telefono = $telefono;
         return $this;
     }
+    
+    /**
+     * Get celular
+     *
+     * @return string 
+     */
+    public function getCelular() {
+        return $this->celular;
+    }
 
+    /**
+     * Set celular
+     *
+     * @param string $celular
+     * @return Donante
+     */
+    public function setCelular($celular) {
+        $this->celular = $celular;
+        return $this;
+    }
+    
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail() {
+        return $this->email;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return Donante
+     */
+    public function setEmail($email) {
+        $this->email = $email;
+        return $this;
+    }
+    
+    /**
+     * Get donantevoluntario
+     *
+     * @return boolean 
+     */
+    public function getDonantevoluntario() {
+        return $this->donantevoluntario;
+    }
+
+    /**
+     * Set donantevoluntario
+     *
+     * @param boolean $donantevoluntario
+     * @return Donante
+     */
+    public function setDonantevoluntario($donantevoluntario) {
+        $this->donantevoluntario = $donantevoluntario;
+        return $this;
+    }
+    
     /**
      * @ORM\OneToMany(targetEntity="Exclusion", mappedBy="Donante", cascade={"persist"})
      */

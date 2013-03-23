@@ -32,6 +32,11 @@
                 <td>{{ form_errors(form.sexo) }}</td>
             </tr>
             <tr>
+                <td><label>Donante Voluntario: </label></td>
+                <td>{{ form_widget(form.donantevoluntario) }}</td>
+                <td>{{ form_errors(form.donantevoluntario) }}</td>
+            </tr>
+            <tr>
                 <td><label>Ocupación: </label></td>
                 <td>{{ form_widget(form.ocupacion) }}</td>
                 <td>{{ form_errors(form.ocupacion) }}</td>
@@ -42,9 +47,19 @@
                 <td>{{ form_errors(form.estadocivil) }}</td>
             </tr>
             <tr>
-                <td><label>Teléfono: </label></td>
+                <td><label>Teléfono Particular: </label></td>
                 <td>{{ form_widget(form.telefono) }}</td>
                 <td>{{ form_errors(form.telefono) }}</td>
+            </tr>
+             <tr>
+                <td><label>Teléfono Celular: </label></td>
+                <td>{{ form_widget(form.celular) }}</td>
+                <td>{{ form_errors(form.celular) }}</td>
+            </tr>
+            <tr>
+                <td><label>E-Mail: </label></td>
+                <td>{{ form_widget(form.email) }}</td>
+                <td>{{ form_errors(form.email) }}</td>
             </tr>
             <tr>
                 <td><label>País de Nacimiento: </label></td>
@@ -73,6 +88,11 @@
                 <td><label>Ciudad: </label></td>
                 <td>{{ form_widget(form.ciudad) }}</td>
                 <td>{{ form_errors(form.ciudad) }}</td>
+            </tr>
+            <tr>
+                <td><label>Código Postal: </label></td>
+                <td>{{ form_widget(form.codpostal) }}</td>
+                <td>{{ form_errors(form.codpostal) }}</td>
             </tr>
             <tr>
                 <td><label>Calle y Número: </label></td>

@@ -44,10 +44,14 @@ class DonanteType extends AbstractType
                 ->add('paisnac')
                 ->add('provnac')
                 ->add('domicilio')
+                ->add('codpostal')
                 ->add('ciudad')
                 ->add('provincia')
                 ->add('pais')
                 ->add('telefono')
+                ->add('celular')
+                ->add('email')
+                ->add('donantevoluntario','checkbox')
                 ;
     
     }
