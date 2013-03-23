@@ -1,15 +1,18 @@
 {% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
 
-{% block title %}Trasnfundir Unidad{% endblock %}
+{% block title %}Descartar Unidad{% endblock %}
 
 {% block contenido %}
  
+<h3>Descartar la unidad ID: {{ unidad.id }}</h3><br/>
+
+
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
  
  <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('desechar_unidad',{'id':unidad.id}) }}">
      
-       <input type="checkbox" name="desechar" id="desechar" onclick="habilitar()"><label>¿Está seguro que desea desechar la unidad {{unidad.id}}? </label><br>
-        <input type="submit" value="Desechar"/>
+       <input type="checkbox" name="desechar" id="desechar" onclick="habilitar()"><label>¿Está seguro que desea descartar la unidad {{unidad.id}}? </label><br>
+        <input type="submit" value="Descartar"/>
 
 </form>
 

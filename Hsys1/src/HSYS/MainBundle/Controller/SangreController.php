@@ -138,10 +138,10 @@ class SangreController extends Controller {
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
         if ($request->getMethod() == 'POST') {
-            $unidad->setEstado("Desechado");
+            $unidad->setEstado("Descartado");
             $em->persist($unidad);
             $em->flush();
-            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'desechada'));
+            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'descartada'));
         }
         return $this->render('HSYSMainBundle:Sangre:desechar.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }

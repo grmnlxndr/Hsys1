@@ -44,7 +44,7 @@ class Unidad {
 
     /**
      * @var string
-     * los estados pueden ser: bloqueado, desbloqueado, transfundido, desechado (=vencimiento??), fraccionado (ojo esto es solo para sangre entera).
+     * los estados pueden ser: bloqueado, desbloqueado, transfundido, descartado (=vencimiento??), fraccionado (ojo esto es solo para sangre entera).
      * @ORM\Column(name="estado", type="string", length=30, nullable=true)
      */
     private $estado;
@@ -204,15 +204,15 @@ class Unidad {
     
     public function estadosPosibles() {
         if ($this->estado == "Bloqueado") {
-            return array("Desbloqueado", "Desechado", "Fraccionado");
+            return array("Desbloqueado", "Descartado", "Fraccionado");
         } else {
             if ($this->estado == "Desbloqueado") {
-                return array("Transfundido", "Desechado", "Fraccionado");
+                return array("Transfundido", "Descartado", "Fraccionado");
             } else {
                 if ($this->estado == "Transfundido") {
                     return array();
                 } else {
-                    if ($this->estado == "Desechado") {
+                    if ($this->estado == "Descartado") {
                         return array();
                     } else {
                         if ($this->estado == "Fraccionado") {

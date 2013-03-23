@@ -4,6 +4,8 @@
 
 {% block contenido %}
  
+<h3>Desbloquear la unidad ID: {{ unidad.id }}</h3><br/>
+
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
  
  <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('desbloquear_unidad',{'id':unidad.id}) }}">

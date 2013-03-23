@@ -12,8 +12,8 @@
         {% if "Transfundido" in estados %}
         <li><a href="{{ path('transfundir_unidad',{'id':unidad.id}) }}">Transfundir</a></li>
         {% endif %}
-        {% if "Desechado" in estados %}
-        <li><a href="{{ path('desechar_unidad',{'id':unidad.id}) }}">Desechar</a></li>
+        {% if "Descartado" in estados %}
+        <li><a href="{{ path('desechar_unidad',{'id':unidad.id}) }}">Descartar</a></li>
         {% endif %}
         {% if unidad.tipohemocomponente == "Sangre Entera" and "Fraccionado" in estados %}
         <li><a href="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">Crear Fraccionamiento</a></li>
