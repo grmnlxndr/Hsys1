@@ -38,7 +38,8 @@ class DonanteController extends Controller {
 //aca poner respuesta no se como
             }
         }
-        return $this->render('HSYSMainBundle:Donante:nuevo.html.twig', array('form' => $form->createView(),));
+        $provincias = \HSYS\MainBundle\Entity\Provincias::$provincias;
+        return $this->render('HSYSMainBundle:Donante:nuevo.html.twig', array('form' => $form->createView(),'provincias' => $provincias));
     }
     /**
     * 	@Secure(roles="ROLE_PERSONAL")
