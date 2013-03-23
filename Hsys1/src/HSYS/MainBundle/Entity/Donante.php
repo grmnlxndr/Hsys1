@@ -4,12 +4,14 @@ namespace HSYS\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 
 /**
  * Donante
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\DonanteRepository")
+ * @UniqueEntity(fields="dni", message="DNI ya Existente")
  */
 class Donante {
 
@@ -25,7 +27,7 @@ class Donante {
     /**
      * @var string
      *
-     * @ORM\Column(name="nomapp", type="string", length=100, nullable=true)
+     * @ORM\Column(name="nomapp", type="string", length=100, nullable=false)
      */
     private $nomapp;
 
@@ -38,7 +40,7 @@ class Donante {
      *          limit = "99999999",
      *          message= "El DNI debe ser un numero de hasta 8 cifras"
      *          )
-     * @ORM\Column(name="dni", type="integer", nullable=true)  
+     * @ORM\Column(name="dni", type="integer", nullable=false, unique=true)  
      * 
      */
     private $dni;
