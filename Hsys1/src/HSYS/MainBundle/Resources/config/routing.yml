@@ -165,6 +165,10 @@ desechar_unidad:
   pattern: /sangre/desechar/{id}
   defaults: { _controller: HSYSMainBundle:Sangre:desechar }
 
+bloquear_unidad:
+  pattern: /sangre/bloquear/{id}
+  defaults: { _controller: HSYSMainBundle:Sangre:bloquear }
+
 crearfraccionamiento_unidad:
   pattern: /sangre/crearfraccionamiento/{id}
   defaults: { _controller: HSYSMainBundle:Sangre:crearfraccionamiento}

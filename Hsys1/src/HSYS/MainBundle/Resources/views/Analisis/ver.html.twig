@@ -1,6 +1,6 @@
 {% extends 'HSYSMainBundle:Analisis:analisisbase.html.twig' %}
 
-{% block title %}Ver Analisis {{ analisis.id }}{% endblock %}
+{% block title %}Ver Analisis de Serología ID: {{ analisis.id }}{% endblock %}
 
 {% block contenido %}
 
@@ -16,7 +16,7 @@
         <td>{{ analisis.id }}</td>
     </tr>
     <tr>
-        <th>Fecha de analisis:  </th>
+        <th>Fecha de analisis de serología:  </th>
         <td>{{ analisis.fechanalisis|date('d/m/Y') }}</td>
     </tr>
     <tr>
@@ -40,7 +40,7 @@
         <td>{{ donacion.fechextraccion|date('d/m/Y') }}</td>
     </tr>
     <tr>
-        <th colspan="2">Detalle del Análisis: </th>
+        <th colspan="2">Detalle del Análisis de Serología: </th>
     </tr>
     <tr>
         <th>CHHAI: </th>

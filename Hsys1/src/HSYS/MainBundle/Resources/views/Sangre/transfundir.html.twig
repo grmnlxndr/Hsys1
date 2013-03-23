@@ -3,7 +3,9 @@
 {% block title %}Trasnfundir Unidad{% endblock %}
 
 {% block contenido %}
- 
+
+<h3>Transfundir la unidad ID: {{ unidad.id }}</h3><br/> 
+
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
  
  <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('transfundir_unidad',{'id':unidad.id}) }}">
