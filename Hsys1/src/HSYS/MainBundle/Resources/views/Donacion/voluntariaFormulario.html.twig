@@ -25,28 +25,58 @@
     </table>
     <br/>
     <form id="donacion_form" name="donacion_form" method="post" action="{{ path('alta_donacion_voluntaria_confirmar') }}">
-        <table>
-            <tr>
-                <td><label>Fecha extracción: </label></td>
-                <td><input  id="fecha" name="fecha" type="date" value="{{ "now"|date('Y-m-d') }}"/></td><!required="required">
-            </tr>
-            <tr>
-                <td><label>Número de Bolsa: </label></td>
-                <td><input required="required" id="bolsa" name="bolsa" type="text"/></td>
-            </tr>
-            <tr>
-                <td><label>Volúmen extraído: </label></td>
-                <td><input id="volumen" name="volumen" type="text"/></td>
-                <td>cc</td>
-            </tr>
-            <tr>
-                <td><label>Comentarios: </label></td>
-                <td><textarea id="comentarios" name="comentarios" rows="5" form="donacion_form" style="auto"></textarea></td>
-            </tr>
-            <tr>
-                <td><input type="submit" value="Confirmar"/></td>
-            </tr>
-        </table>
+       <table>
+        <tr>
+            <td><label>Fecha extracción: </label></td>
+            <td><input  id="fecha" name="fecha" type="date" value="{{ "now"|date('Y-m-d') }}"/></td><!required="required">
+        </tr>
+        <tr>
+            <td><label>Localidad de extracción: </label></td>
+            <td><input id="localidad" name="localidad" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Hospital de extracción: </label></td>
+            <td><input id="hospital" name="hospital" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Número de Bolsa: </label></td>
+            <td><input required="required" id="bolsa" name="bolsa" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Volúmen extraído: </label></td>
+            <td><input id="volumen" name="volumen" type="text"/></td>
+            <td>cc</td>
+        </tr>
+        <tr>
+            <td><label>Flebotomía: </label></td>
+            <td><select  id="flebotomia" name="flebotomia">
+                    <option value="Brazo Izquierdo">Brazo Izquierdo</option>
+                    <option value="Brazo Derecho">Brazo Derecho</option>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Punción: </label></td>
+            <td><select  id="puncion" name="puncion">
+                    <option value="Unica">Unica</option>
+                    <option value="Varias">Varias</option>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Reacción Postextracción: </label></td>
+            <td><select  id="reaccionpostextraccion" name="reaccionpostextraccion">
+                    <option value="Buena">Buena</option>
+                    <option value="Lipotina">Lipotina</option>
+                    <option value="Otra">Otra</option>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Comentarios: </label></td>
+            <td><textarea id="comentarios" name="comentarios" rows="5" form="donacion_form" style="auto"></textarea></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Confirmar"/></td>
+        </tr>
+    </table>
         <input id="donante" name="donante" type="hidden" value="{{ donante.id }}" />
     </form>
 
