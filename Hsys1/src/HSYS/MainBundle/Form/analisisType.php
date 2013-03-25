@@ -28,7 +28,7 @@ class analisisType extends AbstractType
                 ->add('sifilis','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))
                 ->add('abo','choice',array('choices'=>array('AB'=>'AB','A'=>'A','B'=>'B','0'=>'0'),'empty_value'=>'SELECCIONE'))
                 ->add('rhd','choice',array('choices'=>array('-'=>'-','+'=>'+'),'empty_value'=>'SELECCIONE'))
-                ->add('du')
+                ->add('du','choice',array('choices'=>array('-'=>'-','+'=>'+'),'empty_value'=>'SELECCIONE'))
                 ->add('cde')
                 ->add('fenotipo')
                 ->add('pci','choice', array('choices'=>array('-'=>'-','+'=>'+'),'empty_value'=>'SELECCIONE'))

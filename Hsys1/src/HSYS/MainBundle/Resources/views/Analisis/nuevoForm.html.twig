@@ -119,7 +119,7 @@
                 <td>{{ form_widget(form.pci) }}</td>
                 <td>{{ form_errors(form.pci) }}</td>
             </tr>
-            <tr>
+            <tr id="reactivo">
                 <td><label>Reactivo?: </label></td>
                 <td>{{ form_widget(form.reactivo) }}</td>
                 <td>{{ form_errors(form.reactivo) }}</td>
@@ -127,7 +127,67 @@
         </table>
         
         {{ form_rest(form) }}
-        <input type="submit" />
+        <input id="aceptado" type="button" value="Aceptar" onclick="validacion()"/>
+        <input id="modificar" type="button" value="Modificar" onclick="modificarformulario()" />
+        <input type="submit" id="enviar" name="enviar"/>
     </form>
 {{ form_errors(form) }}
+
+
+<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+<script>
+window.onload = function() {
+$('#modificar').hide();
+$('#enviar').hide();
+$('#reactivo').hide();
+
+}; 
+
+function validacion(){
+    alert("validacion meter codigooooo");
+    $("#fecha").attr('disabled','disabled');
+    $("#Donacion_form_chhai").attr('disabled','disabled');
+    $("#Donacion_form_cheia").attr('disabled','disabled');
+    $("#Donacion_form_anticore").attr('disabled','disabled');
+    $("#Donacion_form_hbsag").attr('disabled','disabled');
+    $("#Donacion_form_hcvagac").attr('disabled','disabled');
+    $("#Donacion_form_hivac").attr('disabled','disabled');
+    $("#Donacion_form_agp2y").attr('disabled','disabled');
+    $("#Donacion_form_htlv").attr('disabled','disabled');
+    $("#Donacion_form_brucelosis").attr('disabled','disabled');
+    $("#Donacion_form_sifilis").attr('disabled','disabled');
+    $("#Donacion_form_abo").attr('disabled','disabled');
+    $("#Donacion_form_rhd").attr('disabled','disabled');
+    $("#Donacion_form_du").attr('disabled','disabled');
+    $("#Donacion_form_cde").attr('disabled','disabled');
+    $("#Donacion_form_fenotipo").attr('disabled','disabled');
+    $("#Donacion_form_pci").attr('disabled','disabled');
+    $('#enviar').show();
+    $('#modificar').show();
+    $('#aceptado').hide();
+    };
+    
+function modificarformulario(){
+    $("#fecha").removeAttr('disabled');
+    $("#Donacion_form_chhai").removeAttr('disabled');
+    $("#Donacion_form_cheia").removeAttr('disabled');
+    $("#Donacion_form_anticore").removeAttr('disabled');
+    $("#Donacion_form_hbsag").removeAttr('disabled');
+    $("#Donacion_form_hcvagac").removeAttr('disabled');
+    $("#Donacion_form_hivac").removeAttr('disabled');
+    $("#Donacion_form_agp2y").removeAttr('disabled');
+    $("#Donacion_form_htlv").removeAttr('disabled');
+    $("#Donacion_form_brucelosis").removeAttr('disabled');
+    $("#Donacion_form_sifilis").removeAttr('disabled');
+    $("#Donacion_form_abo").removeAttr('disabled');
+    $("#Donacion_form_rhd").removeAttr('disabled');
+    $("#Donacion_form_du").removeAttr('disabled');
+    $("#Donacion_form_cde").removeAttr('disabled');
+    $("#Donacion_form_fenotipo").removeAttr('disabled');
+    $("#Donacion_form_pci").removeAttr('disabled');
+    $('#enviar').hide();
+    $('#modificar').hide();
+    $('#aceptado').show();
+    };
+</script>
 {% endblock %}
