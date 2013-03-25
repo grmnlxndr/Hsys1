@@ -41,6 +41,34 @@ class Unidad {
      * @ORM\Column(name="idbolsa", type="string", length=20, nullable=true)
      */
     private $idbolsa;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nrolote", type="string", length=20, nullable=true)
+     */
+    private $nrolote;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipobolsa", type="string", length=20, nullable=true)
+     */
+    private $tipobolsa;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marca", type="string", length=30, nullable=true)
+     */
+    private $marca;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="anticoagulante", type="string", length=20, nullable=true)
+     */
+    private $anticoagulante;
 
     /**
      * @var string
@@ -120,7 +148,91 @@ class Unidad {
     public function getIdbolsa() {
         return $this->idbolsa;
     }
+    
+/**
+     * Set nrolote
+     *
+     * @param string $nrolote
+     * @return Unidad
+     */
+    public function setNrolote($nrolote) {
+        $this->nrolote = $nrolote;
 
+        return $this;
+    }
+
+    /**
+     * Get nrolote
+     *
+     * @return string 
+     */
+    public function getNrolote() {
+        return $this->nrolote;
+    }
+
+/**
+     * Set tipobolsa
+     *
+     * @param string $tipobolsa
+     * @return Unidad
+     */
+    public function setTipobolsa($tipobolsa) {
+        $this->tipobolsa = $tipobolsa;
+
+        return $this;
+    }
+
+    /**
+     * Get tipobolsa
+     *
+     * @return string 
+     */
+    public function getTipobolsa() {
+        return $this->tipobolsa;
+    }
+    
+/**
+     * Set marca
+     *
+     * @param string $marca
+     * @return Unidad
+     */
+    public function setMarca($marca) {
+        $this->marca = $marca;
+
+        return $this;
+    }
+
+    /**
+     * Get marca
+     *
+     * @return string 
+     */
+    public function getMarca() {
+        return $this->marca;
+    }
+    
+/**
+     * Set anticoagulante
+     *
+     * @param string $anticoagulante
+     * @return Unidad
+     */
+    public function setAnticoagulante($anticoagulante) {
+        $this->anticoagulante = $anticoagulante;
+
+        return $this;
+    }
+
+    /**
+     * Get anticoagulante
+     *
+     * @return string 
+     */
+    public function getAnticoagulante() {
+        return $this->anticoagulante;
+    }    
+    
     /**
      * Set estado
      *

@@ -27,8 +27,11 @@
     <form id="donacion_form" name="donacion_form" method="post" action="{{ path('alta_donacion_voluntaria_confirmar') }}">
        <table>
         <tr>
+            <td><label><u>Datos Generales: </u></label></td>
+        </tr>
+        <tr>
             <td><label>Fecha extracción: </label></td>
-            <td><input  id="fecha" name="fecha" type="date" value="{{ "now"|date('Y-m-d') }}"/></td><!required="required">
+            <td><input  id="fecha" name="fecha" type="date" value="{{ "now"|date('Y-m-d') }}" style="width: 93%"/></td><!required="required">
         </tr>
         <tr>
             <td><label>Localidad de extracción: </label></td>
@@ -39,39 +42,90 @@
             <td><input id="hospital" name="hospital" type="text"/></td>
         </tr>
         <tr>
-            <td><label>Número de Bolsa: </label></td>
+            <td><label><u>Datos de la Bolsa: </u></label></td>
+        </tr>
+        <tr>
+            <td><label>Número de Tubuladura: </label></td>
             <td><input required="required" id="bolsa" name="bolsa" type="text"/></td>
         </tr>
         <tr>
+            <td><label>Número de Lote: </label></td>
+            <td><input required="required" id="nrolote" name="nrolote" type="text"/></td>
+        </tr>
+        <tr>
+            <td><label>Fecha de Vencimiento: </label></td>
+            <td><input required="required" id="vencimiento" name="vencimiento" type="date" value="{{ "now"|date('Y-m-d') }}" style="width: 93%"/></td>
+        </tr>
+        <tr>
+            <td><label>Tipo Bolsa: </label></td>
+            <td><select  id="tipobolsa" name="tipobolsa" style="width: 100%">
+                    <option value="Doble">Doble</option>
+                    <option value="Triple">Triple</option>
+                    <option value="Cuadruple">Cuadruple</option>
+                    <option value="Niños">Niños</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Marca: </label></td>
+            <td><select  id="marca" name="marca" style="width: 100%">
+                    <option value="Baxter">Baxter</option>
+                    <option value="Grifols">Grifols</option>
+                    <option value="MS">MS</option>
+                    <option value="Kawasumi">Kawasumi</option>
+                    <option value="Rivero">Rivero</option>
+                    <option value="Terumo">Terumo</option>
+                    <option value="Otra">Otra</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Anticoagulante: </label></td>
+            <td><select  id="anticoagulante" name="anticoagulante" style="width: 100%">
+                    <option value="ACD-A">ACD-A</option>
+                    <option value="CPD-A">CPD-A</option>
+                    <option value="SAG-Manitol">SAG-Manitol</option>
+                    <option value="Otra">Otra</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label><u>Datos de la Extracción: </u></label></td>
+        </tr>
+        <tr>
             <td><label>Volúmen extraído: </label></td>
-            <td><input id="volumen" name="volumen" type="text"/></td>
+            <td><input id="volumen" name="volumen" type="text" value="450"/></td>
             <td>cc</td>
         </tr>
         <tr>
             <td><label>Flebotomía: </label></td>
-            <td><select  id="flebotomia" name="flebotomia">
+            <td><select  id="flebotomia" name="flebotomia" style="width: 100%">
                     <option value="Brazo Izquierdo">Brazo Izquierdo</option>
                     <option value="Brazo Derecho">Brazo Derecho</option>
+                </select>
             </td>
         </tr>
         <tr>
             <td><label>Punción: </label></td>
-            <td><select  id="puncion" name="puncion">
+            <td><select  id="puncion" name="puncion" style="width: 100%">
                     <option value="Unica">Unica</option>
                     <option value="Varias">Varias</option>
+                </select>
             </td>
         </tr>
         <tr>
             <td><label>Reacción Postextracción: </label></td>
-            <td><select  id="reaccionpostextraccion" name="reaccionpostextraccion">
+            <td><select  id="reaccionpostextraccion" name="reaccionpostextraccion" style="width: 100%">
                     <option value="Buena">Buena</option>
                     <option value="Lipotina">Lipotina</option>
                     <option value="Otra">Otra</option>
+                </select>
             </td>
         </tr>
         <tr>
             <td><label>Comentarios: </label></td>
-            <td><textarea id="comentarios" name="comentarios" rows="5" form="donacion_form" style="auto"></textarea></td>
+            <td><textarea id="comentarios" name="comentarios" rows="5" form="donacion_form" style="width: 93%"></textarea></td>
         </tr>
         <tr>
             <td><input type="submit" value="Confirmar"/></td>
