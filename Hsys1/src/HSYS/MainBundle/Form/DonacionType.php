@@ -9,6 +9,14 @@ class DonacionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->add('fechextraccion')
                 ->add('idbolsa')
+                ->add('localidad')
+                ->add('hospital')
+                ->add('flebotomia','choice', array('choices' => array(
+                    'Brazo Izquierdo' => 'Brazo Izquierdo',
+                    'Brazo Derecho' => 'Brazo Derecho'
+                )))
+                ->add('puncion')
+                ->add('reaccionpostextraccion')
                 ->add('comentario');      
     }
     

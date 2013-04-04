@@ -38,6 +38,41 @@ class Donacion {
     /**
      * @var string
      *
+     * @ORM\Column(name="localidad", type="string", length=50, nullable=true)
+     */
+    private $localidad;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="hospital", type="string", length=50, nullable=true)
+     */
+    private $hospital;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="flebotomia", type="string", length=20, nullable=true)
+     */
+    private $flebotomia;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="puncion", type="string", length=20, nullable=true)
+     */
+    private $puncion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reaccionpostextraccion", type="string", length=20, nullable=true)
+     */
+    private $reaccionpostextraccion;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="comentario", type="string", length=150, nullable=true)
      */
     private $comentario;
@@ -92,7 +127,113 @@ class Donacion {
     public function getIdbolsa() {
         return $this->idbolsa;
     }
+    
+    
+    /**
+     * Set localidad
+     *
+     * @param string $localidad
+     * @return Donacion
+     */
+    public function setLocalidad($localidad) {
+        $this->localidad = $localidad;
 
+        return $this;
+    }
+
+    /**
+     * Get localidad
+     *
+     * @return string 
+     */
+    public function getLocalidad() {
+        return $this->localidad;
+    }
+    
+    /**
+     * Set hospital
+     *
+     * @param string $hospital
+     * @return Donacion
+     */
+    public function setHospital($hospital) {
+        $this->hospital = $hospital;
+
+        return $this;
+    }
+
+    /**
+     * Get hospital
+     *
+     * @return string 
+     */
+    public function getHospital() {
+        return $this->hospital;
+    }
+
+    /**
+     * Set flebotomia
+     *
+     * @param string $flebotomia
+     * @return Donacion
+     */
+    public function setFlebotomia($flebotomia) {
+        $this->flebotomia = $flebotomia;
+
+        return $this;
+    }
+
+    /**
+     * Get flebotomia
+     *
+     * @return string 
+     */
+    public function getFlebotomia() {
+        return $this->flebotomia;
+    }
+    
+    /**
+     * Set puncion
+     *
+     * @param string $puncion
+     * @return Donacion
+     */
+    public function setPuncion($puncion) {
+        $this->puncion = $puncion;
+
+        return $this;
+    }
+
+    /**
+     * Get puncion
+     *
+     * @return string 
+     */
+    public function getPuncion() {
+        return $this->puncion;
+    }    
+    
+    /**
+     * Set reaccionpostextraccion
+     *
+     * @param string $reaccionpostextraccion
+     * @return Donacion
+     */
+    public function setReaccionpostextraccion($reaccionpostextraccion) {
+        $this->reaccionpostextraccion = $reaccionpostextraccion;
+
+        return $this;
+    }
+
+    /**
+     * Get reaccionpostextraccion
+     *
+     * @return string 
+     */
+    public function getReaccionpostextraccion() {
+        return $this->reaccionpostextraccion;
+    }
+    
     /**
      * Set comentario
      *
@@ -161,9 +302,9 @@ class Donacion {
         return $this->Unidades;
     }
 
-    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $fecharealizacion = null, $factorsang = null, $estado = "Bloqueado"){
+    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $fecharealizacion = null, $factorsang = null, $estado = "Bloqueado") {
         $nuevaunidad = new Unidad;
-        if ($fecharealizacion == null){
+        if ($fecharealizacion == null) {
             $fecharealizacion1 = $this->fechextraccion;
             $fecharealizacion = $fecharealizacion1->format('Y-m-d');
         }
@@ -173,25 +314,30 @@ class Donacion {
         $fechaformatvenc = new \DateTime;
         $fechaformatvenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
         $nuevaunidad->setVencimiento($fechaformatvenc);
-        
+
         if ($factorsang == null) {
             $factorsang = $this->getDonante()->getfactorsang();
         }
-        $nuevaunidad->setFactorsang($factorsang);        
+        $nuevaunidad->setFactorsang($factorsang);
         $nuevaunidad->setVolumen($volumen);
         $nuevaunidad->setIdbolsa($this->getIdbolsa());
         $nuevaunidad->setTipoHemocomponente($TipoHemocomponente);
+        $nuevaunidad->setTipobolsa($tipobolsa);
+        $nuevaunidad->setNrolote($nrolote);
+        $nuevaunidad->setMarca($marca);
+        $nuevaunidad->setAnticoagulante($anticoagulante);
         $nuevaunidad->setEstado($estado);
         $nuevaunidad->setDonacion($this);
         $this->addUnidades($nuevaunidad);
     }
+
     /**
      * @ORM\OneToOne(targetEntity="analisis", inversedBy="Donacion")
      * @ORM\JoinColumn(name="analisis", referencedColumnName="id")
      * @return integer
      */
     private $analisis;
-    
+
     public function setAnalisis(\HSYS\MainBundle\Entity\analisis $analisis) {
         $this->analisis = $analisis;
     }

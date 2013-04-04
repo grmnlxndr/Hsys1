@@ -142,9 +142,19 @@ class DonacionController extends Controller {
         $request = $this->getRequest();
         $idDonante = $request->request->get('donante');
         $fecha = $request->request->get('fecha');
+        $localidad = $request->request->get('localidad');
+        $hospital = $request->request->get('hospital');
         $idbolsa = $request->request->get('bolsa');
         $volumen = $request->request->get('volumen');
         $comentarios = $request->request->get('comentarios');
+        $flebotomia = $request->request->get('flebotomia');
+        $puncion = $request->request->get('puncion');
+        $reaccionpostextraccion = $request->request->get('reaccionpostextraccion');
+        $nrolote = $request->request->get('nrolote');
+        $vencimiento = $request->request->get('vencimiento');
+        $tipobolsa = $request->request->get('tipobolsa');
+        $marca = $request->request->get('marca');
+        $anticoagulante = $request->request->get('anticoagulante');
 
         $em = $this->getDoctrine()->getEntityManager();
         
@@ -156,10 +166,20 @@ class DonacionController extends Controller {
         $fechaformat = new \DateTime;
         $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
         $donacion->setFechextraccion($fechaformat);
+        $donacion->setLocalidad($localidad);
+        $donacion->setHospital($hospital);
+        $donacion->setFlebotomia($flebotomia);
+        $donacion->setPuncion($puncion);
+        $donacion->setReaccionpostextraccion($reaccionpostextraccion);
         $donacion->setComentario($comentarios);
         
         $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
-        $donacion->crearUnidad($tipohemo, $volumen);
+        
+        $fechaformatVenc = new \DateTime;
+        $fechaformatVenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
+        $fechaVenc = $fechaformatVenc->format('Y-m-d');
+//        $donacion->crearUnidad($tipohemo, $volumen, $fechaVenc);
+        $donacion->crearUnidad($tipohemo, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $fechaVenc);
         
         $em->persist($donacion);
         $em->flush();
@@ -290,9 +310,19 @@ class DonacionController extends Controller {
         $idDonante = $request->request->get('donante');
         $idReceptor = $request->request->get('receptor');
         $fecha = $request->request->get('fecha');
+        $localidad = $request->request->get('localidad');
+        $hospital = $request->request->get('hospital');
         $idbolsa = $request->request->get('bolsa');
         $volumen = $request->request->get('volumen');
         $comentarios = $request->request->get('comentarios');
+        $flebotomia = $request->request->get('flebotomia');
+        $puncion = $request->request->get('puncion');
+        $reaccionpostextraccion = $request->request->get('reaccionpostextraccion');
+        $nrolote = $request->request->get('nrolote');
+        $vencimiento = $request->request->get('vencimiento');
+        $tipobolsa = $request->request->get('tipobolsa');
+        $marca = $request->request->get('marca');
+        $anticoagulante = $request->request->get('anticoagulante');
 
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -301,13 +331,23 @@ class DonacionController extends Controller {
         $donacion->setDonante($donante);
         $donacion->setReceptor($em->getRepository('HSYSMainBundle:Donante')->find($idReceptor));
         $donacion->setIdbolsa($idbolsa);
+        $donacion->setLocalidad($localidad);
+        $donacion->setHospital($hospital);
+        $donacion->setFlebotomia($flebotomia);
+        $donacion->setPuncion($puncion);
+        $donacion->setReaccionpostextraccion($reaccionpostextraccion);
         $fechaformat = new \DateTime;
         $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
         $donacion->setFechextraccion($fechaformat);
         $donacion->setComentario($comentarios);
         
         $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
-        $donacion->crearUnidad($tipohemo, $volumen);
+        
+        $fechaformatVenc = new \DateTime;
+        $fechaformatVenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
+        $fechaVenc = $fechaformatVenc->format('Y-m-d');
+//        $donacion->crearUnidad($tipohemo, $volumen, $fechaVenc);
+        $donacion->crearUnidad($tipohemo, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $fechaVenc);
         
         $em->persist($donacion);
         $em->flush();
