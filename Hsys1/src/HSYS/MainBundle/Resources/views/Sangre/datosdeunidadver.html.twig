@@ -9,6 +9,10 @@
         <td>{{ unidad.factorsang  }}</td>
     </tr>
     <tr>
+        <th>Fecha de Extracción: </th>
+        <td>{{ unidad.Donacion.fechextraccion | date("d/m/Y")  }}</td>
+    </tr>
+    <tr>
         <th>Fecha de vencimiento: </th>
         <td>{{ unidad.vencimiento | date("d/m/Y")  }}</td>
     </tr>
