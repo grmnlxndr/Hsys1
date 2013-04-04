@@ -119,14 +119,16 @@
                 <td>{{ form_widget(form.pci) }}</td>
                 <td>{{ form_errors(form.pci) }}</td>
             </tr>
+            <tr id="separador"></tr>
             <tr id="reactivo">
                 <td><label>Reactivo?: </label></td>
                 <td>{{ form_widget(form.reactivo) }}</td>
                 <td>{{ form_errors(form.reactivo) }}</td>
             </tr>
         </table>
-        
+        <br/>
         {{ form_rest(form) }}
+        <div id="aprobado" name = "aprobado"><input type="checkbox" name="checkboxaprobado" id="checkboxaprobado" onclick="habilitar()"> ¿Esta seguro que desea habilitar el donante?<br> </div>
         <input id="aceptado" type="button" value="Aceptar" onclick="validacion()"/>
         <input id="modificar" type="button" value="Modificar" onclick="modificarformulario()" />
         <input type="submit" id="enviar" name="enviar"/>
@@ -137,14 +139,16 @@
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
 <script>
 window.onload = function() {
+$('input[type="submit"]').attr('disabled','disabled'); 
 $('#modificar').hide();
 $('#enviar').hide();
 $('#reactivo').hide();
-
+$('#aprobado').hide();
+$('#separador').html('<br/>');
+$('#separador').hide();
 }; 
 
 function validacion(){
-    alert("validacion meter codigooooo");
     $("#fecha").attr('disabled','disabled');
     $("#Donacion_form_chhai").attr('disabled','disabled');
     $("#Donacion_form_cheia").attr('disabled','disabled');
@@ -165,6 +169,11 @@ function validacion(){
     $('#enviar').show();
     $('#modificar').show();
     $('#aceptado').hide();
+    $('#aprobado').show();
+    
+    $('#separador').show();
+    $('#reactivo').show();
+    esReactivo();
     };
     
 function modificarformulario(){
@@ -188,6 +197,32 @@ function modificarformulario(){
     $('#enviar').hide();
     $('#modificar').hide();
     $('#aceptado').show();
+    $('#separador').hide();
+    $('#reactivo').hide();
+    $('#aprobado').hide();
+    };
+    
+function esReactivo(){
+  if($("#Donacion_form_chhai").val()=='R') { $('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_cheia").val()=='R') { $('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_anticore").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_hbsag").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_hcvagac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_hivac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_agp2y").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_htlv").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_brucelosis").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_sifilis").val()=='R') {$('#Donacion_form_reactivo').val('SI'); 
+      }else { $('#Donacion_form_reactivo').val('NO');};
+};
+
+ 
+function habilitar(){
+if (aprobado.checked) {    
+    $('input[type="submit"]').removeAttr('disabled');
+} else {
+    $('input[type="submit"]').attr('disabled','disabled');
+    }
     };
 </script>
 {% endblock %}
