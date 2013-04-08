@@ -125,9 +125,9 @@ class Donacion {
      /**
      * @var string
      *
-     * @ORM\Column(name="inspeccionbrazo", type="string", length=20, nullable=true)
+     * @ORM\Column(name="inspeccionbrazos", type="string", length=20, nullable=true)
      */
-    private $inspeccionbrazo;
+    private $inspeccionbrazos;
     
      /**
      * @var string
