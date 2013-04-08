@@ -51,7 +51,9 @@ class DonanteType extends AbstractType
                 ->add('telefono')
                 ->add('celular')
                 ->add('email')
-                ->add('donantevoluntario','checkbox')
+                ->add('donantevoluntario','checkbox', array(
+                    'required' => false
+                ))
                 ;
     
     }
