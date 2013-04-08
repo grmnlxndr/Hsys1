@@ -144,6 +144,13 @@ class DonacionController extends Controller {
         $fecha = $request->request->get('fecha');
         $localidad = $request->request->get('localidad');
         $hospital = $request->request->get('hospital');
+        $peso = $request->request->get('peso');
+        $tensionarterial = $request->request->get('tensionarterial');
+        $pulso = $request->request->get('pulso');
+        $temperatura = $request->request->get('temperatura');
+        $hto = $request->request->get('hto');
+        $inspeccionbrazos = $request->request->get('inspeccionbrazos');
+        $obs = $request->request->get('obs');
         $idbolsa = $request->request->get('bolsa');
         $volumen = $request->request->get('volumen');
         $comentarios = $request->request->get('comentarios');
@@ -169,6 +176,13 @@ class DonacionController extends Controller {
         $donacion->setFechextraccion($fechaformat);
         $donacion->setLocalidad($localidad);
         $donacion->setHospital($hospital);
+        $donacion->setPeso($peso);
+        $donacion->setTensionarterial($tensionarterial);
+        $donacion->setPulso($pulso);
+        $donacion->setTemperatura($temperatura);
+        $donacion->setHto($hto);
+        $donacion->setInspeccionbrazos($inspeccionbrazos);
+        $donacion->setObs($obs);
         $donacion->setFlebotomia($flebotomia);
         $donacion->setPuncion($puncion);
         $donacion->setReaccionpostextraccion($reaccionpostextraccion);
