@@ -8,6 +8,7 @@ class ocupacion {
                                     'Secretario'=>'Secretario',
                                     'Medico'=>'Medico',
                                     'Comerciante'=>'Comerciante',
+                                    'Trabajador Independiente'=>'Trabajador Independiente',
                                     'Empleado Privado'=>'Empleado Privado',
                                     'Desocupado'=>'Desocupado', 
                                     'Estudiante'=>'Estudiante', 
