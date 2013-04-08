@@ -27,6 +27,10 @@
         <td><input type="date" name="fechaextraccion" id="fechaextraccion" value="{{ unidad.donacion.fechextraccion | date('Y-m-d') }}" style="width: 160px" disabled=""/></td>
     </tr>
     <tr>
+        <th>Dias de vencimiento: </th>
+        <td><input id="cantidaddedias" name="cantidaddedias" disabled type=number onchange="cambiodias()"> <input id="cambiardias" name="cambiardias" type=checkbox onclick="habilitarnumber()"> ¿Cambiar dias?</td>
+    </tr>
+    <tr>
         <th>Fecha de vencimiento: </th>
         <td><label name="fechavencimiento" id="fechavencimiento"></label></td>
     </tr>
@@ -48,15 +52,36 @@
 
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
 <script>
+    
 $("#tipohemocomponente").change(function(){
-        var srt = $("#tipohemocomponente option:selected").attr("id");
-        var cantidad = srt;
-        var fecha1 = $("#fechaextraccion").get(0).value;
-        var fecha12 = fecha1.split("-");
-        var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
-        var fechactual = fe.valueOf();
-        var fechsalida = new Date(fechactual + ( cantidad * 86400000 ) );
-        $("#fechavencimiento").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
+        var cantidad = $("#tipohemocomponente option:selected").attr("id");
+        $("#cantidaddedias").val(cantidad);
+        cambiodias();
 });
+
+function cambiodias(){
+        var cantidad = $("#cantidaddedias").val();
+        if (cantidad <= 0) {
+            cantidad++;
+            $("#cantidaddedias").val(cantidad);
+        } else {
+                var fecha1 = $("#fechaextraccion").get(0).value;
+                var fecha12 = fecha1.split("-");
+                var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
+                var fechactual = fe.valueOf();
+                var fechsalida = new Date(fechactual + ( cantidad * 86400000 ) );
+                $("#fechavencimiento").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
+        }
+        $("#cantidaddedias").attr("value",cantidad);
+};
+
+
+function habilitarnumber(){
+if (cambiardias.checked) {    
+    $('#cantidaddedias').removeAttr('disabled');
+} else {
+    $('#cantidaddedias').attr('disabled','disabled');
+    }
+    };
 </script>
 {% endblock %}
