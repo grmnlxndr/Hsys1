@@ -141,6 +141,8 @@ class SangreController extends Controller {
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
         if ($request->getMethod() == 'POST') {
             $unidad->setEstado("Descartado");
+            $comentarios = $request->request->get('comentarios');
+            $unidad->setComentarios($comentarios);
             $em->persist($unidad);
             $em->flush();
             return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'descartada'));
