@@ -14,6 +14,9 @@
 <br/>
 <table class="detalle">
     <tr>
+        <th colspan="2">Datos Generales</th>
+    </tr>
+    <tr>
         <th>ID: </th>
         <td>{{ donacion.id }}</td>
     </tr>
@@ -34,8 +37,38 @@
         <td>{{ donacion.hospital }}</td>
     </tr>
     <tr>
-        <th>Número de Bolsa: </th>
-        <td>{{ donacion.idbolsa }}</td>
+        <th colspan="2">Datos del Exámen Físico</th>
+    </tr>
+    <tr>
+        <th>Peso:  </th>
+        <td>{{ donacion.peso }}</td>
+    </tr>
+    <tr>
+        <th>Tensión Arterial:  </th>
+        <td>{{ donacion.tensionarterial }}</td>
+    </tr>
+    <tr>
+        <th>Pulso:  </th>
+        <td>{{ donacion.pulso }}</td>
+    </tr>
+    <tr>
+        <th>Temperatura:  </th>
+        <td>{{ donacion.temperatura }}</td>
+    </tr>
+    <tr>
+        <th>Hto: </th>
+        <td>{{ donacion.hto }}</td>
+    </tr>
+    <tr>
+        <th>Inpección de brazos: </th>
+        <td>{{ donacion.inspeccionbrazos }}</td>
+    </tr>
+    <tr>
+        <th>Observaciones:  </th>
+        <td>{{ donacion.obs }}</td>
+    </tr>
+    <tr>
+        <th colspan="2">Datos de la Extracción</th>
     </tr>
     <tr>
         <th>Flebotomía:  </th>
@@ -54,6 +87,9 @@
         <td>{{ donacion.comentario }}</td>
     </tr>
     <tr>
+        <th colspan="2">Datos del Donante</th>
+    </tr>
+    <tr>
         <th>ID del Donante: </th>
         <td>{{ donacion.donante.id }}</td>
     </tr>
@@ -62,6 +98,9 @@
         <td>{{ donacion.donante.nomapp }}</td>
     </tr>
     {% if donacion.receptor %}
+        <tr>
+            <th colspan="2">Datos del Receptor</th>
+        </tr>
         <tr>
             <th>ID del Receptor: </th>
             <td>{{ donacion.receptor.id }}</td>
