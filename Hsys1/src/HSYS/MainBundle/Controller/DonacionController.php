@@ -193,7 +193,7 @@ class DonacionController extends Controller {
         
         $fechaformatVenc = new \DateTime;
         $fechaformatVenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
-        $fechaVenc = $fechaformatVenc->format('Y-m-d');
+        $fechaVenc = $fechaformatVenc;
 //        $donacion->crearUnidad($tipohemo, $volumen, $fechaVenc);
         $donacion->crearUnidad($tipohemo, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $fechaVenc);
         
@@ -363,7 +363,7 @@ class DonacionController extends Controller {
         
         $fechaformatVenc = new \DateTime;
         $fechaformatVenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
-        $fechaVenc = $fechaformatVenc->format('Y-m-d');
+        $fechaVenc = $fechaformatVenc;
 //        $donacion->crearUnidad($tipohemo, $volumen, $fechaVenc);
         $donacion->crearUnidad($tipohemo, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $fechaVenc);
         
