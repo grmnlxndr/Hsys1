@@ -621,13 +621,10 @@ class Donante {
         $exclusion->setTipoExclusion($tipoExclusion);
         $exclusion->setDonante($this);
         $exclusion->setFechini($fechaingreso);
-        echo $duracion. "</br>";
         if ($duracion == null){
             $duracion = $tipoExclusion->getDuracion();
         }
-        echo $duracion."</br> </br>";
         if ($duracion != 0) {
-            echo "aca entro entonces  XD </br>";
             $sumar = '+' . $duracion  . ' day';
             $nuevafecha = strtotime($sumar, strtotime($fechaingreso->format('Y-m-d')));
             $nuevafecha = date('Y-m-j', $nuevafecha);
