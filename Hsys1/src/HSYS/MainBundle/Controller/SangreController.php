@@ -108,8 +108,10 @@ class SangreController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'POST') {            
             $unidad->setEstado("Desbloqueado");
+            $comentarios = $request->request->get('comentarios');
+            $unidad->setComentarios($comentarios);
             $em->persist($unidad);
             $em->flush();
             return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'desbloqueada'));
@@ -153,6 +155,8 @@ class SangreController extends Controller {
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
         if ($request->getMethod() == 'POST') {
             $unidad->setEstado("Bloqueado");
+            $comentarios = $request->request->get('comentarios');
+            $unidad->setComentarios($comentarios);
             $em->persist($unidad);
             $em->flush();
             return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'bloqueada'));

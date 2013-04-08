@@ -84,6 +84,13 @@ class Unidad {
      */
     private $estado;
 
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="comentarios", type="string", length=1400, nullable=true)
+     */
+    private $comentarios;
+    
     /**
      * Get id
      *
@@ -281,6 +288,27 @@ class Unidad {
         return $this->estado;
     }
 
+    /**
+     * Set comentarios
+     *
+     * @param string $comentarios
+     * @return Unidad
+     */
+    public function setComentarios($comentarios) {
+        $this->comentarios = $comentarios;
+
+        return $this;
+    }
+
+    /**
+     * Get comentarios
+     *
+     * @return string 
+     */
+    public function getComentarios() {
+        return $this->comentarios;
+    }  
+    
     /**
      * @ORM\ManyToOne(targetEntity="Donacion", inversedBy="Unidad")
      * @ORM\JoinColumn(name="Donacion", referencedColumnName="id")
