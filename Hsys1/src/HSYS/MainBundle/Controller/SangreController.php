@@ -195,6 +195,7 @@ class SangreController extends Controller {
     public function crearfraccionamientoAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
+        $unidad = new \HSYS\MainBundle\Entity\Unidad;
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
         
         if ($unidad->getTipoHemocomponente()!='Sangre Entera') 
@@ -207,7 +208,11 @@ class SangreController extends Controller {
             $volumen = $request->request->get('volumen');
             $idtipohemo = $request->request->get('tipohemocomponente');
             $tipohemocomponente = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->find($idtipohemo);
-            $donacion->crearUnidad($tipohemocomponente, $volumen);
+            $tipobolsa -> $unidad->getTipobolsa();
+            $nrolote -> $unidad->getNrolote();
+            $marca -> $unidad ->getMarca();
+            $anticoagulante -> $unidad->getAnticoagulante();
+            $donacion->crearUnidad($tipohemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante);
             $em->persist($donacion);
             $em->flush();
         }

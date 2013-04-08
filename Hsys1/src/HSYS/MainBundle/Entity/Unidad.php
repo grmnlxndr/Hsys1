@@ -27,7 +27,14 @@ class Unidad {
      * @ORM\Column(name="vencimiento", type="date", nullable=true)
      */
     private $vencimiento;
-
+    
+    /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="vencimientobolsa", type="date", nullable=true)
+     */
+    private $vencimientobolsa;
+    
     /**
      * @var float
      *
@@ -107,6 +114,26 @@ class Unidad {
         return $this->vencimiento;
     }
 
+    /**
+     * Set Vencimientobolsa
+     * 
+     * @param \DateTime $vencimientobolsa
+     * @return Unidad
+     */
+    public function setVencimientobolsa($vencimientobolsa) {
+        $this->vencimientobolsa = $vencimientobolsa;
+        return $this;
+    }
+    
+    /**
+     * Get Vencimientobolsa
+     * 
+     * @return \DateTime
+     */
+    public function getVencimientobolsa() {
+        return $this->vencimientobolsa;
+    }
+    
     /**
      * Set volumen
      *
