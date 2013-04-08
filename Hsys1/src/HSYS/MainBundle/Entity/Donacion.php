@@ -531,13 +531,19 @@ class Donacion {
         return $this->Unidades;
     }
 
-    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $fecharealizacion = null, $factorsang = null, $estado = "Bloqueado") {
+    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $vencimientobolsa, $cantidaddedias = 0 ,$fecharealizacion = null, $factorsang = null, $estado = "Bloqueado") {
         $nuevaunidad = new Unidad;
         if ($fecharealizacion == null) {
             $fecharealizacion1 = $this->fechextraccion;
             $fecharealizacion = $fecharealizacion1->format('Y-m-d');
         }
+        
+        if ($cantidaddedias == 0) {
         $sumar = '+' . $TipoHemocomponente->getDuracion() . ' day';
+        } else {
+        $sumar = '+' . $cantidaddedias . ' day';
+        }
+        
         $vencimiento = strtotime($sumar, strtotime($fecharealizacion));
         $vencimiento = date('Y-m-j', $vencimiento);
         $fechaformatvenc = new \DateTime;
@@ -557,6 +563,7 @@ class Donacion {
         $nuevaunidad->setAnticoagulante($anticoagulante);
         $nuevaunidad->setEstado($estado);
         $nuevaunidad->setDonacion($this);
+        $nuevaunidad->setVencimientobolsa($vencimientobolsa);
         $this->addUnidades($nuevaunidad);
     }
 

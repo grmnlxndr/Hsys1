@@ -208,11 +208,13 @@ class SangreController extends Controller {
             $volumen = $request->request->get('volumen');
             $idtipohemo = $request->request->get('tipohemocomponente');
             $tipohemocomponente = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->find($idtipohemo);
-            $tipobolsa -> $unidad->getTipobolsa();
-            $nrolote -> $unidad->getNrolote();
-            $marca -> $unidad ->getMarca();
-            $anticoagulante -> $unidad->getAnticoagulante();
-            $donacion->crearUnidad($tipohemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante);
+            $tipobolsa = $unidad->getTipobolsa();
+            $nrolote = $unidad->getNrolote();
+            $marca = $unidad ->getMarca();
+            $anticoagulante = $unidad->getAnticoagulante();
+            $cantidaddedias = $request->request->get('cantidaddedias');
+            $vencimientobolsa = $unidad->getVencimientobolsa();
+            $donacion->crearUnidad($tipohemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $vencimientobolsa,$cantidaddedias);
             $em->persist($donacion);
             $em->flush();
         }
