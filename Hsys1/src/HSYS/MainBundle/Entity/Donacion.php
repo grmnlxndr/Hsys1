@@ -76,6 +76,13 @@ class Donacion {
      * @ORM\Column(name="comentario", type="string", length=150, nullable=true)
      */
     private $comentario;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tipodonacion", type="string", length=50, nullable=true)
+     */
+    private $tipodonacion;
 
     /**
      * Get id
@@ -253,6 +260,27 @@ class Donacion {
      */
     public function getComentario() {
         return $this->comentario;
+    }
+    
+    /**
+     * Set tipodonacion
+     *
+     * @param string $tipodonacion
+     * @return Donacion
+     */
+    public function setTipodonacion($tipodonacion) {
+        $this->tipodonacion = $tipodonacion;
+
+        return $this;
+    }
+
+    /**
+     * Get tipodonacion
+     *
+     * @return string 
+     */
+    public function getTipodonacion() {
+        return $this->tipodonacion;
     }
 
     /**

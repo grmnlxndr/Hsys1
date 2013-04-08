@@ -155,6 +155,7 @@ class DonacionController extends Controller {
         $tipobolsa = $request->request->get('tipobolsa');
         $marca = $request->request->get('marca');
         $anticoagulante = $request->request->get('anticoagulante');
+        $tipodonacion = $request->request->get('tipodonacion');
 
         $em = $this->getDoctrine()->getEntityManager();
         
@@ -172,6 +173,7 @@ class DonacionController extends Controller {
         $donacion->setPuncion($puncion);
         $donacion->setReaccionpostextraccion($reaccionpostextraccion);
         $donacion->setComentario($comentarios);
+        $donacion->setTipodonacion($tipodonacion);
         
         $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
         
@@ -323,6 +325,7 @@ class DonacionController extends Controller {
         $tipobolsa = $request->request->get('tipobolsa');
         $marca = $request->request->get('marca');
         $anticoagulante = $request->request->get('anticoagulante');
+        $tipodonacion = $request->request->get('tipodonacion');
 
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -340,6 +343,7 @@ class DonacionController extends Controller {
         $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
         $donacion->setFechextraccion($fechaformat);
         $donacion->setComentario($comentarios);
+        $donacion->setTipodonacion($tipodonacion);
         
         $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
         

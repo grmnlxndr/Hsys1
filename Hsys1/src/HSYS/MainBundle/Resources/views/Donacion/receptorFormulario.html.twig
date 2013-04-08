@@ -42,6 +42,18 @@
 <form id="donacion_form" name="donacion_form" method="post" action="{{ path('alta_donacion_receptor_confirmar') }}">
     <table>
         <tr>
+            <td><label>Tipo de Donación: </label></td>
+            <td><select  id="tipodonacion" name="tipodonacion" style="width: 100%">
+                    <option value="Normal">Normal</option>
+                    <option value="Plaquetas Aféresis">Plaquetas Aféresis</option>
+                    <option value="Eritroféresis">Eritroférisis</option>
+                    <option value="Plasma Aférisis">Plasma Aférisis</option>
+                    <option value="Stem Cells">Stem Cells</option>
+                    <option value="Recambio Plásmatico Terapéutico">Recambio Plásmatico Terapéutico</option>
+                </select>
+            </td><!required="required">
+        </tr>
+        <tr>
             <td><label><u>Datos Generales: </u></label></td>
         </tr>
         <tr>

@@ -17,12 +17,13 @@
 
 <table class="consulta" style="width: 100%">
     <tr>
-        <th> ID </th><th> Donante </th><th> Fecha </th><th> Ver </th>{#<th> Crear una exclusión </th>#}<th> Anular </th>
+        <th> ID </th><th> Donante </th><th>Tipo Donación</th><th> Fecha </th><th> Ver </th>{#<th> Crear una exclusión </th>#}<th> Anular </th>
     </tr>
 {% for donacion in donaciones %}
     <tr>
         <td><a>{{ donacion.id }}</a></td>
         <td><a>{{ donacion.donante.nomapp }}</a></td>
+        <td><a>{{ donacion.tipodonacion }}</a></td>
         <td><a>{{ donacion.fechextraccion|date('d/m/Y') }}</a></td>
         <td class="link"><a href="{{ path('ver_donacion', {'id':donacion.id}) }}">Ver</a></td>
  {#       <td class="link"><a href="{{ path('exclusion_donacion', {'id':donacion.id})  }}"> Crear una exclusión </a></td> #}
