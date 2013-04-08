@@ -83,6 +83,58 @@ class Donacion {
      * @ORM\Column(name="tipodonacion", type="string", length=50, nullable=true)
      */
     private $tipodonacion;
+    
+    //
+    //DATOS EXTRACCION
+    //
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="peso", type="string", length=20, nullable=true)
+     */
+    private $peso;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="tensionarterial", type="string", length=20, nullable=true)
+     */
+    private $tensionarterial;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="pulso", type="string", length=20, nullable=true)
+     */
+    private $pulso;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="temperatura", type="string", length=20, nullable=true)
+     */
+    private $temperatura;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="hto", type="string", length=20, nullable=true)
+     */
+    private $hto;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="inspeccionbrazo", type="string", length=20, nullable=true)
+     */
+    private $inspeccionbrazo;
+    
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="obs", type="string", length=20, nullable=true)
+     */
+    private $obs;
 
     /**
      * Get id
@@ -311,6 +363,155 @@ class Donacion {
 
     public function getReceptor() {
         return $this->Receptor;
+    }
+    
+    
+    //DATOS EXAMEN FISICO
+    /**
+     * Set peso
+     *
+     * @param string $peso
+     * @return Donacion
+     */
+    public function setPeso($peso) {
+        $this->peso = $peso;
+
+        return $this;
+    }
+
+     /**
+     * Get peso
+     *
+     * @return string 
+     */
+    public function getPeso() {
+        return $this->peso;
+    }
+    
+    /**
+     * Get tensionarterial
+     *
+     * @return string 
+     */
+    public function getTensionarterial() {
+        return $this->tensionarterial;
+    }
+    
+     /**
+     * Set tensionarterial
+     *
+     * @param string $tensionarterial
+     * @return Donacion
+     */
+    public function setTensionarterial($tensionarterial) {
+        $this->tensionarterial = $tensionarterial;
+
+        return $this;
+    }
+
+     /**
+     * Get pulso
+     *
+     * @return string 
+     */
+    public function getPulso() {
+        return $this->pulso;
+    }
+    
+     /**
+     * Set pulso
+     *
+     * @param string $pulso
+     * @return Donacion
+     */
+    public function setPulso($pulso) {
+        $this->pulso = $pulso;
+
+        return $this;
+    }
+    
+     /**
+     * Get temperatura
+     *
+     * @return string 
+     */
+    public function getTemperatura() {
+        return $this->temperatura;
+    }
+    
+     /**
+     * Set temperatura
+     *
+     * @param string $temperatura
+     * @return Donacion
+     */
+    public function setTemperatura($temperatura) {
+        $this->temperatura = $temperatura;
+
+        return $this;
+    }
+    
+     /**
+     * Get hto
+     *
+     * @return string 
+     */
+    public function getHto() {
+        return $this->hto;
+    }
+    
+     /**
+     * Set hto
+     *
+     * @param string $hto
+     * @return Donacion
+     */
+    public function setHto($hto) {
+        $this->hto = $hto;
+
+        return $this;
+    }
+    
+     /**
+     * Get inspeccionbrazos
+     *
+     * @return string 
+     */
+    public function getInspeccionbrazos() {
+        return $this->inspeccionbrazos;
+    }
+    
+     /**
+     * Set inspeccionbrazos
+     *
+     * @param string $inspeccionbrazos
+     * @return Donacion
+     */
+    public function setInspeccionbrazos($inspeccionbrazos) {
+        $this->inspeccionbrazos = $inspeccionbrazos;
+
+        return $this;
+    }
+        
+     /**
+     * Get obs
+     *
+     * @return string 
+     */
+    public function getObs() {
+        return $this->obs;
+    }
+    
+     /**
+     * Set obs
+     *
+     * @param string $obs
+     * @return Donacion
+     */
+    public function setObs($obs) {
+        $this->obs = $obs;
+
+        return $this;
     }
 
     /**
