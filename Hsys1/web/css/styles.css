@@ -2,6 +2,12 @@
    http://www.spyka.net
 */
 
+/* fuente */
+@font-face {
+    font-family:barcode;
+    src:url('../fonts/C39HrP36DlTt.ttf');
+}
+
 /* page */
 html, * {
     padding:0;
@@ -33,6 +39,13 @@ h3 {
 }
 h4 {
     font-size:1.2em;
+}
+
+/* Codigo de Barras */
+
+barcode {
+    font-family: barcode;
+    font-size: 48px;
 }
 
 /* links */
@@ -229,7 +242,7 @@ div#usuario ul li.trans {
     padding-right:2px;
 }
 div#usuario ul li img{
-/*    padding:12px 0px;*/
+    /*    padding:12px 0px;*/
 }
 div#usuario ul li p {	
     font-weight:bold;
@@ -299,7 +312,7 @@ div#sidebar {
     width:22%;
     margin:5px 0px 5px 0px;
     border:1px solid #232323;
-    background-image:url(../images/sidebar_background.jpg);
+    background-image:url('../images/sidebar_background.jpg');
     background-repeat:repeat-x;
     padding:4px;
     color:#FFFFFF;
