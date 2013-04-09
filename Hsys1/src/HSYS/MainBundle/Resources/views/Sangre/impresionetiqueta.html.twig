@@ -7,14 +7,19 @@
     </head>
     <body style="background: white">
         <table id="imprimible" style="text-align: center">          
-            <tr><th style="font-size: larger">Factor Sanguíneo: </th><td style="font-size: 25px">A RH+ (positivo)</td></tr>
-            <tr><th style="font-size: larger">Hemocomponente: </th><td style="font-size: larger">TIPO HEMOCOMPONENTE</td></tr>
-            <tr><th style="font-size: larger">Fecha Extracción: </th><td style="font-size: larger">FE/CH/EX</td></tr>
-            <tr><th style="font-size: larger">Fecha Vencimiento: </th><td style="font-size: larger">FE/CH/VE</td></tr>
-            <tr><th style="font-size: larger">ID de Unidad: </th><td><barcode>*NUMERO*</barcode></td></tr>
+            <tr><th style="font-size: larger">Factor Sanguíneo: </th><td style="font-size: 25px">{{ unidad.factorsang }}</td></tr>
+            <tr></tr>
+            <tr><th style="font-size: larger">Hemocomponente: </th><td style="font-size: larger">{{ unidad.tipohemocomponente.nombre }}</td></tr>
+            <tr></tr>
+            <tr><th style="font-size: larger">Fecha Extracción: </th><td style="font-size: larger">{{ unidad.Donacion.fechextraccion | date("d/m/Y") }}</td></tr>
+            <tr></tr>
+            <tr><th style="font-size: larger">Fecha Vencimiento: </th><td style="font-size: larger">{{ unidad.vencimiento | date("d/m/Y") }}</td></tr>
+            <tr></tr>
+            <tr><th style="font-size: larger">ID de Unidad: </th><td><barcode>*{{ unidad.id }}*</barcode></td></tr>
             <tr></tr>
             <tr>
-                <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td><td><a id="volver" href="{{ path('pagina_sangre') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
+                <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td>
+                <td><a id="volver" href="{{ path('ver_unidad',{'id':unidad.id}) }}" style="font-size: larger; font-weight: bold">Volver</a></td>
             </tr>
         </table>
 
