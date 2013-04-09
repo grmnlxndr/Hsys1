@@ -104,6 +104,10 @@ ver_donacion:
   pattern: /donacion/ver/{id}
   defaults: { _controller: HSYSMainBundle:Donacion:ver }
   
+ver_donacion_donante:
+  pattern: /donacion/donante/{id}
+  defaults: { _controller: HSYSMainBundle:Donacion:verDonante }
+  
 modificar_donacion:
   pattern: /donacion/modificar/{id}
   defaults: { _controller: HSYSMainBundle:Donacion:modificar }

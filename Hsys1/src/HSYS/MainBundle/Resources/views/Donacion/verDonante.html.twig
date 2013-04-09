@@ -1,0 +1,44 @@
+{% extends 'HSYSMainBundle:Donacion:donacionbase.html.twig' %}
+
+{% block title %}Donaciones del Donante {{ donante.id }}{% endblock %}
+
+{% block contenido %}
+
+
+
+{% if donante  %}
+    <table class="detalle">
+        <tr>
+            <th>ID del Donante: </th>
+            <td>{{ donante.id }}</td>
+        </tr>
+        <tr>
+            <th>Nombre del Donante: </th>
+            <td>{{ donante.nomapp }}</td>
+        </tr>
+    </table>
+    <br/>
+{% endif %}
+
+    <h3>Donaciones realizadas:</h3>
+{% if donaciones %}
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th> ID </th><th> Tipo Donación </th><th> Fecha </th><th> Ver </th>{#<th> Crear una exclusión </th>#}<th> Anular </th>
+    </tr>
+{% for donacion in donaciones %}
+    <tr>
+        <td><a>{{ donacion.id }}</a></td>
+        <td><a>{{ donacion.tipodonacion }}</a></td>
+        <td><a>{{ donacion.fechextraccion|date('d/m/Y') }}</a></td>
+        <td class="link"><a href="{{ path('ver_donacion', {'id':donacion.id}) }}">Ver</a></td>
+        {#<td class="link"><a href="{{ path('exclusion_donacion', {'id':donacion.id})  }}"> Crear una exclusión </a></td>#}
+        <td class="link"><a href="{{ path('anular_donacion', {'id':donacion.id}) }}">Anular</a></td>
+    </tr>
+{% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+{% endfor %}
+</table>
+{% endif %}
+{% endblock %}

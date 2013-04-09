@@ -455,6 +455,17 @@ class DonacionController extends Controller {
         $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
         return $this->render('HSYSMainBundle:Donacion:ver.html.twig', array('donacion' => $donacion));
     }
+    
+    public function verDonanteAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        if ($donante) {
+            $donaciones = $donante->getDonaciones();
+        } else {
+            $donaciones = null;
+        }
+        return $this->render('HSYSMainBundle:Donacion:verDonante.html.twig', array('donante' => $donante, 'donaciones' => $donaciones));
+    }
 
 }
 
