@@ -1,0 +1,17 @@
+{# empty Twig template #}
+{% extends '::basico.html.twig' %}
+
+{% block sidebar %}
+<ul>
+    <li><a href="{{ path('pagina_informes') }}">Generar Informes</a></li>
+    <li>
+        <ul>
+            <li><a href="{{ path('pagina_informes') }}">Informe Mensual</a></li>
+            <li><a href="{{ path('pagina_informes') }}">Informe Anual</a></li>
+            <li><a href="{{ path('pagina_informes') }}">Informe Personalizado</a></li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}
+
+{% block informesSel %}class="selected"{% endblock %}

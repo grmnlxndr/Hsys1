@@ -230,6 +230,11 @@ ver_analisis:
   pattern: /analisis/ver/{id}
   defaults: { _controller: HSYSMainBundle:Analisis:ver }
 
+#Informes
+pagina_informes:
+  pattern: /informes
+  defaults: { _controller: HSYSMainBundle:Informes:index }
+
 #autocargado
 autocargado:
   pattern: /autocargado
