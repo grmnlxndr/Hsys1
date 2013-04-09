@@ -10,9 +10,12 @@
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
  
  <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('bloquear_unidad',{'id':unidad.id}) }}">
-     
+       <label>Comentarios:</label>
+       </br>
+       <textarea id="comentarios" name="comentarios" rows="5" style="width: 50%">{{ unidad.comentarios }}</textarea>
+       </br>
        <input type="checkbox" name="bloquear" id="bloquear" onclick="habilitar()"><label>¿Está seguro que desea bloquear la unidad {{unidad.id}}? </label><br>
-        <input type="submit" value="Bloquear"/>
+       <input type="submit" value="Bloquear"/>
 
 </form>
 
