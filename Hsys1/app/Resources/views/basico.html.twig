@@ -1,58 +1,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>HSys - {% block title %}{% endblock %}</title>
-<link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
-<link rel="icon" type="image" href="{{ asset('images/Hsys icon1.png') }}" />
-</head>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>HSys - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+        <link rel="icon" type="image" href="{{ asset('images/Hsys icon1.png') }}" />
+    </head>
 
-<body>
-<div id="wrap">
-	<div id="header">
-		<h1>HSYS</h1>
-		<h2>Sistema de Gestión de Sangre</h2>
-	</div>
-    <div id="usuario" >
-    	<ul>
-            <li  class="trans" >
-                <a href="{{path('login')}}" style="position: relative">
-                        <img src="{{ asset('images/user_icon.png') }}" style="position: absolute; top: 0; left: 2px"/> 
-                    </a>
-                </li>
-                
-                
-        	<li class="trans"><p> {% if app.user.username is defined %} {{ app.user.username }} {% else %} Anonimo {% endif %}</p></li> 
-        	<li><a href="{{ path('logout')}}" title="Salir">Salir</a></li>
-    	</ul>
-    </div>
-	<div id="nav">
-		<ul>
-        	<!--Cada boton tendrá un TWIG (block xxxx selected) para que aparezca class="selected", para indicar que pagina est� activa-->
-			<li><!--TWIG BLOQUE SELECTED INICIO--><a href="{{ path('hsys_main_homepage') }}" {% block inicioSel %}{% endblock %} title="Inicio">Inicio</a></li>
-			<li><!--TWIG BLOQUE SELECTED DONANTES--><a href="{{ path('pagina_donante') }}" {% block donanteSel %}{% endblock %} title="Donantes">Donantes</a></li>
-			<li><!--TWIG BLOQUE SELECTED EXTRACCIONES--><a href="{{ path('pagina_donacion') }}" {% block extraccionesSel %}{% endblock %} title="Extracciones">Extracciones</a></li>
-			<li><!--TWIG BLOQUE SELECTED SANGRE--><a href="{{ path('pagina_sangre') }}" {% block sangreSel %}{% endblock %} title="Sangre">Sangre</a></li>
-			<li><!--TWIG BLOQUE SELECTED ANALISIS--><a href="{{ path('pagina_analisis') }}" {% block analisisSel %}{% endblock %} title="Serología">Serología</a></li>
-		</ul>
-	</div>
-	<div id="content">
-		<div id="page">
-			<p>{% block contenido %}{% endblock %}</p>
-		</div>
-		<div id="sidebar">
-        	<!--<p>TWIIIG DE LOGIN ?? (VER DONDE) </p>-->
-			<p>{% block sidebar %}{% endblock %}</p>
-		</div>
-		<div id="footer">
-        	<p>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <h1>HSYS</h1>
+                <h2>Sistema de Gestión de Sangre</h2>
+            </div>
+            <div id="usuario" >
+                <ul>
+                    <li  class="trans" >
+                        <a href="{{path('login')}}" style="position: relative">
+                            <img src="{{ asset('images/user_icon.png') }}" style="position: absolute; top: 12px; left: 2px"/> 
+                        </a>
+                    </li>
+
+
+                    <li class="trans"><p style="font: {{ asset('fonts/C39HrP36DlTt.ttf') }}"> {% if app.user.username is defined %} {{ app.user.username }} {% else %} Anonimo {% endif %}</p></li> 
+                    <li><a href="{{ path('logout')}}" title="Salir">Salir</a></li>
+                </ul>
+            </div>
+            <div id="nav">
+                <ul>
+                    <!--Cada boton tendrá un TWIG (block xxxx selected) para que aparezca class="selected", para indicar que pagina est� activa-->
+                    <li><!--TWIG BLOQUE SELECTED INICIO--><a href="{{ path('hsys_main_homepage') }}" {% block inicioSel %}{% endblock %} title="Inicio">Inicio</a></li>
+                    <li><!--TWIG BLOQUE SELECTED DONANTES--><a href="{{ path('pagina_donante') }}" {% block donanteSel %}{% endblock %} title="Donantes">Donantes</a></li>
+                    <li><!--TWIG BLOQUE SELECTED EXTRACCIONES--><a href="{{ path('pagina_donacion') }}" {% block extraccionesSel %}{% endblock %} title="Extracciones">Extracciones</a></li>
+                    <li><!--TWIG BLOQUE SELECTED SANGRE--><a href="{{ path('pagina_sangre') }}" {% block sangreSel %}{% endblock %} title="Sangre">Sangre</a></li>
+                    <li><!--TWIG BLOQUE SELECTED ANALISIS--><a href="{{ path('pagina_analisis') }}" {% block analisisSel %}{% endblock %} title="Serología">Serología</a></li>
+                </ul>
+            </div>
+            <div id="content">
+                <div id="page">
+                    <p>{% block contenido %}{% endblock %}</p>
+                </div>
+                <div id="sidebar">
+                    <!--<p>TWIIIG DE LOGIN ?? (VER DONDE) </p>-->
+                    <p>{% block sidebar %}{% endblock %}</p>
+                </div>
+                <div id="footer">
+                    <p>
             	{% block footer %}{% endblock %}
-            </p>
-            <p>&copy; 2012-2013 - Vostron Systems. Template: <a href="http://www.spyka.net" title="spyka Webmaster">spyka webmaster</a></p>
-			<!--<p>&copy; 2008 mySite. Design: <a href="http://www.spyka.net" title="spyka Webmaster">spyka webmaster</a> available from <a href="http://www.justfreetemplates.com" title="free web templates">Just Free Templates</a>. Valid <a href="http://validator.w3.org/check/referer" title="valid XHTML strict">XHTML</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer" title="CSS">CSS</a></p>-->
-		</div>
-	</div>
-</div>
+                        </p>
+                        <p>&copy; 2012-2013 - Vostron Systems. Template: <a href="http://www.spyka.net" title="spyka Webmaster">spyka webmaster</a></p>
+                        <!--<p>&copy; 2008 mySite. Design: <a href="http://www.spyka.net" title="spyka Webmaster">spyka webmaster</a> available from <a href="http://www.justfreetemplates.com" title="free web templates">Just Free Templates</a>. Valid <a href="http://validator.w3.org/check/referer" title="valid XHTML strict">XHTML</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer" title="CSS">CSS</a></p>-->
+                    </div>
+                </div>
+            </div>
         {% block javascripts %}{% endblock %}
-</body>
-</html>
+        </body>
+    </html>
