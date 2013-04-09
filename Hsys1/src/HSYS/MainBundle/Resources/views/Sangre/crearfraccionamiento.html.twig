@@ -6,7 +6,23 @@
 
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
 </br>
+
 <form id="crearUnidad" name="crearUnidad" method="post" action="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">
+    <table class="detalle">
+    <h3>Grupo Sanguíneo</h3>
+        <tr>
+            <th>AB0 Rh: </th>
+            <td><select name="factorsanguineo" id="factorsanguineo" style="width: 160px">
+                        {% for factor in factorsanguineo %}
+                        <option id="{{factor}}" value="{{factor}}">{{factor}}</option>
+                        {% endfor %}
+                </select> 
+           </td>
+        </tr>
+    </table>
+        
+</br>
+    
     <table class="detalle">
         <h3>Agregar nueva unidad</h3>
     <tr>

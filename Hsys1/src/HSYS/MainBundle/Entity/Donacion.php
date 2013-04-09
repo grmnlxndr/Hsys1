@@ -567,6 +567,12 @@ class Donacion {
         $this->addUnidades($nuevaunidad);
     }
 
+    public function setFactores($factorsanguineo) {
+        foreach ($this->Unidades as $unidad) {
+            $unidad->setFactorsang($factorsanguineo);
+        }
+    }
+    
     /**
      * @ORM\OneToOne(targetEntity="analisis", inversedBy="Donacion")
      * @ORM\JoinColumn(name="analisis", referencedColumnName="id")

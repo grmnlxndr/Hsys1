@@ -220,13 +220,19 @@ class SangreController extends Controller {
             $anticoagulante = $unidad->getAnticoagulante();
             $cantidaddedias = $request->request->get('cantidaddedias');
             $vencimientobolsa = $unidad->getVencimientobolsa();
-            $donacion->crearUnidad($tipohemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $vencimientobolsa,$cantidaddedias);
+            $factorsanguineo = $request->request->get('factorsanguineo');
+            $donacion->crearUnidad($tipohemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $vencimientobolsa,$cantidaddedias, null, $factorsanguineo);
+            $donacion->setFactores($factorsanguineo);
+            $donante = $donacion->getDonante();
+            $donante->setFactorSang($factorsanguineo);
+            $unidad->setFactorsang($factorsanguineo);
             $em->persist($donacion);
             $em->flush();
         }
         $tiposhemocomponentes = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findAll();
+        $factorsanguineo = \HSYS\MainBundle\Entity\factorsang::$factorsang;
         $unidades = $donacion->getUnidades();
-        return $this->render('HSYSMainBundle:Sangre:crearfraccionamiento.html.twig', array('unidad' => $unidad, 'tiposhemocomponentes' => $tiposhemocomponentes, 'unidades' => $unidades));
+        return $this->render('HSYSMainBundle:Sangre:crearfraccionamiento.html.twig', array('unidad' => $unidad, 'tiposhemocomponentes' => $tiposhemocomponentes, 'unidades' => $unidades, 'factorsanguineo' => $factorsanguineo));
     }
 
     public function confirmacionfracionamientoAction($id) {
