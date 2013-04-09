@@ -15,9 +15,10 @@ class UnidadRepository extends EntityRepository {
     public function findUnidadTipoHemocomponente($tipohemocomponente) {
 
         $em = $this->getEntityManager();
-        $dql = "select u from HSYSMainBundle:Unidad u where u.TipoHemocomponente = :tipohemocomponente order by u.vencimiento asc";
+        $dql = "select u from HSYSMainBundle:Unidad u where u.estado <> :estado and u.TipoHemocomponente = :tipohemocomponente order by u.vencimiento asc";
 
         $query = $em->createQuery($dql);
+        $query->setParameter('estado', 'Fraccionado');
         $query->setParameter('tipohemocomponente', $tipohemocomponente);
 
         $unidades = $query->getResult();
@@ -43,9 +44,10 @@ class UnidadRepository extends EntityRepository {
             $hasta = new \DateTime('2999-12-31');
         }
         $em = $this->getEntityManager();
-        $dql = "select u from HSYSMainBundle:Unidad u where u.vencimiento >= :desde and u.vencimiento <= :hasta order by u.vencimiento asc";
+        $dql = "select u from HSYSMainBundle:Unidad u where u.estado <> :estado and u.vencimiento >= :desde and u.vencimiento <= :hasta order by u.vencimiento asc";
 
         $query = $em->createQuery($dql);
+        $query->setParameter('estado', 'Fraccionado');
         $query->setParameter('desde', $desde);
         $query->setParameter('hasta', $hasta);
 
@@ -66,9 +68,10 @@ class UnidadRepository extends EntityRepository {
 
     public function findUnidadPorDonacion($iddonacion) {
         $em = $this->getEntityManager();
-        $dql = "select u from HSYSMainBundle:Unidad u where u.Donacion = :iddonacion";
+        $dql = "select u from HSYSMainBundle:Unidad u where u.estado <> :estado and u.Donacion = :iddonacion";
 
         $query = $em->createQuery($dql);
+        $query->setParameter('estado', 'Fraccionado');
         $query->setParameter('iddonacion', $iddonacion);
 
         $unidades = $query->getResult();
@@ -102,9 +105,10 @@ class UnidadRepository extends EntityRepository {
 
      public function findUnidadFactorSangui($factorsangui) {
         $em = $this->getEntityManager();
-        $dql = "select u from HSYSMainBundle:Unidad u where u.factorsang like :factorsang order by u.vencimiento asc";
+        $dql = "select u from HSYSMainBundle:Unidad u where u.estado <> :estado and u.factorsang like :factorsang order by u.vencimiento asc";
 
         $query = $em->createQuery($dql);
+        $query->setParameter('estado', 'Fraccionado');
         $query->setParameter('factorsang', '%' . $factorsangui . '%');
 
         $unidades = $query->getResult();
