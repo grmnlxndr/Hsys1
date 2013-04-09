@@ -101,14 +101,14 @@ class SangreController extends Controller {
 //
 //        return $this->render('HSYSMainBundle:Sangre:modificarestado.html.twig', array('unidad' => $unidad, 'estados' => $estados));
 //    }
-    
-    
+
+
     public function desbloquearAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
-        if ($request->getMethod() == 'POST') {            
+        if ($request->getMethod() == 'POST') {
             $unidad->setEstado("Desbloqueado");
             $comentarios = $request->request->get('comentarios');
             $unidad->setComentarios($comentarios);
@@ -119,7 +119,7 @@ class SangreController extends Controller {
 
         return $this->render('HSYSMainBundle:Sangre:desbloquear.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
-    
+
     public function transfundirAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -149,7 +149,7 @@ class SangreController extends Controller {
         }
         return $this->render('HSYSMainBundle:Sangre:desechar.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
-    
+
     public function bloquearAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -165,7 +165,7 @@ class SangreController extends Controller {
         }
         return $this->render('HSYSMainBundle:Sangre:bloquear.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
-    
+
     public function buscaravanzadaAction() {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -183,19 +183,19 @@ class SangreController extends Controller {
         };
         return $this->render('HSYSMainBundle:Sangre:buscaravanzada.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'estados' => $estados, 'tiposhemocomponentes' => $tiposhemocomponentes));
     }
-    
-    public function buscarfactorsanguineoAction(){
+
+    public function buscarfactorsanguineoAction() {
         $request = $this->getRequest();
-        $factorsang =  \HSYS\MainBundle\Entity\factorsang::$factorsang;
+        $factorsang = \HSYS\MainBundle\Entity\factorsang::$factorsang;
         $metodo = false;
         $unidades = array();
-        if ($request->getMethod() =='POST') {
+        if ($request->getMethod() == 'POST') {
             $em = $this->getDoctrine()->getEntityManager();
             $metodo = true;
             $buscar = $request->request->get('buscar');
             $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadFactorSangui($buscar);
         }
-        return $this->render('HSYSMainBundle:Sangre:buscarfactorsangui.html.twig', array('unidades'=>$unidades,'metodo'=>$metodo,'factorsang'=>$factorsang));
+        return $this->render('HSYSMainBundle:Sangre:buscarfactorsangui.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'factorsang' => $factorsang));
     }
 
     public function crearfraccionamientoAction($id) {
@@ -203,10 +203,10 @@ class SangreController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = new \HSYS\MainBundle\Entity\Unidad;
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
-        
-        if ($unidad->getTipoHemocomponente()!='Sangre Entera') 
+
+        if ($unidad->getTipoHemocomponente() != 'Sangre Entera')
             throw $this->createNotFoundException(
-                    'La Unidad con el codigo: '.$id. ', no es una Sangre Entera, por favor seleccione una Sangre Entera para realizar el fraccionamiento'
+                    'La Unidad con el codigo: ' . $id . ', no es una Sangre Entera, por favor seleccione una Sangre Entera para realizar el fraccionamiento'
             );
         $donacion = new \HSYS\MainBundle\Entity\Donacion;
         $donacion = $unidad->getDonacion();
@@ -216,12 +216,12 @@ class SangreController extends Controller {
             $tipohemocomponente = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->find($idtipohemo);
             $tipobolsa = $unidad->getTipobolsa();
             $nrolote = $unidad->getNrolote();
-            $marca = $unidad ->getMarca();
+            $marca = $unidad->getMarca();
             $anticoagulante = $unidad->getAnticoagulante();
             $cantidaddedias = $request->request->get('cantidaddedias');
             $vencimientobolsa = $unidad->getVencimientobolsa();
             $factorsanguineo = $request->request->get('factorsanguineo');
-            $donacion->crearUnidad($tipohemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $vencimientobolsa,$cantidaddedias, null, $factorsanguineo);
+            $donacion->crearUnidad($tipohemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $vencimientobolsa, $cantidaddedias, null, $factorsanguineo);
             $donacion->setFactores($factorsanguineo);
             $donante = $donacion->getDonante();
             $donante->setFactorSang($factorsanguineo);
@@ -244,9 +244,11 @@ class SangreController extends Controller {
         $em->flush();
         return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'se ha creado el fraccionamiento'));
     }
-    
-        public function imprimiretiquetaAction($id) {
-        return $this->render('HSYSMainBundle:Sangre:impresionetiqueta.html.twig');
+
+    public function imprimiretiquetaAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
+        return $this->render('HSYSMainBundle:Sangre:impresionetiqueta.html.twig', array('unidad' => $unidad));
     }
 
 }
