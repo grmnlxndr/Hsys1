@@ -244,6 +244,10 @@ class SangreController extends Controller {
         $em->flush();
         return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'se ha creado el fraccionamiento'));
     }
+    
+        public function imprimiretiquetaAction($id) {
+        return $this->render('HSYSMainBundle:Sangre:impresionetiqueta.html.twig');
+    }
 
 }
 

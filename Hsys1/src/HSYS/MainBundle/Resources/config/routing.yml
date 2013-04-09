@@ -177,6 +177,10 @@ confirmacionfracionamiento_unidad:
   pattern: /sangre/confirmacionfraccionamiento/{id}
   defaults: { _controller: HSYSMainBundle:Sangre:confirmacionfracionamiento}
 
+imprimiretiqueta:
+  pattern: /sangre/imprimiretiqueta/{id}
+  defaults: { _controller: HSYSMainBundle:Sangre:imprimiretiqueta}
+
 #ANALISIS
 pagina_analisis:
   pattern: /analisis

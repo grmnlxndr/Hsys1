@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>HSys - Imprimir Etiqueta</title>
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+        <link rel="icon" type="image" href="{{ asset('images/Hsys icon1.png') }}" />
+    </head>
+    <body style="background: white">
+        <table id="imprimible" style="text-align: center">          
+            <tr><th style="font-size: larger">Factor Sanguíneo: </th><td style="font-size: 25px">A RH+ (positivo)</td></tr>
+            <tr><th style="font-size: larger">Hemocomponente: </th><td style="font-size: larger">TIPO HEMOCOMPONENTE</td></tr>
+            <tr><th style="font-size: larger">Fecha Extracción: </th><td style="font-size: larger">FE/CH/EX</td></tr>
+            <tr><th style="font-size: larger">Fecha Vencimiento: </th><td style="font-size: larger">FE/CH/VE</td></tr>
+            <tr><th style="font-size: larger">ID de Unidad: </th><td><barcode>*NUMERO*</barcode></td></tr>
+            <tr></tr>
+            <tr>
+                <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td><td><a id="volver" href="{{ path('pagina_sangre') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
+            </tr>
+        </table>
+
+    </body>
+        <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+        <script>
+            function imprimir(){
+                $('#boton').hide();
+                $('#volver').hide();
+                javascript:window.print();
+                $('#boton').show();
+                $('#volver').show();
+            }
+            </script>
+        
+</html>
