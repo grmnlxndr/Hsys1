@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\DonanteRepository")
- * @UniqueEntity(fields="dni", message="DNI ya Existente")
+ * @UniqueEntity(fields="dni", message="Número ya Existente")
  */
 class Donante {
 
