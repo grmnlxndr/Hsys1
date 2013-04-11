@@ -16,7 +16,10 @@
                         {% for factor in factorsanguineo %}
                         <option id="{{factor}}" value="{{factor}}">{{factor}}</option>
                         {% endfor %}
-                </select> 
+                </select>    
+           </td>
+           <td id="cambiarfstd">
+               <input id="cambiarfs" name="cambiarfs" type="checkbox" onchange="permitircambiarfs()"> ¿Cambiar el AB0 Rh?
            </td>
         </tr>
     </table>
@@ -44,7 +47,8 @@
     </tr>
     <tr>
         <th>Dias de vencimiento: </th>
-        <td><input id="cantidaddedias" name="cantidaddedias" disabled type=number onchange="cambiodias()"> <input id="cambiardias" name="cambiardias" type=checkbox onclick="habilitarnumber()"> ¿Cambiar dias?</td>
+        <td><input id="cantidaddedias" name="cantidaddedias" disabled type=number onchange="cambiodias()"> 
+            <input id="cambiardias" name="cambiardias" type=checkbox onclick="habilitarnumber()"> ¿Cambiar dias?</td>
     </tr>
     <tr>
         <th>Fecha de vencimiento: </th>
@@ -68,7 +72,33 @@
 
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
 <script>
+window.onload = function() {
+    {% if unidad.factorsang is not null  %}
+        $("#cambiarfstd").show();
+        $('#factorsanguineo').attr('disabled','disabled');
+        $('#factorsanguineo').val('{{unidad.factorsang}}');
+    {%else%}
+     $("#cambiarfstd").hide();
+     $("<option value='X' selected='selected'>AB0/RhD</option>").insertBefore($("select option")[0]);
+     $('input[type="submit"]').attr('disabled','disabled'); 
+    {%endif%}   
+};
+
+{% if unidad.factorsang is null  %}
+$("select").change(function(){ 
+    $("select option[value='X']").remove();
+    $('input[type="submit"]').removeAttr('disabled');
+});
+{%endif%}
     
+function permitircambiarfs() {
+    if (cambiarfs.checked){
+        $('#factorsanguineo').removeAttr('disabled');
+    }else{
+        $('#factorsanguineo').attr('disabled','disabled');
+    }
+};
+
 $("#tipohemocomponente").change(function(){
         var cantidad = $("#tipohemocomponente option:selected").attr("id");
         $("#cantidaddedias").val(cantidad);
