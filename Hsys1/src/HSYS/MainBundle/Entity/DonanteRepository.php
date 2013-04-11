@@ -15,7 +15,16 @@ class DonanteRepository extends EntityRepository {
     public function findDonante($dato, $criterio){
         $resultado= null;
         if ($criterio == "dni"){
-            $resultado = $this->findDonantePorDNI($dato);
+            $resultado = $this->findDonantePorDNI($dato,'D');
+        };
+        if ($criterio == "pasaporte"){
+            $resultado = $this->findDonantePorDNI($dato,'P');
+        };
+        if ($criterio == "civica"){
+            $resultado = $this->findDonantePorDNI($dato,'C');
+        };
+        if ($criterio == "enrolamiento"){
+            $resultado = $this->findDonantePorDNI($dato,'E');
         };
         if ($criterio == "id") {
             $resultado = $this->findDonantePorNumero($dato);
@@ -27,12 +36,12 @@ class DonanteRepository extends EntityRepository {
         return $resultado;
 }
     
-    public function findDonantePorDNI($dni) {
+    public function findDonantePorDNI($dni,$tipo) {
         $em = $this->getEntityManager();
         $dql = "select d from HSYSMainBundle:Donante d where d.dni like :dni and d.baja = false";
 
         $query = $em->createQuery($dql);
-        $query->setParameter('dni', '%'.$dni.'%');
+        $query->setParameter('dni', '%'.$tipo.$dni.'%');
         
         $donantes = $query->getResult();
         return $donantes;

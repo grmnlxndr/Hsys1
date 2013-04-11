@@ -29,6 +29,10 @@ class DonanteController extends Controller {
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             $donante->setBaja(false);
+//            $numero = $request->request->get('numero');
+//            $tipo = $request->request->get('tipo');
+//            $dni = $tipo.$numero;
+//            $donante->setDni($dni);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($donante);

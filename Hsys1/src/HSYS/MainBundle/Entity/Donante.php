@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\DonanteRepository")
- * @UniqueEntity(fields="dni", message="DNI ya Existente")
+ * @UniqueEntity(fields="dni", message="Número ya Existente")
  */
 class Donante {
 
@@ -32,15 +32,9 @@ class Donante {
     private $nomapp;
 
     /**
+     * @var string
      * 
-     * 
-     * @var integer
-     * 
-     * @Assert\Max(
-     *          limit = "99999999",
-     *          message= "El DNI debe ser un numero de hasta 8 cifras"
-     *          )
-     * @ORM\Column(name="dni", type="integer", nullable=false, unique=true)  
+     * @ORM\Column(name="dni", type="string", nullable=false, unique=true, length=20)  
      * 
      */
     private $dni;
