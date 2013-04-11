@@ -183,6 +183,12 @@ class DonanteController extends Controller {
         }
         return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id' => $id, 'donante'=>$donante));
     }
+    
+    public function imprimirDonanteAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        return $this->render('HSYSMainBundle:Donante:impresioncuestionario.html.twig', array('donante' => $donante));
+    }
 
 }
 
