@@ -3,6 +3,9 @@
 {% block title %}Modificar Donante {{ id }}{% endblock %}
 
 {% block contenido %}
+
+<h3>Modificar Donante:</h3>
+
 <form action="{{ path('modificar_donante', {'id': id}) }}" method="post">
         {# {{ form_widget(form) }} #}
         <table>
@@ -11,11 +14,24 @@
                 <td>{{ form_widget(form.nomapp) }}</td>
                 <td>{{ form_errors(form.nomapp) }}</td>
             </tr>
+             {# <tr>
+                <td><label>Tipo Documento: </label></td>
+                <td><select id="tipo" name="tipo" onchange="cargarDNI()" style="width: 83%">
+                        <option value="D">DNI</option>
+                        <option value="P">Pasaporte</option>
+                        <option value="C">LC</option>
+                        <option value="E">LE</option>
+                    </select></td>
+            </tr> 
             <tr>
+                <td><label>Número Documento: </label></td>
+                <td><input id="numero" name="numero" onchange="cargarDNI()" style="width: 77%"/></td>
+                <td>{{ form_errors(form.dni) }}</td>
+            </tr> #}
+            <tr id="Donante_tr_dni">
                 <td><label>DNI: </label></td>
                 <td>{{ form_widget(form.dni) }}</td>
-                <td>{{ form_errors(form.dni) }}</td>
-            </tr>
+            </tr> 
             {# <tr>
                 <td><label>Factor Sanguíneo: </label></td>
                 <td>{{ form_widget(form.factorsang) }}</td>
@@ -104,4 +120,13 @@
         {{ form_rest(form) }}
         <input type="submit" />
     </form>
+
+<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+    <script>
+    window.onload = function() {
+        $("#Donante_form_dni").prop("disabled", true); 
+        };
+
+        </script>
+
 {% endblock %}
