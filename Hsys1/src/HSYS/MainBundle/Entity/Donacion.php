@@ -35,12 +35,12 @@ class Donacion {
      */
     private $idbolsa;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="localidad", type="string", length=50, nullable=true)
-     */
-    private $localidad;
+   // /**
+   //  * @var string
+   //  *
+   //  * @ORM\Column(name="localidad", type="string", length=50, nullable=true)
+   //  */
+   // private $localidad;
 
     /**
      * @var string
@@ -188,26 +188,26 @@ class Donacion {
     }
     
     
-    /**
-     * Set localidad
-     *
-     * @param string $localidad
-     * @return Donacion
-     */
-    public function setLocalidad($localidad) {
-        $this->localidad = $localidad;
+   // /**
+   //  * Set localidad
+   //  *
+   //  * @param string $localidad
+   //  * @return Donacion
+   //  */
+   // public function setLocalidad($localidad) {
+    //    $this->localidad = $localidad;
 
-        return $this;
-    }
+    //    return $this;
+    //}
 
-    /**
-     * Get localidad
-     *
-     * @return string 
-     */
-    public function getLocalidad() {
-        return $this->localidad;
-    }
+   // /**
+   // * Get localidad
+   //  *
+   //  * @return string 
+   //  */
+   // public function getLocalidad() {
+   //     return $this->localidad;
+   // }
     
     /**
      * Set hospital

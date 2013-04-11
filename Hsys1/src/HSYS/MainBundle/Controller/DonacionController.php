@@ -142,7 +142,7 @@ class DonacionController extends Controller {
         $request = $this->getRequest();
         $idDonante = $request->request->get('donante');
         $fecha = $request->request->get('fecha');
-        $localidad = $request->request->get('localidad');
+       // $localidad = $request->request->get('localidad');
         $hospital = $request->request->get('hospital');
         $peso = $request->request->get('peso');
         $tensionarterial = $request->request->get('tensionarterial');
@@ -174,7 +174,7 @@ class DonacionController extends Controller {
         $fechaformat = new \DateTime;
         $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
         $donacion->setFechextraccion($fechaformat);
-        $donacion->setLocalidad($localidad);
+      //  $donacion->setLocalidad($localidad);
         $donacion->setHospital($hospital);
         $donacion->setPeso($peso);
         $donacion->setTensionarterial($tensionarterial);
@@ -326,7 +326,7 @@ class DonacionController extends Controller {
         $idDonante = $request->request->get('donante');
         $idReceptor = $request->request->get('receptor');
         $fecha = $request->request->get('fecha');
-        $localidad = $request->request->get('localidad');
+       // $localidad = $request->request->get('localidad');
         $hospital = $request->request->get('hospital');
         $peso = $request->request->get('peso');
         $tensionarterial = $request->request->get('tensionarterial');
@@ -355,7 +355,7 @@ class DonacionController extends Controller {
         $donacion->setDonante($donante);
         $donacion->setReceptor($em->getRepository('HSYSMainBundle:Donante')->find($idReceptor));
         $donacion->setIdbolsa($idbolsa);
-        $donacion->setLocalidad($localidad);
+      //  $donacion->setLocalidad($localidad);
         $donacion->setHospital($hospital);
         $donacion->setPeso($peso);
         $donacion->setTensionarterial($tensionarterial);
