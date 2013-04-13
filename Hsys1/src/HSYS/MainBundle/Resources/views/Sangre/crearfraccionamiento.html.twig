@@ -3,10 +3,10 @@
 {% block title %}Crear un fraccionamiento{% endblock %}
 
 {% block contenido %}
-
+<h3>Datos de la Sangre Entera</h3>
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
 </br>
-
+<h3>Fraccionamiento</h3>
 <form id="crearUnidad" name="crearUnidad" method="post" action="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">
     <table class="detalle">
     <h3>Grupo Sanguíneo</h3>
@@ -59,6 +59,7 @@
         <td><label name="estado" id="estado" style="width: 160px">Bloqueado</label></td>
     </tr>
 </table>
+<br>
 <input type="submit" value="Crear unidad"/></td>
 </form>
 
@@ -66,6 +67,7 @@
 <form id="verUnidad" name="verUnidad" method="post" action="{{path('confirmacionfracionamiento_unidad',{'id':unidad.id})}}">
     <h3> Unidades Fraccionadas </h3>
     {% include 'HSYSMainBundle:Sangre:resultados.html.twig' with {'unidades': unidades} %}
+    <br>
 <input type="submit" value="Terminar"/></td>
 </form>
 
