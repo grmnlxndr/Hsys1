@@ -40,6 +40,18 @@ class DonanteType extends AbstractType
                     ),
                     'empty_value' => 'SELECCIONE UNA',
                 ))
+                ->add('niveleducativo', 'choice', array(
+                    'choices' => array(
+                        'Ninguno'=> 'Ninguno',
+                        'Primario Completa'=> 'Primario Completa',
+                        'Secundario Completo'=> 'Secundario Completo',
+                        'Título Terciario'=> 'Título Terciario',
+                        'Título Universitario'=> 'Título Universitario',
+                        'Título Posgrado'=> 'Título Posgrado',
+                        'Otro'=> 'Otro',
+                    ),
+                    'empty_value' => 'SELECCIONE UNA',
+                ))
                 ->add('paisnac')
                 ->add('provnac')
                 ->add('domicilio')
@@ -52,6 +64,10 @@ class DonanteType extends AbstractType
                 ->add('email')
                 ->add('donantevoluntario','checkbox', array(
                     'required' => false
+                ))
+                ->add('leerescribir','checkbox', array(
+                    'required' => false,
+                    'attr' => array('checked' => 'checked'),
                 ))
                 ;
     

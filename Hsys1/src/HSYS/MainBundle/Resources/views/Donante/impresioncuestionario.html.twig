@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>HSys - Imprimir Etiqueta</title>
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+        <link rel="icon" type="image" href="{{ asset('images/Hsys icon1.png') }}" />
+    </head>
+    <body style="background: white">
+        <table id="imprimible" style="text-align: center; font-size: smaller; width: 100%">          
+            <tr><th>ID: </th><td>{{ donante.id }}</td>
+                <td style="width: 10px"></td>
+                <th>Apellido y Nombre: </th><td>{{ donante.nomapp }}</td></tr>
+            <tr></tr>
+            <tr><th>Documento: </th><td>{{ donante.dni }}</td>
+                <td style="width: 10px"></td>
+                <th>Fecha Nacimiento: </th><td>{{ donante.fechnaci | date("d/m/Y") }}</td></tr>
+            <tr></tr>
+            <tr><th>Sexo: </th><td>{{ donante.sexo }}</td>
+                <td style="width: 10px"></td>
+                <th>Donante Voluntario: </th><td>{% if donante.donantevoluntario == 1 %}SI{% else %}NO{% endif %}</td></tr>
+            <tr></tr>
+            <tr><th>Leer y Escribir: </th><td>{% if donante.leerescribir == 1 %}SI{% else %}NO{% endif %}</td>
+                <td style="width: 10px"></td>
+                <th>Nivel Educativo: </th><td>{{ donante.niveleducativo }}</td></tr>
+            <tr></tr>
+            <tr><th>Ocupación: </th><td>{{ donante.ocupacion }}</td>
+                <td style="width: 10px"></td>
+                <th>Estado Civil: </th><td>{{ donante.estadocivil }}</td></tr>
+            <tr></tr>
+            <tr><th>Tel. Particular: </th><td>{{ donante.telefono }}</td>
+                <td style="width: 10px"></td>
+                <th>Tel. Celular: </th><td>{{ donante.celular }}</td></tr>
+            <tr></tr>
+            <tr><th>E-Mail: </th><td>{{ donante.email }}</td>
+                <td style="width: 10px"></td>
+                <th>Lugar Nacimiento: </th><td>{{ donante.paisnac }}-{{ donante.provnac }}</td></tr>
+            <tr></tr>
+            <tr><th>Ciudad Actual: </th><td>{{ donante.pais }}-{{ donante.provincia }}-{{ donante.codpostal }}-{{ donante.ciudad }}</td>
+                <td style="width: 10px"></td>
+                <th>Domicilio: </th><td>{{ donante.domicilio }}</td></tr>
+            <tr></tr>
+            <tr>
+                <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td>
+                <td><a id="volver" href="{{ path('ver_donante',{'id':donante.id}) }}" style="font-size: larger; font-weight: bold">Volver</a></td>
+            </tr>
+        </table>
+
+    </body>
+    <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+    <script>
+        function imprimir(){
+            $('#boton').hide();
+            $('#volver').hide();
+            javascript:window.print();
+            $('#boton').show();
+            $('#volver').show();
+        }
+        </script>
+
+    </html>

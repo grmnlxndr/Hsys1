@@ -138,11 +138,25 @@ class Donante {
     private $celular;
     
     /**
+     * @var string
+     * 
+     * @ORM\Column(name="niveleducativo", type= "string", length=30, nullable=true)
+     */
+    private $niveleducativo;
+    
+    /**
      * @var boolean
      * 
      * @ORM\Column(name="donantevoluntario", type= "boolean", nullable=true)
      */
     private $donantevoluntario;
+   
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="leerescribir", type= "boolean", nullable=true)
+     */
+    private $leerescribir;
     
     /**
      * @var string
@@ -527,6 +541,26 @@ class Donante {
     }
     
     /**
+     * Get niveleducativo
+     *
+     * @return string 
+     */
+    public function getNiveleducativo() {
+        return $this->niveleducativo;
+    }
+
+    /**
+     * Set niveleducativo
+     *
+     * @param string $niveleducativo
+     * @return Donante
+     */
+    public function setNiveleducativo($niveleducativo) {
+        $this->niveleducativo = $niveleducativo;
+        return $this;
+    }
+    
+    /**
      * Get donantevoluntario
      *
      * @return boolean 
@@ -543,6 +577,26 @@ class Donante {
      */
     public function setDonantevoluntario($donantevoluntario) {
         $this->donantevoluntario = $donantevoluntario;
+        return $this;
+    }
+    
+    /**
+     * Get leerescribir
+     *
+     * @return boolean 
+     */
+    public function getLeerescribir() {
+        return $this->leerescribir;
+    }
+
+    /**
+     * Set leerescribir
+     *
+     * @param boolean $leerescribir
+     * @return Donante
+     */
+    public function setLeerescribir($leerescribir) {
+        $this->leerescribir = $leerescribir;
         return $this;
     }
     
