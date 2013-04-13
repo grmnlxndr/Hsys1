@@ -140,6 +140,7 @@ class DonacionController extends Controller {
 //el encargado de crear una unidad tiene que ser la donacion, el metodo ya esta pero falta implementarlo en este controlador
     public function voluntariaConfirmarAction() {
         $request = $this->getRequest();
+        $numdedonacion = $request->request->get('numdedonacion');
         $idDonante = $request->request->get('donante');
         $fecha = $request->request->get('fecha');
        // $localidad = $request->request->get('localidad');
@@ -169,6 +170,7 @@ class DonacionController extends Controller {
         $donacion = new Donacion();
         $donante = new \HSYS\MainBundle\Entity\Donante();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($idDonante);
+        $donacion->setnumdedonacion($numdedonacion);
         $donacion->setDonante($donante);
         $donacion->setIdbolsa($idbolsa);
         $fechaformat = new \DateTime;
@@ -323,6 +325,7 @@ class DonacionController extends Controller {
 
     public function receptorConfirmarAction() {
         $request = $this->getRequest();
+        $numdedonacion = $request->request->get('numdedonacion');
         $idDonante = $request->request->get('donante');
         $idReceptor = $request->request->get('receptor');
         $fecha = $request->request->get('fecha');
@@ -352,6 +355,7 @@ class DonacionController extends Controller {
 
         $donacion = new Donacion();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($idDonante);
+        $donacion->setnumdedonacion($numdedonacion);
         $donacion->setDonante($donante);
         $donacion->setReceptor($em->getRepository('HSYSMainBundle:Donante')->find($idReceptor));
         $donacion->setIdbolsa($idbolsa);

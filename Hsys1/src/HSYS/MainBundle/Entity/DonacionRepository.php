@@ -43,7 +43,7 @@ class DonacionRepository extends EntityRepository {
 
     public function findDonacionPorId($id) {
         $em = $this->getEntityManager();
-        $dql = "select d from HSYSMainBundle:Donacion d where d.id like :id";
+        $dql = "select d from HSYSMainBundle:Donacion d where d.numdedonacion like :id";
 
         $query = $em->createQuery($dql);
         $query->setParameter('id', '%' . $id . '%');

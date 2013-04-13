@@ -41,6 +41,10 @@
 <br/>
 <form id="donacion_form" name="donacion_form" method="post" action="{{ path('alta_donacion_receptor_confirmar') }}">
     <table>
+       <tr>
+           <td><label>Numero de Donacion: </label></td>
+           <td><input name="numdedonacion" id="numdedonacion" style="width: 93%"></td>
+       </tr>        
         <tr>
             <td><label>Tipo de Donación: </label></td>
             <td><select  id="tipodonacion" name="tipodonacion" style="width: 100%">
