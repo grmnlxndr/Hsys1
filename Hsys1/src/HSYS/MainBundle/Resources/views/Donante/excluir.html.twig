@@ -61,7 +61,7 @@
              <tr><td><label>Tensión Arterial: </label></td><td><input  id="tensionarterial" name="tensionarterial" style="width: 93%"/></td></tr>
              <tr><td><label>Pulso: </label></td><td><input  id="pulso" name="pulso" style="width: 93%"/></td></tr>
              <tr><td><label>Temperatura: </label></td><td><input  id="temperatura" name="temperatura" style="width: 93%"/></td></tr>
-             <tr><td><label>Hto: </label></td><td><input  id="hto" name="hto" style="width: 93%"/></td></tr>
+             <tr><td><label>Hematocrito: </label></td><td><input  id="hto" name="hto" style="width: 93%"/></td></tr>
              <tr><td><label>Inspección de brazos: </label></td><td><input  id="inspeccionbrazos" name="inspeccionbrazos" style="width: 93%"/></td></tr>
              <tr><td><label>Observaciones: </label></td><td><input  id="obs" name="obs" style="width: 93%"/></td></tr>
         </table>
@@ -147,7 +147,7 @@ $('#tiempo').change(function() {
 });
 
 function cargarElComentario() {
-    $("#comentarios").html("Examen Fisico: Peso: "+$("#peso").val()+", Tension Arterial: "+$("#tensionarterial").val()+", Pulso: "+$("#pulso").val()+", Temperatura: "+$("#temperatura").val()+", Hto: "+$("#hto").val()+", Inspeccion de los brazos: " +$("#inspeccionbrazos").val()+", Observaciones: "+$("#obs").val());
+    $("#comentarios").html("Examen Fisico: Peso: "+$("#peso").val()+", Tension Arterial: "+$("#tensionarterial").val()+", Pulso: "+$("#pulso").val()+", Temperatura: "+$("#temperatura").val()+", Hematocrito: "+$("#hto").val()+", Inspeccion de los brazos: " +$("#inspeccionbrazos").val()+", Observaciones: "+$("#obs").val());
     }
 </script>
 
