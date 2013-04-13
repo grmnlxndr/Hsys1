@@ -135,7 +135,8 @@ class DonacionController extends Controller {
                     'No se encontro el donate: ' . $id
             );
         }
-        return $this->render('HSYSMainBundle:Donacion:voluntariaFormulario.html.twig', array('donante' => $donante));
+        $hospitales = \HSYS\MainBundle\Entity\Hospital::$hospitales;
+        return $this->render('HSYSMainBundle:Donacion:voluntariaFormulario.html.twig', array('donante' => $donante, 'hospitales' => $hospitales));
     }
 //el encargado de crear una unidad tiene que ser la donacion, el metodo ya esta pero falta implementarlo en este controlador
     public function voluntariaConfirmarAction() {
@@ -320,7 +321,8 @@ class DonacionController extends Controller {
                     'No se encontro el receptor: ' . $rec
             );
         }
-        return $this->render('HSYSMainBundle:Donacion:receptorFormulario.html.twig', array('donante' => $donante, 'receptor' => $receptor));
+        $hospitales = \HSYS\MainBundle\Entity\Hospital::$hospitales;
+        return $this->render('HSYSMainBundle:Donacion:receptorFormulario.html.twig', array('donante' => $donante, 'receptor' => $receptor, 'hospitales' => $hospitales));
     }
 
     public function receptorConfirmarAction() {

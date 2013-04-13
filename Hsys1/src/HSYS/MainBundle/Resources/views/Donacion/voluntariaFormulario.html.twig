@@ -52,7 +52,12 @@
 
         <tr>
             <td><label>Hospital de extracción: </label></td>
-            <td><input id="hospital" name="hospital" type="text"/></td>
+            <td><select id="hospital" name="hospital"> 
+                {% for hospital in hospitales %}
+                            <option value="{{hospital}}" >{{hospital}}</option>        
+                {% endfor %}
+                </select>
+            </td>
         </tr>
         
             <td><label><u>Datos Exámen Físico: </u></label></td>
