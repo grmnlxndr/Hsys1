@@ -68,7 +68,7 @@ class UnidadRepository extends EntityRepository {
 
     public function findUnidadPorDonacion($iddonacion) {
         $em = $this->getEntityManager();
-        $dql = "select u from HSYSMainBundle:Unidad u where u.estado <> :estado and u.Donacion = :iddonacion";
+        $dql = "select u from HSYSMainBundle:Unidad u, HSYSMainBundle:Donacion d where u.estado <> :estado and d.id = u.Donacion and d.numdedonacion = :iddonacion";
 
         $query = $em->createQuery($dql);
         $query->setParameter('estado', 'Fraccionado');
