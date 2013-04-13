@@ -23,113 +23,133 @@
             </tr>
 
         </table>
+        
         <table>
-
-
             <tr><td><br/></td></tr>
             <tr>
-                <td><label> Seleccione un tipo de exclusion: <label> </td>
-                            <td> <select id="tipodeexclusion" name="tipodeexclusion">
-                                    {% for tipoexclusion in tiposExclusion %}
-                                            <option id="{{ tipoexclusion.duracion }}" value="{{ tipoexclusion.id }}">{{ tipoexclusion }}</option>
-                                    {% endfor %}
-                                        </select> 
-                                    </td> 
-                                    </tr>
-                                    <tr>
-                                        <td id="dias"></td>
-                                        <td id="tiempodinamico"></td>  
-                                    </tr> 
-                                    <tr>
-                                        <td id="fechainiciotitulo"></td>
-                                        <td id="fechainicioinput"></td>
+                <td><label>Seleccione un tipo de exclusion: <label> </td>
+                <td> <select id="tipodeexclusion" name="tipodeexclusion">
+               {% for tipoexclusion in tiposExclusion %}
+                    <option id="{{ tipoexclusion.duracion }}" name="{{tipoexclusion.nombre}}" value="{{ tipoexclusion.id }}">{{ tipoexclusion }}</option>
+               {% endfor %}
+                    </select> 
+                </td> 
+            </tr>
+            <tr>
+                <td id="dias"></td>
+                <td id="tiempodinamico"></td>  
+            </tr> 
+            <tr>
+                <td id="fechainiciotitulo"></td>
+                <td id="fechainicioinput"></td>
+            </tr>
+            <tr>
+                <td id="total"></td>
+                <td><label id="fecha"></label></td>
+            </tr>
+      </table> 
+        </br>
+        <table id="comentariotr">
+            <tr>
+                <td> <label>Comentario: &nbsp;&nbsp; </label></td> 
+                <td><textarea id="comentarios" name="comentarios" form="formulario" rows="5" style="auto"></textarea> </td> 
+            </tr>
+        </table>
+        <table id="comentariofisico">
+            <tr><td><label><u>Datos Exámen Físico: </u></label></td> </tr>
+             <tr><td><label>Peso: </label></td><td><input  id="peso" name="peso" style="width: 93%"/></td></tr>
+             <tr><td><label>Tensión Arterial: </label></td><td><input  id="tensionarterial" name="tensionarterial" style="width: 93%"/></td></tr>
+             <tr><td><label>Pulso: </label></td><td><input  id="pulso" name="pulso" style="width: 93%"/></td></tr>
+             <tr><td><label>Temperatura: </label></td><td><input  id="temperatura" name="temperatura" style="width: 93%"/></td></tr>
+             <tr><td><label>Hto: </label></td><td><input  id="hto" name="hto" style="width: 93%"/></td></tr>
+             <tr><td><label>Inspección de brazos: </label></td><td><input  id="inspeccionbrazos" name="inspeccionbrazos" style="width: 93%"/></td></tr>
+             <tr><td><label>Observaciones: </label></td><td><input  id="obs" name="obs" style="width: 93%"/></td></tr>
+        </table>
+        
+</div>
 
-                                    </tr>
-                                    <tr>
-                                        <td id="total"></td>
-                                        <td><label id="fecha"></label></td>
-                                    </tr>
-                                    <tr><td id="comentartitulo" ></td>
-                                        <td id ="comentarcontenido" ></td>
-                                    </tr>
-                                    </table>
-                                    </div>
+        <input type="submit" onclick="cargarElComentario()"/>
+</form>
+{#Exclusion Examen Fisico #}
+<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+<script>
+//poner esto cuando se carga la pagina.
+//{
+$("#comentariofisico").hide();
+$("#comentariotr").hide();
+$('input[type="submit"]').attr('disabled','disabled');    
 
-                                    <input type="submit" />
-                                    </form>
+$("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
 
-                                    <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
-                                    <script>
+//}
+$("select").change(function(){ $("select option[value='X']").remove();
+    $("#fechainiciotitulo").html('<label>Fecha de inicio</label>');
+    $("#fechainicioinput").html('<input  id="fechaingreso" name="fechaingreso" type="date" value="{{ "now"|date('Y-m-d') }}"/>');
+    $("#dias").html('<label>La cantidad de dias son: </label>');
+    $("#total").html('<label>Dura hasta</label>');
+    $('input[type="submit"]').removeAttr('disabled');
+});
 
-                                    $('input[type="submit"]').attr('disabled','disabled');    
-    
-                                    $("<option value='X' selected='selected'></option>").insertBefore($("select option")[0]);
-                                    $("select").change(function(){ $("select option[value='X']").remove();
-                                        
-                                        $("#comentartitulo").html('<label>Comentario: </label>');   
-                                        $("#comentarcontenido").html( '<textarea id="comentarios" name="comentarios" form="formulario" rows="5" style="auto"></textarea>'  );
-                                        $("#fechainiciotitulo").html('<label>Fecha de inicio</label>');
-                                        $("#fechainicioinput").html('<input  id="fechaingreso" name="fechaingreso" type="date" value="{{ "now"|date('Y-m-d') }}"/>');
-                                        
-                                        $("#dias").html('<label>La cantidad de dias son: </label>');
-                                        $("#total").html('<label>Dura hasta</label>');
-                                        $('input[type="submit"]').removeAttr('disabled');
-                                    });
+$("#tipodeexclusion").change(function(){
+var srt = $("#tipodeexclusion option:selected").attr("id");
+var cantidad = srt;
+if (srt == "") {
+    $("#tiempodinamico").html('<input type="number" name="tiempo" id="tiempo" min ="1" value="1"/>');
+} else{
+   $("#tiempodinamico").html('<input name="tiempo" id="tiempo" min ="1" disabled/>');
+};
+if ( $("#tipodeexclusion option:selected").attr("name") == "Exclusion Examen Fisico"){
+    $("#comentariofisico").show();
+    $("#comentariotr").hide();
+} else {
+    $("#comentariofisico").hide();
+    $("#comentariotr").show();
+}
+if ("0" == srt) {
+        $("#tiempo").val("Exclusion permanente.");
+        $("#fecha").text("Indeterminado.");
+    } else {
+        $("#tiempo").val(srt);
+        //var fe = new Date();
+        var fecha1 = $('#fechaingreso').get(0).value;
+        var fecha12 = fecha1.split('-');
+        var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
+        var fechactual = fe.valueOf();
+        var cantidad = $("#tiempo").val();
+        var fechsalida = new Date(fechactual + ( cantidad * 86400000 ) );
+        $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
+        };
+$('#fechaingreso').change(function() {
+    var srt = $("#tipodeexclusion option:selected").attr("id");
+    if ("0" != srt){    
+        var fecha1 = $('#fechaingreso').get(0).value;
+        var fecha12 = fecha1.split('-');
+        var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
+        var fechactual = fe.valueOf();
+        var cantidad = $("#tiempo").val();
+        var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
+        $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
+        }        
+});
 
+$('#tiempo').change(function() {
+    var srt = $("#tipodeexclusion option:selected").attr("id");
+    if ("0" != srt){    
+        var fecha1 = $('#fechaingreso').get(0).value;
+        var fecha12 = fecha1.split('-');
+        var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
+        var fechactual = fe.valueOf();
+        var cantidad = $("#tiempo").val();
+        var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
+        $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
+        }
+    });
+});
 
-
-
-                                    $("#tipodeexclusion").change(function(){
-                                    var srt = $("#tipodeexclusion option:selected").attr("id");
-                                    var cantidad = srt;
-                                    if (srt == "") {
-                                        $("#tiempodinamico").html('<input type="number" name="tiempo" id="tiempo" min ="1" value="1"/>');
-                                    } else{
-                                       $("#tiempodinamico").html('<input name="tiempo" id="tiempo" min ="1" disabled/>');
-                                    };
-                                    if ("0" == srt) {
-                                            $("#tiempo").val("Exclusion permanente.");
-                                            $("#fecha").text("Indeterminado.");
-                                        } else {
-                                            $("#tiempo").val(srt);
-                                            //var fe = new Date();
-                                            var fecha1 = $('#fechaingreso').get(0).value;
-                                            var fecha12 = fecha1.split('-');
-                                            var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
-                                            var fechactual = fe.valueOf();
-                                            var cantidad = $("#tiempo").val();
-                                            var fechsalida = new Date(fechactual + ( cantidad * 86400000 ) );
-                                            $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
-                                            };
-                                        
-                                    
-                                     
-                                    $('#fechaingreso').change(function() {
-                                        var srt = $("#tipodeexclusion option:selected").attr("id");
-                                        if ("0" != srt){    
-                                            var fecha1 = $('#fechaingreso').get(0).value;
-                                            var fecha12 = fecha1.split('-');
-                                            var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
-                                            var fechactual = fe.valueOf();
-                                            var cantidad = $("#tiempo").val();
-                                            var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
-                                            $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
-                                            }        
-                                    });
-                                    $('#tiempo').change(function() {
-                                        var srt = $("#tipodeexclusion option:selected").attr("id");
-                                        if ("0" != srt){    
-                                            var fecha1 = $('#fechaingreso').get(0).value;
-                                            var fecha12 = fecha1.split('-');
-                                            var fe = new Date(fecha12[0],fecha12[1]-1,fecha12[2]);
-                                            var fechactual = fe.valueOf();
-                                            var cantidad = $("#tiempo").val();
-                                            var fechsalida = new Date(fechactual +( cantidad * 86400000 ) );
-                                            $("#fecha").text(fechsalida.getDate() + "/" + (fechsalida.getMonth() +1) + "/" + fechsalida.getFullYear());
-                                            }
-                                            });
-                                    });
-                                        </script>
+function cargarElComentario() {
+    $("#comentarios").html("Examen Fisico: Peso: "+$("#peso").val()+", Tension Arterial: "+$("#tensionarterial").val()+", Pulso: "+$("#pulso").val()+", Temperatura: "+$("#temperatura").val()+", Hto: "+$("#hto").val()+", Inspeccion de los brazos: " +$("#inspeccionbrazos").val()+", Observaciones: "+$("#obs").val());
+    }
+</script>
 
 
 {% endblock %}

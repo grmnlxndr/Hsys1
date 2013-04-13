@@ -73,15 +73,15 @@
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
 <script>
 window.onload = function() {
-    {% if unidad.factorsang is not null  %}
+    if ( "{{unidad.factorsang}}"==""){ 
+        $("#cambiarfstd").hide();
+        $("<option value='X' selected='selected'>AB0/RhD</option>").insertBefore($("select option")[0]);
+        $('input[type="submit"]').attr('disabled','disabled'); 
+    }else{
         $("#cambiarfstd").show();
         $('#factorsanguineo').attr('disabled','disabled');
         $('#factorsanguineo').val('{{unidad.factorsang}}');
-    {%else%}
-     $("#cambiarfstd").hide();
-     $("<option value='X' selected='selected'>AB0/RhD</option>").insertBefore($("select option")[0]);
-     $('input[type="submit"]').attr('disabled','disabled'); 
-    {%endif%}   
+     } 
 };
 
 {% if unidad.factorsang is null  %}
