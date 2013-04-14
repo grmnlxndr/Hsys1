@@ -79,7 +79,7 @@ class DonacionController extends Controller {
     }
 
     public function buscarDonanteAction() {
-        $request = $this->getRequest();
+        /*$request = $this->getRequest();
         $donaciones = null;
         $donante = null;
         if ($request->getMethod() == 'POST') {
@@ -93,6 +93,17 @@ class DonacionController extends Controller {
             }
         }
         return $this->render('HSYSMainBundle:Donacion:buscarDonante.html.twig', array('donaciones' => $donaciones, 'donante' => $donante));
+    } */
+        //$donante = null;
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $busqueda = $request->request->get('buscar');
+            $criterio = $request->request->get('criterio');
+            $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
+            return $this->render('HSYSMainBundle:Donacion:buscarDonante.html.twig', array('donantes' => $donantes));
+        } 
+        return $this->render('HSYSMainBundle:Donacion:buscarDonante.html.twig');
     }
 
     public function buscarFechaAction() {
