@@ -83,4 +83,14 @@ class DonacionRepository extends EntityRepository {
         return $donaciones;
     }
 
+    public function findDonacionesDelReceptor($idreceptor){
+        $em = $this->getEntityManager();
+        $dql = "select d from HSYSMainBundle:Donacion d where d.Receptor = :idreceptor";
+        
+        $query = $em->createQuery($dql);
+        $query->setParameter('idreceptor',$idreceptor);
+        
+        $donaciones = $query->getResult();
+        return $donaciones;
+    }
 }
