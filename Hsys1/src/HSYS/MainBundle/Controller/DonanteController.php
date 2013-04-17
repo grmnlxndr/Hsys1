@@ -29,6 +29,10 @@ class DonanteController extends Controller {
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             $donante->setBaja(false);
+//            $numero = $request->request->get('numero');
+//            $tipo = $request->request->get('tipo');
+//            $dni = $tipo.$numero;
+//            $donante->setDni($dni);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($donante);
@@ -178,6 +182,12 @@ class DonanteController extends Controller {
             return $this->redirect($this->generateUrl('confirmacion', array('accion'=>"eliminado",'id'=>$id)));
         }
         return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id' => $id, 'donante'=>$donante));
+    }
+    
+    public function imprimirDonanteAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
+        return $this->render('HSYSMainBundle:Donante:impresioncuestionario.html.twig', array('donante' => $donante));
     }
 
 }

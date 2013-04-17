@@ -15,10 +15,23 @@
                 <td>{{ form_errors(form.nomapp) }}</td>
             </tr>
             <tr>
-                <td><label>DNI: </label></td>
-                <td>{{ form_widget(form.dni) }}</td>
+                <td><label>Tipo Documento: </label></td>
+                <td><select id="tipo" name="tipo" onchange="cargarDNI()" style="width: 83%">
+                        <option value="D">DNI</option>
+                        <option value="P">Pasaporte</option>
+                        <option value="C">LC</option>
+                        <option value="E">LE</option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td><label>Número Documento: </label></td>
+                <td><input id="numero" name="numero" onchange="cargarDNI()" style="width: 77%"/></td>
                 <td>{{ form_errors(form.dni) }}</td>
             </tr>
+            <tr id="Donante_tr_dni">
+                <td><label>DNI: </label></td>
+                <td>{{ form_widget(form.dni) }}</td>
+            </tr> 
             {# <tr>
                 <td><label>AB0/RhD: </label></td>
                 <td>{{ form_widget(form.factorsang) }}</td>
@@ -38,6 +51,16 @@
                 <td><label>Donante Voluntario: </label></td>
                 <td>{{ form_widget(form.donantevoluntario) }}</td>
                 <td>{{ form_errors(form.donantevoluntario) }}</td>
+            </tr>
+            <tr>
+                <td><label>Sabe Leer y Escribir: </label></td>
+                <td>{{ form_widget(form.leerescribir) }}</td>
+                <td>{{ form_errors(form.leerescribir) }}</td>
+            </tr>
+            <tr>
+                <td><label>Nivel Educativo: </label></td>
+                <td>{{ form_widget(form.niveleducativo) }}</td>
+                <td>{{ form_errors(form.niveleducativo) }}</td>
             </tr>
             <tr>
                 <td><label>Ocupación: </label></td>
@@ -103,60 +126,65 @@
                 <td>{{ form_errors(form.domicilio) }}</td>
             </tr>
         </table>
-        
+
         {{ form_rest(form) }}
         <input type="submit" />
     </form>
 {{ form_errors(form) }}
 
 
-<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
-<script>
-window.onload = function() {
-$("#Donante_form_paisnac").val("Argentina");
-$("#Donante_form_provnac").hide(); 
-$("#provincianacimiento").html("<select name='provnac' id='provnac' onChange='cambiarprovnac()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option>  {% endfor %}</select> ");
-cambiarprovnac();
-// ----------
-$("#Donante_form_pais").val("Argentina");
-$("#Donante_form_provincia").hide();
-$("#provinciaactual").html("<select name='provincia' id='provincia' onChange='cambiarprovincia()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option>  {% endfor %}</select> ");
-$("#Donante_form_ciudad").val("Resistencia");
-cambiarprovincia();
-};
+    <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+    <script>
+    window.onload = function() {
+    $("#Donante_form_paisnac").val("Argentina");
+    $("#Donante_tr_dni").hide(); 
+    $("#Donante_form_provnac").hide(); 
+    $("#provincianacimiento").html("<select name='provnac' id='provnac' onChange='cambiarprovnac()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option>  {% endfor %}</select> ");
+    cambiarprovnac();
+    // ----------
+    $("#Donante_form_pais").val("Argentina");
+    $("#Donante_form_provincia").hide();
+    $("#provinciaactual").html("<select name='provincia' id='provincia' onChange='cambiarprovincia()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option>  {% endfor %}</select> ");
+    $("#Donante_form_ciudad").val("Resistencia");
+    cambiarprovincia();
+    };
 
 
-$("#Donante_form_paisnac").change(function(){
-    if ($("#Donante_form_paisnac").val().toLowerCase() == "argentina") { 
-         cambiarprovnac();
-         $("#Donante_form_provnac").hide();
-         $("#provnac").show();
-    }else{
-         $("#Donante_form_provnac").val("");
-         $("#provnac").hide();
-         $("#Donante_form_provnac").show();
-    } 
-});
+    $("#Donante_form_paisnac").change(function(){
+        if ($("#Donante_form_paisnac").val().toLowerCase() == "argentina") { 
+             cambiarprovnac();
+             $("#Donante_form_provnac").hide();
+             $("#provnac").show();
+        }else{
+             $("#Donante_form_provnac").val("");
+             $("#provnac").hide();
+             $("#Donante_form_provnac").show();
+        } 
+    });
 
-function cambiarprovnac(){
-    $("#Donante_form_provnac").val($("#provnac option:selected").attr("value"));
-};
+    function cambiarprovnac(){
+        $("#Donante_form_provnac").val($("#provnac option:selected").attr("value"));
+    };
 
-$("#Donante_form_pais").change(function(){
-    if ($("#Donante_form_pais").val().toLowerCase() == "argentina") { 
-         cambiarprovincia();
-         $("#Donante_form_provincia").hide();
-         $("#provincia").show();
-    }else{
-         $("#Donante_form_provincia").val("");
-         $("#provincia").hide();
-         $("#Donante_form_provincia").show();
-    } 
-});
+    $("#Donante_form_pais").change(function(){
+        if ($("#Donante_form_pais").val().toLowerCase() == "argentina") { 
+             cambiarprovincia();
+             $("#Donante_form_provincia").hide();
+             $("#provincia").show();
+        }else{
+             $("#Donante_form_provincia").val("");
+             $("#provincia").hide();
+             $("#Donante_form_provincia").show();
+        } 
+    });
 
-function cambiarprovincia(){
-    $("#Donante_form_provincia").val($("#provincia option:selected").attr("value"));
-};
+    function cambiarprovincia(){
+        $("#Donante_form_provincia").val($("#provincia option:selected").attr("value"));
+    };
+    
+    function cargarDNI(){
+        $("#Donante_form_dni").val($("#tipo option:selected").attr("value")+$("#numero").val());
+        };
 
-</script>
+        </script>
 {% endblock %}

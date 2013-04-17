@@ -1,12 +1,24 @@
 
 <table class="detalle">
     <tr>
-        <th>Codigo: </th>
+        <th>Numero de Donacion: </th>
+        <td>{{unidad.donacion.numdedonacion}}</td>
+    </tr>
+    <tr>
+        <th>Codigo de unidad: </th>
         <td>{{ unidad.id }}</td>
     </tr>
         <tr>
         <th>AB0/RhD: </th>
         <td>{{ unidad.factorsang  }}</td>
+    </tr>
+    <tr>
+        <th>Tipo de Hemocomponente: </th>
+        <td>{{ unidad.tipohemocomponente }}</td>
+    </tr>
+    <tr>
+        <th>Estado: </th>
+        <td>{{ unidad.estado }}</td>
     </tr>
     <tr>
         <th>Fecha de Extracción: </th>
@@ -37,16 +49,8 @@
         <td>{{ unidad.anticoagulante }}</td>
     </tr>
     <tr>
-        <th>Tipo de Hemocomponente: </th>
-        <td>{{ unidad.tipohemocomponente }}</td>
-    </tr>
-    <tr>
         <th>Volumen: </th>
         <td>{{ unidad.volumen }}</td>
-    </tr>
-    <tr>
-        <th>Estado: </th>
-        <td>{{ unidad.estado }}</td>
     </tr>
     <tr>
         <th>Comentarios: </th>

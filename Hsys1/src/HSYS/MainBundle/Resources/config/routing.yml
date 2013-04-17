@@ -39,6 +39,10 @@ eliminar_donante:
   pattern: /donante/eliminar/{id}
   defaults: { _controller: HSYSMainBundle:Donante:eliminar }
 
+imprimir_donante:
+  pattern: /donante/imprimir/{id}
+  defaults: { _controller: HSYSMainBundle:Donante:imprimirDonante }
+
 #EXTRACCIONES/DONACION
 pagina_donacion:
   pattern: /donacion

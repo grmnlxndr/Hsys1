@@ -137,6 +137,34 @@ class Donacion {
     private $obs;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="numdedonacion", type="string", length=15, nullable=true)
+     */
+    private $numdedonacion;
+    
+    /**
+     * Get numdedonacion
+     *
+     * @return String 
+     */
+    public function getnumdedonacion() {
+        return $this->numdedonacion;
+    }
+
+    /**
+     * Set numdedonacion
+     *
+     * @param string $numdedonacion
+     * @return Donacion
+     */
+    public function setnumdedonacion($numdedonacion) {
+        $this->numdedonacion = $numdedonacion;
+
+        return $this;
+    }
+    
+    /**
      * Get id
      *
      * @return integer 

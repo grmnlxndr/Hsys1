@@ -3,10 +3,10 @@
 {% block title %}Crear un fraccionamiento{% endblock %}
 
 {% block contenido %}
-
+<h3>Datos de la Sangre Entera</h3>
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
 </br>
-
+<h3>Fraccionamiento</h3>
 <form id="crearUnidad" name="crearUnidad" method="post" action="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">
     <table class="detalle">
     <h3>Grupo Sanguíneo</h3>
@@ -16,7 +16,10 @@
                         {% for factor in factorsanguineo %}
                         <option id="{{factor}}" value="{{factor}}">{{factor}}</option>
                         {% endfor %}
-                </select> 
+                </select>    
+           </td>
+           <td id="cambiarfstd">
+               <input id="cambiarfs" name="cambiarfs" type="checkbox" onchange="permitircambiarfs()"> ¿Cambiar el AB0 Rh?
            </td>
         </tr>
     </table>
@@ -44,7 +47,8 @@
     </tr>
     <tr>
         <th>Dias de vencimiento: </th>
-        <td><input id="cantidaddedias" name="cantidaddedias" disabled type=number onchange="cambiodias()"> <input id="cambiardias" name="cambiardias" type=checkbox onclick="habilitarnumber()"> ¿Cambiar dias?</td>
+        <td><input id="cantidaddedias" name="cantidaddedias" disabled type=number onchange="cambiodias()"> 
+            <input id="cambiardias" name="cambiardias" type=checkbox onclick="habilitarnumber()"> ¿Cambiar dias?</td>
     </tr>
     <tr>
         <th>Fecha de vencimiento: </th>
@@ -55,6 +59,7 @@
         <td><label name="estado" id="estado" style="width: 160px">Bloqueado</label></td>
     </tr>
 </table>
+<br>
 <input type="submit" value="Crear unidad"/></td>
 </form>
 
@@ -62,13 +67,40 @@
 <form id="verUnidad" name="verUnidad" method="post" action="{{path('confirmacionfracionamiento_unidad',{'id':unidad.id})}}">
     <h3> Unidades Fraccionadas </h3>
     {% include 'HSYSMainBundle:Sangre:resultados.html.twig' with {'unidades': unidades} %}
+    <br>
 <input type="submit" value="Terminar"/></td>
 </form>
 
 
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
 <script>
+window.onload = function() {
+    if ( "{{unidad.factorsang}}"==""){ 
+        $("#cambiarfstd").hide();
+        $("<option value='X' selected='selected'>AB0/RhD</option>").insertBefore($("select option")[0]);
+        $('input[type="submit"]').attr('disabled','disabled'); 
+    }else{
+        $("#cambiarfstd").show();
+        $('#factorsanguineo').attr('disabled','disabled');
+        $('#factorsanguineo').val('{{unidad.factorsang}}');
+     } 
+};
+
+{% if unidad.factorsang is null  %}
+$("select").change(function(){ 
+    $("select option[value='X']").remove();
+    $('input[type="submit"]').removeAttr('disabled');
+});
+{%endif%}
     
+function permitircambiarfs() {
+    if (cambiarfs.checked){
+        $('#factorsanguineo').removeAttr('disabled');
+    }else{
+        $('#factorsanguineo').attr('disabled','disabled');
+    }
+};
+
 $("#tipohemocomponente").change(function(){
         var cantidad = $("#tipohemocomponente option:selected").attr("id");
         $("#cantidaddedias").val(cantidad);

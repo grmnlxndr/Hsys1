@@ -4,6 +4,7 @@
 
 {% block contenido %}
 <h3>Buscar Donación por Donante:</h3>
+{#
 <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donacion_donante') }}">
     <table>
         <tr>
@@ -31,7 +32,7 @@
 {% if donaciones %}
 <table class="consulta" style="width: 100%">
     <tr>
-        <th> ID </th><th> Tipo Donación </th><th> Fecha </th><th> Ver </th>{#<th> Crear una exclusión </th>#}<th> Anular </th>
+        <th> ID </th><th> Tipo Donación </th><th> Fecha </th><th> Ver </th><th> Anular </th>
     </tr>
 {% for donacion in donaciones %}
     <tr>
@@ -39,8 +40,45 @@
         <td><a>{{ donacion.tipodonacion }}</a></td>
         <td><a>{{ donacion.fechextraccion|date('d/m/Y') }}</a></td>
         <td class="link"><a href="{{ path('ver_donacion', {'id':donacion.id}) }}">Ver</a></td>
-        {#<td class="link"><a href="{{ path('exclusion_donacion', {'id':donacion.id})  }}"> Crear una exclusión </a></td>#}
         <td class="link"><a href="{{ path('anular_donacion', {'id':donacion.id}) }}">Anular</a></td>
+    </tr>
+{% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+{% endfor %}
+</table>
+{% endif %}#}
+
+<form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_donacion_donante') }}">
+    <table>
+        <tr>
+            <td><label>Búsqueda: </label></td>
+            <td><input id="buscar" name="buscar" type="text" style="width: 120px"/></td>
+            <td><label for="criterio">Criterio: </label></td>
+            <td><select name="criterio" id="criterio" style="width: 120px">
+                    <option value="id">Número Donante</option>
+                    <option value="dni" selected>DNI</option>
+                    <option value="pasaporte">Pasaporte</option>
+                    <option value="civica">L.C.</option>
+                    <option value="enrolamiento">L.E.</option>
+                    <option value="nomapp">Apellido y Nombre</option>
+                </select></td>
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+{% if donantes  is defined %}
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th>Núm. Donante</th><th> Apellido y Nombre </th><th> DNI </th><th> Seleccionar </th>
+    </tr>
+{% for donante in donantes %}
+    <tr>
+        <td><a>{{ donante.id }}</a></td>
+        <td><a>{{ donante.nomapp }}</a></td>
+        <td><a>{{ donante.dni }}</a></td>
+        <td class="link"><a href="{{ path('ver_donacion_donante', {'id':donante.id})  }}">Ver Donaciones</a></td>
     </tr>
 {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>

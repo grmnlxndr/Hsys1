@@ -17,6 +17,7 @@
     <ul>
         <li><a href="{{ path('alta_donacion_voluntaria_formulario',{'id':donante.id}) }}">Donar (Voluntaria)</a></li>
         <li><a href="{{ path('alta_donacion_receptor_receptor',{'don':donante.id}) }}">Donar (c/Receptor)</a></li>
+        <li><a href="{{ path('imprimir_donante',{'id':donante.id}) }}">Imprimir</a></li>
     </ul>
 </div>
 <br/>
@@ -52,6 +53,14 @@
     <tr>
         <th>Donante Voluntario: </th>
         <td>{% if donante.donantevoluntario == 1 %}SI{% else %}NO{% endif %}</td>
+    </tr>
+    <tr>
+        <th>Sabe leer y escribir: </th>
+        <td>{% if donante.leerescribir == 1 %}SI{% else %}NO{% endif %}</td>
+    </tr>
+    <tr>
+        <th>Nivel Educativo: </th>
+        <td>{{ donante.niveleducativo }}</td>
     </tr>
     <tr>
         <th>Ocupación: </th>

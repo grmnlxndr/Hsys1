@@ -79,7 +79,7 @@ class DonacionController extends Controller {
     }
 
     public function buscarDonanteAction() {
-        $request = $this->getRequest();
+        /*$request = $this->getRequest();
         $donaciones = null;
         $donante = null;
         if ($request->getMethod() == 'POST') {
@@ -93,6 +93,17 @@ class DonacionController extends Controller {
             }
         }
         return $this->render('HSYSMainBundle:Donacion:buscarDonante.html.twig', array('donaciones' => $donaciones, 'donante' => $donante));
+    } */
+        //$donante = null;
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $busqueda = $request->request->get('buscar');
+            $criterio = $request->request->get('criterio');
+            $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
+            return $this->render('HSYSMainBundle:Donacion:buscarDonante.html.twig', array('donantes' => $donantes));
+        } 
+        return $this->render('HSYSMainBundle:Donacion:buscarDonante.html.twig');
     }
 
     public function buscarFechaAction() {
@@ -135,11 +146,13 @@ class DonacionController extends Controller {
                     'No se encontro el donate: ' . $id
             );
         }
-        return $this->render('HSYSMainBundle:Donacion:voluntariaFormulario.html.twig', array('donante' => $donante));
+        $hospitales = \HSYS\MainBundle\Entity\Hospital::$hospitales;
+        return $this->render('HSYSMainBundle:Donacion:voluntariaFormulario.html.twig', array('donante' => $donante, 'hospitales' => $hospitales));
     }
 //el encargado de crear una unidad tiene que ser la donacion, el metodo ya esta pero falta implementarlo en este controlador
     public function voluntariaConfirmarAction() {
         $request = $this->getRequest();
+        $numdedonacion = $request->request->get('numdedonacion');
         $idDonante = $request->request->get('donante');
         $fecha = $request->request->get('fecha');
        // $localidad = $request->request->get('localidad');
@@ -169,6 +182,7 @@ class DonacionController extends Controller {
         $donacion = new Donacion();
         $donante = new \HSYS\MainBundle\Entity\Donante();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($idDonante);
+        $donacion->setnumdedonacion($numdedonacion);
         $donacion->setDonante($donante);
         $donacion->setIdbolsa($idbolsa);
         $fechaformat = new \DateTime;
@@ -318,11 +332,13 @@ class DonacionController extends Controller {
                     'No se encontro el receptor: ' . $rec
             );
         }
-        return $this->render('HSYSMainBundle:Donacion:receptorFormulario.html.twig', array('donante' => $donante, 'receptor' => $receptor));
+        $hospitales = \HSYS\MainBundle\Entity\Hospital::$hospitales;
+        return $this->render('HSYSMainBundle:Donacion:receptorFormulario.html.twig', array('donante' => $donante, 'receptor' => $receptor, 'hospitales' => $hospitales));
     }
 
     public function receptorConfirmarAction() {
         $request = $this->getRequest();
+        $numdedonacion = $request->request->get('numdedonacion');
         $idDonante = $request->request->get('donante');
         $idReceptor = $request->request->get('receptor');
         $fecha = $request->request->get('fecha');
@@ -352,6 +368,7 @@ class DonacionController extends Controller {
 
         $donacion = new Donacion();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($idDonante);
+        $donacion->setnumdedonacion($numdedonacion);
         $donacion->setDonante($donante);
         $donacion->setReceptor($em->getRepository('HSYSMainBundle:Donante')->find($idReceptor));
         $donacion->setIdbolsa($idbolsa);
@@ -461,10 +478,12 @@ class DonacionController extends Controller {
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
         if ($donante) {
             $donaciones = $donante->getDonaciones();
+            $receptores = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionesDelReceptor($donante->getid());
         } else {
             $donaciones = null;
+            $receptores = null;
         }
-        return $this->render('HSYSMainBundle:Donacion:verDonante.html.twig', array('donante' => $donante, 'donaciones' => $donaciones));
+        return $this->render('HSYSMainBundle:Donacion:verDonante.html.twig', array('donante' => $donante, 'donaciones' => $donaciones, 'receptores' =>$receptores));
     }
 
 }

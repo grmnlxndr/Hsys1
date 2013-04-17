@@ -41,6 +41,10 @@
 <br/>
 <form id="donacion_form" name="donacion_form" method="post" action="{{ path('alta_donacion_receptor_confirmar') }}">
     <table>
+       <tr>
+           <td><label>Numero de Donacion: </label></td>
+           <td><input name="numdedonacion" id="numdedonacion" style="width: 93%"></td>
+       </tr>        
         <tr>
             <td><label>Tipo de Donación: </label></td>
             <td><select  id="tipodonacion" name="tipodonacion" style="width: 100%">
@@ -63,7 +67,11 @@
 
         <tr>
             <td><label>Hospital de extracción: </label></td>
-            <td><input id="hospital" name="hospital" type="text"/></td>
+            <td><select id="hospital" name="hospital"> 
+                {% for hospital in hospitales %}
+                            <option value="{{hospital}}" >{{hospital}}</option>        
+                {% endfor %}
+                </select></td>
         </tr>
 <td><label><u>Datos Exámen Físico: </u></label></td>
         </tr>
@@ -84,7 +92,7 @@
             <td><input  id="temperatura" name="temperatura" style="width: 93%"/></td><!required="required">
         </tr>
         <tr>
-            <td><label>Hto: </label></td>
+            <td><label>Hematocrito: </label></td>
             <td><input  id="hto" name="hto" style="width: 93%"/></td><!required="required">      
         </tr>
         <tr>

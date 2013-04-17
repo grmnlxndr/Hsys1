@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\DonanteRepository")
- * @UniqueEntity(fields="dni", message="DNI ya Existente")
+ * @UniqueEntity(fields="dni", message="Número ya Existente")
  */
 class Donante {
 
@@ -32,15 +32,9 @@ class Donante {
     private $nomapp;
 
     /**
+     * @var string
      * 
-     * 
-     * @var integer
-     * 
-     * @Assert\Max(
-     *          limit = "99999999",
-     *          message= "El DNI debe ser un numero de hasta 8 cifras"
-     *          )
-     * @ORM\Column(name="dni", type="integer", nullable=false, unique=true)  
+     * @ORM\Column(name="dni", type="string", nullable=false, unique=true, length=20)  
      * 
      */
     private $dni;
@@ -144,11 +138,25 @@ class Donante {
     private $celular;
     
     /**
+     * @var string
+     * 
+     * @ORM\Column(name="niveleducativo", type= "string", length=30, nullable=true)
+     */
+    private $niveleducativo;
+    
+    /**
      * @var boolean
      * 
      * @ORM\Column(name="donantevoluntario", type= "boolean", nullable=true)
      */
     private $donantevoluntario;
+   
+    /**
+     * @var boolean
+     * 
+     * @ORM\Column(name="leerescribir", type= "boolean", nullable=true)
+     */
+    private $leerescribir;
     
     /**
      * @var string
@@ -533,6 +541,26 @@ class Donante {
     }
     
     /**
+     * Get niveleducativo
+     *
+     * @return string 
+     */
+    public function getNiveleducativo() {
+        return $this->niveleducativo;
+    }
+
+    /**
+     * Set niveleducativo
+     *
+     * @param string $niveleducativo
+     * @return Donante
+     */
+    public function setNiveleducativo($niveleducativo) {
+        $this->niveleducativo = $niveleducativo;
+        return $this;
+    }
+    
+    /**
      * Get donantevoluntario
      *
      * @return boolean 
@@ -549,6 +577,26 @@ class Donante {
      */
     public function setDonantevoluntario($donantevoluntario) {
         $this->donantevoluntario = $donantevoluntario;
+        return $this;
+    }
+    
+    /**
+     * Get leerescribir
+     *
+     * @return boolean 
+     */
+    public function getLeerescribir() {
+        return $this->leerescribir;
+    }
+
+    /**
+     * Set leerescribir
+     *
+     * @param boolean $leerescribir
+     * @return Donante
+     */
+    public function setLeerescribir($leerescribir) {
+        $this->leerescribir = $leerescribir;
         return $this;
     }
     
