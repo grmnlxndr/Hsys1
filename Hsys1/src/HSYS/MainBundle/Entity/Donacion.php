@@ -143,6 +143,25 @@ class Donacion {
      */
     private $numdedonacion;
     
+    
+    /**
+     *
+     * @var boolean
+     * terminado = 0 no terminado todavia.
+     * terminado = 1 si terminado todavia.
+     * @ORM\Column(name="terminado", type="boolean")  
+     */
+    private $terminado;
+
+    public function getTerminado() {
+        return $this->terminado;
+    }
+
+    public function setTerminado($terminado) {
+        $this->terminado = $terminado;
+        return $this;
+    }
+    
     /**
      * Get numdedonacion
      *
