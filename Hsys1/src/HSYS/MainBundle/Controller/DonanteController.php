@@ -158,6 +158,7 @@ class DonanteController extends Controller {
            $habilitado = true;
         }
         if ($request->getMethod() == 'POST') {
+            $comentario = $request->request->get('comentarios');
             $donante->habilitar();
             $em->persist($donante);
             $em->flush();
