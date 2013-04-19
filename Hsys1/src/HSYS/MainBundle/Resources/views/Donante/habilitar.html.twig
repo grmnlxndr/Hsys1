@@ -33,15 +33,15 @@
     </tr>
 {% for exclusion in exclusiones %}
     <tr>
-        <td valign="middle" align="center"><a>{{ exclusion.id }}</a></td>
-        <td valign="middle" align="center"><a>{{ exclusion.fechini | date("d/m/Y") }}</a></td>
-        <td valign="middle" align="center"><a>{% if exclusion.fechfin != null%}
+        <td valign="middle" align="center">{{ exclusion.id }}</td>
+        <td valign="middle" align="center">{{ exclusion.fechini | date("d/m/Y") }}</td>
+        <td valign="middle" align="center">{% if exclusion.fechfin != null%}
                                                     {{ exclusion.fechfin | date("d/m/Y") }}
                                                 {%else%}
                                                     Permanente
-                                                {%endif%}</a></td>
-        <td valign="middle" align="center"><a>{{ exclusion.tipoexclusion }}</a></td>
-        <td valign="middle" align="center"><a>{{ exclusion.comentario }}</a></td>
+                                                {%endif%}</td>
+        <td valign="middle" align="center">{{ exclusion.tipoexclusion }}</td>
+        <td valign="middle" align="center">{{ exclusion.comentario }}</td>
     </tr>
     {% else %}
     <div class="listadeexclusiones"><img src="{{ asset('images/error.png') }}"/>    EL DONANTE NO POSEE NINGUNA EXCLUSION</div>

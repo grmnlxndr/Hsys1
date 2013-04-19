@@ -152,6 +152,7 @@
                 </select>
             </td>
         </tr>
+        {#
         <tr>
             <td><label><u>Datos de la Extracción: </u></label></td>
         </tr>
@@ -188,9 +189,10 @@
         <tr>
             <td><label>Comentarios: </label></td>
             <td><textarea id="comentarios" name="comentarios" rows="5" form="donacion_form" style="width: 93%"></textarea></td>
-        </tr>
+        </tr> 
+    #}
         <tr>
-            <td><input type="submit" value="Confirmar"/></td>
+            <td><input type="submit" value="Guardar y Continuar"/></td>
         </tr>
     </table>
         <input id="donante" name="donante" type="hidden" value="{{ donante.id }}" />
