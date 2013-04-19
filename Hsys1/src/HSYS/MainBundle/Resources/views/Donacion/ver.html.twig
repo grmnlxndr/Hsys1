@@ -9,6 +9,9 @@
         <li><a href="{{ path('modificar_donacion',{'id':donacion.id}) }}">Modificar</a></li>
         <li><a href= "{{ path('anular_donacion',{'id':donacion.id}) }}">Anular</a></li>
         <li><a href="{{ path('excluir_donante',{'id':donacion.donante.id}) }}">Crear una exlusión</a></li>
+        {% if donacion.terminado == false %}   
+        <li><a href="{{ path('alta_donacion_voluntaria_formulario_terminado',{'numdedonacion':donacion.numdedonacion}) }}">Continuar</a></li> 
+        {% endif %}
     </ul>
 </div>
 <br/>
@@ -17,8 +20,8 @@
         <th colspan="2">Datos Generales</th>
     </tr>
     <tr>
-        <th>ID: </th>
-        <td>{{ donacion.id }}</td>
+        <th>Número de Donación: </th>
+        <td>{{ donacion.numdedonacion }}</td>
     </tr>
     <tr>
         <th>Fecha de extracción:  </th>
@@ -95,17 +98,17 @@
         <td>{{ donacion.donante.nomapp }}</td>
     </tr>
     {% if donacion.receptor %}
-        <tr>
-            <th colspan="2">Datos del Receptor</th>
-        </tr>
-        <tr>
-            <th>ID del Receptor: </th>
-            <td>{{ donacion.receptor.id }}</td>
-        </tr>
-        <tr>
-            <th>Nombre del Receptor: </th>
-            <td>{{ donacion.receptor.nomapp }}</td>
-        </tr>
+    <tr>
+        <th colspan="2">Datos del Receptor</th>
+    </tr>
+    <tr>
+        <th>ID del Receptor: </th>
+        <td>{{ donacion.receptor.id }}</td>
+    </tr>
+    <tr>
+        <th>Nombre del Receptor: </th>
+        <td>{{ donacion.receptor.nomapp }}</td>
+    </tr>
     {% endif %}
 </table>
 <br/>

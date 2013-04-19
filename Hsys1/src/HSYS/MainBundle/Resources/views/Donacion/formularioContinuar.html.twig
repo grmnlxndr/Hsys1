@@ -1,0 +1,78 @@
+{% extends 'HSYSMainBundle:Donacion:donacionbase.html.twig' %}
+
+{% block title %}Donación Voluntaria{% endblock %}
+
+{% block contenido %}
+
+<h3>Donación Número: {{ donacion.numdedonacion }}</h3>
+
+{# <h3>Donante:</h3>
+{% if donante.excluido %}
+<div class="consulta"><img src="{{ asset('images/error.png') }}"/>    DONANTE EXCLUIDO</div>
+{% endif %}
+    <table class="detalle">
+        <tr>
+            <th>ID: </th>
+            <td>{{ donante.id }}</td>
+        </tr>
+        <tr>
+            <th>Apellido y Nombre:  </th>
+            <td>{{ donante.nomapp }}</td>
+        </tr>
+        <tr>
+            <th>Factor Sangíneo: </th>
+            <td>{{ donante.factorsang }}</td>
+        </tr>
+
+    </table>
+
+#}
+<br/>
+<form id="donacion_form" name="donacion_form" method="post" action="{{ path('alta_donacion_voluntaria_confirmar') }}">
+    <table>
+        <tr>
+            <td><label><u>Datos de la Extracción: </u></label></td>
+        </tr>
+        <tr>
+            <td><label>Volúmen extraído: </label></td>
+            <td><input id="volumen" name="volumen" type="text" value="450"/></td>
+            <td>cc</td>
+        </tr>
+        <tr>
+            <td><label>Flebotomía: </label></td>
+            <td><select  id="flebotomia" name="flebotomia" style="width: 100%">
+                    <option value="Brazo Izquierdo">Brazo Izquierdo</option>
+                    <option value="Brazo Derecho">Brazo Derecho</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Punción: </label></td>
+            <td><select  id="puncion" name="puncion" style="width: 100%">
+                    <option value="Unica">Unica</option>
+                    <option value="Varias">Varias</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Reacción Postextracción: </label></td>
+            <td><select  id="reaccionpostextraccion" name="reaccionpostextraccion" style="width: 100%">
+                    <option value="Buena">Buena</option>
+                    <option value="Lipotina">Lipotina</option>
+                    <option value="Otra">Otra</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label>Comentarios: </label></td>
+            <td><textarea id="comentarios" name="comentarios" rows="5" form="donacion_form" style="width: 93%"></textarea></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="action" value="Guardar y Continuar"/></td>
+            <td><input type="button" value="Cargarlo Luego" onclick="location.href='{{ path('ver_donacion', {'id':donacion.id}) }}'"/></td>
+        </tr> 
+    </table>
+    <input id="numdedonacion" name="numdedonacion" type="hidden" value="{{ donacion.numdedonacion }}" />
+</form>
+
+{% endblock %}

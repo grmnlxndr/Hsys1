@@ -143,40 +143,50 @@ class DonacionController extends Controller {
         //hacer mas lindo el error
         if (!$donante) {
             throw $this->createNotFoundException(
-                    'No se encontro el donate: ' . $id
+                    'No se encontro el donante: ' . $id
             );
         }
         $hospitales = \HSYS\MainBundle\Entity\Hospital::$hospitales;
         return $this->render('HSYSMainBundle:Donacion:voluntariaFormulario.html.twig', array('donante' => $donante, 'hospitales' => $hospitales));
     }
-//el encargado de crear una unidad tiene que ser la donacion, el metodo ya esta pero falta implementarlo en este controlador
-    public function voluntariaConfirmarAction() {
+    
+//    public function voluntariaFormularioTerminadoAction($numdedonacion){
+//        $em = $this->getDoctrine()->getEntityManager();
+//        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->findOneBy(array('numdedonacion'=>$numdedonacion));
+//        
+//        if (!$donacion) {
+//            throw $this->createNotFoundException(
+//                    'No se encontro la donacion: ' . $numdedonacion
+//            );
+//        };
+//        
+//        $donante = $donacion->getDonante();
+//        $hospitales = \HSYS\MainBundle\Entity\Hospital::$hospitales;
+//        return $this->render('HSYSMainBundle:Donacion:voluntariaFormulario.html.twig', array('donante' => $donante, 'hospitales' => $hospitales, 'donacion' =>$donacion));
+//    }
+    
+    
+    public function voluntariaFormularioGuardarAction(){
         $request = $this->getRequest();
         $numdedonacion = $request->request->get('numdedonacion');
         $idDonante = $request->request->get('donante');
         $fecha = $request->request->get('fecha');
-       // $localidad = $request->request->get('localidad');
         $hospital = $request->request->get('hospital');
         $peso = $request->request->get('peso');
         $tensionarterial = $request->request->get('tensionarterial');
         $pulso = $request->request->get('pulso');
         $temperatura = $request->request->get('temperatura');
         $hto = $request->request->get('hto');
-        $inspeccionbrazos = $request->request->get('inspeccionbrazos');
         $obs = $request->request->get('obs');
         $idbolsa = $request->request->get('bolsa');
-        $volumen = $request->request->get('volumen');
-        $comentarios = $request->request->get('comentarios');
-        $flebotomia = $request->request->get('flebotomia');
-        $puncion = $request->request->get('puncion');
-        $reaccionpostextraccion = $request->request->get('reaccionpostextraccion');
         $nrolote = $request->request->get('nrolote');
         $vencimiento = $request->request->get('vencimiento');
         $tipobolsa = $request->request->get('tipobolsa');
         $marca = $request->request->get('marca');
         $anticoagulante = $request->request->get('anticoagulante');
         $tipodonacion = $request->request->get('tipodonacion');
-
+        $inspeccionbrazos = $request->request->get('inspeccionbrazos');
+        
         $em = $this->getDoctrine()->getEntityManager();
         
         $donacion = new Donacion();
@@ -188,7 +198,6 @@ class DonacionController extends Controller {
         $fechaformat = new \DateTime;
         $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
         $donacion->setFechextraccion($fechaformat);
-      //  $donacion->setLocalidad($localidad);
         $donacion->setHospital($hospital);
         $donacion->setPeso($peso);
         $donacion->setTensionarterial($tensionarterial);
@@ -197,19 +206,61 @@ class DonacionController extends Controller {
         $donacion->setHto($hto);
         $donacion->setInspeccionbrazos($inspeccionbrazos);
         $donacion->setObs($obs);
-        $donacion->setFlebotomia($flebotomia);
-        $donacion->setPuncion($puncion);
-        $donacion->setReaccionpostextraccion($reaccionpostextraccion);
-        $donacion->setComentario($comentarios);
         $donacion->setTipodonacion($tipodonacion);
-        
-        $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
         
         $fechaformatVenc = new \DateTime;
         $fechaformatVenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
         $fechaVenc = $fechaformatVenc;
-//        $donacion->crearUnidad($tipohemo, $volumen, $fechaVenc);
-        $donacion->crearUnidad($tipohemo, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $fechaVenc);
+        
+        $donacion->setVencimientobolsa($fechaformatVenc);
+        $donacion->setNrolote($nrolote);
+        $donacion->setTipobolsa($tipobolsa);
+        $donacion->setMarca($marca);
+        $donacion->setAnticoagulante($anticoagulante);
+        $donacion->setTerminado(false);
+        
+        $em->persist($donacion);
+        $em->flush();
+        
+        return $this->render('HSYSMainBundle:Donacion:formularioContinuar.html.twig', array('donacion' => $donacion));
+        
+    }
+    
+    //para leer el valor
+    public function voluntariaFormularioContinuarAction($numdedonacion){
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->findOneBy(array('numdedonacion'=>$numdedonacion));
+        
+        return $this->render('HSYSMainBundle:Donacion:formularioContinuar.html.twig', array('donacion' => $donacion));
+    }
+
+
+//el encargado de crear una unidad tiene que ser la donacion, el metodo ya esta pero falta implementarlo en este controlador
+    public function voluntariaConfirmarAction() {
+        $request = $this->getRequest();
+        $numdedonacion = $request->request->get('numdedonacion');
+        $volumen = $request->request->get('volumen');
+        $comentarios = $request->request->get('comentarios');
+        $flebotomia = $request->request->get('flebotomia');
+        $puncion = $request->request->get('puncion');
+        $reaccionpostextraccion = $request->request->get('reaccionpostextraccion');
+
+        $em = $this->getDoctrine()->getEntityManager();
+        
+        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->findOneBy(array('numdedonacion' => $numdedonacion));
+    
+        $donacion->setFlebotomia($flebotomia);
+        $donacion->setPuncion($puncion);
+        $donacion->setReaccionpostextraccion($reaccionpostextraccion);
+        $donacion->setComentario($comentarios);
+        
+        $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
+
+        $donacion->crearUnidad($tipohemo, $volumen, $donacion->getTipobolsa(), $donacion->getNrolote(), $donacion->getMarca(), $donacion->getAnticoagulante(), $donacion->getVencimientobolsa());
+        
+        $donacion->setTerminado(true);
         
         $em->persist($donacion);
         $em->flush();
@@ -250,10 +301,11 @@ class DonacionController extends Controller {
 //        $bolsa->setDonacion($donacion);
 //        $em->persist($bolsa);
 //        $em->flush();
-
-        $comentario = 'Excluido por donación voluntaria ID: ' . $donacion->getId();
+        
+        $donante = $donacion->getDonante();
+        $comentario = 'Excluido por donación voluntaria Nro: ' . $donacion->getNumdedonacion();
         $tipodeexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findOneBy(array('nombre' => 'Exclusion por donacion'));
-        $donante->excluir($tipodeexclusion, $comentario, $fechaformat);
+        $donante->excluir($tipodeexclusion, $comentario, $donacion->getFechextraccion());
         $em->persist($donante);
         $em->flush();
         
@@ -277,8 +329,10 @@ class DonacionController extends Controller {
 
 //        $em->persist($exclusion);
 //        $em->flush();
+        
+        return $this->redirect($this->generateUrl('ver_donacion', array('id' => $donacion->getId())));
 
-        return $this->render('HSYSMainBundle:Donacion:ver.html.twig', array('donacion' => $donacion));
+//        return $this->render('HSYSMainBundle:Donacion:ver.html.twig', array('donacion' => $donacion));
     }
 
     public function receptorAction() {

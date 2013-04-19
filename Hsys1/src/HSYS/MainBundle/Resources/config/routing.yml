@@ -76,6 +76,18 @@ alta_donacion_voluntaria_formulario:
   pattern: /donacion/voluntaria/formulario/{id}
   defaults: { _controller: HSYSMainBundle:Donacion:voluntariaFormulario }
 
+alta_donacion_voluntaria_formulario_guardar:
+  pattern: /donacion/voluntaria/guardar/formulario/
+  defaults: { _controller: HSYSMainBundle:Donacion:voluntariaFormularioGuardar }
+  
+#alta_donacion_voluntaria_formulario_guardar:
+#  pattern: /donacion/voluntaria/guardar/formulario/{numdedonacion}
+#  defaults: { _controller: HSYSMainBundle:Donacion:voluntariaFormularioContinuar }
+#  
+alta_donacion_voluntaria_formulario_terminado:
+  pattern: /donacion/voluntaria/terminado/formulario/{numdedonacion}
+  defaults: { _controller: HSYSMainBundle:Donacion:voluntariaFormularioContinuar }
+
 alta_donacion_voluntaria_confirmar:
   pattern: /donacion/voluntaria/confirmar
   defaults: { _controller: HSYSMainBundle:Donacion:voluntariaConfirmar }
