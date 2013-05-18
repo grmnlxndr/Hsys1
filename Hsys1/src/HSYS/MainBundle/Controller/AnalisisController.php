@@ -81,24 +81,23 @@ class AnalisisController extends Controller
         $form = $this->createForm(new analisisType(), $analisis);
         
         if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
+            $form->bind($request);
             if ($form->isValid()) {
-                $fecha = $request->request->get('fecha');
-                $fechanalisis = new \DateTime();
-                $fechanalisis->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
-                $analisis->setFechanalisis($fechanalisis);
+//                $fecha = $request->request->get('fecha');
+//                $fechanalisis = new \DateTime();
+//                $fechanalisis->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
+//                $analisis->setFechanalisis($fechanalisis);
                 
                 $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
                 $donacion->setAnalisis($analisis);
-                
                 $em->persist($analisis);
                 $em->flush();
-                return $this->redirect($this->generateURL('confirmacion_analisis', array('accion' => 'agregado', 'id' => $analisis->getId())));
-            }    
+                return $this->redirect($this->generateURL('confirmacion_analisis', array('accion' => 'creado', 'id' => $analisis->getId())));
+            }
         }
 
         $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
-        return $this->render('HSYSMainBundle:Analisis:nuevoForm.html.twig', array('form' => $form->createView(), 'donacion' => $donacion));
+        return $this->render('HSYSMainBundle:Analisis:nuevoForm.html.twig', array('analisis'=> $analisis,'form' => $form->createView(), 'donacion' => $donacion));
     }
     
     public function confirmacionAction($accion, $id) {

@@ -16,6 +16,11 @@ class analisisType extends AbstractType
 //                    'format' => 'dd-MM-yyyy',
 //                    'pattern' => '{{ day }}-{{ month }}-{{ year }}'
 //                ))
+                ->add('fechanalisis', 'date', array(
+                    'widget' => 'single_text',
+                    'years' => range(1902, 2054),
+                    'months' => range(01, 12),
+                    'format' => 'dd/MM/yyyy',))
                 ->add('chhai','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))
                 ->add('cheia','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))
                 ->add('anticore','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))

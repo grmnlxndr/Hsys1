@@ -8,8 +8,8 @@
 
 <table class="detalle">
     <tr>
-        <th>ID: </th>
-        <td>{{ donacion.id }}</td>
+        <th>Numero de donacion: </th>
+        <td>{{ donacion.numdedonacion }}</td>
     </tr>
     <tr>
         <th>Número de bolsa:  </th>
@@ -35,9 +35,9 @@
         <table>
             <tr>
                 <td><label>Fecha Analisis de Serología: </label></td>
-                {#<td>{{ form_widget(form.fechanalisis) }}</td>
-                <td>{{ form_errors(form.fechanalisis) }}</td>#}
-                <td><input type="date" id="fecha" name="fecha" value="{{"now" | date('Y-m-d')}}"/></td>
+                <td><input type="date" id="fecha" name="fecha" value="{{analisis.fechanalisis | date('Y-m-d')}}" onChange="fechaanalisis()"/></td>
+                <td hidden="hidden">{{ form_widget(form.fechanalisis) }}</td>
+                <td>{{ form_errors(form.fechanalisis) }}</td>
             </tr>
             <tr>
                 <td><label>CHHAI: </label></td>
@@ -128,7 +128,7 @@
         </table>
         <br/>
         {{ form_rest(form) }}
-        <div id="aprobado" name = "aprobado"><input type="checkbox" name="checkboxaprobado" id="checkboxaprobado" onclick="habilitar()"> ¿Esta seguro que desea habilitar el donante?<br> </div>
+        <div id="aprobado" name = "aprobado"><input type="checkbox" name="checkboxaprobado" id="checkboxaprobado" onclick="guardar()"> ¿Esta seguro que desea guardar el Analisis?<br> </div>
         <input id="aceptado" type="button" value="Aceptar" onclick="validacion()"/>
         <input id="modificar" type="button" value="Modificar" onclick="modificarformulario()" />
         <input type="submit" id="enviar" name="enviar"/>
@@ -149,23 +149,24 @@ $('#separador').hide();
 }; 
 
 function validacion(){
-    $("#fecha").attr('disabled','disabled');
-    $("#Donacion_form_chhai").attr('disabled','disabled');
-    $("#Donacion_form_cheia").attr('disabled','disabled');
-    $("#Donacion_form_anticore").attr('disabled','disabled');
-    $("#Donacion_form_hbsag").attr('disabled','disabled');
-    $("#Donacion_form_hcvagac").attr('disabled','disabled');
-    $("#Donacion_form_hivac").attr('disabled','disabled');
-    $("#Donacion_form_agp2y").attr('disabled','disabled');
-    $("#Donacion_form_htlv").attr('disabled','disabled');
-    $("#Donacion_form_brucelosis").attr('disabled','disabled');
-    $("#Donacion_form_sifilis").attr('disabled','disabled');
-    $("#Donacion_form_abo").attr('disabled','disabled');
-    $("#Donacion_form_rhd").attr('disabled','disabled');
-    $("#Donacion_form_du").attr('disabled','disabled');
-    $("#Donacion_form_cde").attr('disabled','disabled');
-    $("#Donacion_form_fenotipo").attr('disabled','disabled');
-    $("#Donacion_form_pci").attr('disabled','disabled');
+    $("#fecha").attr('readonly','readonly');
+    $("#Donacion_form_chhai").attr('readonly','readonly');
+    $("#Donacion_form_cheia").attr('readonly','readonly');
+    $("#Donacion_form_anticore").attr('readonly','readonly');
+    $("#Donacion_form_hbsag").attr('readonly','readonly');
+    $("#Donacion_form_hcvagac").attr('readonly','readonly');
+    $("#Donacion_form_hivac").attr('readonly','readonly');
+    $("#Donacion_form_agp2y").attr('readonly','readonly');
+    $("#Donacion_form_htlv").attr('readonly','readonly');
+    $("#Donacion_form_brucelosis").attr('readonly','readonly');
+    $("#Donacion_form_sifilis").attr('readonly','readonly');
+    $("#Donacion_form_abo").attr('readonly','readonly');
+    $("#Donacion_form_rhd").attr('readonly','readonly');
+    $("#Donacion_form_du").attr('readonly','readonly');
+    $("#Donacion_form_cde").attr('readonly','readonly');
+    $("#Donacion_form_fenotipo").attr('readonly','readonly');
+    $("#Donacion_form_pci").attr('readonly','readonly'); 
+    fechaanalisis();
     $('#enviar').show();
     $('#modificar').show();
     $('#aceptado').hide();
@@ -178,22 +179,22 @@ function validacion(){
     
 function modificarformulario(){
     $("#fecha").removeAttr('disabled');
-    $("#Donacion_form_chhai").removeAttr('disabled');
-    $("#Donacion_form_cheia").removeAttr('disabled');
-    $("#Donacion_form_anticore").removeAttr('disabled');
-    $("#Donacion_form_hbsag").removeAttr('disabled');
-    $("#Donacion_form_hcvagac").removeAttr('disabled');
-    $("#Donacion_form_hivac").removeAttr('disabled');
-    $("#Donacion_form_agp2y").removeAttr('disabled');
-    $("#Donacion_form_htlv").removeAttr('disabled');
-    $("#Donacion_form_brucelosis").removeAttr('disabled');
-    $("#Donacion_form_sifilis").removeAttr('disabled');
-    $("#Donacion_form_abo").removeAttr('disabled');
-    $("#Donacion_form_rhd").removeAttr('disabled');
-    $("#Donacion_form_du").removeAttr('disabled');
-    $("#Donacion_form_cde").removeAttr('disabled');
-    $("#Donacion_form_fenotipo").removeAttr('disabled');
-    $("#Donacion_form_pci").removeAttr('disabled');
+    $("#Donacion_form_chhai").removeAttr('readonly');
+    $("#Donacion_form_cheia").removeAttr('readonly');
+    $("#Donacion_form_anticore").removeAttr('readonly');
+    $("#Donacion_form_hbsag").removeAttr('readonly');
+    $("#Donacion_form_hcvagac").removeAttr('readonly');
+    $("#Donacion_form_hivac").removeAttr('readonly');
+    $("#Donacion_form_agp2y").removeAttr('readonly');
+    $("#Donacion_form_htlv").removeAttr('readonly');
+    $("#Donacion_form_brucelosis").removeAttr('readonly');
+    $("#Donacion_form_sifilis").removeAttr('readonly');
+    $("#Donacion_form_abo").removeAttr('readonly');
+    $("#Donacion_form_rhd").removeAttr('readonly');
+    $("#Donacion_form_du").removeAttr('readonly');
+    $("#Donacion_form_cde").removeAttr('readonly');
+    $("#Donacion_form_fenotipo").removeAttr('readonly');
+    $("#Donacion_form_pci").removeAttr('readonly');
     $('#enviar').hide();
     $('#modificar').hide();
     $('#aceptado').show();
@@ -217,12 +218,18 @@ function esReactivo(){
 };
 
  
-function habilitar(){
-if (aprobado.checked) {    
+function guardar(){
+if (checkboxaprobado.checked) {    
     $('input[type="submit"]').removeAttr('disabled');
 } else {
     $('input[type="submit"]').attr('disabled','disabled');
     }
     };
+    
+    
+function fechaanalisis(){
+    var $arrayFecha = $("#fecha").val().split('-');
+    $("#Donacion_form_fechanalisis").attr("value",$arrayFecha[2]+"/"+$arrayFecha[1]+"/"+$arrayFecha[0]);
+    }
 </script>
 {% endblock %}
