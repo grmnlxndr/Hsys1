@@ -1,16 +1,26 @@
-<h1>Usuario creation</h1>
+{% extends "HSYSMainBundle:Usuario:usuariobase.html.twig" %}
 
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+<h3>Crear Usuario</h3>
+<br/>
 <form action="{{ path('admin_usuario_create') }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
-    <p>
-        <button type="submit">Create</button>
-    </p>
-</form>
+        <p>
+            <button type="submit">Crear Usuario</button>
+        </p>
+    </form>
 
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_usuario') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+<br/>
+    <div class="detalle">
+        <ul>
+            <li>
+                <a href="{{ path('admin_usuario') }}">
+                    Volver a Listado de Usuarios
+                </a>
+            </li>
+        </ul>
+    </div>
+
+{% endblock %}

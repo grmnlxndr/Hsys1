@@ -1,0 +1,12 @@
+{# empty Twig template #}
+{% extends '::basico.html.twig' %}
+
+{% block sidebar %}
+<ul>    
+
+    <li><a href="{{ path('admin_usuario') }}" title="Inicio">Inicio Admin Usuarios</a></li>      
+
+</ul>
+{% endblock %}
+
+{% block adminSel %}class="selected"{% endblock %}

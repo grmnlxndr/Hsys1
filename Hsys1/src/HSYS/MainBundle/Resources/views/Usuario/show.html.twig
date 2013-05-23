@@ -1,6 +1,11 @@
-<h1>Usuario</h1>
+{% extends "HSYSMainBundle:Usuario:usuariobase.html.twig" %}
 
-<table class="record_properties">
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+<h3>Usuario</h3>
+
+<table class="detalle">
     <tbody>
         <tr>
             <th>Id</th>
@@ -39,3 +44,4 @@
         </form>
     </li>
 </ul>
+{% endblock %}
