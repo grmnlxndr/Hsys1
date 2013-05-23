@@ -90,14 +90,9 @@
                 <td>{{ form_errors(form.sifilis) }}</td>
             </tr>
             <tr>
-                <td><label>AB0: </label></td>
-                <td>{{ form_widget(form.abo) }}</td>
-                <td>{{ form_errors(form.abo) }}</td>
-            </tr>
-            <tr>
-                <td><label>RH (D): </label></td>
-                <td>{{ form_widget(form.rhd) }}</td>
-                <td>{{ form_errors(form.rhd) }}</td>
+                <td><label>AB0/RH(D): </label></td>
+                <td>{{ form_widget(form.factorsang) }}</td>
+                <td>{{ form_errors(form.factorsang) }}</td>
             </tr>
             <tr>
                 <td><label>Du: </label></td>
@@ -119,8 +114,10 @@
                 <td>{{ form_widget(form.pci) }}</td>
                 <td>{{ form_errors(form.pci) }}</td>
             </tr>
-            <tr id="separador"></tr>
-            <tr id="reactivo">
+            <tr>
+                <td><br/></td>
+            </tr>
+            <tr>
                 <td><label>Reactivo?: </label></td>
                 <td>{{ form_widget(form.reactivo) }}</td>
                 <td>{{ form_errors(form.reactivo) }}</td>
@@ -129,8 +126,8 @@
         <br/>
         {{ form_rest(form) }}
         <div id="aprobado" name = "aprobado"><input type="checkbox" name="checkboxaprobado" id="checkboxaprobado" onclick="guardar()"> ¿Esta seguro que desea guardar el Analisis?<br> </div>
-        <input id="aceptado" type="button" value="Aceptar" onclick="validacion()"/>
-        <input id="modificar" type="button" value="Modificar" onclick="modificarformulario()" />
+        {#<input id="aceptado" type="button" value="Aceptar" onclick="validacion()"/>
+        <input id="modificar" type="button" value="Modificar" onclick="modificarformulario()" />#}
         <input type="submit" id="enviar" name="enviar"/>
     </form>
 {{ form_errors(form) }}
@@ -139,6 +136,55 @@
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
 <script>
 window.onload = function() {
+$('input[type="submit"]').attr('disabled','disabled');
+
+$("#Donacion_form_chhai").attr('onchange','esReactivo()');
+$("#Donacion_form_cheia").attr('onchange','esReactivo()');
+$("#Donacion_form_anticore").attr('onchange','esReactivo()');
+$("#Donacion_form_hbsag").attr('onchange','esReactivo()');
+$("#Donacion_form_hcvagac").attr('onchange','esReactivo()');
+$("#Donacion_form_hivac").attr('onchange','esReactivo()');
+$("#Donacion_form_agp2y").attr('onchange','esReactivo()');
+$("#Donacion_form_htlv").attr('onchange','esReactivo()');
+$("#Donacion_form_brucelosis").attr('onchange','esReactivo()');
+$("#Donacion_form_sifilis").attr('onchange','esReactivo()');
+$('#Donacion_form_reactivo').attr('onchange','esReactivo()');
+}; 
+
+
+function esReactivo(){
+  if($("#Donacion_form_chhai").val()=='R') { $('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_cheia").val()=='R') { $('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_anticore").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_hbsag").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_hcvagac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_hivac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_agp2y").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_htlv").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_brucelosis").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_sifilis").val()=='R') {$('#Donacion_form_reactivo').val('SI'); 
+      }else { $('#Donacion_form_reactivo').val('NO');};
+};
+
+ 
+function guardar(){
+if (checkboxaprobado.checked) {    
+    $('input[type="submit"]').removeAttr('disabled');
+} else {
+    $('input[type="submit"]').attr('disabled','disabled');
+    }
+    };
+    
+    
+function fechaanalisis(){
+    var $arrayFecha = $("#fecha").val().split('-');
+    $("#Donacion_form_fechanalisis").attr("value",$arrayFecha[2]+"/"+$arrayFecha[1]+"/"+$arrayFecha[0]);
+    }
+    
+</script>
+{% endblock %}
+
+{#window.onload = function() {
 $('input[type="submit"]').attr('disabled','disabled'); 
 $('#modificar').hide();
 $('#enviar').hide();
@@ -231,5 +277,4 @@ function fechaanalisis(){
     var $arrayFecha = $("#fecha").val().split('-');
     $("#Donacion_form_fechanalisis").attr("value",$arrayFecha[2]+"/"+$arrayFecha[1]+"/"+$arrayFecha[0]);
     }
-</script>
-{% endblock %}
+#}

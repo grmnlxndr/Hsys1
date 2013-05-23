@@ -101,16 +101,9 @@ class analisis {
     /**
      * @var string
      *
-     * @ORM\Column(name="abo", type="string", length=10, nullable=true)
+     * @ORM\Column(name="factorsang", type="string", length=10, nullable=true)
      */
-    private $abo;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="rhd", type="string", length=10, nullable=true)
-     */
-    private $rhd;
+    private $factorsang;
 
     /**
      * @var string
@@ -139,8 +132,8 @@ class analisis {
      * @ORM\Column(name="pci", type="string", length=10, nullable=true)
      */
     private $pci;
-    
-     /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="reactivo", type="string", length=10, nullable=true)
@@ -388,48 +381,6 @@ class analisis {
     }
 
     /**
-     * Set abo
-     *
-     * @param string $abo
-     * @return analisis
-     */
-    public function setAbo($abo) {
-        $this->abo = $abo;
-
-        return $this;
-    }
-
-    /**
-     * Get abo
-     *
-     * @return string 
-     */
-    public function getAbo() {
-        return $this->abo;
-    }
-
-    /**
-     * Set rhd
-     *
-     * @param string $rhd
-     * @return analisis
-     */
-    public function setRhd($rhd) {
-        $this->rhd = $rhd;
-
-        return $this;
-    }
-
-    /**
-     * Get rhd
-     *
-     * @return string 
-     */
-    public function getRhd() {
-        return $this->rhd;
-    }
-
-    /**
      * Set du
      *
      * @param string $du
@@ -503,7 +454,7 @@ class analisis {
 
         return $this;
     }
-    
+
     /**
      * Get pci
      *
@@ -512,8 +463,8 @@ class analisis {
     public function getPci() {
         return $this->pci;
     }
-    
-     /**
+
+    /**
      * Set reactivo
      *
      * @param string $reactivo
@@ -533,7 +484,7 @@ class analisis {
     public function getReactivo() {
         return $this->reactivo;
     }
-    
+
     /**
      * @ORM\OneToOne(targetEntity="Donacion", mappedBy="analisis")
      * @return integer
@@ -547,7 +498,26 @@ class analisis {
     public function getDonacion() {
         return $this->Donacion;
     }
-    
-    
+
+    /**
+     * Set factorsang
+     *
+     * @param string $factorsang
+     * @return Donante
+     */
+    public function setFactorsang($factorsang) {
+        $this->factorsang = $factorsang;
+
+        return $this;
+    }
+
+    /**
+     * Get factorsang
+     *
+     * @return string 
+     */
+    public function getFactorsang() {
+        return $this->factorsang;
+    }
 
 }
