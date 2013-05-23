@@ -3,27 +3,42 @@
 {% block title %}ADMIN{% endblock %}
 
 {% block contenido %}
-<h3>Usuario edit</h3>
-
-<form action="{{ path('admin_usuario_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
-    {{ form_widget(edit_form) }}
-    <p>
-        <button type="submit">Edit</button>
-    </p>
+<h3>Editar Usuario: {{ entity.id }}</h3>
+<br/>
+<form action="{{ path('admin_usuario_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}> 
+    <table>
+        <tr>
+            <td><label>Nombre de Usuario: </label></td>
+            <td>{{ form_widget(edit_form.username) }}</td>
+            <td>{{ form_errors(edit_form.username) }}</td>
+        </tr>
+        <tr>
+            <td><label>Contraseña: </label></td>
+            <td>{{ form_widget(edit_form.password) }}</td>
+            <td>{{ form_errors(edit_form.password) }}</td>
+        </tr>
+        <tr>
+            <td><label>Rol de Usuario: </label></td>
+            <td>{{ form_widget(edit_form.user_roles) }}</td>
+            <td>{{ form_errors(edit_form.user_roles) }}</td>
+        </tr>
+    </table>
+    <input type="submit" value="Editar"/>
 </form>
-
-<ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_usuario') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('admin_usuario_delete', { 'id': entity.id }) }}" method="post">
+<br/>
+<div class="detalle">
+    <ul class="record_actions">
+        <li>
+            <a href="{{ path('admin_usuario') }}">
+                Volver al Listado de Usuarios
+            </a>
+        </li>
+        <li>
+            <form action="{{ path('admin_usuario_delete', { 'id': entity.id }) }}" method="post" style="background-color: transparent; border-color: transparent">
             {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
-
+                    <button type="submit" style="background-color: transparent; font-family: 'Trebuchet MS', Verdana, Arial; font-size: 1.0em; color: white; font-weight: bold; border-color: transparent; ">Eliminar</button>
+                </form>
+            </li>
+        </ul>
+    </div>
 {% endblock %}
