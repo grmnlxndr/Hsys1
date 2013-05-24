@@ -1,11 +1,11 @@
 {% if donaciones is defined %}
     <table class="consulta" style="width: 100%">
         <tr>
-            <th> ID </th><th> ID Bolsa </th><th> Donante </th><th> Fecha </th><th>AB0/RH</th><th> Seleccionar </th>
+            <th> Num Donacion </th><th> ID Bolsa </th><th> Donante </th><th> Fecha </th><th>AB0/RH</th><th> Seleccionar </th>
         </tr>
     {% for donacion in donaciones %}
         <tr>
-            <td><a>{{ donacion.id }}</a></td>
+            <td><a>{{ donacion.numdedonacion }}</a></td>
             <td><a>{{ donacion.idbolsa}}</a></td>
             <td><a>{{ donacion.donante.nomapp }}</a></td>
             <td><a>{{ donacion.fechextraccion|date('d/m/Y') }}</a></td>

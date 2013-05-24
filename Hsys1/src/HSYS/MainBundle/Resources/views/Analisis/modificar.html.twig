@@ -8,8 +8,8 @@
 
 <table class="detalle">
     <tr>
-        <th>ID: </th>
-        <td>{{ donacion.id }}</td>
+        <th>Numero de Donacion: </th>
+        <td>{{ donacion.numdedonacion }}</td>
     </tr>
     <tr>
         <th>Número de bolsa:  </th>
@@ -114,11 +114,13 @@
                 <td>{{ form_widget(form.pci) }}</td>
                 <td>{{ form_errors(form.pci) }}</td>
             </tr>
+            <tr><td><br/></td></tr>
             <tr>
                 <td><label>Reactivo?: </label></td>
                 <td>{{ form_widget(form.reactivo) }}</td>
                 <td>{{ form_errors(form.reactivo) }}</td>
             </tr>
+            <tr><td><br/></td></tr>
         </table>
         
         {{ form_rest(form) }}
