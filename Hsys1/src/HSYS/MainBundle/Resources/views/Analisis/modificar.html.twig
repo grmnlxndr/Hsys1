@@ -34,8 +34,10 @@
         {# {{ form_widget(form) }} #}
         <table>
             <tr>
-                <td><label>Fecha del Analisis de Serología: </label></td>
-                <td><input type="date" id="fecha" name="fecha" value="{{fechanalisis |date('Y-m-d') }}" /></td>
+                <td><label>Fecha Analisis de Serología: </label></td>
+                <td><input type="date" id="fecha" name="fecha" value="{{analisis.fechanalisis | date('Y-m-d')}}" onChange="fechaanalisis()"/></td>
+                <td hidden="hidden">{{ form_widget(form.fechanalisis) }}</td>
+                <td>{{ form_errors(form.fechanalisis) }}</td>
             </tr>
             <tr>
                 <td><label>CHHAI: </label></td>
@@ -88,14 +90,9 @@
                 <td>{{ form_errors(form.sifilis) }}</td>
             </tr>
             <tr>
-                <td><label>ABO: </label></td>
-                <td>{{ form_widget(form.abo) }}</td>
-                <td>{{ form_errors(form.abo) }}</td>
-            </tr>
-            <tr>
-                <td><label>RH (D): </label></td>
-                <td>{{ form_widget(form.rhd) }}</td>
-                <td>{{ form_errors(form.rhd) }}</td>
+                <td><label>ABO/RH(D): </label></td>
+                <td>{{ form_widget(form.factorsang) }}</td>
+                <td>{{ form_errors(form.factorsang) }}</td>
             </tr>
             <tr>
                 <td><label>Du: </label></td>
@@ -133,6 +130,7 @@
 
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
 <script>
+    
 $('input[type="submit"]').attr('disabled','disabled');  
 function habilitar(){
 if (aprobado.checked) {    
@@ -141,5 +139,10 @@ if (aprobado.checked) {
     $('input[type="submit"]').attr('disabled','disabled');
     }
     };
+    
+    function fechaanalisis(){
+    var $arrayFecha = $("#fecha").val().split('-');
+    $("#Donacion_form_fechanalisis").attr("value",$arrayFecha[2]+"/"+$arrayFecha[1]+"/"+$arrayFecha[0]);
+    }
 </script>
 {% endblock %}

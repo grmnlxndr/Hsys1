@@ -10,7 +10,12 @@
             <td><a>{{ donacion.donante.nomapp }}</a></td>
             <td><a>{{ donacion.fechextraccion|date('d/m/Y') }}</a></td>
             <td><a>{{ donacion.donante.factorsang}}</a></td>
-            <td class="link"><a href="{{ path('alta_analisis_form', {'id':donacion.id}) }}">Seleccionar</a></td>
+            <td class="link">
+                {%if donacion.analisis is null %}
+                    <a href="{{ path('alta_analisis_form', {'id':donacion.id}) }}">Seleccionar</a></td>
+                {% else %}
+            <a href="{{ path('ver_analisis', {'id':donacion.analisis.id}) }}">Ya existe</a>
+                {%endif%}
         </tr>
     {% else %}
         <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
