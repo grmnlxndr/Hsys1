@@ -138,6 +138,8 @@
 window.onload = function() {
 $('input[type="submit"]').attr('disabled','disabled');
 
+selectInCombo('Donacion_form_factorsang','{{ donacion.Donante.factorsang }}');
+
 $("#Donacion_form_chhai").attr('onchange','esReactivo()');
 $("#Donacion_form_cheia").attr('onchange','esReactivo()');
 $("#Donacion_form_anticore").attr('onchange','esReactivo()');
@@ -152,7 +154,16 @@ $('#Donacion_form_reactivo').attr('onchange','esReactivo()');
 }; 
 
 
-function esReactivo(){
+function selectInCombo(combo,val)
+{
+    for(var indice=0 ;indice<document.getElementById(combo).length;indice++)
+    {
+        if (document.getElementById(combo).options[indice].text==val )
+            document.getElementById(combo).selectedIndex =indice;
+    }
+}
+
+function esReactivo(){  
   if($("#Donacion_form_chhai").val()=='R') { $('#Donacion_form_reactivo').val('SI');
       }else if ($("#Donacion_form_cheia").val()=='R') { $('#Donacion_form_reactivo').val('SI');
       }else if ($("#Donacion_form_anticore").val()=='R') {$('#Donacion_form_reactivo').val('SI');
@@ -278,3 +289,5 @@ function fechaanalisis(){
     $("#Donacion_form_fechanalisis").attr("value",$arrayFecha[2]+"/"+$arrayFecha[1]+"/"+$arrayFecha[0]);
     }
 #}
+
+
