@@ -80,6 +80,8 @@ class AnalisisController extends Controller
         $analisis = new analisis();
         $form = $this->createForm(new analisisType(), $analisis);
         
+        $factorsanguineo = \HSYS\MainBundle\Entity\factorsang::$factorsang;
+        
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
             if ($form->isValid()) {
@@ -90,6 +92,10 @@ class AnalisisController extends Controller
                 
                 $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
                 $donacion->setAnalisis($analisis);
+                
+                //aca va el codigo por si queremos cambiar el factor sanguineo del paciente!.
+                //if ($analisis->getFactorsang()==$donacion->getfactor)
+                
                 $em->persist($analisis);
                 $em->flush();
                 return $this->redirect($this->generateURL('confirmacion_analisis', array('accion' => 'creado', 'id' => $analisis->getId())));
@@ -97,7 +103,7 @@ class AnalisisController extends Controller
         }
 
         $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
-        return $this->render('HSYSMainBundle:Analisis:nuevoForm.html.twig', array('analisis'=> $analisis,'form' => $form->createView(), 'donacion' => $donacion));
+        return $this->render('HSYSMainBundle:Analisis:nuevoForm.html.twig', array('analisis'=> $analisis,'form' => $form->createView(), 'donacion' => $donacion,'factorsanguineo'=>$factorsanguineo));
     }
     
     public function confirmacionAction($accion, $id) {

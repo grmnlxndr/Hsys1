@@ -91,108 +91,130 @@
             </tr>
             <tr>
                 <td><label>AB0/RH(D): </label></td>
-                <td>{{ form_widget(form.factorsang) }}</td>
-                <td>{{ form_errors(form.factorsang) }}</td>
-            </tr>
-            <tr>
-                <td><label>Du: </label></td>
-                <td>{{ form_widget(form.du) }}</td>
-                <td>{{ form_errors(form.du) }}</td>
-            </tr>
-            <tr>
-                <td><label>CDE: </label></td>
-                <td>{{ form_widget(form.cde) }}</td>
-                <td>{{ form_errors(form.cde) }}</td>
-            </tr>
-            <tr>
-                <td><label>Fenotipo: </label></td>
-                <td>{{ form_widget(form.fenotipo) }}</td>
-                <td>{{ form_errors(form.fenotipo) }}</td>
-            </tr>
-            <tr>
-                <td><label>PCI: </label></td>
-                <td>{{ form_widget(form.pci) }}</td>
-                <td>{{ form_errors(form.pci) }}</td>
-            </tr>
-            <tr>
-                <td><br/></td>
-            </tr>
-            <tr>
-                <td><label>Reactivo?: </label></td>
-                <td>{{ form_widget(form.reactivo) }}</td>
-                <td>{{ form_errors(form.reactivo) }}</td>
-            </tr>
-        </table>
-        <br/>
+                <td hidden>{{ form_widget(form.factorsang) }}</td>
+                <td>
+                    <select name="factorsanguineo" id="factorsanguineo" style="width: 160px" onchange="cambiarFactorSangu()">
+                        {% for factor in factorsanguineo %}
+                            <option id="{{factor}}" value="{{factor}}">{{factor}}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td><input id="cambiarfs" name="cambiarfs" type="checkbox" onchange="permitircambiarfs()"> ¿Cambiar el AB0 Rh?</td>
+                    <td>{{ form_errors(form.factorsang) }}</td>
+                </tr>
+                <tr>
+                    <td><label>Du: </label></td>
+                    <td>{{ form_widget(form.du) }}</td>
+                    <td>{{ form_errors(form.du) }}</td>
+                </tr>
+                <tr>
+                    <td><label>CDE: </label></td>
+                    <td>{{ form_widget(form.cde) }}</td>
+                    <td>{{ form_errors(form.cde) }}</td>
+                </tr>
+                <tr>
+                    <td><label>Fenotipo: </label></td>
+                    <td>{{ form_widget(form.fenotipo) }}</td>
+                    <td>{{ form_errors(form.fenotipo) }}</td>
+                </tr>
+                <tr>
+                    <td><label>PCI: </label></td>
+                    <td>{{ form_widget(form.pci) }}</td>
+                    <td>{{ form_errors(form.pci) }}</td>
+                </tr>
+                <tr>
+                    <td><br/></td>
+                </tr>
+                <tr>
+                    <td><label>Reactivo?: </label></td>
+                    <td>{{ form_widget(form.reactivo) }}</td>
+                    <td>{{ form_errors(form.reactivo) }}</td>
+                </tr>
+            </table>
+            <br/>
         {{ form_rest(form) }}
-        <div id="aprobado" name = "aprobado"><input type="checkbox" name="checkboxaprobado" id="checkboxaprobado" onclick="guardar()"> ¿Esta seguro que desea guardar el Analisis?<br> </div>
+            <div id="aprobado" name = "aprobado"><input type="checkbox" name="checkboxaprobado" id="checkboxaprobado" onclick="guardar()"> ¿Esta seguro que desea guardar el Analisis?<br> </div>
         {#<input id="aceptado" type="button" value="Aceptar" onclick="validacion()"/>
         <input id="modificar" type="button" value="Modificar" onclick="modificarformulario()" />#}
-        <input type="submit" id="enviar" name="enviar"/>
-    </form>
+                <input type="submit" id="enviar" name="enviar"/>
+            </form>
 {{ form_errors(form) }}
 
 
-<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
-<script>
-window.onload = function() {
-$('input[type="submit"]').attr('disabled','disabled');
+            <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+            <script>
+            window.onload = function() {
+            $('input[type="submit"]').attr('disabled','disabled');
 
-selectInCombo('Donacion_form_factorsang','{{ donacion.Donante.factorsang }}');
+            selectInCombo('Donacion_form_factorsang','{{ donacion.Donante.factorsang }}');
+            selectInCombo('factorsanguineo','{{ donacion.Donante.factorsang }}');
+            $("#factorsanguineo").attr('disabled','disabled');
 
-$("#Donacion_form_chhai").attr('onchange','esReactivo()');
-$("#Donacion_form_cheia").attr('onchange','esReactivo()');
-$("#Donacion_form_anticore").attr('onchange','esReactivo()');
-$("#Donacion_form_hbsag").attr('onchange','esReactivo()');
-$("#Donacion_form_hcvagac").attr('onchange','esReactivo()');
-$("#Donacion_form_hivac").attr('onchange','esReactivo()');
-$("#Donacion_form_agp2y").attr('onchange','esReactivo()');
-$("#Donacion_form_htlv").attr('onchange','esReactivo()');
-$("#Donacion_form_brucelosis").attr('onchange','esReactivo()');
-$("#Donacion_form_sifilis").attr('onchange','esReactivo()');
-$('#Donacion_form_reactivo').attr('onchange','esReactivo()');
-}; 
+            $("#Donacion_form_chhai").attr('onchange','esReactivo()');
+            $("#Donacion_form_cheia").attr('onchange','esReactivo()');
+            $("#Donacion_form_anticore").attr('onchange','esReactivo()');
+            $("#Donacion_form_hbsag").attr('onchange','esReactivo()');
+            $("#Donacion_form_hcvagac").attr('onchange','esReactivo()');
+            $("#Donacion_form_hivac").attr('onchange','esReactivo()');
+            $("#Donacion_form_agp2y").attr('onchange','esReactivo()');
+            $("#Donacion_form_htlv").attr('onchange','esReactivo()');
+            $("#Donacion_form_brucelosis").attr('onchange','esReactivo()');
+            $("#Donacion_form_sifilis").attr('onchange','esReactivo()');
+            $('#Donacion_form_reactivo').attr('onchange','esReactivo()');
+            }; 
 
 
-function selectInCombo(combo,val)
-{
-    for(var indice=0 ;indice<document.getElementById(combo).length;indice++)
-    {
-        if (document.getElementById(combo).options[indice].text==val )
-            document.getElementById(combo).selectedIndex =indice;
-    }
-}
+            function selectInCombo(combo,val)
+            {
+                for(var indice=0 ;indice<document.getElementById(combo).length;indice++)
+                {
+                    if (document.getElementById(combo).options[indice].text==val )
+                        document.getElementById(combo).selectedIndex =indice;
+                }
+            }
+            
+            function cambiarFactorSangu(){
+                selectInCombo('Donacion_form_factorsang',$("#factorsanguineo option:selected").attr("value"));
+            }
+            
+            function permitircambiarfs() {
+                if (cambiarfs.checked){
+                     $('#factorsanguineo').removeAttr('disabled');
+                }else{
+                    $('#factorsanguineo').attr('disabled','disabled');
+               }
+            };
 
-function esReactivo(){  
-  if($("#Donacion_form_chhai").val()=='R') { $('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_cheia").val()=='R') { $('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_anticore").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_hbsag").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_hcvagac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_hivac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_agp2y").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_htlv").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_brucelosis").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_sifilis").val()=='R') {$('#Donacion_form_reactivo').val('SI'); 
-      }else { $('#Donacion_form_reactivo').val('NO');};
-};
+            function esReactivo(){  
+              if($("#Donacion_form_chhai").val()=='R') { $('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_cheia").val()=='R') { $('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_anticore").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_hbsag").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_hcvagac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_hivac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_agp2y").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_htlv").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_brucelosis").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_sifilis").val()=='R') {$('#Donacion_form_reactivo').val('SI'); 
+                  }else { $('#Donacion_form_reactivo').val('NO');};
+            };
 
  
-function guardar(){
-if (checkboxaprobado.checked) {    
-    $('input[type="submit"]').removeAttr('disabled');
-} else {
-    $('input[type="submit"]').attr('disabled','disabled');
-    }
-    };
+            function guardar(){
+            if (checkboxaprobado.checked) {    
+                $('input[type="submit"]').removeAttr('disabled');
+            } else {
+                $('input[type="submit"]').attr('disabled','disabled');
+                }
+                };
     
     
-function fechaanalisis(){
-    var $arrayFecha = $("#fecha").val().split('-');
-    $("#Donacion_form_fechanalisis").attr("value",$arrayFecha[2]+"/"+$arrayFecha[1]+"/"+$arrayFecha[0]);
-    }
+            function fechaanalisis(){
+                var $arrayFecha = $("#fecha").val().split('-');
+                $("#Donacion_form_fechanalisis").attr("value",$arrayFecha[2]+"/"+$arrayFecha[1]+"/"+$arrayFecha[0]);
+                }
     
-</script>
+                </script>
 {% endblock %}
 
 {#window.onload = function() {
