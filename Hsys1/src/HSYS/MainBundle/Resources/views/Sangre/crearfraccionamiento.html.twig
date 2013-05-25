@@ -12,7 +12,8 @@
     <h3>Grupo Sanguíneo</h3>
         <tr>
             <th>AB0 Rh: </th>
-            <td><select name="factorsanguineo" id="factorsanguineo" style="width: 160px">
+            <td><input name="factorsanguineo" id="factorsanguineo" hidden>
+                <select name="selectfs" id="selectfs" style="width: 160px" onchange="cambiarfactorsanguineo()">
                         {% for factor in factorsanguineo %}
                         <option id="{{factor}}" value="{{factor}}">{{factor}}</option>
                         {% endfor %}
@@ -81,25 +82,30 @@ window.onload = function() {
         $('input[type="submit"]').attr('disabled','disabled'); 
     }else{
         $("#cambiarfstd").show();
-        $('#factorsanguineo').attr('disabled','disabled');
-        $('#factorsanguineo').val('{{unidad.factorsang}}');
+        $('#selectfs').attr('disabled','disabled');
+        $('#selectfs').val('{{unidad.factorsang}}');
+        cambiarfactorsanguineo();
      } 
 };
 
-{% if unidad.factorsang is null  %}
+{#{% if unidad.factorsang is null  %} #}
 $("select").change(function(){ 
     $("select option[value='X']").remove();
     $('input[type="submit"]').removeAttr('disabled');
 });
-{%endif%}
+{#{%endif%}#}
     
 function permitircambiarfs() {
     if (cambiarfs.checked){
-        $('#factorsanguineo').removeAttr('disabled');
+        $('#selectfs').removeAttr('disabled');
     }else{
-        $('#factorsanguineo').attr('disabled','disabled');
+        $('#selectfs').attr('disabled','disabled');
     }
 };
+
+function cambiarfactorsanguineo(){
+    $("#factorsanguineo").attr("value",$("#selectfs option:selected").attr("value"));
+}
 
 $("#tipohemocomponente").change(function(){
         var cantidad = $("#tipohemocomponente option:selected").attr("id");
