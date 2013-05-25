@@ -153,8 +153,9 @@ class AnalisisController extends Controller
                 return 'no es valido';
             }
         }
+        $factorsanguineo = \HSYS\MainBundle\Entity\factorsang::$factorsang;
         $donacion = $analisis->getDonacion();
-        return $this->render('HSYSMainBundle:Analisis:modificar.html.twig', array('form' => $form->createView(),'analisis'=>$analisis, 'id' => $id,'donacion'=>$donacion));
+        return $this->render('HSYSMainBundle:Analisis:modificar.html.twig', array('form' => $form->createView(),'analisis'=>$analisis, 'id' => $id,'donacion'=>$donacion, 'factorsanguineo'=>$factorsanguineo));
     }
     
     public function verAction($id){

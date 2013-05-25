@@ -89,11 +89,19 @@
                 <td>{{ form_widget(form.sifilis) }}</td>
                 <td>{{ form_errors(form.sifilis) }}</td>
             </tr>
-            <tr>
-                <td><label>ABO/RH(D): </label></td>
-                <td>{{ form_widget(form.factorsang) }}</td>
-                <td>{{ form_errors(form.factorsang) }}</td>
-            </tr>
+            <tr> 
+                <td><label>AB0/RH(D): </label></td>
+                <td hidden>{{ form_widget(form.factorsang) }}</td>
+                <td>
+                    <select name="factorsanguineo" id="factorsanguineo" style="width: 160px" onchange="cambiarFactorSangu()">
+                        {% for factor in factorsanguineo %}
+                            <option id="{{factor}}" value="{{factor}}">{{factor}}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                    <td><input id="cambiarfs" name="cambiarfs" type="checkbox" onchange="permitircambiarfs()"> ¿Cambiar el AB0 Rh?</td>
+                    <td>{{ form_errors(form.factorsang) }}</td>
+                </tr>
             <tr>
                 <td><label>Du: </label></td>
                 <td>{{ form_widget(form.du) }}</td>
@@ -132,8 +140,36 @@
 
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
 <script>
-    
-$('input[type="submit"]').attr('disabled','disabled');  
+
+window.onload = function() {
+            $('input[type="submit"]').attr('disabled','disabled');
+            selectInCombo('factorsanguineo','{{ donacion.Donante.factorsang }}');
+            $("#factorsanguineo").attr('disabled','disabled');
+}
+
+function selectInCombo(combo,val)
+{
+    for(var indice=0 ;indice<document.getElementById(combo).length;indice++)
+    {
+        if (document.getElementById(combo).options[indice].text==val )
+            document.getElementById(combo).selectedIndex =indice;
+    }
+}
+
+function cambiarFactorSangu(){
+    selectInCombo('Donacion_form_factorsang',$("#factorsanguineo option:selected").attr("value"));
+}
+            
+
+function permitircambiarfs() {
+    if (cambiarfs.checked){
+         $('#factorsanguineo').removeAttr('disabled');
+    }else{
+        $('#factorsanguineo').attr('disabled','disabled');
+   }
+};
+            
+            
 function habilitar(){
 if (aprobado.checked) {    
     $('input[type="submit"]').removeAttr('disabled');
