@@ -8,7 +8,7 @@
 </div>
 <br/>
 <div class="detalle">
-    {% if accion == desbloqueada %}
+    {% if accion == "desbloqueada" %}
         <ul>        
             <li><a href="{{ path('imprimiretiqueta', {'id':id}) }}">Imprimir Etiqueta</a></li>
             <li><a href="{{ path('pagina_sangre') }}">Continuar</a></li>
