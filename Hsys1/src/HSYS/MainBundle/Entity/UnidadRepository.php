@@ -27,10 +27,10 @@ class UnidadRepository extends EntityRepository {
 
     public function findUnidadPorEstado($estado) {
         $em = $this->getEntityManager();
-        $dql = "select u from HSYSMainBundle:Unidad u where u.estado like :estado order by u.vencimiento asc";
+        $dql = "select u from HSYSMainBundle:Unidad u where u.estado = :estado order by u.vencimiento asc";
 
         $query = $em->createQuery($dql);
-        $query->setParameter('estado', '%' . $estado . '%');
+        $query->setParameter('estado', $estado);
 
         $unidades = $query->getResult();
         return $unidades;
