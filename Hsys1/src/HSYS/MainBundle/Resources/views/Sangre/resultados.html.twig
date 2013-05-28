@@ -2,7 +2,7 @@
 
 <table class="consulta" style="width: 100%">
     <tr>
-        <th> Donacion </th><th> ID </th><th> AB0/RhD </th><th> Tipo De Hemocomponente </th><th> Fecha Extracción </th><th> Fecha Vencimiento </th><th> Estado </th><th> Ver </th>
+        <th> Donacion </th><th> ID </th><th> AB0/RhD </th><th> Tipo De Hemocomponente </th><th> Fecha Extracción </th><th> Fecha Vencimiento </th><th> Estado </th><th> Ver </th><th> Imprimir </th>
     </tr>
 {% for unidad in unidades %}
     <tr>
@@ -13,7 +13,12 @@
         <td><a>{% if unidad.Donacion %}{{ unidad.Donacion.fechextraccion |date('d/m/Y') }}{% endif %}</a></td>
         <td><a>{{ unidad.vencimiento |date('d/m/Y') }}</a></td>
         <td><a>{{ unidad.estado }}</a></td>       
-        <td class="link"><a href="{{ path('ver_unidad', {'id':unidad.id}) }}">Ver</a></td> 
+        <td class="link"><a href="{{ path('ver_unidad', {'id':unidad.id}) }}">Ver</a></td>
+        {% if unidad.estado == "Desbloqueado" %}
+            <td class="link"><a href="{{ path('imprimiretiqueta', {'id':unidad.id}) }}">Imprimir</a></td>
+        {% else %}
+            <td></td>
+        {% endif %}
     </tr>
 {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
