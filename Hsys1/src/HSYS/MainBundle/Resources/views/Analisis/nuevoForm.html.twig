@@ -36,7 +36,7 @@
             <tr>
                 <td><label>Fecha Analisis de Serología: </label></td>
                 <td><input type="date" id="fecha" name="fecha" value="{{analisis.fechanalisis | date('Y-m-d')}}" onChange="fechaanalisis()"/></td>
-                <td hidden="hidden">{{ form_widget(form.fechanalisis) }}</td>
+                <td hidden>{{ form_widget(form.fechanalisis) }}</td>
                 <td>{{ form_errors(form.fechanalisis) }}</td>
             </tr>
             <tr>
@@ -149,7 +149,9 @@
             selectInCombo('Donacion_form_factorsang','{{ donacion.Donante.factorsang }}');
             selectInCombo('factorsanguineo','{{ donacion.Donante.factorsang }}');
             $("#factorsanguineo").attr('disabled','disabled');
-
+            
+            fechaanalisis();
+            
             $("#Donacion_form_chhai").attr('onchange','esReactivo()');
             $("#Donacion_form_cheia").attr('onchange','esReactivo()');
             $("#Donacion_form_anticore").attr('onchange','esReactivo()');
