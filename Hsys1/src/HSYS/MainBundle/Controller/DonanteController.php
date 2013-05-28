@@ -112,6 +112,16 @@ class DonanteController extends Controller {
         return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' => $donante, 'id' => $id));
         #aca le tengo que pasar el donante y los tipos de exclusion que existe para excluir al forro ese por drogon
     }
+    
+    
+    //aca!! esta hay que seguir.
+    public function excluirdonacionAction($donanteid, $donacionid) {
+        
+            throw $this->createNotFoundException(
+                    'No se encontro el donate: ' . $donanteid . ' '.$donacionid
+            );
+        
+    }
     /**
     * 	@Secure(roles="ROLE_PERSONAL")
     */

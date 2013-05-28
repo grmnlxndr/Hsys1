@@ -108,6 +108,12 @@ class SangreController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
+        $analisis = $unidad->getDonacion()->getAnalisis();
+        if (!$analisis) {
+            throw $this->createNotFoundException(
+                    'La donación no tiene Análisis.' . $id
+            );
+        }
         if ($request->getMethod() == 'POST') {
             $unidad->setEstado("Desbloqueado");
             $comentarios = $request->request->get('comentarios');
