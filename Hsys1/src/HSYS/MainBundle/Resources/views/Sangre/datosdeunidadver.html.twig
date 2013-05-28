@@ -20,6 +20,12 @@
         <th>Estado: </th>
         <td>{{ unidad.estado }}</td>
     </tr>
+    {% if unidad.estado == 'Descartado' %}
+    <tr>
+        <th>Causa de descarte: </th>
+        <td>{{ unidad.causadescarte }}</td>
+    </tr>
+    {% endif %}
     <tr>
         <th>Fecha de Extracción: </th>
         <td>{{ unidad.Donacion.fechextraccion | date("d/m/Y")  }}</td>

@@ -139,15 +139,18 @@ class SangreController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
+        $causadescarte = \HSYS\MainBundle\Entity\causadescarte::$causadescarte;
         if ($request->getMethod() == 'POST') {
             $unidad->setEstado("Descartado");
             $comentarios = $request->request->get('comentarios');
             $unidad->setComentarios($comentarios);
+            $causa = $request->request->get('causadescarte');
+            $unidad->setCausadescarte($causa);
             $em->persist($unidad);
             $em->flush();
             return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'descartada'));
         }
-        return $this->render('HSYSMainBundle:Sangre:desechar.html.twig', array('unidad' => $unidad, 'estados' => $estados));
+        return $this->render('HSYSMainBundle:Sangre:desechar.html.twig', array('unidad' => $unidad, 'estados' => $estados, 'causadescarte' => $causadescarte));
     }
 
     public function bloquearAction($id) {

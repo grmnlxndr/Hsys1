@@ -27,14 +27,14 @@ class Unidad {
      * @ORM\Column(name="vencimiento", type="date", nullable=true)
      */
     private $vencimiento;
-    
+
     /**
      * @var \DateTime
      * 
      * @ORM\Column(name="vencimientobolsa", type="date", nullable=true)
      */
     private $vencimientobolsa;
-    
+
     /**
      * @var float
      *
@@ -48,28 +48,28 @@ class Unidad {
      * @ORM\Column(name="idbolsa", type="string", length=20, nullable=true)
      */
     private $idbolsa;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="nrolote", type="string", length=20, nullable=true)
      */
     private $nrolote;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="tipobolsa", type="string", length=20, nullable=true)
      */
     private $tipobolsa;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="marca", type="string", length=30, nullable=true)
      */
     private $marca;
-    
+
     /**
      * @var string
      *
@@ -84,13 +84,20 @@ class Unidad {
      */
     private $estado;
 
-     /**
+    /**
      * @var string
      *
      * @ORM\Column(name="comentarios", type="string", length=1400, nullable=true)
      */
     private $comentarios;
-    
+
+    /**
+     * @var string
+     * 
+     * @ORM\Column(name="causadescarte", type="string", length=50, nullable=true)
+     */
+    private $causadescarte;
+
     /**
      * Get id
      *
@@ -131,7 +138,7 @@ class Unidad {
         $this->vencimientobolsa = $vencimientobolsa;
         return $this;
     }
-    
+
     /**
      * Get Vencimientobolsa
      * 
@@ -140,7 +147,7 @@ class Unidad {
     public function getVencimientobolsa() {
         return $this->vencimientobolsa;
     }
-    
+
     /**
      * Set volumen
      *
@@ -182,8 +189,8 @@ class Unidad {
     public function getIdbolsa() {
         return $this->idbolsa;
     }
-    
-/**
+
+    /**
      * Set nrolote
      *
      * @param string $nrolote
@@ -204,7 +211,7 @@ class Unidad {
         return $this->nrolote;
     }
 
-/**
+    /**
      * Set tipobolsa
      *
      * @param string $tipobolsa
@@ -224,8 +231,8 @@ class Unidad {
     public function getTipobolsa() {
         return $this->tipobolsa;
     }
-    
-/**
+
+    /**
      * Set marca
      *
      * @param string $marca
@@ -245,8 +252,8 @@ class Unidad {
     public function getMarca() {
         return $this->marca;
     }
-    
-/**
+
+    /**
      * Set anticoagulante
      *
      * @param string $anticoagulante
@@ -265,8 +272,8 @@ class Unidad {
      */
     public function getAnticoagulante() {
         return $this->anticoagulante;
-    }    
-    
+    }
+
     /**
      * Set estado
      *
@@ -307,8 +314,8 @@ class Unidad {
      */
     public function getComentarios() {
         return $this->comentarios;
-    }  
-    
+    }
+
     /**
      * @ORM\ManyToOne(targetEntity="Donacion", inversedBy="Unidad")
      * @ORM\JoinColumn(name="Donacion", referencedColumnName="id")
@@ -339,16 +346,14 @@ class Unidad {
         return $this->TipoHemocomponente;
     }
 
-   
-    
-        /**
+    /**
      * @var string
      *
      * @ORM\Column(name="factorsang", type="string", length=20, nullable=true)
      */
     private $factorsang;
-    
-     /**
+
+    /**
      * Set factorsang
      *
      * @param string $factorsang
@@ -368,7 +373,28 @@ class Unidad {
     public function getFactorsang() {
         return $this->factorsang;
     }
-    
+
+    /**
+     * Set causadescarte
+     *
+     * @param string $causadescarte
+     * @return Unidad
+     */
+    public function setCausadescarte($causadescarte) {
+        $this->causadescarte = $causadescarte;
+
+        return $this;
+    }
+
+    /**
+     * Get causadescarte
+     *
+     * @return string 
+     */
+    public function getCausadescarte() {
+        return $this->causadescarte;
+    }
+
     public function estadosPosibles() {
         if ($this->estado == "Bloqueado") {
             return array("Desbloqueado", "Descartado", "Fraccionado");

@@ -10,6 +10,13 @@
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
  
  <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('desechar_unidad',{'id':unidad.id}) }}">
+       <label>Causa de descarte:</label>
+       <select  id="causadescarte" name="causadescarte">
+       {% for causa in causadescarte %}
+               <option id="{{ causa }}" value="{{ causa }}">{{ causa }}</option>
+       {% endfor %}        
+       </select>
+       </br>
        <label>Comentarios:</label>
        </br>
        <textarea id="comentarios" name="comentarios" rows="5" style="width: 50%">{{ unidad.comentarios }}</textarea>
