@@ -21,6 +21,9 @@
         {% if unidad.tipohemocomponente == "Sangre Entera" and "Fraccionado" in estados %}
         <li><a href="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">Crear Fraccionamiento</a></li>
         {% endif %}
+        {% if unidad.estado == "Desbloqueado" %}
+        <li><a href="{{ path('imprimiretiqueta',{'id':unidad.id}) }}">Imprimir Etiqueta</a></li>
+        {% endif %}
     </ul>
 </div>
 
