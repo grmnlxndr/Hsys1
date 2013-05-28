@@ -8,8 +8,15 @@
 </div>
 <br/>
 <div class="detalle">
-    <ul>
-        <li><a href="{{ path('pagina_sangre') }}">Haga clic aquí para continuar</a></li>
-    </ul>
-</div>
+    {% if accion == desbloqueada %}
+        <ul>        
+            <li><a href="{{ path('imprimiretiqueta', {'id':id}) }}">Imprimir Etiqueta</a></li>
+            <li><a href="{{ path('pagina_sangre') }}">Continuar</a></li>
+        </ul>        
+    {% else %}
+        <ul>        
+            <li><a href="{{ path('pagina_sangre') }}">Haga clic aquí para continuar</a></li>
+        </ul>
+    {% endif %}
+    </div>
 {% endblock %}
