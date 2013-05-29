@@ -109,18 +109,42 @@ class DonanteController extends Controller {
 
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
         $tiposExlusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findAll();
-        return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' => $donante, 'id' => $id));
-        #aca le tengo que pasar el donante y los tipos de exclusion que existe para excluir al forro ese por drogon
+        return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' => $donante));
     }
     
     
     //aca!! esta hay que seguir.
     public function excluirdonacionAction($donanteid, $donacionid) {
-        
-            throw $this->createNotFoundException(
-                    'No se encontro el donate: ' . $donanteid . ' '.$donacionid
-            );
-        
+        $em = $this->getDoctrine()->getEntityManager();
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $idtipodeexclusion = $request->request->get('tipodeexclusion');
+            $comentarios = $request->request->get('comentarios');
+            $fechactual = $request->request->get('fechaingreso');
+            $fechaformat = new \DateTime;
+            $fechaformat->setDate(substr($fechactual, 0, 4), substr($fechactual, 5, 2), substr($fechactual, 8, 2));
+            $tipoexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->find($idtipodeexclusion);
+            $donanteexcluido = $em->getRepository('HSYSMainBundle:Donante')->find($donanteid);
+            
+            $duracion = null;
+            if ($tipoexclusion->getDuracion() == null){
+                $duracion = $request->request->get('tiempo');
+            }
+            $donanteexcluido->excluir($tipoexclusion, $comentarios, $fechaformat, $duracion);
+            $em->persist($donanteexcluido);
+            
+            $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($donacionid);
+            $donacion->anularDonacion($tipoexclusion->getNombre());
+            $em->persist($donacion);
+            
+            $em->flush();
+            
+            return $this->redirect($this->generateURL('confirmacion', array('accion' => "excluido", 'id' => $donanteid)));
+        }
+        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($donacionid);
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($donanteid);
+        $tiposExlusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findAll();
+        return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' => $donante, 'donacion' =>$donacion));
     }
     /**
     * 	@Secure(roles="ROLE_PERSONAL")

@@ -773,4 +773,16 @@ class Donacion {
         return $this->analisis;
     }
 
+    public function anularDonacion( $nombreTipoExclusion ){
+        foreach ($this->getUnidades() as $unidad) {
+           $unidad->setEstado("Descartado");
+           $unidad->setCausadescarte("Donacion Anulada");
+           $unidad->setComentarios($nombreTipoExclusion);
+        }
+        //todavia no implementado.
+        //$this->setAnulado(1);
+        $this->setTerminado(1);
+    }
+    
+    
 }

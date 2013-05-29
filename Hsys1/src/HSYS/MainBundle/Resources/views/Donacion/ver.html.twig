@@ -8,7 +8,7 @@
     <ul>
         <li><a href="{{ path('modificar_donacion',{'id':donacion.id}) }}">Modificar</a></li>
         <li><a href= "{{ path('anular_donacion',{'id':donacion.id}) }}">Anular</a></li>
-        <li><a href="{{ path('excluir_donante',{'id':donacion.donante.id}) }}">Crear una exlusión</a></li>
+        <li><a href="{{ path('excluir_donante_por_donacion',{'donanteid':donacion.donante.id, 'donacionid' : donacion.id}) }}">Crear una exlusión</a></li>
         {% if donacion.terminado == false %}   
         <li><a href="{{ path('alta_donacion_voluntaria_formulario_terminado',{'numdedonacion':donacion.numdedonacion}) }}">Continuar</a></li> 
         {% endif %}

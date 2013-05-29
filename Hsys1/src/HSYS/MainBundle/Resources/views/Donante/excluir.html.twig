@@ -5,7 +5,11 @@
 {% block contenido %}
 
 <h3>Donante a Excluir:</h3>
-<form id="formulario" name="formulario" action="{{ path('excluir_donante', { 'id' : id }) }}" method="post">
+{% if donacion is defined %}
+<form id="formulario" name="formulario" action="{{ path('excluir_donante_por_donacion', { 'donanteid' : donante.id, 'donacionid' : donacion.id }) }}" method="post">
+{%else%}
+<form id="formulario" name="formulario" action="{{ path('excluir_donante', { 'id' : donante.id }) }}" method="post">
+{%endif%} 
     <div>  
 
         <table class="detalle">
@@ -23,6 +27,21 @@
             </tr>
 
         </table>
+        <br>
+        {% if donacion is defined %}
+        <h3>Datos de la Donacion</h3>
+            <table class="detalle">
+                <tr>
+                    <th style="width: 140px">Numero de donacion</th>
+                    <td>{{ donacion.numdedonacion }}</td>
+                </tr>
+                <tr>
+                    <th style="width: 140px">Fecha de extraccion</th>
+                    <td>{{ donacion.fechextraccion | date("d/m/Y")  }}</td>
+                </tr>
+<!-- falta algun dato mas? -->
+            </table>
+        {% endif %}
         
         <table>
             <tr><td><br/></td></tr>
