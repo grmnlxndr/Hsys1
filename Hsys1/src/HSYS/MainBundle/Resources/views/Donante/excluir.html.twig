@@ -166,7 +166,9 @@ $('#tiempo').change(function() {
 });
 
 function cargarElComentario() {
+    if ( $("#tipodeexclusion option:selected").attr("name") == "Exclusion Examen Fisico") {
     $("#comentarios").html("Examen Fisico: Peso: "+$("#peso").val()+", Tension Arterial: "+$("#tensionarterial").val()+", Pulso: "+$("#pulso").val()+", Temperatura: "+$("#temperatura").val()+", Hematocrito: "+$("#hto").val()+", Inspeccion de los brazos: " +$("#inspeccionbrazos").val()+", Observaciones: "+$("#obs").val());
+    }
     }
 </script>
 
