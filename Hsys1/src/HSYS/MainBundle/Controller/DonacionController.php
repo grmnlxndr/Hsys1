@@ -207,6 +207,7 @@ class DonacionController extends Controller {
         $donacion->setInspeccionbrazos($inspeccionbrazos);
         $donacion->setObs($obs);
         $donacion->setTipodonacion($tipodonacion);
+        $donacion->setAnulado(0);
         
         $fechaformatVenc = new \DateTime;
         $fechaformatVenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
@@ -435,6 +436,7 @@ class DonacionController extends Controller {
         $donacion->setInspeccionbrazos($inspeccionbrazos);
         $donacion->setObs($obs);
         $donacion->setTipodonacion($tipodonacion);
+        $donacion->setAnulado(0);
         
         $fechaformatVenc = new \DateTime;
         $fechaformatVenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));

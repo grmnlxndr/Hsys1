@@ -34,48 +34,48 @@ class Donacion {
      * @ORM\Column(name="idbolsa", type="string", length=20, nullable=true)
      */
     private $idbolsa;
-    
+
     /**
      * @var \DateTime
      * 
      * @ORM\Column(name="vencimientobolsa", type="date", nullable=true)
      */
     private $vencimientobolsa;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="nrolote", type="string", length=20, nullable=true)
      */
     private $nrolote;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="tipobolsa", type="string", length=20, nullable=true)
      */
     private $tipobolsa;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="marca", type="string", length=30, nullable=true)
      */
     private $marca;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="anticoagulante", type="string", length=20, nullable=true)
      */
     private $anticoagulante;
-    
-   // /**
-   //  * @var string
-   //  *
-   //  * @ORM\Column(name="localidad", type="string", length=50, nullable=true)
-   //  */
-   // private $localidad;
+
+    // /**
+    //  * @var string
+    //  *
+    //  * @ORM\Column(name="localidad", type="string", length=50, nullable=true)
+    //  */
+    // private $localidad;
 
     /**
      * @var string
@@ -111,14 +111,13 @@ class Donacion {
      * @ORM\Column(name="comentario", type="string", length=150, nullable=true)
      */
     private $comentario;
-    
+
     /**
      * @var string
      *
      * @ORM\Column(name="tipodonacion", type="string", length=50, nullable=true)
      */
     private $tipodonacion;
-    
     //
     //DATOS EXTRACCION
     //
@@ -128,43 +127,43 @@ class Donacion {
      * @ORM\Column(name="peso", type="string", length=20, nullable=true)
      */
     private $peso;
-    
-     /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="tensionarterial", type="string", length=20, nullable=true)
      */
     private $tensionarterial;
-    
-     /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="pulso", type="string", length=20, nullable=true)
      */
     private $pulso;
-    
-     /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="temperatura", type="string", length=20, nullable=true)
      */
     private $temperatura;
-    
-     /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="hto", type="string", length=20, nullable=true)
      */
     private $hto;
-    
-     /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="inspeccionbrazos", type="string", length=20, nullable=true)
      */
     private $inspeccionbrazos;
-    
-     /**
+
+    /**
      * @var string
      *
      * @ORM\Column(name="obs", type="string", length=20, nullable=true)
@@ -177,8 +176,7 @@ class Donacion {
      * @ORM\Column(name="numdedonacion", type="string", length=15, nullable=true)
      */
     private $numdedonacion;
-    
-    
+
     /**
      *
      * @var boolean
@@ -196,7 +194,7 @@ class Donacion {
         $this->terminado = $terminado;
         return $this;
     }
-    
+
     /**
      * Get numdedonacion
      *
@@ -217,7 +215,7 @@ class Donacion {
 
         return $this;
     }
-    
+
     /**
      * Get id
      *
@@ -268,8 +266,8 @@ class Donacion {
     public function getIdbolsa() {
         return $this->idbolsa;
     }
-    
-     /**
+
+    /**
      * Set Vencimientobolsa
      * 
      * @param \DateTime $vencimientobolsa
@@ -279,7 +277,7 @@ class Donacion {
         $this->vencimientobolsa = $vencimientobolsa;
         return $this;
     }
-    
+
     /**
      * Get Vencimientobolsa
      * 
@@ -288,7 +286,7 @@ class Donacion {
     public function getVencimientobolsa() {
         return $this->vencimientobolsa;
     }
-    
+
     /**
      * Set nrolote
      *
@@ -309,7 +307,7 @@ class Donacion {
     public function getNrolote() {
         return $this->nrolote;
     }
-    
+
     /**
      * Set tipobolsa
      *
@@ -330,7 +328,7 @@ class Donacion {
     public function getTipobolsa() {
         return $this->tipobolsa;
     }
-    
+
     /**
      * Set marca
      *
@@ -351,7 +349,7 @@ class Donacion {
     public function getMarca() {
         return $this->marca;
     }
-    
+
     /**
      * Set anticoagulante
      *
@@ -371,29 +369,27 @@ class Donacion {
      */
     public function getAnticoagulante() {
         return $this->anticoagulante;
-    }  
-    
-   // /**
-   //  * Set localidad
-   //  *
-   //  * @param string $localidad
-   //  * @return Donacion
-   //  */
-   // public function setLocalidad($localidad) {
-    //    $this->localidad = $localidad;
+    }
 
+    // /**
+    //  * Set localidad
+    //  *
+    //  * @param string $localidad
+    //  * @return Donacion
+    //  */
+    // public function setLocalidad($localidad) {
+    //    $this->localidad = $localidad;
     //    return $this;
     //}
+    // /**
+    // * Get localidad
+    //  *
+    //  * @return string 
+    //  */
+    // public function getLocalidad() {
+    //     return $this->localidad;
+    // }
 
-   // /**
-   // * Get localidad
-   //  *
-   //  * @return string 
-   //  */
-   // public function getLocalidad() {
-   //     return $this->localidad;
-   // }
-    
     /**
      * Set hospital
      *
@@ -435,7 +431,7 @@ class Donacion {
     public function getFlebotomia() {
         return $this->flebotomia;
     }
-    
+
     /**
      * Set puncion
      *
@@ -455,8 +451,8 @@ class Donacion {
      */
     public function getPuncion() {
         return $this->puncion;
-    }    
-    
+    }
+
     /**
      * Set reaccionpostextraccion
      *
@@ -477,7 +473,7 @@ class Donacion {
     public function getReaccionpostextraccion() {
         return $this->reaccionpostextraccion;
     }
-    
+
     /**
      * Set comentario
      *
@@ -498,7 +494,7 @@ class Donacion {
     public function getComentario() {
         return $this->comentario;
     }
-    
+
     /**
      * Set tipodonacion
      *
@@ -549,8 +545,7 @@ class Donacion {
     public function getReceptor() {
         return $this->Receptor;
     }
-    
-    
+
     //DATOS EXAMEN FISICO
     /**
      * Set peso
@@ -564,7 +559,7 @@ class Donacion {
         return $this;
     }
 
-     /**
+    /**
      * Get peso
      *
      * @return string 
@@ -572,7 +567,7 @@ class Donacion {
     public function getPeso() {
         return $this->peso;
     }
-    
+
     /**
      * Get tensionarterial
      *
@@ -581,8 +576,8 @@ class Donacion {
     public function getTensionarterial() {
         return $this->tensionarterial;
     }
-    
-     /**
+
+    /**
      * Set tensionarterial
      *
      * @param string $tensionarterial
@@ -594,7 +589,7 @@ class Donacion {
         return $this;
     }
 
-     /**
+    /**
      * Get pulso
      *
      * @return string 
@@ -602,8 +597,8 @@ class Donacion {
     public function getPulso() {
         return $this->pulso;
     }
-    
-     /**
+
+    /**
      * Set pulso
      *
      * @param string $pulso
@@ -614,8 +609,8 @@ class Donacion {
 
         return $this;
     }
-    
-     /**
+
+    /**
      * Get temperatura
      *
      * @return string 
@@ -623,8 +618,8 @@ class Donacion {
     public function getTemperatura() {
         return $this->temperatura;
     }
-    
-     /**
+
+    /**
      * Set temperatura
      *
      * @param string $temperatura
@@ -635,8 +630,8 @@ class Donacion {
 
         return $this;
     }
-    
-     /**
+
+    /**
      * Get hto
      *
      * @return string 
@@ -644,8 +639,8 @@ class Donacion {
     public function getHto() {
         return $this->hto;
     }
-    
-     /**
+
+    /**
      * Set hto
      *
      * @param string $hto
@@ -656,8 +651,8 @@ class Donacion {
 
         return $this;
     }
-    
-     /**
+
+    /**
      * Get inspeccionbrazos
      *
      * @return string 
@@ -665,8 +660,8 @@ class Donacion {
     public function getInspeccionbrazos() {
         return $this->inspeccionbrazos;
     }
-    
-     /**
+
+    /**
      * Set inspeccionbrazos
      *
      * @param string $inspeccionbrazos
@@ -677,8 +672,8 @@ class Donacion {
 
         return $this;
     }
-        
-     /**
+
+    /**
      * Get obs
      *
      * @return string 
@@ -686,8 +681,8 @@ class Donacion {
     public function getObs() {
         return $this->obs;
     }
-    
-     /**
+
+    /**
      * Set obs
      *
      * @param string $obs
@@ -716,19 +711,19 @@ class Donacion {
         return $this->Unidades;
     }
 
-    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $vencimientobolsa, $cantidaddedias = 0 ,$fecharealizacion = null, $factorsang = null, $estado = "Bloqueado") {
+    public function crearUnidad(\HSYS\MainBundle\Entity\TipoHemocomponente $TipoHemocomponente, $volumen, $tipobolsa, $nrolote, $marca, $anticoagulante, $vencimientobolsa, $cantidaddedias = 0, $fecharealizacion = null, $factorsang = null, $estado = "Bloqueado") {
         $nuevaunidad = new Unidad;
         if ($fecharealizacion == null) {
             $fecharealizacion1 = $this->fechextraccion;
             $fecharealizacion = $fecharealizacion1->format('Y-m-d');
         }
-        
+
         if ($cantidaddedias == 0) {
-        $sumar = '+' . $TipoHemocomponente->getDuracion() . ' day';
+            $sumar = '+' . $TipoHemocomponente->getDuracion() . ' day';
         } else {
-        $sumar = '+' . $cantidaddedias . ' day';
+            $sumar = '+' . $cantidaddedias . ' day';
         }
-        
+
         $vencimiento = strtotime($sumar, strtotime($fecharealizacion));
         $vencimiento = date('Y-m-j', $vencimiento);
         $fechaformatvenc = new \DateTime;
@@ -757,7 +752,7 @@ class Donacion {
             $unidad->setFactorsang($factorsanguineo);
         }
     }
-    
+
     /**
      * @ORM\OneToOne(targetEntity="analisis", inversedBy="Donacion")
      * @ORM\JoinColumn(name="analisis", referencedColumnName="id")
@@ -773,16 +768,33 @@ class Donacion {
         return $this->analisis;
     }
 
-    public function anularDonacion( $nombreTipoExclusion ){
+    public function anularDonacion($nombreTipoExclusion) {
         foreach ($this->getUnidades() as $unidad) {
-           $unidad->setEstado("Descartado");
-           $unidad->setCausadescarte("Donacion Anulada");
-           $unidad->setComentarios($nombreTipoExclusion);
+            $unidad->setEstado("Descartado");
+            $unidad->setCausadescarte("Donacion Anulada");
+            $unidad->setComentarios($nombreTipoExclusion);
         }
         //todavia no implementado.
-        //$this->setAnulado(1);
+        $this->setAnulado(1);
         $this->setTerminado(1);
     }
-    
-    
+
+    /**
+     *
+     * @var boolean
+     * anulado = 0 donacion no anulada.
+     * anulado = 1 donacion anulada (baja logica)
+     * @ORM\Column(name="anulado", type="boolean")  
+     */
+    public $anulado;
+
+    public function setAnulado($anulado) {
+        $this->anulado = $anulado;
+        return $this;
+    }
+
+    public function getAnulado() {
+        return $this->anulado;
+    }
+
 }
