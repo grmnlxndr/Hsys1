@@ -775,16 +775,16 @@ class Donacion {
             $unidad->setComentarios($nombreTipoExclusion);
         }
         //todavia no implementado.
-        $this->setAnulado(1);
+        $this->setAnulado($nombreTipoExclusion);
         $this->setTerminado(1);
     }
 
     /**
      *
      * @var boolean
-     * anulado = 0 donacion no anulada.
-     * anulado = 1 donacion anulada (baja logica)
-     * @ORM\Column(name="anulado", type="boolean")  
+     * anulado = "null" donacion no anulada.
+     * anulado = "motivo" donacion anulada (baja logica) 
+     * @ORM\Column(name="anulado", type="string", length=20, nullable=true)  
      */
     public $anulado;
 
