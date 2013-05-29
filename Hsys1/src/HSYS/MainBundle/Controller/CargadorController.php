@@ -159,6 +159,38 @@ class CargadorController extends Controller {
 
         $em->persist($exclusion);
         $em->flush();
+
+        $exclusion = new TipoExclusion;
+        $exclusion->setNombre("Exclusion Poco Volumen");
+        $exclusion->setGrado("leve");
+        $exclusion->setDuracion("30");
+
+        $em->persist($exclusion);
+        $em->flush();
+
+        $exclusion = new TipoExclusion;
+        $exclusion->setNombre("Exclusion Mala red venosa");
+        $exclusion->setGrado("leve");
+        $exclusion->setDuracion("30");
+
+        $em->persist($exclusion);
+        $em->flush();
+
+        $exclusion = new TipoExclusion;
+        $exclusion->setNombre("Exclusion Lipotimia");
+        $exclusion->setGrado("leve");
+        $exclusion->setDuracion("30");
+
+        $em->persist($exclusion);
+        $em->flush();
+
+        $exclusion = new TipoExclusion;
+        $exclusion->setNombre("Exclusion Se retira sin donar");
+        $exclusion->setGrado("leve");
+        $exclusion->setDuracion("30");
+
+        $em->persist($exclusion);
+        $em->flush();
         
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion generica");
