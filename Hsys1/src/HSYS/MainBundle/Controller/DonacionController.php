@@ -473,6 +473,27 @@ class DonacionController extends Controller {
         return $this->render('HSYSMainBundle:Donacion:verDonante.html.twig', array('donante' => $donante, 'donaciones' => $donaciones, 'receptores' =>$receptores));
     }
 
+    public function anularAction($id){
+        $donacion = new Donacion();
+        $em = $this->getDoctrine()->getEntityManager();
+        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
+        
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $causa = $request->request->get('causa');
+            $comentario = $request->request->get('comentario');
+            
+            $donacion->setComentario($comentario);
+            
+            $donacion->anularDonacion($causa);
+            
+            $em->persist($donacion);
+            $em->flush();
+            
+            return $this->redirect($this->generateUrl('ver_donacion', array('id' => $id)));
+        }
+        return $this->render('HSYSMainBundle:Donacion:anularDonacion.html.twig', array('donacion' =>$donacion));
+    }
 }
 
 ?>

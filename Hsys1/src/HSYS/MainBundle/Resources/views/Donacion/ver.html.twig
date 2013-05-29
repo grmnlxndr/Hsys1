@@ -4,6 +4,7 @@
 
 {% block contenido %}
 
+        {% if donacion.anulado is null %}
 <div class="detalle">
     <ul>
         <li><a href="{{ path('modificar_donacion',{'id':donacion.id}) }}">Modificar</a></li>
@@ -12,8 +13,11 @@
         {% if donacion.terminado == false %}   
         <li><a href="{{ path('alta_donacion_voluntaria_formulario_terminado',{'numdedonacion':donacion.numdedonacion}) }}">Continuar</a></li> 
         {% endif %}
-    </ul>
+   </ul>
 </div>
+        {%else%}
+        <div class="consulta"><img src="{{ asset('images/error.png') }}"/>Donacion anulada, Causa: {{donacion.anulado}} </div>
+        {%endif%}
 <br/>
 <table class="detalle">
     <tr>

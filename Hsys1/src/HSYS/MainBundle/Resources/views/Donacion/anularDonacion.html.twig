@@ -1,0 +1,45 @@
+{% extends 'HSYSMainBundle:Donacion:donacionbase.html.twig' %}
+
+{% block title %}Anular Donacion{% endblock %}
+
+{% block contenido %}
+
+<table class="detalle">
+    <tr>
+        <th colspan="2">Datos Generales</th>
+    </tr>
+    <tr>
+        <th>Número de Donación: </th>
+        <td>{{ donacion.numdedonacion }}</td>
+    </tr>
+    <tr>
+        <th>Fecha de extracción:  </th>
+        <td>{{ donacion.fechextraccion|date('d/m/Y') }}</td>
+    </tr>
+    <tr>
+        <th>Tipo Donación:  </th>
+        <td>{{ donacion.tipodonacion }}</td>
+    </tr>
+
+    <tr>
+        <th>Hospital de extracción:  </th>
+        <td>{{ donacion.hospital }}</td>
+    </tr>
+</table>
+<br/>
+<form action="{{ path('anular_donacion', {'id':donacion.id}) }}" method="post">
+    <h3>Anular Donacion</h3>
+    <table>
+        <tr>
+            <th>Causa</th>
+            <td><input name="causa" id="causa"></td>
+        </tr>
+        <tr>
+            <th>Comentario</th>
+            <td><textarea name="comentario" id="comentario" rows="4" cols="50">{{donacion.comentario}}</textarea></td>
+        </tr>
+    </table>
+    <br>
+    <input type="submit" id="enviar" name="enviar"/>
+</form>
+{%endblock%}
