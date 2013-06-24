@@ -141,6 +141,13 @@ class analisis {
     private $reactivo;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="comentario", type="string", length=200, nullable=true)
+     */
+    private $comentario;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -520,4 +527,12 @@ class analisis {
         return $this->factorsang;
     }
 
+    public function setComentario($comentario){
+        $this->comentario = $comentario;
+        return $this;
+    }
+    
+    public function getComentario(){
+        return $this->comentario;
+    }
 }

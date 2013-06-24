@@ -95,15 +95,16 @@
             </tr>
             <tr> 
                 <td><label>AB0/RH(D): </label></td>
-                <td hidden>{{ form_widget(form.factorsang) }}</td>
+                
                 <td>
                     <select name="factorsanguineo" id="factorsanguineo" style="width: 160px" onchange="cambiarFactorSangu()">
                         {% for factor in factorsanguineo %}
                             <option id="{{factor}}" value="{{factor}}">{{factor}}</option>
                         {% endfor %}
                         </select>
-                    </td>
-                    <td><input id="cambiarfs" name="cambiarfs" type="checkbox" onchange="permitircambiarfs()"> ¿Cambiar el AB0 Rh?</td>
+                   
+                    <input id="cambiarfs" name="cambiarfs" type="checkbox" onchange="permitircambiarfs()"> ¿Cambiar el AB0 Rh?</td>
+                    <td hidden>{{ form_widget(form.factorsang) }}</td>
                     <td>{{ form_errors(form.factorsang) }}</td>
                 </tr>
             <tr>
@@ -125,6 +126,11 @@
                 <td><label>PCI: </label></td>
                 <td>{{ form_widget(form.pci) }}</td>
                 <td>{{ form_errors(form.pci) }}</td>
+            </tr>
+            <tr>
+                <td><label>Comentario: </label></td>
+                <td>{{ form_widget(form.comentario) }}</td>
+                <td>{{ form_errors(form.comentario) }}</td>
             </tr>
             <tr><td><br/></td></tr>
             <tr>
