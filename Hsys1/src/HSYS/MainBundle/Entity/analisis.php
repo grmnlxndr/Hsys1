@@ -494,6 +494,7 @@ class analisis {
 
     /**
      * @ORM\OneToOne(targetEntity="Donacion", mappedBy="analisis")
+     * @ORM\JoinColumn(name="donacion", referencedColumnName="id")
      * @return integer
      */
     private $Donacion;
