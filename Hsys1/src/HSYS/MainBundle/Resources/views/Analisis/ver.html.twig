@@ -20,9 +20,13 @@
         <td>{{ analisis.fechanalisis|date('d/m/Y') }}</td>
     </tr>
     <tr>
-        <th>ID de Bolsa: </th>
+        <th>Numero de tubuladura: </th>
         <td>{{ donacion.idbolsa }}</td>
-    </tr
+    </tr>
+    <tr>
+        <th>Numero de Lote: </th>
+        <td>{{ donacion.nrolote }}</td>
+    </tr>
     <tr>
         <th>REACTIVO: </th>
         {% if analisis.reactivo == 'SI' %}
