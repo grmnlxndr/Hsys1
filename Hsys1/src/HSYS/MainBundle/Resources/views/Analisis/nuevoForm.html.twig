@@ -74,9 +74,9 @@
                 <td>{{ form_errors(form.hivac) }}</td>
             </tr>
             <tr>
-                <td><label>Ag P2Y: </label></td>
-                <td>{{ form_widget(form.agp2y) }}</td>
-                <td>{{ form_errors(form.agp2y) }}</td>
+                <td><label>Ag P24: </label></td>
+                <td>{{ form_widget(form.agp24) }}</td>
+                <td>{{ form_errors(form.agp24) }}</td>
             </tr>
             <tr>
                 <td><label>HTLV: </label></td>
@@ -162,7 +162,7 @@
             $("#Donacion_form_hbsag").attr('onchange','esReactivo()');
             $("#Donacion_form_hcvagac").attr('onchange','esReactivo()');
             $("#Donacion_form_hivac").attr('onchange','esReactivo()');
-            $("#Donacion_form_agp2y").attr('onchange','esReactivo()');
+            $("#Donacion_form_agp24").attr('onchange','esReactivo()');
             $("#Donacion_form_htlv").attr('onchange','esReactivo()');
             $("#Donacion_form_brucelosis").attr('onchange','esReactivo()');
             $("#Donacion_form_sifilis").attr('onchange','esReactivo()');
@@ -198,7 +198,7 @@
                   }else if ($("#Donacion_form_hbsag").val()=='R') {$('#Donacion_form_reactivo').val('SI');
                   }else if ($("#Donacion_form_hcvagac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
                   }else if ($("#Donacion_form_hivac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_agp2y").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+                  }else if ($("#Donacion_form_agp24").val()=='R') {$('#Donacion_form_reactivo').val('SI');
                   }else if ($("#Donacion_form_htlv").val()=='R') {$('#Donacion_form_reactivo').val('SI');
                   }else if ($("#Donacion_form_brucelosis").val()=='R') {$('#Donacion_form_reactivo').val('SI');
                   }else if ($("#Donacion_form_sifilis").val()=='R') {$('#Donacion_form_reactivo').val('SI'); 
@@ -241,7 +241,7 @@ function validacion(){
     $("#Donacion_form_hbsag").attr('readonly','readonly');
     $("#Donacion_form_hcvagac").attr('readonly','readonly');
     $("#Donacion_form_hivac").attr('readonly','readonly');
-    $("#Donacion_form_agp2y").attr('readonly','readonly');
+    $("#Donacion_form_agp24").attr('readonly','readonly');
     $("#Donacion_form_htlv").attr('readonly','readonly');
     $("#Donacion_form_brucelosis").attr('readonly','readonly');
     $("#Donacion_form_sifilis").attr('readonly','readonly');
@@ -270,7 +270,7 @@ function modificarformulario(){
     $("#Donacion_form_hbsag").removeAttr('readonly');
     $("#Donacion_form_hcvagac").removeAttr('readonly');
     $("#Donacion_form_hivac").removeAttr('readonly');
-    $("#Donacion_form_agp2y").removeAttr('readonly');
+    $("#Donacion_form_agp24").removeAttr('readonly');
     $("#Donacion_form_htlv").removeAttr('readonly');
     $("#Donacion_form_brucelosis").removeAttr('readonly');
     $("#Donacion_form_sifilis").removeAttr('readonly');
@@ -295,7 +295,7 @@ function esReactivo(){
       }else if ($("#Donacion_form_hbsag").val()=='R') {$('#Donacion_form_reactivo').val('SI');
       }else if ($("#Donacion_form_hcvagac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
       }else if ($("#Donacion_form_hivac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_agp2y").val()=='R') {$('#Donacion_form_reactivo').val('SI');
+      }else if ($("#Donacion_form_agp24").val()=='R') {$('#Donacion_form_reactivo').val('SI');
       }else if ($("#Donacion_form_htlv").val()=='R') {$('#Donacion_form_reactivo').val('SI');
       }else if ($("#Donacion_form_brucelosis").val()=='R') {$('#Donacion_form_reactivo').val('SI');
       }else if ($("#Donacion_form_sifilis").val()=='R') {$('#Donacion_form_reactivo').val('SI'); 

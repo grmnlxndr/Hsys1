@@ -73,9 +73,9 @@ class analisis {
     /**
      * @var string
      *
-     * @ORM\Column(name="agp2y", type="string", length=10, nullable=true)
+     * @ORM\Column(name="agp24", type="string", length=10, nullable=true)
      */
-    private $agp2y;
+    private $agp24;
 
     /**
      * @var string
@@ -297,24 +297,24 @@ class analisis {
     }
 
     /**
-     * Set agp2y
+     * Set agp24
      *
-     * @param string $agp2y
+     * @param string $agp24
      * @return analisis
      */
-    public function setAgp2y($agp2y) {
-        $this->agp2y = $agp2y;
+    public function setAgp24($agp24) {
+        $this->agp24 = $agp24;
 
         return $this;
     }
 
     /**
-     * Get agp2y
+     * Get agp24
      *
      * @return string 
      */
-    public function getAgp2y() {
-        return $this->agp2y;
+    public function getAgp24() {
+        return $this->agp24;
     }
 
     /**
