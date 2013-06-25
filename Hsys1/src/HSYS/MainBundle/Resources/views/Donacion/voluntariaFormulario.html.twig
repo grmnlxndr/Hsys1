@@ -33,12 +33,13 @@
          <tr>
             <td><label>Tipo de Donación: </label></td>
             <td><select  id="tipodonacion" name="tipodonacion" style="width: 100%">
-                    <option value="Normal" {% if donacion is defined and donacion.tipodonacion == 'Normal' %}selected{% endif %}>Normal</option>
-                    <option value="Plaquetas Aféresis" {% if donacion is defined and donacion.tipodonacion == 'Plaquetas Aféresis' %}selected{% endif %}>Plaquetas Aféresis</option>
-                    <option value="Eritroféresis" {% if donacion is defined and donacion.tipodonacion == 'Eritroféresis' %}selected{% endif %}>Eritroférisis</option>
-                    <option value="Plasma Aférisis" {% if donacion is defined and donacion.tipodonacion == 'Plasma Aférisis' %}selected{% endif %}>Plasma Aférisis</option>
-                    <option value="Stem Cells" {% if donacion is defined and donacion.tipodonacion == 'Stem Cells' %}selected{% endif %}>Stem Cells</option>
-                    <option value="Recambio Plásmatico Terapéutico" {% if donacion is defined and donacion.tipodonacion == 'Recambio Plásmatico Terapéutico' %}selected{% endif %}>Recambio Plásmatico Terapéutico</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Plaquetas Aféresis">Plaquetas Aféresis</option>
+                    <option value="Eritroféresis">Eritroférisis</option>
+                    <option value="Plasma Aférisis">Plasma Aférisis</option>
+                    <option value="Stem Cells">Stem Cells</option>
+                    <option value="Sangría Terapéutica">Sangría Terapéutica</option>
+                    <option value="Autóloga">Autóloga</option>
                 </select>
             </td><!required="required">
         </tr>
@@ -108,34 +109,35 @@
         <tr>
             <td><label>Tipo Bolsa: </label></td>
             <td><select  id="tipobolsa" name="tipobolsa" style="width: 100%">
-                    <option value="Doble" {% if donacion is defined and donacion.tipobolsa == 'Doble' %}selected{% endif %}>Doble</option>
-                    <option value="Triple" {% if donacion is defined and donacion.tipobolsa == 'Triple' %}selected{% endif %}>Triple</option>
-                    <option value="Cuadruple" {% if donacion is defined and donacion.tipobolsa == 'Cuadruple' %}selected{% endif %}>Cuadruple</option>
-                    <option value="Niños" {% if donacion is defined and donacion.tipobolsa == 'Niños' %}selected{% endif %}>Niños</option>
-                    <option value="Otro" {% if donacion is defined and donacion.tipobolsa == 'Otro' %}selected{% endif %}>Otro</option>
+                    <option value="Simple">Simple</option>
+                    <option value="Doble">Doble</option>
+                    <option value="Triple">Triple</option>
+                    <option value="Cuadruple">Cuadruple</option>
+                    <option value="Otro">Otro</option>
                 </select>
             </td>
         </tr>
         <tr>
             <td><label>Marca: </label></td>
             <td><select  id="marca" name="marca" style="width: 100%">
-                    <option value="Baxter" {% if donacion is defined and donacion.marca == 'Baxter' %}selected{% endif %}>Baxter</option>
-                    <option value="Grifols" {% if donacion is defined and donacion.marca == 'Grifols' %}selected{% endif %}>Grifols</option>
-                    <option value="MS" {% if donacion is defined and donacion.marca == 'MS' %}selected{% endif %}>MS</option>
-                    <option value="Kawasumi" {% if donacion is defined and donacion.marca == 'Kawasumi' %}selected{% endif %}>Kawasumi</option>
-                    <option value="Rivero" {% if donacion is defined and donacion.marca == 'Rivero' %}selected{% endif %}>Rivero</option>
-                    <option value="Terumo" {% if donacion is defined and donacion.marca == 'Terumo' %}selected{% endif %}>Terumo</option>
-                    <option value="Otra" {% if donacion is defined and donacion.marca == 'Otra' %}selected{% endif %}>Otra</option>
+                    <option value="Baxter">Baxter</option>
+                    <option value="Grifols">Grifols</option>
+                    <option value="MS">MS</option>
+                    <option value="Kawasumi">Kawasumi</option>
+                    <option value="Rivero">Rivero</option>
+                    <option value="Terumo">Terumo</option>
+                    <option value="Fenwal">Fenwal</option>
+                    <option value="Otra">Otra</option>
                 </select>
             </td>
         </tr>
         <tr>
             <td><label>Anticoagulante: </label></td>
             <td><select  id="anticoagulante" name="anticoagulante" style="width: 100%">
-                    <option value="ACD-A" {% if donacion is defined and donacion.anticoagulante == 'ACD-A' %}selected{% endif %}>ACD-A</option>
-                    <option value="CPD-A" {% if donacion is defined and donacion.anticoagulante == 'CPD-A' %}selected{% endif %}>CPD-A</option>
-                    <option value="SAG-Manitol" {% if donacion is defined and donacion.anticoagulante == 'SAG-Manitol' %}selected{% endif %}>SAG-Manitol</option>
-                    <option value="Otra" {% if donacion is defined and donacion.anticoagulante == 'Otra' %}selected{% endif %}>Otra</option>
+                    <option value="ACD-A">ACD-A</option>
+                    <option value="CPD-A">CPD-A</option>
+                    <option value="SAG-Manitol">SAG-Manitol</option>
+                    <option value="Otra">Otra</option>
                 </select>
             </td>
         </tr>
