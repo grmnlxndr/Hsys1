@@ -494,6 +494,23 @@ class DonacionController extends Controller {
         }
         return $this->render('HSYSMainBundle:Donacion:anularDonacion.html.twig', array('donacion' =>$donacion));
     }
+    
+    public function autodonacionAction(){
+        return $this->render('HSYSMainBundle:Donacion:autodonacion.html.twig');
+    }
+    
+    public function autodonacionDonanteAction(){
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $busqueda = $request->request->get('buscar');
+            $criterio = $request->request->get('criterio');
+            $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
+            return $this->render('HSYSMainBundle:Donacion:autodonacionDonante.html.twig', array('donantes' => $donantes,));
+        } else {
+            return $this->redirect($this->generateUrl('pagina_donacion'));
+        }
+    }
 }
 
 ?>

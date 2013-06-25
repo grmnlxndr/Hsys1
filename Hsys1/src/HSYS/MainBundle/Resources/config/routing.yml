@@ -116,6 +116,14 @@ alta_donacion_receptor_confirmar:
   pattern: /donacion/receptor/confirmar
   defaults: { _controller: HSYSMainBundle:Donacion:receptorConfirmar }
 
+alta_donacion_autodonacion:
+  pattern: /donacion/autodonacion
+  defaults: { _controller: HSYSMainBundle:Donacion:autodonacion }
+
+alta_donacion_autodonacion_donante:
+  pattern: /donacion/autodonacion/donante
+  defaults: { _controller: HSYSMainBundle:Donacion:autodonacionDonante }
+
 confirmacion_donacion:
   pattern: /donacion/confirmacion
   defaults: { _controller: HSYSMainBundle:Donacion:confirmacion }
