@@ -193,7 +193,7 @@ class DonanteController extends Controller {
         }
         if ($request->getMethod() == 'POST') {
             $comentario = $request->request->get('comentarios');
-            $donante->habilitar();
+            $donante->habilitar($comentario);
             $em->persist($donante);
             $em->flush();
             return $this->redirect($this->generateURL('confirmacion', array('accion' => "ha sido habilitado", 'id' => $id)));
