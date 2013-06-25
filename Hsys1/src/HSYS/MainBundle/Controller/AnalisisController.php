@@ -92,6 +92,7 @@ class AnalisisController extends Controller
                 
                 $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
                 $donacion->setAnalisis($analisis);
+                $analisis->setDonacion($donacion);
                 
                 //aca va el codigo por si queremos cambiar el factor sanguineo del paciente!.
                 //if ($analisis->getFactorsang()==$donacion->getfactor)
