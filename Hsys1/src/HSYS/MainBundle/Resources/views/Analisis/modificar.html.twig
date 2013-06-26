@@ -97,13 +97,11 @@
                 <td><label>AB0/RH(D): </label></td>
                 
                 <td>
-                    <select name="factorsanguineo" id="factorsanguineo" style="width: 160px" onchange="cambiarFactorSangu()">
+                    <select name="factorsanguineo" id="factorsanguineo" style="width: 160px" disabled="disabled">
                         {% for factor in factorsanguineo %}
                             <option id="{{factor}}" value="{{factor}}">{{factor}}</option>
                         {% endfor %}
                         </select>
-                   
-                    <input id="cambiarfs" name="cambiarfs" type="checkbox" onchange="permitircambiarfs()"> ¿Cambiar el AB0 Rh?</td>
                     <td hidden>{{ form_widget(form.factorsang) }}</td>
                     <td>{{ form_errors(form.factorsang) }}</td>
                 </tr>
@@ -134,7 +132,7 @@
             </tr>
             <tr><td><br/></td></tr>
             <tr>
-                <td><label>Reactivo?: </label></td>
+                <td><label>Validado: </label></td>
                 <td>{{ form_widget(form.reactivo) }}</td>
                 <td>{{ form_errors(form.reactivo) }}</td>
             </tr>
@@ -154,7 +152,6 @@
 window.onload = function() {
             $('input[type="submit"]').attr('disabled','disabled');
             selectInCombo('factorsanguineo','{{ donacion.Donante.factorsang }}');
-            $("#factorsanguineo").attr('disabled','disabled');
 }
 
 function selectInCombo(combo,val)
@@ -164,21 +161,7 @@ function selectInCombo(combo,val)
         if (document.getElementById(combo).options[indice].text==val )
             document.getElementById(combo).selectedIndex =indice;
     }
-}
-
-function cambiarFactorSangu(){
-    selectInCombo('Donacion_form_factorsang',$("#factorsanguineo option:selected").attr("value"));
-}
-            
-
-function permitircambiarfs() {
-    if (cambiarfs.checked){
-         $('#factorsanguineo').removeAttr('disabled');
-    }else{
-        $('#factorsanguineo').attr('disabled','disabled');
-   }
-};
-            
+}         
             
 function habilitar(){
 if (aprobado.checked) {    

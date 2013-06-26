@@ -1,7 +1,7 @@
+
 {% extends 'HSYSMainBundle:Analisis:analisisbase.html.twig' %}
 
 {% block title %}Nuevo Análisis de Serología{% endblock %}
-
 
 {% block contenido %}
 <h3>Datos de la Donación:</h3>
@@ -96,13 +96,11 @@
             <tr>
                 <td><label>AB0/RH(D): </label></td>
                 <td>
-                    <select name="factorsanguineo" id="factorsanguineo" style="width: 160px" onchange="cambiarFactorSangu()">
+                    <select name="factorsanguineo" id="factorsanguineo" style="width: 160px" disabled="disabled">
                         {% for factor in factorsanguineo %}
                             <option id="{{factor}}" value="{{factor}}">{{factor}}</option>
                         {% endfor %}
                         </select>
-                   
-                    <input id="cambiarfs" name="cambiarfs" type="checkbox" onchange="permitircambiarfs()"> ¿Cambiar el AB0 Rh?</td>
                     <td hidden>{{ form_widget(form.factorsang) }}</td>
                     <td>{{ form_errors(form.factorsang) }}</td>
                 </tr>
@@ -135,7 +133,7 @@
                     <td><br/></td>
                 </tr>
                 <tr>
-                    <td><label>Reactivo?: </label></td>
+                    <td><label>Validado: </label></td>
                     <td>{{ form_widget(form.reactivo) }}</td>
                     <td>{{ form_errors(form.reactivo) }}</td>
                 </tr>
@@ -143,8 +141,6 @@
             <br/>
         {{ form_rest(form) }}
             <div id="aprobado" name = "aprobado"><input type="checkbox" name="checkboxaprobado" id="checkboxaprobado" onclick="guardar()"> ¿Esta seguro que desea guardar el Analisis?<br> </div>
-        {#<input id="aceptado" type="button" value="Aceptar" onclick="validacion()"/>
-        <input id="modificar" type="button" value="Modificar" onclick="modificarformulario()" />#}
                 <input type="submit" id="enviar" name="enviar"/>
             </form>
 {{ form_errors(form) }}
@@ -157,23 +153,11 @@
 
             selectInCombo('Donacion_form_factorsang','{{ donacion.Donante.factorsang }}');
             selectInCombo('factorsanguineo','{{ donacion.Donante.factorsang }}');
-            $("#factorsanguineo").attr('disabled','disabled');
+            $('#Donacion_form_cde').val('No Realizado');
+            $('#Donacion_form_fenotipo').val('No Realizado');
             
             fechaanalisis();
-            
-            $("#Donacion_form_chhai").attr('onchange','esReactivo()');
-            $("#Donacion_form_cheia").attr('onchange','esReactivo()');
-            $("#Donacion_form_anticore").attr('onchange','esReactivo()');
-            $("#Donacion_form_hbsag").attr('onchange','esReactivo()');
-            $("#Donacion_form_hcvagac").attr('onchange','esReactivo()');
-            $("#Donacion_form_hivac").attr('onchange','esReactivo()');
-            $("#Donacion_form_agp24").attr('onchange','esReactivo()');
-            $("#Donacion_form_htlv").attr('onchange','esReactivo()');
-            $("#Donacion_form_brucelosis").attr('onchange','esReactivo()');
-            $("#Donacion_form_sifilis").attr('onchange','esReactivo()');
-            $('#Donacion_form_reactivo').attr('onchange','esReactivo()');
             }; 
-
 
             function selectInCombo(combo,val)
             {
@@ -183,34 +167,7 @@
                         document.getElementById(combo).selectedIndex =indice;
                 }
             }
-            
-            function cambiarFactorSangu(){
-                selectInCombo('Donacion_form_factorsang',$("#factorsanguineo option:selected").attr("value"));
-            }
-            
-            function permitircambiarfs() {
-                if (cambiarfs.checked){
-                     $('#factorsanguineo').removeAttr('disabled');
-                }else{
-                    $('#factorsanguineo').attr('disabled','disabled');
-               }
-            };
 
-            function esReactivo(){  
-              if($("#Donacion_form_chhai").val()=='R') { $('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_cheia").val()=='R') { $('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_anticore").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_hbsag").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_hcvagac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_hivac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_agp24").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_htlv").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_brucelosis").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-                  }else if ($("#Donacion_form_sifilis").val()=='R') {$('#Donacion_form_reactivo').val('SI'); 
-                  }else { $('#Donacion_form_reactivo').val('NO');};
-            };
-
- 
             function guardar(){
             if (checkboxaprobado.checked) {    
                 $('input[type="submit"]').removeAttr('disabled');
@@ -227,100 +184,3 @@
     
                 </script>
 {% endblock %}
-
-{#window.onload = function() {
-$('input[type="submit"]').attr('disabled','disabled'); 
-$('#modificar').hide();
-$('#enviar').hide();
-$('#reactivo').hide();
-$('#aprobado').hide();
-$('#separador').html('<br/>');
-$('#separador').hide();
-}; 
-
-function validacion(){
-    $("#fecha").attr('readonly','readonly');
-    $("#Donacion_form_chhai").attr('readonly','readonly');
-    $("#Donacion_form_cheia").attr('readonly','readonly');
-    $("#Donacion_form_anticore").attr('readonly','readonly');
-    $("#Donacion_form_hbsag").attr('readonly','readonly');
-    $("#Donacion_form_hcvagac").attr('readonly','readonly');
-    $("#Donacion_form_hivac").attr('readonly','readonly');
-    $("#Donacion_form_agp24").attr('readonly','readonly');
-    $("#Donacion_form_htlv").attr('readonly','readonly');
-    $("#Donacion_form_brucelosis").attr('readonly','readonly');
-    $("#Donacion_form_sifilis").attr('readonly','readonly');
-    $("#Donacion_form_abo").attr('readonly','readonly');
-    $("#Donacion_form_rhd").attr('readonly','readonly');
-    $("#Donacion_form_du").attr('readonly','readonly');
-    $("#Donacion_form_cde").attr('readonly','readonly');
-    $("#Donacion_form_fenotipo").attr('readonly','readonly');
-    $("#Donacion_form_pci").attr('readonly','readonly'); 
-    fechaanalisis();
-    $('#enviar').show();
-    $('#modificar').show();
-    $('#aceptado').hide();
-    $('#aprobado').show();
-    
-    $('#separador').show();
-    $('#reactivo').show();
-    esReactivo();
-    };
-    
-function modificarformulario(){
-    $("#fecha").removeAttr('disabled');
-    $("#Donacion_form_chhai").removeAttr('readonly');
-    $("#Donacion_form_cheia").removeAttr('readonly');
-    $("#Donacion_form_anticore").removeAttr('readonly');
-    $("#Donacion_form_hbsag").removeAttr('readonly');
-    $("#Donacion_form_hcvagac").removeAttr('readonly');
-    $("#Donacion_form_hivac").removeAttr('readonly');
-    $("#Donacion_form_agp24").removeAttr('readonly');
-    $("#Donacion_form_htlv").removeAttr('readonly');
-    $("#Donacion_form_brucelosis").removeAttr('readonly');
-    $("#Donacion_form_sifilis").removeAttr('readonly');
-    $("#Donacion_form_abo").removeAttr('readonly');
-    $("#Donacion_form_rhd").removeAttr('readonly');
-    $("#Donacion_form_du").removeAttr('readonly');
-    $("#Donacion_form_cde").removeAttr('readonly');
-    $("#Donacion_form_fenotipo").removeAttr('readonly');
-    $("#Donacion_form_pci").removeAttr('readonly');
-    $('#enviar').hide();
-    $('#modificar').hide();
-    $('#aceptado').show();
-    $('#separador').hide();
-    $('#reactivo').hide();
-    $('#aprobado').hide();
-    };
-    
-function esReactivo(){
-  if($("#Donacion_form_chhai").val()=='R') { $('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_cheia").val()=='R') { $('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_anticore").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_hbsag").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_hcvagac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_hivac").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_agp24").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_htlv").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_brucelosis").val()=='R') {$('#Donacion_form_reactivo').val('SI');
-      }else if ($("#Donacion_form_sifilis").val()=='R') {$('#Donacion_form_reactivo').val('SI'); 
-      }else { $('#Donacion_form_reactivo').val('NO');};
-};
-
- 
-function guardar(){
-if (checkboxaprobado.checked) {    
-    $('input[type="submit"]').removeAttr('disabled');
-} else {
-    $('input[type="submit"]').attr('disabled','disabled');
-    }
-    };
-    
-    
-function fechaanalisis(){
-    var $arrayFecha = $("#fecha").val().split('-');
-    $("#Donacion_form_fechanalisis").attr("value",$arrayFecha[2]+"/"+$arrayFecha[1]+"/"+$arrayFecha[0]);
-    }
-#}
-
-
