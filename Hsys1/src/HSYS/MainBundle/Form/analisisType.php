@@ -33,7 +33,7 @@ class analisisType extends AbstractType
                 ->add('sifilis','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))
                 ->add('factorsang','choice',array('choices'=>array('AB+'=>'AB+','AB-'=>'AB-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','0+'=>'0+','0-'=>'0-'),'empty_value'=>'SELECCIONE'))
                 ->add('du','choice',array('choices'=>array('-'=>'-','+'=>'+'),'empty_value'=>'SELECCIONE'))
-                ->add('cde','choice',array('choices'=>array('C'=>'C','c'=>'c','E'=>'E','e'=>'e'),'empty_value'=>'SELECCIONE'))
+                ->add('cde')
                 ->add('fenotipo')
                 ->add('pci','choice', array('choices'=>array('-'=>'-','+'=>'+'),'empty_value'=>'SELECCIONE'))
                 ->add('comentario','textarea')
