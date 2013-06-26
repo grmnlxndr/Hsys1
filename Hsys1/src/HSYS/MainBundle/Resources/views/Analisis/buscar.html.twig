@@ -7,6 +7,7 @@
             <td><input id="buscar" name="buscar" type="text" style="width: 120px"/></td>
             <td><label>Criterio: </label></td>
             <td><select name="criterio" id="criterio" style="width: 150px">
+                    <option value="donacion" id="id">Número de Donación</option>
                     <option value="id" id="id">Número de Análisis de Serología</option>
                     <option value="fecha" id="fecha">Fecha de Análisis de Serología</option>
                 </select></td>
@@ -19,10 +20,11 @@
 {% if analisis is defined %}
 <table class="consulta" style="width: 100%">
     <tr>
-        <th> ID </th> <th> Fecha </th> <th> Reactivo </th><th> Ver </th><th> Modificar </th>
+        <th> Nro. Don. </th> <th> ID </th> <th> Fecha </th> <th> Reactivo </th><th> Ver </th><th> Modificar </th>
     </tr>
 {% for analisi in analisis %}
     <tr>
+        <td><a>{{ analisi.Donacion.numdedonacion }}</a></td>
         <td><a>{{ analisi.id }}</a></td>
         <td><a>{{ analisi.fechanalisis | date('d/m/Y')}}</a></td>
         <td><a>{{ analisi.reactivo }}</a></td>
