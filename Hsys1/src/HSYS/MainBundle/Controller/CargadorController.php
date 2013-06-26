@@ -20,7 +20,7 @@ class CargadorController extends Controller {
         $em->flush();
         
         $hemocomponente = new TipoHemocomponente;
-        $hemocomponente->setNombre("Globulos Rojos Desplasmatizados");
+        $hemocomponente->setNombre("GRD");
         $hemocomponente->setDuracion(35);
 
         $em->persist($hemocomponente);
