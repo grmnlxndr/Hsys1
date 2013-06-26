@@ -7,36 +7,36 @@
     </head>
     <body style="background: white">
         <table id="imprimible" style="text-align: center">
-            <tr><th colspan="2" style="font-size: larger; text-decoration: underline">CENTRO PROVINCIAL DE HEMOTERAPIA DEL CHACO</td></tr>
-            <tr></tr>
-            <tr><th style="font-size: larger">AB0/RH: </th><td style="font-size: 25px">{{ unidad.Donacion.analisis.factorsang }}</td></tr>
-            <tr></tr>
-            <tr><th style="font-size: larger">Hemocomponente: </th><td style="font-size: larger">{{ unidad.tipohemocomponente.nombre }}</td></tr>
-            <tr></tr>
-            <tr><th style="font-size: larger">Fecha Extracción: </th><td style="font-size: larger">{{ unidad.Donacion.fechextraccion | date("d/m/Y") }}</td></tr>
-            <tr></tr>
-            <tr><th style="font-size: larger">Fecha Vencimiento: </th><td style="font-size: larger">{{ unidad.vencimiento | date("d/m/Y") }}</td></tr>
-            <tr></tr>
-            <tr><th style="font-size: larger">N° Extracción: </th><td><barcode>*{{ unidad.Donacion.numdedonacion }}*</barcode></td></tr>
-            <tr></tr>
-            <tr><th colspan="2" style="font-size: larger; text-decoration: underline">SEROLOGÍA</th></tr>
-            <tr></tr>
-            <tr><td style="font-size: smaller"><b>CHHAI:</b> {{ unidad.Donacion.analisis.chhai }}</td><td style="font-size: smaller"><b>CHEIA: </b>{{ unidad.Donacion.analisis.cheia }}</td></tr>
-            <tr></tr>
-            <tr><td style="font-size: smaller"><b>antiCORE:</b> {{ unidad.Donacion.analisis.anticore }}</td><td style="font-size: smaller"><b>HBSAg: </b>{{ unidad.Donacion.analisis.hbsag }}</td></tr>
-            <tr></tr>
-            <tr><td style="font-size: smaller"><b>HCVAg-Ac:</b> {{ unidad.Donacion.analisis.hcvagac }}</td><td style="font-size: smaller"><b>HIV Ac: </b>{{ unidad.Donacion.analisis.hivac }}</td></tr>
-            <tr></tr>
-            <tr><td style="font-size: smaller"><b>Ag P24:</b> {{ unidad.Donacion.analisis.agp24 }}</td><td style="font-size: smaller"><b>HTLV: </b>{{ unidad.Donacion.analisis.htlv }}</td></tr>
-            <tr></tr>
-            <tr><td style="font-size: smaller"><b>Brucelosis:</b> {{ unidad.Donacion.analisis.brucelosis }}</td><td style="font-size: smaller"><b>Sífilis: </b>{{ unidad.Donacion.analisis.sifilis }}</td></tr>
-            <tr></tr>
-            <tr><td style="font-size: smaller"><b>Du:</b> {% if unidad.Donacion.analisis.du == '+' %}Positivo{% elseif unidad.Donacion.analisis.du == '-'%}Negativo{% endif %} ({{ unidad.Donacion.analisis.du }})</td><td style="font-size: smaller"><b>CDE: </b>{{ unidad.Donacion.analisis.cde }}</td></tr>
-            <tr></tr>
-            <tr><td style="font-size: smaller"><b>Fenotipo:</b> {{ unidad.Donacion.analisis.fenotipo }}</td><td style="font-size: smaller"><b>PCI: </b>{% if unidad.Donacion.analisis.pci == '+' %}Positivo{% elseif unidad.Donacion.analisis.pci == '-' %}Negativo{% endif %} ({{ unidad.Donacion.analisis.pci }})</td></tr>
-            <tr></tr>
+            <tr><th colspan="2" style="font-size: small; text-decoration: underline">CENTRO PROVINCIAL DE HEMOTERAPIA DEL CHACO</td></tr>
+ 
+            <tr><th style="font-size: small">AB0/RH: </th><td style="font-size: 21px">{{ unidad.Donacion.analisis.factorsang }}</td></tr>
+            
+            <tr><th style="font-size: small">Hemocomponente: </th><td style="font-size: small">{{ unidad.tipohemocomponente.nombre }}</td></tr>
+            
+            <tr><th style="font-size: small">Fecha Extracción: </th><td style="font-size: small">{{ unidad.Donacion.fechextraccion | date("d/m/Y") }}</td></tr>
+            
+            <tr><th style="font-size: small">Fecha Vencimiento: </th><td style="font-size: small">{{ unidad.vencimiento | date("d/m/Y") }}</td></tr>
+            
+            <tr>{# <th style="font-size: small">N° Extracción: </th> #}<td colspan="2"><barcode>*{{ unidad.Donacion.numdedonacion }}*</barcode></td></tr>
+            
+            <tr><th colspan="2" style="font-size: small; text-decoration: underline">SEROLOGÍA</th></tr>
+            
+            <tr><td style="font-size: x-small"><b>CHHAI:</b> {{ unidad.Donacion.analisis.chhai }}</td><td style="font-size: x-small"><b>CHEIA: </b>{{ unidad.Donacion.analisis.cheia }}</td></tr>
+            
+            <tr><td style="font-size: x-small"><b>antiCORE:</b> {{ unidad.Donacion.analisis.anticore }}</td><td style="font-size: x-small"><b>HBSAg: </b>{{ unidad.Donacion.analisis.hbsag }}</td></tr>
+            
+            <tr><td style="font-size: x-small"><b>HCVAg-Ac:</b> {{ unidad.Donacion.analisis.hcvagac }}</td><td style="font-size: x-small"><b>HIV Ac: </b>{{ unidad.Donacion.analisis.hivac }}</td></tr>
+            
+            <tr><td style="font-size: x-small"><b>Ag P24:</b> {{ unidad.Donacion.analisis.agp24 }}</td><td style="font-size: x-small"><b>HTLV: </b>{{ unidad.Donacion.analisis.htlv }}</td></tr>
+            
+            <tr><td style="font-size: x-small"><b>Brucelosis:</b> {{ unidad.Donacion.analisis.brucelosis }}</td><td style="font-size: x-small"><b>Sífilis: </b>{{ unidad.Donacion.analisis.sifilis }}</td></tr>
+            
+            <tr><td style="font-size: x-small"><b>Du:</b> {% if unidad.Donacion.analisis.du == '+' %}Positivo{% elseif unidad.Donacion.analisis.du == '-'%}Negativo{% endif %} ({{ unidad.Donacion.analisis.du }})</td><td style="font-size: x-small"><b>CDE: </b>{{ unidad.Donacion.analisis.cde }}</td></tr>
+            
+            <tr><td style="font-size: x-small"><b>Fenotipo:</b> {{ unidad.Donacion.analisis.fenotipo }}</td><td style="font-size: x-small"><b>PCI: </b>{% if unidad.Donacion.analisis.pci == '+' %}Positivo{% elseif unidad.Donacion.analisis.pci == '-' %}Negativo{% endif %} ({{ unidad.Donacion.analisis.pci }})</td></tr>
+            
             <tr><td colspan="2" style="font-size: larger">REACTIVO: <b>{{ unidad.Donacion.analisis.reactivo }}</b></td></tr>
-            <tr></tr>
+            
             <tr>
                 <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td>
                 <td><a id="volver" href="{{ path('ver_unidad',{'id':unidad.id}) }}" style="font-size: larger; font-weight: bold">Volver</a></td>
