@@ -32,10 +32,10 @@ class analisisType extends AbstractType
                 ->add('brucelosis','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))
                 ->add('sifilis','choice',array('choices'=>array('R'=>'R','NR'=>'NR'),'empty_value'=>'SELECCIONE'))
                 ->add('factorsang','choice',array('choices'=>array('AB+'=>'AB+','AB-'=>'AB-','A+'=>'A+','A-'=>'A-','B+'=>'B+','B-'=>'B-','0+'=>'0+','0-'=>'0-'),'empty_value'=>'SELECCIONE'))
-                ->add('du','choice',array('choices'=>array('-'=>'-','+'=>'+'),'empty_value'=>'SELECCIONE'))
+                ->add('du','choice',array('choices'=>array('No Realizado'=>'No Realizado','-'=>'-','+'=>'+'),'empty_value'=>'SELECCIONE'))
                 ->add('cde')
                 ->add('fenotipo')
-                ->add('pci','choice', array('choices'=>array('-'=>'-','+'=>'+'),'empty_value'=>'SELECCIONE'))
+                ->add('pci','choice', array('choices'=>array('No Realizado'=>'No Realizado','-'=>'-','+'=>'+'),'empty_value'=>'SELECCIONE'))
                 ->add('comentario','textarea')
                 ->add('reactivo', 'choice', array('choices' => array('SI' => 'SI','NO' => 'NO'),'empty_value' => 'SELECCIONE',))
                 ;      
