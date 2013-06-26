@@ -27,13 +27,13 @@
             <tr></tr>
             <tr><td style="font-size: smaller"><b>HCVAg-Ac:</b> {{ unidad.Donacion.analisis.hcvagac }}</td><td style="font-size: smaller"><b>HIV Ac: </b>{{ unidad.Donacion.analisis.hivac }}</td></tr>
             <tr></tr>
-            <tr><td style="font-size: smaller"><b>Ag P2Y:</b> {{ unidad.Donacion.analisis.agp2y }}</td><td style="font-size: smaller"><b>HTLV: </b>{{ unidad.Donacion.analisis.htlv }}</td></tr>
+            <tr><td style="font-size: smaller"><b>Ag P24:</b> {{ unidad.Donacion.analisis.agp24 }}</td><td style="font-size: smaller"><b>HTLV: </b>{{ unidad.Donacion.analisis.htlv }}</td></tr>
             <tr></tr>
             <tr><td style="font-size: smaller"><b>Brucelosis:</b> {{ unidad.Donacion.analisis.brucelosis }}</td><td style="font-size: smaller"><b>Sífilis: </b>{{ unidad.Donacion.analisis.sifilis }}</td></tr>
             <tr></tr>
-            <tr><td style="font-size: smaller"><b>Du:</b> {% if unidad.Donacion.analisis.du == '+' %}Positivo{% else %}Negativo{% endif %} ({{ unidad.Donacion.analisis.du }})</td><td style="font-size: smaller"><b>CDE: </b>{{ unidad.Donacion.analisis.cde }}</td></tr>
+            <tr><td style="font-size: smaller"><b>Du:</b> {% if unidad.Donacion.analisis.du == '+' %}Positivo{% elseif unidad.Donacion.analisis.du == '-'%}Negativo{% endif %} ({{ unidad.Donacion.analisis.du }})</td><td style="font-size: smaller"><b>CDE: </b>{{ unidad.Donacion.analisis.cde }}</td></tr>
             <tr></tr>
-            <tr><td style="font-size: smaller"><b>Fenotipo:</b> {{ unidad.Donacion.analisis.fenotipo }}</td><td style="font-size: smaller"><b>PCI: </b>{% if unidad.Donacion.analisis.pci == '+' %}Positivo{% else %}Negativo{% endif %} ({{ unidad.Donacion.analisis.pci }})</td></tr>
+            <tr><td style="font-size: smaller"><b>Fenotipo:</b> {{ unidad.Donacion.analisis.fenotipo }}</td><td style="font-size: smaller"><b>PCI: </b>{% if unidad.Donacion.analisis.pci == '+' %}Positivo{% elseif unidad.Donacion.analisis.pci == '-' %}Negativo{% endif %} ({{ unidad.Donacion.analisis.pci }})</td></tr>
             <tr></tr>
             <tr><td colspan="2" style="font-size: larger">REACTIVO: <b>{{ unidad.Donacion.analisis.reactivo }}</b></td></tr>
             <tr></tr>

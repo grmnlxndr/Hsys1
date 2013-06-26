@@ -108,28 +108,28 @@ class analisis {
     /**
      * @var string
      *
-     * @ORM\Column(name="du", type="string", length=10, nullable=true)
+     * @ORM\Column(name="du", type="string", length=12, nullable=true)
      */
     private $du;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="cde", type="string", length=10, nullable=true)
+     * @ORM\Column(name="cde", type="string", length=12, nullable=true)
      */
     private $cde;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="fenotipo", type="string", length=10, nullable=true)
+     * @ORM\Column(name="fenotipo", type="string", length=12, nullable=true)
      */
     private $fenotipo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="pci", type="string", length=10, nullable=true)
+     * @ORM\Column(name="pci", type="string", length=12, nullable=true)
      */
     private $pci;
 
