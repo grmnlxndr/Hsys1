@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>HSys - Imprimir Etiqueta</title>
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+        <link rel="icon" type="image" href="{{ asset('images/Hsys icon1.png') }}" />
+    </head>
+    <body style="background: white">
+        <table>
+            <tr>
+                <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td><td style="width: 25px"></td>
+                <td><a id="volver" href="{{ path('pagina_informes') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
+            </tr>
+        </table>
+            <h3 style="text-align: center">Informe Diario de Serología del día: {{ fecha }}</h3>
+            <table class="consulta"style="width: 100%; text-align: center; background-color: white">
+            <tr>
+                <th>Nro. Don.</th><th>CHHAI</th><th>CHEIA</th><th>antiCORE</th><th>HBSAg</th><th>HCVAg-Ac</th><th>HIV Ac</th><th>Ag P24</th><th>HTLV</th><th>Brucelosis</th><th>Sífilis</th><th>AB0/RH(D)</th><th>Du</th><th>CDE</th><th>Fenotipo</th><th>PCI</th>
+            </tr>
+            {% for analisi in analisis %}
+            <tr>
+                <td>{{ analisi.Donacion.numdedonacion }}</td><td>{{ analisi.chhai }}</td><td>{{ analisi.cheia }}</td><td>{{ analisi.anticore }}</td><td>{{ analisi.hbsag }}</td><td>{{ analisi.hcvagac }}</td><td>{{ analisi.hivac }}</td><td>{{ analisi.agp24 }}</td><td>{{ analisi.htlv }}</td><td>{{ analisi.brucelosis }}</td><td>{{ analisi.sifilis }}</td><td>{{ analisi.factorsang }}</td><td>{{ analisi.du }}</td><td>{{ analisi.cde }}</td><td>{{ analisi.fenotipo }}</td><td>{{ analisi.pci }}</td>
+            </tr>
+            {% else %}
+            <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+            <br/>
+            {% endfor %}
+        </table>
+
+    </body>
+    <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+    <script>
+                    function imprimir() {
+                        $('#boton').hide();
+                        $('#volver').hide();
+                        javascript:window.print();
+                        $('#boton').show();
+                        $('#volver').show();
+                    }
+        </script>
+
+    </html>

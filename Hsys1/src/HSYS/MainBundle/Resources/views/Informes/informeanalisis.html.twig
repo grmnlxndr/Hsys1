@@ -1,0 +1,17 @@
+{% extends 'HSYSMainBundle:Informes:informesbase.html.twig' %}
+
+{% block title %}Informe Diario de Serología{% endblock %}
+
+{% block contenido %}
+<h3>Seleccione la fecha del Informe Diario de Serología:</h3>
+<form id="nuevo_fecha" name="nuevo_fecha" method="post" action="{{ path('informe_analisis') }}">
+    <table>
+        <tr>
+            <td><label>Fecha: </label></td>
+            <td><input id="fecha" name="fecha" type="date"/></td>
+            <td><input type="submit" value="Imprimir"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+{% endblock %}

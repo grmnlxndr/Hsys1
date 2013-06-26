@@ -263,6 +263,10 @@ pagina_informes:
   pattern: /informes
   defaults: { _controller: HSYSMainBundle:Informes:index }
 
+informe_analisis:
+  pattern: /informes/analisis
+  defaults: { _controller: HSYSMainBundle:Informes:informeanalisis }
+
 #autocargado
 autocargado:
   pattern: /autocargado
