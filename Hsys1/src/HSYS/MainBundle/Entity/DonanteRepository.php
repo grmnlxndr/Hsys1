@@ -68,4 +68,14 @@ class DonanteRepository extends EntityRepository {
         $donantes = $query->getResult();
         return $donantes;
     }
+    
+        public function generarDatosInformeVoluntario() {
+        $em = $this->getEntityManager();
+        $dql = "select d.factorsang as factor, count(d.id) as cant from HSYSMainBundle:Donante d where d.donantevoluntario=true and d.baja=false group by d.factorsang";
+
+        $query = $em->createQuery($dql);
+        
+        $donantes = $query->getResult();
+        return $donantes;
+    }
 }

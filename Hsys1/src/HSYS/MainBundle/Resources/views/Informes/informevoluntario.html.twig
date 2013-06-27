@@ -1,0 +1,15 @@
+{% extends 'HSYSMainBundle:Informes:informesbase.html.twig' %}
+
+{% block title %}Informe de Donantes Voluntarios{% endblock %}
+
+{% block contenido %}
+<h3>Informe de Donantes Voluntarios:</h3>
+<form id="nuevo_fecha" name="nuevo_fecha" method="post" action="{{ path('informe_voluntario') }}">
+    <table>
+        <tr>
+            <td><input type="submit" value="Generar Informe"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+{% endblock %}

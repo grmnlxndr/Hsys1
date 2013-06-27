@@ -44,5 +44,15 @@ class InformesController extends Controller {
         }
         return $this->render('HSYSMainBundle:Informes:informedesbloqueo.html.twig');
     }
+    
+    public function informevoluntarioAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $informe = $em->getRepository('HSYSMainBundle:Donante')->generarDatosInformeVoluntario();
+            return $this->render('HSYSMainBundle:Informes:informevoluntarioimprimir.html.twig', array('informe' => $informe));
+        }
+        return $this->render('HSYSMainBundle:Informes:informevoluntario.html.twig');
+    }
 
 }

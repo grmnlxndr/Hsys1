@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <title>HSys - Informe de unidades Desbloqueadas</title>
+        <title>HSys - Informe de Donantes Voluntarios</title>
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
         <link rel="icon" type="image" href="{{ asset('images/Hsys icon1.png') }}" />
     </head>
@@ -9,18 +9,18 @@
         <table>
             <tr>
                 <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td><td style="width: 25px"></td>
-                <td><a id="volver" href="{{ path('informe_desbloqueo') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
+                <td><a id="volver" href="{{ path('informe_voluntario') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
             </tr>
         </table>
-        <h3 style="text-align: center">Número de Unidades Desbloqueadas desde {{ desde }} hasta {{ hasta }}</h3>
+        <h3 style="text-align: center">Donantes Voluntarios por Factor Sanguíneo</h3>
         <br/>
         <table class="consulta"style="text-align: center; background-color: white; font-size: smaller; margin-left: auto; margin-right: auto">
             <tr>
-                <th>Tipo de Hemocomponente</th><th>Factor Sanguíneo</th><th>Cantidad de Unidades</th>
+                <th>Factor Sanguíneo</th><th>Cantidad de Donantes</th>
             </tr>
             {% for inform in informe %}
             <tr>
-                <td>{{ inform.hemo }}</td><td>{{ inform.factor }}</td><td>{{ inform.cant }}</td>
+                <td>{% if inform.factor is null %}Desconocido{% else %}{{ inform.factor }}{% endif %}</td><td>{{ inform.cant }}</td>
             </tr>
             {% else %}
             <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>

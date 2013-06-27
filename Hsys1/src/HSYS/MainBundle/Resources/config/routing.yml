@@ -275,6 +275,10 @@ informe_desbloqueo:
   pattern: /informes/desbloqueo
   defaults: { _controller: HSYSMainBundle:Informes:informedesbloqueo }
 
+informe_voluntario:
+  pattern: /informes/voluntario
+  defaults: { _controller: HSYSMainBundle:Informes:informevoluntario }
+
 #autocargado
 autocargado:
   pattern: /autocargado
