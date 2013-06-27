@@ -13,7 +13,7 @@ class Hospital {
                                         'Tres Isletas' => 'Tres Isletas',
                                         'Las Palmas' => 'Las Palmas',
                                         'Colectas Externas' => 'Colectas Externas',
-                                        'Otros' => 'Otros');
+                                        'Otro' => 'Otro');
 }
 
 ?>

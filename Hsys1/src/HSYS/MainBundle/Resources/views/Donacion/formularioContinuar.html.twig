@@ -56,12 +56,13 @@
         </tr>
         <tr>
             <td><label>Reacción Postextracción: </label></td>
-            <td><select  id="reaccionpostextraccion" name="reaccionpostextraccion" style="width: 100%">
+            <td><select id="selectreaccionpostextraccion" name="selectreaccionpostextraccion" style="width: 100%" onchange="cambiarreaccionpostextraccion()">
                     <option value="Buena">Buena</option>
                     <option value="Lipotina">Lipotina</option>
                     <option value="Otra">Otra</option>
                 </select>
             </td>
+            <td><input id="reaccionpostextraccion" name="reaccionpostextraccion"> </td>
         </tr>
         <tr>
             <td><label>Comentarios: </label></td>
@@ -74,5 +75,22 @@
     </table>
     <input id="numdedonacion" name="numdedonacion" type="hidden" value="{{ donacion.numdedonacion }}" />
 </form>
+
+<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+<script>
+    window.onload = function() {
+        cambiarreaccionpostextraccion();
+    }
+    
+    function cambiarreaccionpostextraccion(){
+        $("#reaccionpostextraccion").val($("#selectreaccionpostextraccion").val());
+        if ($("#reaccionpostextraccion").val()=="Otra"){
+            $("#reaccionpostextraccion").show();
+        } else{
+            $("#reaccionpostextraccion").hide();
+        }       
+    };
+
+</script>
 
 {% endblock %}

@@ -68,11 +68,12 @@
 
         <tr>
             <td><label>Hospital de extracción: </label></td>
-            <td><select id="hospital" name="hospital"> 
+            <td><select id="selecthospital" name="selecthospital" onchange="cambiarhospital()">
                 {% for hospital in hospitales %}
                             <option value="{{hospital}}" >{{hospital}}</option>        
                 {% endfor %}
                 </select></td>
+                <td><input id="hospital" name="hospital"></td>
         </tr>
 <td><label><u>Datos Exámen Físico: </u></label></td>
         </tr>
@@ -121,7 +122,7 @@
         </tr>
         <tr>
             <td><label>Tipo Bolsa: </label></td>
-            <td><select  id="tipobolsa" name="tipobolsa" style="width: 100%">
+            <td><select  id="selecttipobolsa" name="selecttipobolsa" style="width: 100%" onchange="cambiatipobolsa()">
                     <option value="Simple">Simple</option>
                     <option value="Doble">Doble</option>
                     <option value="Triple">Triple</option>
@@ -129,10 +130,11 @@
                     <option value="Otro">Otro</option>
                 </select>
             </td>
+            <td><input id="tipobolsa" name="tipobolsa"></td>
         </tr>
         <tr>
             <td><label>Marca: </label></td>
-            <td><select  id="marca" name="marca" style="width: 100%">
+            <td><select  id="selectmarca" name="selectmarca" style="width: 100%" onchange="cambiarmarca()">
                     <option value="Baxter">Baxter</option>
                     <option value="Grifols">Grifols</option>
                     <option value="MS">MS</option>
@@ -143,16 +145,18 @@
                     <option value="Otra">Otra</option>
                 </select>
             </td>
+            <td><input id="marca" name="marca"></td>
         </tr>
         <tr>
             <td><label>Anticoagulante: </label></td>
-            <td><select  id="anticoagulante" name="anticoagulante" style="width: 100%">
+            <td><select id="selectanticoagulante" name="selectanticoagualente" style="width: 100%" onchange="cambiaranticoagulante()">
                     <option value="ACD-A">ACD-A</option>
                     <option value="CPD-A">CPD-A</option>
                     <option value="SAG-Manitol">SAG-Manitol</option>
-                    <option value="Otra">Otra</option>
+                    <option value="Otro">Otro</option>
                 </select>
             </td>
+            <td><input id="anticoagulante" name="anticoagulante"></td>
         </tr>
         {#
         <tr>
@@ -200,5 +204,55 @@
         <input id="donante" name="donante" type="hidden" value="{{ donante.id }}" />
         <input id="receptor" name="receptor" type="hidden" value="{{ receptor.id }}" />
 </form>
+
+
+<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+<script>
+    window.onload = function() {
+        cambiarhospital();
+        cambiatipobolsa();
+        cambiarmarca();
+        cambiaranticoagulante();
+        }
+    
+    function cambiarhospital(){
+        $("#hospital").val($("#selecthospital").val());
+        if ($("#hospital").val()=="Otro"){
+            $("#hospital").show();
+        } else{
+            $("#hospital").hide();
+        }       
+    };
+    
+    function cambiatipobolsa(){
+        $("#tipobolsa").val($("#selecttipobolsa").val());
+        if ($("#tipobolsa").val()=="Otro"){
+            $("#tipobolsa").show();
+        } else{
+            $("#tipobolsa").hide();
+        }       
+    };
+   
+    function cambiarmarca(){
+        $("#marca").val($("#selectmarca").val());
+        if ($("#marca").val()=="Otra"){
+            $("#marca").show();
+        } else{
+            $("#marca").hide();
+        }       
+    };
+   
+    function cambiaranticoagulante(){
+        $("#anticoagulante").val($("#selectanticoagulante").val());
+        if ($("#anticoagulante").val()=="Otro"){
+            $("#anticoagulante").show();
+        } else{
+            $("#anticoagulante").hide();
+        }       
+    };
+   
+    
+</script>
+
 
 {% endblock %}
