@@ -1,0 +1,21 @@
+{% extends 'HSYSMainBundle:Informes:informesbase.html.twig' %}
+
+{% block title %}Informe de Descarte de Unidades{% endblock %}
+
+{% block contenido %}
+<h3>Seleccione el rango de fechas para el Informe de Descarte de Unidades:</h3>
+<form id="nuevo_fecha" name="nuevo_fecha" method="post" action="{{ path('informe_descarte') }}">
+    <table>
+        <tr>
+            <td><label>Desde: </label></td>
+            <td><input id="desde" name="desde" type="date" style="width: 140px"/></td>
+            <td style="width: 10px"></td>
+            <td><label>Hasta: </label></td>
+            <td><input id="hasta" name="hasta" type="date" style="width: 140px"/></td>
+            <td style="width: 10px"></td>
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+{% endblock %}

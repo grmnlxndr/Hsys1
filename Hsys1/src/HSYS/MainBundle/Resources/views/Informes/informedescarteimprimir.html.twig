@@ -12,15 +12,15 @@
                 <td><a id="volver" href="{{ path('informe_analisis') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
             </tr>
         </table>
-        <h3 style="text-align: center">Serología del día: {{ fecha }}</h3>
+        <h3 style="text-align: center">Causas de Descarte de Unidades desde {{ desde }} hasta {{ hasta }}</h3>
         <br/>
-        <table class="consulta"style="width: 100%; text-align: center; background-color: white; font-size: smaller">
+        <table class="consulta"style="text-align: center; background-color: white; font-size: smaller; margin-left: auto; margin-right: auto">
             <tr>
-                <th>Nro. Don.</th><th>CHHAI</th><th>CHEIA</th><th>antiCORE</th><th>HBSAg</th><th>HCVAg-Ac</th><th>HIV Ac</th><th>Ag P24</th><th>HTLV</th><th>Brucelosis</th><th>Sífilis</th><th>AB0/RH(D)</th><th>Du</th><th>CDE</th><th>Fenotipo</th><th>PCI</th>
+                <th>Causa Descarte</th><th>Cantidad de Unidades</th>
             </tr>
-            {% for analisi in analisis %}
+            {% for inform in informe %}
             <tr>
-                <td>{{ analisi.Donacion.numdedonacion }}</td><td>{{ analisi.chhai }}</td><td>{{ analisi.cheia }}</td><td>{{ analisi.anticore }}</td><td>{{ analisi.hbsag }}</td><td>{{ analisi.hcvagac }}</td><td>{{ analisi.hivac }}</td><td>{{ analisi.agp24 }}</td><td>{{ analisi.htlv }}</td><td>{{ analisi.brucelosis }}</td><td>{{ analisi.sifilis }}</td><td>{{ analisi.factorsang }}</td><td>{{ analisi.du }}</td><td>{{ analisi.cde }}</td><td>{{ analisi.fenotipo }}</td><td>{{ analisi.pci }}</td>
+                <td>{{ inform.causa }}</td><td>{{ inform.cant }}</td>
             </tr>
             {% else %}
             <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>

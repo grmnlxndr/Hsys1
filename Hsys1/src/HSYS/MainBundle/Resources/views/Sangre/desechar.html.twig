@@ -3,39 +3,43 @@
 {% block title %}Descartar Unidad{% endblock %}
 
 {% block contenido %}
- 
+
 <h3>Descartar la unidad ID: {{ unidad.id }}</h3><br/>
 
 
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
- 
- <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('desechar_unidad',{'id':unidad.id}) }}">
-       <label>Causa de descarte:</label>
-       <select  id="causadescarte" name="causadescarte">
+
+<form id="buscar_form" name="cambiarestado" method="post" action="{{ path('desechar_unidad',{'id':unidad.id}) }}">
+    <label>Fecha de descarte:</label>
+    <input type="date" id="fecha" name="fecha" value="{{ 'now' | date('Y-m-d') }}"/>
+    <br/>  
+    <label>Causa de descarte:</label>
+    <select  id="causadescarte" name="causadescarte">
        {% for causa in causadescarte %}
-               <option id="{{ causa }}" value="{{ causa }}">{{ causa }}</option>
+            <option id="{{ causa }}" value="{{ causa }}">{{ causa }}</option>
        {% endfor %}        
-       </select>
-       </br>
-       <label>Comentarios:</label>
-       </br>
-       <textarea id="comentarios" name="comentarios" rows="5" style="width: 50%">{{ unidad.comentarios }}</textarea>
-       </br>
-       <input type="checkbox" name="desechar" id="desechar" onclick="habilitar()"><label>¿Está seguro que desea descartar la unidad {{unidad.id}}? </label><br>
-       <input type="submit" value="Descartar"/>
+        </select>
+        </br>
+        <label>Comentarios:</label>
+        </br>
+        <textarea id="comentarios" name="comentarios" rows="5" style="width: 50%">{{ unidad.comentarios }}</textarea>
+        </br>
+        <input type="checkbox" name="desechar" id="desechar" onclick="habilitar()"><label>¿Está seguro que desea descartar la unidad {{unidad.id}}? </label><br>
+        <input type="submit" value="Descartar"/>
 
-</form>
+    </form>
 
-<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
-<script>
-$('input[type="submit"]').attr('disabled','disabled');  
-function habilitar(){
-if (desechar.checked) {    
-    $('input[type="submit"]').removeAttr('disabled');
-} else {
-    $('input[type="submit"]').attr('disabled','disabled');
-    }
-    };
-</script>
-</script>
+    <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+    <script>
+               $('input[type="submit"]').attr('disabled', 'disabled');
+               function habilitar() {
+                   if (desechar.checked) {
+                       $('input[type="submit"]').removeAttr('disabled');
+                   } else {
+                       $('input[type="submit"]').attr('disabled', 'disabled');
+                   }
+               }
+               ;
+        </script>
+    </script>
 {%endblock%}

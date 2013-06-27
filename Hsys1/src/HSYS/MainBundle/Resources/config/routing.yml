@@ -267,6 +267,10 @@ informe_analisis:
   pattern: /informes/analisis
   defaults: { _controller: HSYSMainBundle:Informes:informeanalisis }
 
+informe_descarte:
+  pattern: /informes/descarte
+  defaults: { _controller: HSYSMainBundle:Informes:informedescarte }
+
 #autocargado
 autocargado:
   pattern: /autocargado

@@ -34,6 +34,13 @@ class Unidad {
      * @ORM\Column(name="vencimientobolsa", type="date", nullable=true)
      */
     private $vencimientobolsa;
+    
+    /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="fechadescarte", type="date", nullable=true)
+     */
+    private $fechadescarte;
 
     /**
      * @var float
@@ -146,6 +153,26 @@ class Unidad {
      */
     public function getVencimientobolsa() {
         return $this->vencimientobolsa;
+    }
+    
+    /**
+     * Set Fechadescarte
+     * 
+     * @param \DateTime $fechadescarte
+     * @return Unidad
+     */
+    public function setFechadescarte($fechadescarte) {
+        $this->fechadescarte = $fechadescarte;
+        return $this;
+    }
+
+    /**
+     * Get Fechadescarte
+     * 
+     * @return \DateTime
+     */
+    public function getFechadescarte() {
+        return $this->fechadescarte;
     }
 
     /**

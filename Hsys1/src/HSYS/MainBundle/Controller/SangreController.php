@@ -148,6 +148,10 @@ class SangreController extends Controller {
         $causadescarte = \HSYS\MainBundle\Entity\causadescarte::$causadescarte;
         if ($request->getMethod() == 'POST') {
             $unidad->setEstado("Descartado");
+            $fecha = $request->request->get('fecha');
+            $fechadescarte = new \DateTime;
+            $fechadescarte->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
+            $unidad->setFechadescarte($fechadescarte);
             $comentarios = $request->request->get('comentarios');
             $unidad->setComentarios($comentarios);
             $causa = $request->request->get('causadescarte');

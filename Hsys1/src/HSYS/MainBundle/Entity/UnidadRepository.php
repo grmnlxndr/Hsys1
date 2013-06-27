@@ -103,7 +103,7 @@ class UnidadRepository extends EntityRepository {
         return $unidades;
     }
 
-     public function findUnidadFactorSangui($factorsangui) {
+    public function findUnidadFactorSangui($factorsangui) {
         $em = $this->getEntityManager();
         $dql = "select u from HSYSMainBundle:Unidad u where u.estado <> :estado and u.factorsang like :factorsang order by u.vencimiento asc";
 
@@ -114,5 +114,18 @@ class UnidadRepository extends EntityRepository {
         $unidades = $query->getResult();
         return $unidades;
     }
-    
+
+    public function generarDatosInformeDescarte($desde, $hasta) {
+        $em = $this->getEntityManager();
+        $dql = 'SELECT u.causadescarte as causa, count(u.id) as cant FROM HSYSMainBundle:Unidad u where u.estado = :descartado and u.fechadescarte >= :desde and u.fechadescarte <= :hasta group by u.causadescarte';
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('descartado', 'Descartado');
+        $query->setParameter('desde', $desde);
+        $query->setParameter('hasta', $hasta);
+
+        $informe = $query->getResult();
+        return $informe;
+    }
+
 }
