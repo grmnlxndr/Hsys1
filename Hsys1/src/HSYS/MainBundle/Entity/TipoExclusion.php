@@ -124,8 +124,10 @@ class TipoExclusion
     
     
     public function __toString() {
-        $mensaje = $this->getNombre().' ('.$this->getGrado().')';
-        
+        $mensaje = $this->getNombre();
+        if ($this->getGrado() != null) {
+        $mensaje = $mensaje . ' ('.$this->getGrado().')';
+        }
         return $mensaje;
     }
 }

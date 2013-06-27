@@ -90,23 +90,6 @@ class CargadorController extends Controller {
 
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Serologia");
-        $exclusion->setGrado("leve");
-        $exclusion->setDuracion("30");
-
-        $em->persist($exclusion);
-        $em->flush();
-
-        $exclusion = new TipoExclusion;
-        $exclusion->setNombre("Exclusion Serologia");
-        $exclusion->setGrado("grave");
-        $exclusion->setDuracion("90");
-
-        $em->persist($exclusion);
-        $em->flush();
-
-        $exclusion = new TipoExclusion;
-        $exclusion->setNombre("Exclusion Serologia");
-        $exclusion->setGrado("permanente");
         $exclusion->setDuracion("0");
 
         $em->persist($exclusion);
@@ -138,7 +121,6 @@ class CargadorController extends Controller {
 
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Autoexclusion");
-        $exclusion->setGrado("grave");
         $exclusion->setDuracion("365");
 
         $em->persist($exclusion);
@@ -146,7 +128,6 @@ class CargadorController extends Controller {
 
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion por donacion");
-        $exclusion->setGrado("leve");
         $exclusion->setDuracion("60");
 
         $em->persist($exclusion);
@@ -154,7 +135,6 @@ class CargadorController extends Controller {
 
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Permanente");
-        $exclusion->setGrado("permanente");
         $exclusion->setDuracion("0");
 
         $em->persist($exclusion);
@@ -162,7 +142,6 @@ class CargadorController extends Controller {
 
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Poco Volumen");
-        $exclusion->setGrado("leve");
         $exclusion->setDuracion("30");
 
         $em->persist($exclusion);
@@ -170,7 +149,6 @@ class CargadorController extends Controller {
 
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Mala red venosa");
-        $exclusion->setGrado("leve");
         $exclusion->setDuracion("30");
 
         $em->persist($exclusion);
@@ -178,7 +156,6 @@ class CargadorController extends Controller {
 
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Lipotimia");
-        $exclusion->setGrado("leve");
         $exclusion->setDuracion("30");
 
         $em->persist($exclusion);
@@ -186,7 +163,6 @@ class CargadorController extends Controller {
 
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion Se retira sin donar");
-        $exclusion->setGrado("leve");
         $exclusion->setDuracion("30");
 
         $em->persist($exclusion);
@@ -194,7 +170,6 @@ class CargadorController extends Controller {
         
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion generica");
-        $exclusion->setGrado("generica");
         
         $em->persist($exclusion);
         $em->flush();
