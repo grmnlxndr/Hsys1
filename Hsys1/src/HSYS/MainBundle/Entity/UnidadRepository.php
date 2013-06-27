@@ -130,7 +130,7 @@ class UnidadRepository extends EntityRepository {
 
     public function generarDatosInformeDesbloqueo($desde, $hasta) {
         $em = $this->getEntityManager();
-        $dql = 'SELECT t.nombre as hemo, count(u.id) as cant FROM HSYSMainBundle:Unidad u JOIN HSYSMainBundle:TipoHemocomponente t where u.estado = :desbloqueado and u.fechadesbloqueo >= :desde and u.fechadesbloqueo <= :hasta and u.TipoHemocomponente = t.id group by t.nombre';
+        $dql = 'SELECT t.nombre as hemo, u.factorsang as factor, count(u.id) as cant FROM HSYSMainBundle:Unidad u JOIN HSYSMainBundle:TipoHemocomponente t where u.estado = :desbloqueado and u.fechadesbloqueo >= :desde and u.fechadesbloqueo <= :hasta and u.TipoHemocomponente = t.id group by t.nombre, u.factorsang';
 
         $query = $em->createQuery($dql);
         $query->setParameter('desbloqueado', 'Desbloqueado');
