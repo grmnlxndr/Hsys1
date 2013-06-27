@@ -34,20 +34,6 @@ class CargadorController extends Controller {
         $em->flush();
         
         $hemocomponente = new TipoHemocomponente;
-        $hemocomponente->setNombre("Sobrenadante de Crio");
-        $hemocomponente->setDuracion(365);
-
-        $em->persist($hemocomponente);
-        $em->flush();
-        
-        $hemocomponente = new TipoHemocomponente;
-        $hemocomponente->setNombre("Plasma fresco Congelado");
-        $hemocomponente->setDuracion(365);
-
-        $em->persist($hemocomponente);
-        $em->flush();
-        
-        $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Plasma Modificado");
         $hemocomponente->setDuracion(365);
 
@@ -55,7 +41,21 @@ class CargadorController extends Controller {
         $em->flush();
         
         $hemocomponente = new TipoHemocomponente;
+        $hemocomponente->setNombre("Plasma Fresco Congelado");
+        $hemocomponente->setDuracion(365);
+
+        $em->persist($hemocomponente);
+        $em->flush();
+        
+        $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Crio");
+        $hemocomponente->setDuracion(365);
+
+        $em->persist($hemocomponente);
+        $em->flush();
+         
+        $hemocomponente = new TipoHemocomponente;
+        $hemocomponente->setNombre("Sobrenadante de Crio");
         $hemocomponente->setDuracion(365);
 
         $em->persist($hemocomponente);
