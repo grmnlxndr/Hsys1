@@ -9,11 +9,11 @@
         <table>
             <tr>
                 <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td><td style="width: 25px"></td>
-                <td><a id="volver" href="{{ path('pagina_informes') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
+                <td><a id="volver" href="{{ path('informe_analisis') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
             </tr>
         </table>
-            <h3 style="text-align: center">Informe Diario de Serología del día: {{ fecha }}</h3>
-            <table class="consulta"style="width: 100%; text-align: center; background-color: white">
+        <h3 style="text-align: center">Serología del día: {{ fecha }}</h3>
+        <table class="consulta"style="width: 100%; text-align: center; background-color: white; font-size: smaller">
             <tr>
                 <th>Nro. Don.</th><th>CHHAI</th><th>CHEIA</th><th>antiCORE</th><th>HBSAg</th><th>HCVAg-Ac</th><th>HIV Ac</th><th>Ag P24</th><th>HTLV</th><th>Brucelosis</th><th>Sífilis</th><th>AB0/RH(D)</th><th>Du</th><th>CDE</th><th>Fenotipo</th><th>PCI</th>
             </tr>
