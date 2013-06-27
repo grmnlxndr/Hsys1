@@ -35,7 +35,7 @@
             
             <tr><td style="font-size: x-small"><b>Fenotipo:</b> {{ unidad.Donacion.analisis.fenotipo }}</td><td style="font-size: x-small"><b>PCI: </b>{% if unidad.Donacion.analisis.pci == '+' %}Positivo{% elseif unidad.Donacion.analisis.pci == '-' %}Negativo{% endif %} ({{ unidad.Donacion.analisis.pci }})</td></tr>
             
-            <tr><td colspan="2" style="font-size: larger">REACTIVO: <b>{{ unidad.Donacion.analisis.reactivo }}</b></td></tr>
+            <tr><td colspan="2" style="font-size: larger">VALIDADO: <b>{{ unidad.Donacion.analisis.reactivo }}</b></td></tr>
             
             <tr>
                 <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td>

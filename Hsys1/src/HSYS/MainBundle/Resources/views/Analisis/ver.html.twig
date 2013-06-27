@@ -28,11 +28,11 @@
         <td>{{ donacion.nrolote }}</td>
     </tr>
     <tr>
-        <th>REACTIVO: </th>
+        <th>VALIDADO: </th>
         {% if analisis.reactivo == 'NO' %}
         <td style="background-color: red"><b>{{ analisis.reactivo }}</b></td>
         {% else %}
-            <td><b>{{ analisis.reactivo }}</b></td>
+                <td style="background-color: greenyellow"><b>{{ analisis.reactivo }}</b></td>
         {% endif %}
     </tr>
     <tr>
