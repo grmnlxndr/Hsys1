@@ -9,10 +9,13 @@
 {% include 'HSYSMainBundle:Sangre:datosdeunidadver.html.twig' with {'unidad': unidad} %}
  
  <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('desbloquear_unidad',{'id':unidad.id}) }}">
+       <label>Fecha de desbloqueo: </label>
+       <input type="date" id="fecha" name="fecha" value="{{ 'now' | date('Y-m-d') }}"/>
+       <br/>
        <label>Comentarios:</label>
-       </br>
+       <br/>
        <textarea id="comentarios" name="comentarios" rows="5" style="width: 50%">{{ unidad.comentarios }}</textarea>
-       </br>
+       <br/>
        <input type="checkbox" name="desbloquear" id="desbloquear" onclick="habilitar()"><label>¿Está seguro que desea desbloquear la unidad {{unidad.id}}? </label><br>
        <input type="submit" value="Desbloquear"/>
 </form>

@@ -116,6 +116,10 @@ class SangreController extends Controller {
         }
         if ($request->getMethod() == 'POST') {
             $unidad->setEstado("Desbloqueado");
+            $fecha = $request->request->get('fecha');
+            $fechadesbloqueo = new \DateTime;
+            $fechadesbloqueo->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
+            $unidad->setFechadesbloqueo($fechadesbloqueo);
             $comentarios = $request->request->get('comentarios');
             $unidad->setComentarios($comentarios);
             $em->persist($unidad);

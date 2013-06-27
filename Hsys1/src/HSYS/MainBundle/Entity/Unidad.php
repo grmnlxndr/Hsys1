@@ -41,6 +41,13 @@ class Unidad {
      * @ORM\Column(name="fechadescarte", type="date", nullable=true)
      */
     private $fechadescarte;
+    
+    /**
+     * @var \DateTime
+     * 
+     * @ORM\Column(name="fechadesbloqueo", type="date", nullable=true)
+     */
+    private $fechadesbloqueo;
 
     /**
      * @var float
@@ -173,6 +180,26 @@ class Unidad {
      */
     public function getFechadescarte() {
         return $this->fechadescarte;
+    }
+    
+    /**
+     * Set Fechadesbloqueo
+     * 
+     * @param \DateTime $fechadesbloqueo
+     * @return Unidad
+     */
+    public function setFechadesbloqueo($fechadesbloqueo) {
+        $this->fechadesbloqueo = $fechadesbloqueo;
+        return $this;
+    }
+
+    /**
+     * Get Fechadesbloqueo
+     * 
+     * @return \DateTime
+     */
+    public function getFechadesbloqueo() {
+        return $this->fechadesbloqueo;
     }
 
     /**
