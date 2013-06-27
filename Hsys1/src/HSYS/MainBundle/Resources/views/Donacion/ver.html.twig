@@ -9,14 +9,14 @@
     <ul>
         <li><a href="{{ path('modificar_donacion',{'id':donacion.id}) }}">Modificar</a></li>
         <li><a href= "{{ path('anular_donacion',{'id':donacion.id}) }}">Anular</a></li>
-        <li><a href="{{ path('excluir_donante_por_donacion',{'donanteid':donacion.donante.id, 'donacionid' : donacion.id}) }}">Crear una exlusión</a></li>
+        <li><a href="{{ path('excluir_donante_por_donacion',{'donanteid':donacion.donante.id, 'donacionid' : donacion.id}) }}">Crear una exclusión</a></li>
         {% if donacion.terminado == false %}   
         <li><a href="{{ path('alta_donacion_voluntaria_formulario_terminado',{'numdedonacion':donacion.numdedonacion}) }}">Continuar</a></li> 
         {% endif %}
    </ul>
 </div>
         {%else%}
-        <div class="consulta"><img src="{{ asset('images/error.png') }}"/>Donacion anulada, Causa: {{donacion.anulado}} </div>
+        <div class="consulta"><img src="{{ asset('images/error.png') }}"/>Donación anulada, Causa: {{donacion.anulado}} </div>
         {%endif%}
 <br/>
 <table class="detalle">
