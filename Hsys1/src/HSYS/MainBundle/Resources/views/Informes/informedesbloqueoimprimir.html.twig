@@ -9,18 +9,18 @@
         <table>
             <tr>
                 <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td><td style="width: 25px"></td>
-                <td><a id="volver" href="{{ path('informe_descarte') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
+                <td><a id="volver" href="{{ path('informe_desbloqueo') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
             </tr>
         </table>
-        <h3 style="text-align: center">Causas de Descarte de Unidades desde {{ desde }} hasta {{ hasta }}</h3>
+        <h3 style="text-align: center">Número de Unidades Desbloqueadas desde {{ desde }} hasta {{ hasta }}</h3>
         <br/>
         <table class="consulta"style="text-align: center; background-color: white; font-size: smaller; margin-left: auto; margin-right: auto">
             <tr>
-                <th>Causa Descarte</th><th>Cantidad de Unidades</th>
+                <th>Tipo de Hemocomponente</th><th>Cantidad de Unidades</th>
             </tr>
             {% for inform in informe %}
             <tr>
-                <td>{{ inform.causa }}</td><td>{{ inform.cant }}</td>
+                <td>{{ inform.hemo }}</td><td>{{ inform.cant }}</td>
             </tr>
             {% else %}
             <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>

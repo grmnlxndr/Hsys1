@@ -32,5 +32,17 @@ class InformesController extends Controller {
         }
         return $this->render('HSYSMainBundle:Informes:informedescarte.html.twig');
     }
+    
+    public function informedesbloqueoAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $desde = $request->request->get('desde');
+            $hasta = $request->request->get('hasta');
+            $informe = $em->getRepository('HSYSMainBundle:Unidad')->generarDatosInformeDesbloqueo($desde, $hasta);
+            return $this->render('HSYSMainBundle:Informes:informedesbloqueoimprimir.html.twig', array('informe' => $informe, 'desde' => $desde, 'hasta' => $hasta,));
+        }
+        return $this->render('HSYSMainBundle:Informes:informedesbloqueo.html.twig');
+    }
 
 }
