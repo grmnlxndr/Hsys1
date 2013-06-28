@@ -17,6 +17,7 @@
     <ul>
         <li><a href="{{ path('alta_donacion_voluntaria_formulario',{'id':donante.id}) }}">Donar (Voluntaria)</a></li>
         <li><a href="{{ path('alta_donacion_receptor_receptor',{'don':donante.id}) }}">Donar (c/Receptor)</a></li>
+        <li><a href="{{ path('alta_donacion_receptor_formulario', {'don':donante.id, 'rec':donante.id}) }}">Autodonación</a></li>
         <li><a href="{{ path('imprimir_donante',{'id':donante.id}) }}">Imprimir</a></li>
     </ul>
 </div>
