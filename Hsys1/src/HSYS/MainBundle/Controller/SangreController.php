@@ -247,8 +247,23 @@ class SangreController extends Controller {
             $em->flush();
         }
         $tiposhemocomponentes = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findAll();
-        $factorsanguineo = \HSYS\MainBundle\Entity\factorsang::$factorsang;
         $unidades = $donacion->getUnidades();
+        //MIRAR UNA FORMA MEJOR...
+        foreach ($unidades as $uni) {
+            $tipohemo = $uni->getTipoHemocomponente();
+            $i = 0;
+            while ($i <= count($tiposhemocomponentes)) {
+                if ($tiposhemocomponentes[$i] == $tipohemo){
+                    unset($tiposhemocomponentes[$i]);
+                    break;
+                } else { 
+                    $i++;
+                }
+            }
+            $tiposhemocomponentes = array_values($tiposhemocomponentes);
+        }
+                
+        $factorsanguineo = \HSYS\MainBundle\Entity\factorsang::$factorsang;
         return $this->render('HSYSMainBundle:Sangre:crearfraccionamiento.html.twig', array('unidad' => $unidad, 'tiposhemocomponentes' => $tiposhemocomponentes, 'unidades' => $unidades, 'factorsanguineo' => $factorsanguineo));
     }
 
