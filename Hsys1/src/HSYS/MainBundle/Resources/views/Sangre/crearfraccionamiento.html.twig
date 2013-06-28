@@ -43,11 +43,11 @@
         <td><input name="volumen" id="volumen" style="width: 160px"/> cc</td>
     </tr>
     <tr> 
-        <th>Fecha de extraccion: </th>
+        <th>Fecha de extracción: </th>
         <td><input type="date" name="fechaextraccion" id="fechaextraccion" value="{{ unidad.donacion.fechextraccion | date('Y-m-d') }}" style="width: 160px" disabled=""/></td>
     </tr>
     <tr>
-        <th>Dias de vencimiento: </th>
+        <th>Días de vencimiento: </th>
         <td><input id="cantidaddedias" name="cantidaddedias" disabled type=number onchange="cambiodias()"> 
             <input id="cambiardias" name="cambiardias" type=checkbox onclick="habilitarnumber()"> ¿Cambiar dias?</td>
     </tr>

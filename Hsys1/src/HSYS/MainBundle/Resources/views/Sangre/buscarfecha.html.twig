@@ -1,18 +1,18 @@
 {% extends 'HSYSMainBundle:Sangre:sangrebase.html.twig' %}
 
-{% block title %}Buscar por fecha de Vencimiento{% endblock %}
+{% block title %}Buscar por Fecha de Vencimiento{% endblock %}
 
 {% block contenido %}
- <h3>Buscar Unidad por fecha de Vencimiento:</h3>
+ <h3>Buscar Unidades por Fecha de Vencimiento:</h3>
     <form id="buscar_form" name="buscar_form" method="post" action="{{ path('buscar_unidad_fecha') }}">
     <table>
         <tr>
             <td><label>Desde: </label></td>
-            <td><input id="desde" name="desde" type="date" style="width: 120px" {#value="{{ "now"|date('Y-m-d') }}"#}/></td>
-            <td style="width: 30px"></td>
+            <td><input id="desde" name="desde" type="date" style="width: 140px" {#value="{{ "now"|date('Y-m-d') }}"#}/></td>
+            <td style="width: 10px"></td>
             <td><label>Hasta: </label></td>
-            <td><input id="hasta" name="hasta" type="date" style="width: 120px" {#value="{{ "now"|date('Y-m-d') }}"#}/></td>
-            <td style="width: 30px"></td>
+            <td><input id="hasta" name="hasta" type="date" style="width: 140px" {#value="{{ "now"|date('Y-m-d') }}"#}/></td>
+            <td style="width: 10px"></td>
             <td><input type="submit" value="Buscar"/></td>
          </tr>
     </table>
