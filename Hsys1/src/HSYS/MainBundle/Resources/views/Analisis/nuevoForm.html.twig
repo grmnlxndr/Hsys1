@@ -8,15 +8,15 @@
 
 <table class="detalle">
     <tr>
-        <th>Numero de donacion: </th>
+        <th>Número de donación: </th>
         <td>{{ donacion.numdedonacion }}</td>
     </tr>
     <tr>
-        <th>Numero de tubuladura: </th>
+        <th>Número de tubuladura: </th>
         <td>{{ donacion.idbolsa }}</td>
     </tr>
     <tr>
-        <th>Numero de Lote: </th>
+        <th>Número de Lote: </th>
         <td>{{ donacion.nrolote }}</td>
     </tr>
     <tr>
@@ -28,17 +28,17 @@
         <td>{{ donacion.Donante.nomapp }}</td>
     </tr>
     <tr>
-        <th>Factor sanguineo: </th>
+        <th>Factor sanguíneo: </th>
         <td>{{ donacion.Donante.factorsang }}</td>
     </tr>
 </table>
 <br/>
-<h4>Resultados del analisis de serología:</h4>
+<h4>Resultados del análisis de serología:</h4>
 <form action="{{ path('alta_analisis_form', {'id':donacion.id}) }}" method="post">
         {# {{ form_widget(form) }} #}
         <table>
             <tr>
-                <td><label>Fecha Analisis de Serología: </label></td>
+                <td><label>Fecha Análisis de Serología: </label></td>
                 <td><input type="date" id="fecha" name="fecha" value="{{analisis.fechanalisis | date('Y-m-d')}}" onChange="fechaanalisis()"/></td>
                 <td hidden>{{ form_widget(form.fechanalisis) }}</td>
                 <td>{{ form_errors(form.fechanalisis) }}</td>
@@ -140,7 +140,7 @@
             </table>
             <br/>
         {{ form_rest(form) }}
-            <div id="aprobado" name = "aprobado"><input type="checkbox" name="checkboxaprobado" id="checkboxaprobado" onclick="guardar()"> ¿Esta seguro que desea guardar el Analisis?<br> </div>
+            <div id="aprobado" name = "aprobado"><input type="checkbox" name="checkboxaprobado" id="checkboxaprobado" onclick="guardar()"> ¿Está seguro que desea guardar el Análisis?<br> </div>
                 <input type="submit" id="enviar" name="enviar"/>
             </form>
 {{ form_errors(form) }}
