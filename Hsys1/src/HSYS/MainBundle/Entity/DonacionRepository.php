@@ -93,4 +93,16 @@ class DonacionRepository extends EntityRepository {
         $donaciones = $query->getResult();
         return $donaciones;
     }
+    
+    public function generarDatosInformeExtraccion($desde, $hasta){
+        $em = $this->getEntityManager();
+        $dql = "select d.anulado as result, count(d.id) as cant from HSYSMainBundle:Donacion d where d.fechextraccion >= :desde and d.fechextraccion <= :hasta group by d.anulado";
+        
+        $query = $em->createQuery($dql);
+        $query->setParameter('desde',$desde);
+        $query->setParameter('hasta',$hasta);
+        
+        $donaciones = $query->getResult();
+        return $donaciones;
+    }
 }

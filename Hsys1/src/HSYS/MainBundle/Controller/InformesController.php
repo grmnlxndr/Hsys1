@@ -54,5 +54,17 @@ class InformesController extends Controller {
         }
         return $this->render('HSYSMainBundle:Informes:informevoluntario.html.twig');
     }
+    
+    public function informeextraccionAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $desde = $request->request->get('desde');
+            $hasta = $request->request->get('hasta');
+            $informe = $em->getRepository('HSYSMainBundle:Donacion')->generarDatosInformeExtraccion($desde, $hasta);
+            return $this->render('HSYSMainBundle:Informes:informeextraccionimprimir.html.twig', array('informe' => $informe, 'desde' => $desde, 'hasta' => $hasta,));
+        }
+        return $this->render('HSYSMainBundle:Informes:informeextraccion.html.twig');
+    }
 
 }

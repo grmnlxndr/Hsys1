@@ -279,6 +279,10 @@ informe_voluntario:
   pattern: /informes/voluntario
   defaults: { _controller: HSYSMainBundle:Informes:informevoluntario }
 
+informe_extraccion:
+  pattern: /informes/extraccion
+  defaults: { _controller: HSYSMainBundle:Informes:informeextraccion }
+
 #autocargado
 autocargado:
   pattern: /autocargado

@@ -784,7 +784,7 @@ class Donacion {
      * @var boolean
      * anulado = "null" donacion no anulada.
      * anulado = "motivo" donacion anulada (baja logica) 
-     * @ORM\Column(name="anulado", type="string", length=20, nullable=true)  
+     * @ORM\Column(name="anulado", type="string", length=40, nullable=true)  
      */
     public $anulado;
 
