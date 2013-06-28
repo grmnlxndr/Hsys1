@@ -29,7 +29,7 @@
 <form id="habilitar_form" name="habilitar_form" method="post" action="{{ path('habilitar_donante', { 'id' : id }) }}">
     <table class="detalle" style="width: 100%">
     <tr>
-        <th> ID </th><th> Inicio </th><th> Fin </th><th> Tipo de Exclusion </th><th width =20%> Comentario </th>
+        <th> ID </th><th> Inicio </th><th> Fin </th><th> Tipo de Exclusión </th><th width =20%> Comentario </th>
     </tr>
 {% for exclusion in exclusiones %}
     <tr>
@@ -44,7 +44,7 @@
         <td valign="middle" align="center">{{ exclusion.comentario }}</td>
     </tr>
     {% else %}
-    <div class="listadeexclusiones"><img src="{{ asset('images/error.png') }}"/>    EL DONANTE NO POSEE NINGUNA EXCLUSION</div>
+    <div class="listadeexclusiones"><img src="{{ asset('images/error.png') }}"/>    EL DONANTE NO POSEE NINGUNA EXCLUSIÓN</div>
     <br/>
 {% endfor %}
 </table>
@@ -57,7 +57,7 @@
         </br>
         <textarea id="comentarios" name="comentarios" rows="5" style="width: 50%"> </textarea>
         </br>
-        <input type="checkbox" name="aprobado" id="aprobado" onclick="habilitar()"> ¿Esta seguro que desea habilitar el donante?<br>
+        <input type="checkbox" name="aprobado" id="aprobado" onclick="habilitar()"> ¿Está seguro que desea habilitar el donante?<br>
         <input type="submit" value="Habilitar El Donante"/>
         
         {% endif %}

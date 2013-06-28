@@ -32,11 +32,11 @@
         <h3>Datos de la Donacion</h3>
             <table class="detalle">
                 <tr>
-                    <th style="width: 140px">Numero de donacion</th>
+                    <th style="width: 140px">Número de donacion</th>
                     <td>{{ donacion.numdedonacion }}</td>
                 </tr>
                 <tr>
-                    <th style="width: 140px">Fecha de extraccion</th>
+                    <th style="width: 140px">Fecha de extracción</th>
                     <td>{{ donacion.fechextraccion | date("d/m/Y")  }}</td>
                 </tr>
 <!-- falta algun dato mas? -->
@@ -46,7 +46,7 @@
         <table>
             <tr><td><br/></td></tr>
             <tr>
-                <td><label>Seleccione un tipo de exclusion: <label> </td>
+                <td><label>Seleccione un tipo de exclusión: <label> </td>
                 <td> <select id="tipodeexclusion" name="tipodeexclusion">
                {% for tipoexclusion in tiposExclusion %}
                     <option id="{{ tipoexclusion.duracion }}" name="{{tipoexclusion.nombre}}" value="{{ tipoexclusion.id }}">{{ tipoexclusion }}</option>
