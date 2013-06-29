@@ -1,0 +1,17 @@
+{% extends 'HSYSMainBundle:Informes:informesbase.html.twig' %}
+
+{% block title %}Informe de Unidades Por Vencer{% endblock %}
+
+{% block contenido %}
+<h3>Seleccione la fecha del Informe de Unidades Por Vencer:</h3>
+<form id="nuevo_fecha" name="nuevo_fecha" method="post" action="{{ path('informe_vencimiento') }}">
+    <table>
+        <tr>
+            <td><label>Fecha: </label></td>
+            <td><input id="fecha" name="fecha" type="date" value="{{ 'now' | date('Y-m-d') }}"/></td>
+            <td><input type="submit" value="Imprimir"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+{% endblock %}

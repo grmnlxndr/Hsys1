@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>HSys - Informe Unidades por Vencer</title>
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}" type="text/css" />
+        <link rel="icon" type="image" href="{{ asset('images/Hsys icon1.png') }}" />
+    </head>
+    <body style="background: white">
+        <table>
+            <tr>
+                <td><a id="boton" onclick="imprimir()" style="font-size: larger; font-weight: bold; cursor: pointer">Imprimir</a></td><td style="width: 25px"></td>
+                <td><a id="volver" href="{{ path('informe_vencimiento') }}" style="font-size: larger; font-weight: bold">Volver</a></td>
+            </tr>
+        </table>
+        <h3 style="text-align: center">Unidades con Vencimiento en el día: {{ fecha }}</h3>
+        <br/>
+        <table class="consulta"style="text-align: center; background-color: white; font-size: smaller; margin-left: auto; margin-right: auto">
+            <tr>
+                <th>Nro. Don.</th><th>Tipo Hemocomponente</th><th>Factor Sanguíneo</th><th>Estado</th>
+            </tr>
+            {% for inform in informe %}
+            <tr>
+                <td>{{ inform.Donacion.numdedonacion }}</td><td>{{ inform.TipoHemocomponente.nombre }}</td><td>{% if inform.factorsang is null%}N/D{% else %}{{ inform.factorsang }}{% endif %}</td><td>{{ inform.estado }}</td>
+            </tr>
+            {% else %}
+            <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+            <br/>
+            {% endfor %}
+        </table>
+
+    </body>
+    <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+    <script>
+                    function imprimir() {
+                        $('#boton').hide();
+                        $('#volver').hide();
+                        javascript:window.print();
+                        $('#boton').show();
+                        $('#volver').show();
+                    }
+        </script>
+
+    </html>

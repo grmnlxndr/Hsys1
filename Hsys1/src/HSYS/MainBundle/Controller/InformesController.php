@@ -66,5 +66,16 @@ class InformesController extends Controller {
         }
         return $this->render('HSYSMainBundle:Informes:informeextraccion.html.twig');
     }
+    
+    public function informevencimientoAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $fecha = $request->request->get('fecha');
+            $informe = $em->getRepository('HSYSMainBundle:Unidad')->generarDatosInformeVencimiento($fecha);
+            return $this->render('HSYSMainBundle:Informes:informevencimientoimprimir.html.twig', array('informe' => $informe, 'fecha' => $fecha,));
+        }
+        return $this->render('HSYSMainBundle:Informes:informevencimiento.html.twig');
+    }
 
 }

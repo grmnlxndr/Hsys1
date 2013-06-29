@@ -140,5 +140,20 @@ class UnidadRepository extends EntityRepository {
         $informe = $query->getResult();
         return $informe;
     }
+    
+    public function generarDatosInformeVencimiento($fecha){
+        $em = $this->getEntityManager();
+        $dql = 'SELECT u FROM HSYSMainBundle:Unidad u WHERE u.vencimiento = :fecha AND u.estado <> :descartado AND u.estado <> :fraccionado AND u.estado <> :transfundido';
+        
+        $query = $em->createQuery($dql);
+        $query->setParameter('fecha', $fecha);
+        $query->setParameter('descartado', 'Descartado');
+        $query->setParameter('fraccionado', 'Fraccionado');
+        $query->setParameter('fraccionado', 'Fraccionado');
+        $query->setParameter('transfundido', 'Transfundido');
+        
+        $informe = $query->getResult();
+        return $informe;
+    }
 
 }

@@ -283,6 +283,10 @@ informe_extraccion:
   pattern: /informes/extraccion
   defaults: { _controller: HSYSMainBundle:Informes:informeextraccion }
 
+informe_vencimiento:
+  pattern: /informes/vencimiento
+  defaults: { _controller: HSYSMainBundle:Informes:informevencimiento }
+
 #autocargado
 autocargado:
   pattern: /autocargado
