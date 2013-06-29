@@ -256,8 +256,16 @@ class DonacionController extends Controller {
         $donacion->setReaccionpostextraccion($reaccionpostextraccion);
         $donacion->setComentario($comentarios);
         
-        $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
-
+//aca va el codigo. para los productos que se van a generar segun el tipo de donacion.
+        switch ($donacion->getTipodonacion()) {
+            case "Plaquetas Aféresis":
+                $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Plaquetas'));
+                break;
+            default:
+                $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
+                break;
+        }
+        
         $donacion->crearUnidad($tipohemo, $volumen, $donacion->getTipobolsa(), $donacion->getNrolote(), $donacion->getMarca(), $donacion->getAnticoagulante(), $donacion->getVencimientobolsa());
         
         $donacion->setTerminado(true);
