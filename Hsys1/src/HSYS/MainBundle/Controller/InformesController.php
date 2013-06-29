@@ -32,7 +32,7 @@ class InformesController extends Controller {
         }
         return $this->render('HSYSMainBundle:Informes:informedescarte.html.twig');
     }
-    
+
     public function informedesbloqueoAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -44,7 +44,7 @@ class InformesController extends Controller {
         }
         return $this->render('HSYSMainBundle:Informes:informedesbloqueo.html.twig');
     }
-    
+
     public function informevoluntarioAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -54,7 +54,7 @@ class InformesController extends Controller {
         }
         return $this->render('HSYSMainBundle:Informes:informevoluntario.html.twig');
     }
-    
+
     public function informeextraccionAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -66,7 +66,7 @@ class InformesController extends Controller {
         }
         return $this->render('HSYSMainBundle:Informes:informeextraccion.html.twig');
     }
-    
+
     public function informevencimientoAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -76,6 +76,16 @@ class InformesController extends Controller {
             return $this->render('HSYSMainBundle:Informes:informevencimientoimprimir.html.twig', array('informe' => $informe, 'fecha' => $fecha,));
         }
         return $this->render('HSYSMainBundle:Informes:informevencimiento.html.twig');
+    }
+
+    public function informestockAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $em = $this->getDoctrine()->getEntityManager();
+            $informe = $em->getRepository('HSYSMainBundle:Unidad')->generarDatosInformeStock();
+            return $this->render('HSYSMainBundle:Informes:informestockimprimir.html.twig', array('informe' => $informe));
+        }
+        return $this->render('HSYSMainBundle:Informes:informestock.html.twig');
     }
 
 }

@@ -140,18 +140,32 @@ class UnidadRepository extends EntityRepository {
         $informe = $query->getResult();
         return $informe;
     }
-    
-    public function generarDatosInformeVencimiento($fecha){
+
+    public function generarDatosInformeVencimiento($fecha) {
         $em = $this->getEntityManager();
         $dql = 'SELECT u FROM HSYSMainBundle:Unidad u WHERE u.vencimiento = :fecha AND u.estado <> :descartado AND u.estado <> :fraccionado AND u.estado <> :transfundido';
-        
+
         $query = $em->createQuery($dql);
         $query->setParameter('fecha', $fecha);
         $query->setParameter('descartado', 'Descartado');
         $query->setParameter('fraccionado', 'Fraccionado');
         $query->setParameter('fraccionado', 'Fraccionado');
         $query->setParameter('transfundido', 'Transfundido');
+
+        $informe = $query->getResult();
+        return $informe;
+    }
+
+    public function generarDatosInformeStock() {
+        $em = $this->getEntityManager();
+        $dql = 'SELECT u.estado, c.nombre as hemo, u.factorsang, count(u.id) as cant FROM HSYSMainBundle:Unidad u INNER JOIN u.TipoHemocomponente c WHERE (u.estado = :desbloqueado OR u.estado = :bloqueado) AND u.vencimiento <= :fecha GROUP BY u.estado, c.nombre, u.factorsang';
+
         
+        $query = $em->createQuery($dql);
+        $query->setParameter('fecha', $_SERVER['REQUEST_TIME']);
+        $query->setParameter('desbloqueado', 'Desbloqueado');
+        $query->setParameter('bloqueado', 'Bloqueado');
+
         $informe = $query->getResult();
         return $informe;
     }
