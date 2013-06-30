@@ -4,12 +4,21 @@ namespace HSYS\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 class InformesController extends Controller {
 
+    /**
+    * 	@Secure(roles="ROLE_MEDICO")
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function indexAction() {
         return $this->render('HSYSMainBundle:Informes:index.html.twig');
     }
 
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function informeanalisisAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -21,6 +30,9 @@ class InformesController extends Controller {
         return $this->render('HSYSMainBundle:Informes:informeanalisis.html.twig');
     }
 
+    /**
+    * 	@Secure(roles="ROLE_ADMIN")
+    */
     public function informedescarteAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -33,6 +45,9 @@ class InformesController extends Controller {
         return $this->render('HSYSMainBundle:Informes:informedescarte.html.twig');
     }
 
+    /**
+    * 	@Secure(roles="ROLE_ADMIN")
+    */
     public function informedesbloqueoAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -45,6 +60,9 @@ class InformesController extends Controller {
         return $this->render('HSYSMainBundle:Informes:informedesbloqueo.html.twig');
     }
 
+    /**
+    * 	@Secure(roles="ROLE_ADMIN")
+    */
     public function informevoluntarioAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -55,6 +73,9 @@ class InformesController extends Controller {
         return $this->render('HSYSMainBundle:Informes:informevoluntario.html.twig');
     }
 
+    /**
+    * 	@Secure(roles="ROLE_ADMIN")
+    */
     public function informeextraccionAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -67,6 +88,9 @@ class InformesController extends Controller {
         return $this->render('HSYSMainBundle:Informes:informeextraccion.html.twig');
     }
 
+    /**
+    * 	@Secure(roles="ROLE_MEDICO")
+    */
     public function informevencimientoAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -78,6 +102,9 @@ class InformesController extends Controller {
         return $this->render('HSYSMainBundle:Informes:informevencimiento.html.twig');
     }
 
+    /**
+    * 	@Secure(roles="ROLE_MEDICO")
+    */
     public function informestockAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {

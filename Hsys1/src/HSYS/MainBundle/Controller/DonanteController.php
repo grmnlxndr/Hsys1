@@ -29,24 +29,19 @@ class DonanteController extends Controller {
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             $donante->setBaja(false);
-//            $numero = $request->request->get('numero');
-//            $tipo = $request->request->get('tipo');
-//            $dni = $tipo.$numero;
-//            $donante->setDni($dni);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($donante);
                 $em->flush();
-                //return $this->redirect($this->generateURL('confirmacion', array('accion' => 'agregado', 'id' => $donante->getId())));
                 return $this->redirect($this->generateUrl('ver_donante', array('id' => $donante->getId())));
-//aca poner respuesta no se como
             }
         }
         $provincias = \HSYS\MainBundle\Entity\Provincias::$provincias;
         return $this->render('HSYSMainBundle:Donante:nuevo.html.twig', array('form' => $form->createView(),'provincias' => $provincias));
     }
+    
     /**
-    * 	@Secure(roles="ROLE_PERSONAL")
+    * 	@Secure(roles="ROLE_MEDICO")
     */
     public function modificarAction($id) {
         $request = $this->getRequest();
@@ -75,12 +70,14 @@ class DonanteController extends Controller {
 
         return $this->render('HSYSMainBundle:Donante:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
     }
+    
     /**
     * 	@Secure(roles="ROLE_PERSONAL")
     */
     public function confirmacionAction($accion, $id) {
         return $this->render('HSYSMainBundle:Donante:confirmacion.html.twig', array('accion' => $accion, 'id' => $id,));
     }
+    
     /**
     * 	@Secure(roles="ROLE_PERSONAL")
     */
@@ -112,8 +109,9 @@ class DonanteController extends Controller {
         return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' => $donante));
     }
     
-    
-    //aca!! esta hay que seguir.
+    /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
     public function excluirdonacionAction($donanteid, $donacionid) {
         $em = $this->getDoctrine()->getEntityManager();
         $request = $this->getRequest();
@@ -146,6 +144,7 @@ class DonanteController extends Controller {
         $tiposExlusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findAll();
         return $this->render('HSYSMainBundle:Donante:excluir.html.twig', array('tiposExclusion' => $tiposExlusion, 'donante' => $donante, 'donacion' =>$donacion));
     }
+    
     /**
     * 	@Secure(roles="ROLE_PERSONAL")
     */
@@ -161,6 +160,7 @@ class DonanteController extends Controller {
             return $this->redirect($this->generateUrl('pagina_donante'));
         }
     }
+    
     /**
     * 	@Secure(roles="ROLE_PERSONAL")
     */
@@ -179,6 +179,7 @@ class DonanteController extends Controller {
         }
         return $this->render('HSYSMainBundle:Donante:ver.html.twig', array('donante' => $donante,'habilitado'=>$habilitado));
     }
+    
     /**
     * 	@Secure(roles="ROLE_ADMIN")
     */
@@ -198,11 +199,10 @@ class DonanteController extends Controller {
             $em->flush();
             return $this->redirect($this->generateURL('confirmacion', array('accion' => "ha sido habilitado", 'id' => $id)));
         }
-        //ordenar por en el metodo getExclusionesActivas().
-//        $exclusiones = $em->getRepository('HSYSMainBundle:Exclusion')->findExclusionesdelDonante($id);
         $exclusiones = $donante->getExclusionesActivas();
         return $this->render('HSYSMainBundle:Donante:habilitar.html.twig', array('id' => $id, 'donante' => $donante, 'exclusiones' => $exclusiones, 'habilitado' => $habilitado));
     }
+    
     /**
     * 	@Secure(roles="ROLE_ADMIN")
     */
@@ -219,6 +219,9 @@ class DonanteController extends Controller {
         return $this->render('HSYSMainBundle:Donante:eliminar.html.twig', array('id' => $id, 'donante'=>$donante));
     }
     
+    /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
     public function imprimirDonanteAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);

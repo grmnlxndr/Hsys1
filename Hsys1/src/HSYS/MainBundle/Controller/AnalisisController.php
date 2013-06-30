@@ -17,10 +17,16 @@ class AnalisisController extends Controller
         return $this->render('HSYSMainBundle:Analisis:index.html.twig');
     }
     
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function nuevoAction() {
         return $this->render('HSYSMainBundle:Analisis:nuevo.html.twig');
     }
     
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function nuevoDonacionAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -32,6 +38,9 @@ class AnalisisController extends Controller
         return $this->render('HSYSMainBundle:Analisis:nuevoDonacion.html.twig');
     }
     
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function nuevoBolsaAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -42,7 +51,10 @@ class AnalisisController extends Controller
         }
         return $this->render('HSYSMainBundle:Analisis:nuevoBolsa.html.twig');
     }    
-        
+    
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function nuevoDonanteAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -58,6 +70,9 @@ class AnalisisController extends Controller
         return $this->render('HSYSMainBundle:Analisis:nuevoDonante.html.twig');
     }
 
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function nuevoFechaAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -73,6 +88,9 @@ class AnalisisController extends Controller
         return $this->render('HSYSMainBundle:Analisis:nuevoFecha.html.twig');
     }
     
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function nuevoFormAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -107,10 +125,16 @@ class AnalisisController extends Controller
         return $this->render('HSYSMainBundle:Analisis:nuevoForm.html.twig', array('analisis'=> $analisis,'form' => $form->createView(), 'donacion' => $donacion,'factorsanguineo'=>$factorsanguineo));
     }
     
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function confirmacionAction($accion, $id) {
         return $this->render('HSYSMainBundle:Analisis:confirmacion.html.twig', array('accion' => $accion, 'id' => $id,));
     }
     
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function buscarAction() {
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
@@ -124,6 +148,9 @@ class AnalisisController extends Controller
         }
     }
     
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function modificarAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -159,6 +186,9 @@ class AnalisisController extends Controller
         return $this->render('HSYSMainBundle:Analisis:modificar.html.twig', array('form' => $form->createView(),'analisis'=>$analisis, 'id' => $id,'donacion'=>$donacion, 'factorsanguineo'=>$factorsanguineo));
     }
     
+    /**
+    * 	@Secure(roles="ROLE_BIOQUIMICO")
+    */
     public function verAction($id){
         $em = $this->getDoctrine()->getEntityManager();
         $analisis = $em->getRepository('HSYSMainBundle:Analisis')->find($id);

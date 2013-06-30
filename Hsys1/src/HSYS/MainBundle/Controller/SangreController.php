@@ -4,13 +4,20 @@ namespace HSYS\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class SangreController extends Controller {
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function indexAction() {
         return $this->render('HSYSMainBundle:Sangre:index.html.twig');
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function buscaridAction() {
         $request = $this->getRequest();
         $metodo = false;
@@ -24,6 +31,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:buscarid.html.twig', array('unidades' => $unidades, 'metodo' => $metodo));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function buscarTipoHemocomponenteAction() {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -38,6 +48,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:buscartipohemocomponente.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'tiposhemocomponentes' => $tiposhemocomponentes));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function buscarEstadoAction() {
         $request = $this->getRequest();
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
@@ -52,6 +65,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:buscarestado.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'estados' => $estados));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function buscarFechaAction() {
         $request = $this->getRequest();
         $metodo = false;
@@ -66,6 +82,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:buscarfecha.html.twig', array('unidades' => $unidades, 'metodo' => $metodo));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function buscardonacionAction() {
         $request = $this->getRequest();
         $metodo = false;
@@ -79,6 +98,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:Buscardonacion.html.twig', array('unidades' => $unidades, 'metodo' => $metodo));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function verAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
@@ -86,23 +108,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:ver.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
 
-//    public function modificarestadoAction($id) {
-//        $request = $this->getRequest();
-//        $em = $this->getDoctrine()->getEntityManager();
-//        $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);
-//        $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
-//        if ($request->getMethod() == 'POST') {
-//            $nuevoestado = $request->request->get('nuevoestado');
-//            $unidad->setEstado($nuevoestado);
-//            $em->persist($unidad);
-//            $em->flush();
-//            return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'modificado el estado a "' . $unidad->getEstado() . '"'));
-//        }
-//
-//        return $this->render('HSYSMainBundle:Sangre:modificarestado.html.twig', array('unidad' => $unidad, 'estados' => $estados));
-//    }
-
-
+    /**
+     * 	@Secure(roles="ROLE_MEDICO")
+     */
     public function desbloquearAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -130,6 +138,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:desbloquear.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_MEDICO")
+     */
     public function transfundirAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -144,6 +155,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:transfundir.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_MEDICO")
+     */
     public function desecharAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -167,6 +181,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:desechar.html.twig', array('unidad' => $unidad, 'estados' => $estados, 'causadescarte' => $causadescarte));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_MEDICO")
+     */
     public function bloquearAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -183,6 +200,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:bloquear.html.twig', array('unidad' => $unidad, 'estados' => $estados));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function buscaravanzadaAction() {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -201,6 +221,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:buscaravanzada.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'estados' => $estados, 'tiposhemocomponentes' => $tiposhemocomponentes));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function buscarfactorsanguineoAction() {
         $request = $this->getRequest();
         $factorsang = \HSYS\MainBundle\Entity\factorsang::$factorsang;
@@ -215,6 +238,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:buscarfactorsangui.html.twig', array('unidades' => $unidades, 'metodo' => $metodo, 'factorsang' => $factorsang));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function crearfraccionamientoAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
@@ -253,20 +279,23 @@ class SangreController extends Controller {
             $tipohemo = $uni->getTipoHemocomponente();
             $i = 0;
             while ($i <= count($tiposhemocomponentes)) {
-                if ($tiposhemocomponentes[$i] == $tipohemo){
+                if ($tiposhemocomponentes[$i] == $tipohemo) {
                     unset($tiposhemocomponentes[$i]);
                     break;
-                } else { 
+                } else {
                     $i++;
                 }
             }
             $tiposhemocomponentes = array_values($tiposhemocomponentes);
         }
-                
+
         $factorsanguineo = \HSYS\MainBundle\Entity\factorsang::$factorsang;
         return $this->render('HSYSMainBundle:Sangre:crearfraccionamiento.html.twig', array('unidad' => $unidad, 'tiposhemocomponentes' => $tiposhemocomponentes, 'unidades' => $unidades, 'factorsanguineo' => $factorsanguineo));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function confirmacionfracionamientoAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = new \HSYS\MainBundle\Entity\Unidad;
@@ -277,6 +306,9 @@ class SangreController extends Controller {
         return $this->render('HSYSMainBundle:Sangre:confirmacion.html.twig', array('id' => $unidad->getId(), 'accion' => 'se ha creado el fraccionamiento'));
     }
 
+    /**
+     * 	@Secure(roles="ROLE_PERSONAL")
+     */
     public function imprimiretiquetaAction($id) {
         $em = $this->getDoctrine()->getEntityManager();
         $unidad = $em->getRepository('HSYSMainBundle:Unidad')->find($id);

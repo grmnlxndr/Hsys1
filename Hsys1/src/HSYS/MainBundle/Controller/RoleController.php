@@ -10,6 +10,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use HSYS\MainBundle\Entity\Role;
 use HSYS\MainBundle\Form\RoleType;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
+
 /**
  * Role controller.
  *
@@ -22,6 +24,8 @@ class RoleController extends Controller
      *
      * @Route("/", name="admin")
      * @Template()
+     *
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function indexAction()
     {
@@ -39,6 +43,8 @@ class RoleController extends Controller
      *
      * @Route("/{id}/show", name="admin_show")
      * @Template()
+     * 
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function showAction($id)
     {
@@ -63,6 +69,8 @@ class RoleController extends Controller
      *
      * @Route("/new", name="admin_new")
      * @Template()
+     * 
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function newAction()
     {
@@ -81,6 +89,8 @@ class RoleController extends Controller
      * @Route("/create", name="admin_create")
      * @Method("POST")
      * @Template("HSYSMainBundle:Role:new.html.twig")
+     * 
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function createAction(Request $request)
     {
@@ -107,6 +117,8 @@ class RoleController extends Controller
      *
      * @Route("/{id}/edit", name="admin_edit")
      * @Template()
+     * 
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function editAction($id)
     {
@@ -134,6 +146,8 @@ class RoleController extends Controller
      * @Route("/{id}/update", name="admin_update")
      * @Method("POST")
      * @Template("HSYSMainBundle:Role:edit.html.twig")
+     * 
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function updateAction(Request $request, $id)
     {
@@ -168,6 +182,8 @@ class RoleController extends Controller
      *
      * @Route("/{id}/delete", name="admin_delete")
      * @Method("POST")
+     * 
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function deleteAction(Request $request, $id)
     {

@@ -5,9 +5,14 @@ namespace HSYS\MainBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use \HSYS\MainBundle\Entity\TipoHemocomponente;
 use \HSYS\MainBundle\Entity\TipoExclusion;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class CargadorController extends Controller {
+
 //meter mas datos, como de donante y donaciones, unidades y esas cosas.
+    /**
+     * 	@Secure(roles="ROLE_ADMIN")
+     */
     public function cargaAction() {
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -18,42 +23,42 @@ class CargadorController extends Controller {
 
         $em->persist($hemocomponente);
         $em->flush();
-        
+
         $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("GRD");
         $hemocomponente->setDuracion(35);
 
         $em->persist($hemocomponente);
         $em->flush();
-        
+
         $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Plaquetas");
         $hemocomponente->setDuracion(5);
 
         $em->persist($hemocomponente);
         $em->flush();
-        
+
         $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Plasma Modificado");
         $hemocomponente->setDuracion(365);
 
         $em->persist($hemocomponente);
         $em->flush();
-        
+
         $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Plasma Fresco Congelado");
         $hemocomponente->setDuracion(365);
 
         $em->persist($hemocomponente);
         $em->flush();
-        
+
         $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Crio");
         $hemocomponente->setDuracion(365);
 
         $em->persist($hemocomponente);
         $em->flush();
-         
+
         $hemocomponente = new TipoHemocomponente;
         $hemocomponente->setNombre("Sobrenadante de Crio");
         $hemocomponente->setDuracion(365);
@@ -167,35 +172,35 @@ class CargadorController extends Controller {
 
         $em->persist($exclusion);
         $em->flush();
-        
+
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion generica");
-        
+
         $em->persist($exclusion);
         $em->flush();
-            
-        
+
+
         // Carga de Roles.....
         $role = new \HSYS\MainBundle\Entity\Role();
         $role->setName("ROLE_ADMIN");
         $em->persist($role);
         $em->flush();
-        
+
         $role = new \HSYS\MainBundle\Entity\Role();
         $role->setName("ROLE_BIOQUIMICO");
         $em->persist($role);
         $em->flush();
-        
+
         $role = new \HSYS\MainBundle\Entity\Role();
         $role->setName("ROLE_MEDICO");
         $em->persist($role);
         $em->flush();
-        
-        $role = new \HSYS\MainBundle\Entity\Role();  
+
+        $role = new \HSYS\MainBundle\Entity\Role();
         $role->setName("ROLE_PERSONAL");
         $em->persist($role);
         $em->flush();
-        
+
         return array('Listo' => 'tosta hecho');
     }
 
