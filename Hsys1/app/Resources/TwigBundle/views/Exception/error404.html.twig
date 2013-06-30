@@ -1,0 +1,22 @@
+{% extends 'HSYSMainBundle:Inicio:iniciobase.html.twig' %}
+
+{% block title %}ERROR 404{% endblock %}
+
+{%block contenido %}
+<h1 style="color: #B90302">ERROR 404</h1>
+<br/>
+<div class="consulta"><img src="{{ asset('images/error.png') }}"/>    Página Inexistente.</div>
+
+<br/>
+
+<h3>Error en la dirección accedida. Ingresela correctamente.</h3>
+<br/>
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('hsys_main_homepage') }}">Inicio</a></li>
+        <li><a href="javascript:history.back()">Volver</a></li>
+    </ul>
+</div>
+
+{%endblock%}
+

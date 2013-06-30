@@ -1,18 +1,22 @@
 {% extends 'HSYSMainBundle:Inicio:iniciobase.html.twig' %}
 
+{% block title %}ERROR 403{% endblock %}
+
 {%block contenido %}
-<body>
-  <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    Acceso Denegado: Usted no posee los permisos necesarios</div>
+<h1 style="color: #B90302">ERROR 403</h1>
+<br/>
+<div class="consulta"><img src="{{ asset('images/error.png') }}"/>    Acceso Denegado: Usted no posee los permisos necesarios.</div>
 
-<div>
-    
-    <h4>Para continuar debe Iniciar Sesion:</h4>
-   <a href="{{ path('login') }}">Iniciar Sesion</a>
+<br/>
+
+<h3>Para continuar debe Iniciar Sesión.</h3>
+<br/>
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('login') }}">Iniciar Sesion</a></li>
+        <li><a href="javascript:history.back()">Volver</a></li>
+    </ul>
 </div>
-</body>
-
-    
-
 
 {%endblock%}
 
