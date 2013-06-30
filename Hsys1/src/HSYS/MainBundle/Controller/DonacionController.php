@@ -245,9 +245,19 @@ class DonacionController extends Controller {
 
 //aca va el codigo. para los productos que se van a generar segun el tipo de donacion.
         switch ($donacion->getTipodonacion()) {
+            case "Normal";
+                $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
+                break;
             case "Plaquetas Aféresis":
                 $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Plaquetas'));
                 break;
+            case "Eritroférisis":
+                $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'GRD'));
+                break;
+            case "Plasma Aférisis":
+                $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Plasma Modificado'));
+                break;
+          
             default:
                 $tipohemo = $em->getRepository('HSYSMainBundle:TipoHemocomponente')->findOneBy(array('nombre' => 'Sangre Entera'));
                 break;
