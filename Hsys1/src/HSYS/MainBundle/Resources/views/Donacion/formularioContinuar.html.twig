@@ -67,7 +67,7 @@
         <tr>
             <td><label>Responsable Extracción: </label></td>
             <td>
-                <select id="respExtraccion" name="respExtraccion">
+                <select id="respExtraccion" name="respExtraccion" style="width: 100%">
                            {% for resp in responsables %}
                         <option value="{{ resp.username }}">{{ resp.username }}</option>
                            {% endfor %}

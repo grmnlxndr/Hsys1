@@ -53,7 +53,7 @@
 
             <tr>
                 <td><label>Hospital de extracción: </label></td>
-                <td><select id="selecthospital" name="selecthospital" onchange="cambiarhospital()"> 
+                <td><select id="selecthospital" name="selecthospital" onchange="cambiarhospital()" style="width: 100%"> 
                 {% for hospital in hospitales %}
                                 <option value="{{hospital}}" {% if donacion is defined and donacion.hospital == hospital %}selected{% endif %}>{{hospital}}</option>        
                 {% endfor %}
@@ -67,7 +67,7 @@
              <tr>
                  <td><label>Responsable Cuestionario: </label></td>
                    <td>
-                       <select id="respCuestionario" name="respCuestionario">
+                       <select id="respCuestionario" name="respCuestionario" style="width: 100%">
                            {% for resp in responsables %}
                                <option value="{{ resp.username }}">{{ resp.username }}</option>
                            {% endfor %}
@@ -108,7 +108,7 @@
                     <tr>
                         <td><label>Responsable Examen: </label></td>
                         <td>
-                            <select id="respFisico" name="respFisico">
+                            <select id="respFisico" name="respFisico" style="width: 100%">
                                 {% for resp in responsables %}
                                     <option value="{{ resp.username }}">{{ resp.username }}</option>
                                 {% endfor %}
