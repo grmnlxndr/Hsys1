@@ -786,7 +786,7 @@ class Donacion {
      * anulado = "motivo" donacion anulada (baja logica) 
      * @ORM\Column(name="anulado", type="string", length=40, nullable=true)  
      */
-    public $anulado;
+    private $anulado;
 
     public function setAnulado($anulado) {
         $this->anulado = $anulado;
@@ -795,6 +795,70 @@ class Donacion {
 
     public function getAnulado() {
         return $this->anulado;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="respCuestionario", type="string", length=255, nullable=true)
+     */
+    private $respCuestionario;
+
+    public function setRespCuestionario($resoCuestionario) {
+        $this->respCuestionario = $resoCuestionario;
+        return $this;
+    }
+
+    public function getRespCuestionario() {
+        return $this->respCuestionario;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="respFisico", type="string", length=255, nullable=true)
+     */
+    private $respFisico;
+
+    public function setRespFisico($respFisico) {
+        $this->respFisico = $respFisico;
+        return $this;
+    }
+
+    public function getRespFisico() {
+        return $this->respFisico;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="respExtraccion", type="string", length=255, nullable=true)
+     */
+    private $respExtraccion;
+
+    public function setRespExtraccion($respExtraccion) {
+        $this->respExtraccion = $respExtraccion;
+        return $this;
+    }
+
+    public function getRespExtraccion() {
+        return $this->respExtraccion;
+    }
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="respDonacion", type="string", length=255, nullable=true)
+     */
+    private $respDonacion;
+
+    public function setRespDonacion($respDonacion) {
+        $this->respDonacion = $respDonacion;
+        return $this;
+    }
+
+    public function getRespDonacion() {
+        return $this->respDonacion;
     }
 
 }
