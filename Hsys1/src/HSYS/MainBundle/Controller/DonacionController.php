@@ -143,7 +143,8 @@ class DonacionController extends Controller {
             );
         }
         $hospitales = \HSYS\MainBundle\Entity\Hospital::$hospitales;
-        return $this->render('HSYSMainBundle:Donacion:voluntariaFormulario.html.twig', array('donante' => $donante, 'hospitales' => $hospitales));
+        $responsables = $em->getRepository('HSYSMainBundle:Usuario')->findAll();
+        return $this->render('HSYSMainBundle:Donacion:voluntariaFormulario.html.twig', array('donante' => $donante, 'hospitales' => $hospitales, 'responsables' => $responsables));
     }
 
     /**
@@ -169,6 +170,8 @@ class DonacionController extends Controller {
         $anticoagulante = $request->request->get('anticoagulante');
         $tipodonacion = $request->request->get('tipodonacion');
         $inspeccionbrazos = $request->request->get('inspeccionbrazos');
+        $respCuestionario = $request->request->get('respCuestionario');
+        $respFisico = $request->request->get('respFisico');
 
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -200,12 +203,19 @@ class DonacionController extends Controller {
         $donacion->setTipobolsa($tipobolsa);
         $donacion->setMarca($marca);
         $donacion->setAnticoagulante($anticoagulante);
+        $donacion->setRespCuestionario($respCuestionario);
+        $donacion->setRespFisico($respFisico);
+        $usr = $this->get('security.context')->getToken()->getUser();
+        $donacion->setRespDonacion($usr->getUsername());
+        
         $donacion->setTerminado(false);
 
         $em->persist($donacion);
         $em->flush();
+        
+        $responsables = $em->getRepository('HSYSMainBundle:Usuario')->findAll();
 
-        return $this->render('HSYSMainBundle:Donacion:formularioContinuar.html.twig', array('donacion' => $donacion));
+        return $this->render('HSYSMainBundle:Donacion:formularioContinuar.html.twig', array('donacion' => $donacion, 'responsables' => $responsables));
     }
 
     //para leer el valor
@@ -233,6 +243,7 @@ class DonacionController extends Controller {
         $flebotomia = $request->request->get('flebotomia');
         $puncion = $request->request->get('puncion');
         $reaccionpostextraccion = $request->request->get('reaccionpostextraccion');
+        $respExtraccion = $request->request->get('respExtraccion');
 
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -242,6 +253,7 @@ class DonacionController extends Controller {
         $donacion->setPuncion($puncion);
         $donacion->setReaccionpostextraccion($reaccionpostextraccion);
         $donacion->setComentario($comentarios);
+        $donacion->setRespExtraccion($respExtraccion);
 
 //aca va el codigo. para los productos que se van a generar segun el tipo de donacion.
         switch ($donacion->getTipodonacion()) {
@@ -344,7 +356,8 @@ class DonacionController extends Controller {
             );
         }
         $hospitales = \HSYS\MainBundle\Entity\Hospital::$hospitales;
-        return $this->render('HSYSMainBundle:Donacion:receptorFormulario.html.twig', array('donante' => $donante, 'receptor' => $receptor, 'hospitales' => $hospitales));
+        $responsables = $em->getRepository('HSYSMainBundle:Usuario')->findAll();
+        return $this->render('HSYSMainBundle:Donacion:receptorFormulario.html.twig', array('donante' => $donante, 'receptor' => $receptor, 'hospitales' => $hospitales, 'responsables' => $responsables));
     }
 
     /**
@@ -371,6 +384,9 @@ class DonacionController extends Controller {
         $anticoagulante = $request->request->get('anticoagulante');
         $tipodonacion = $request->request->get('tipodonacion');
         $inspeccionbrazos = $request->request->get('inspeccionbrazos');
+        $respCuestionario = $request->request->get('respCuestionario');
+        $respFisico = $request->request->get('respFisico');
+        
 
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -405,12 +421,18 @@ class DonacionController extends Controller {
         $donacion->setTipobolsa($tipobolsa);
         $donacion->setMarca($marca);
         $donacion->setAnticoagulante($anticoagulante);
+        $donacion->setRespCuestionario($respCuestionario);
+        $donacion->setRespFisico($respFisico);
+        $usr = $this->get('security.context')->getToken()->getUser();
+        $donacion->setRespDonacion($usr->getUsername());
         $donacion->setTerminado(false);
 
         $em->persist($donacion);
         $em->flush();
 
-        return $this->render('HSYSMainBundle:Donacion:formularioContinuar.html.twig', array('donacion' => $donacion));
+        $responsables = $em->getRepository('HSYSMainBundle:Usuario')->findAll();
+
+        return $this->render('HSYSMainBundle:Donacion:formularioContinuar.html.twig', array('donacion' => $donacion, 'responsables' => $responsables));
     }
 
     /**

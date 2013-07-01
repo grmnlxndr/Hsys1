@@ -804,8 +804,8 @@ class Donacion {
      */
     private $respCuestionario;
 
-    public function setRespCuestionario($resoCuestionario) {
-        $this->respCuestionario = $resoCuestionario;
+    public function setRespCuestionario($respCuestionario) {
+        $this->respCuestionario = $respCuestionario;
         return $this;
     }
 

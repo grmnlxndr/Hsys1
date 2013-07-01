@@ -35,10 +35,20 @@
         <th>Tipo Donación:  </th>
         <td>{{ donacion.tipodonacion }}</td>
     </tr>
-
     <tr>
         <th>Hospital de extracción:  </th>
         <td>{{ donacion.hospital }}</td>
+    </tr>
+    <tr>
+        <th>Responsable de la Donación:  </th>
+        <td>{{ donacion.respDonacion }}</td>
+    </tr>
+    <tr>
+        <th colspan="2">Datos del Cuestionario</th>
+    </tr>
+    <tr>
+        <th>Responsable del Cuestionario:  </th>
+        <td>{{ donacion.respCuestionario }}</td>
     </tr>
     <tr>
         <th colspan="2">Datos del Exámen Físico</th>
@@ -72,6 +82,10 @@
         <td>{{ donacion.obs }}</td>
     </tr>
     <tr>
+        <th>Responsable del Examen:  </th>
+        <td>{{ donacion.respFisico }}</td>
+    </tr>
+    <tr>
         <th colspan="2">Datos de la Extracción</th>
     </tr>
     <tr>
@@ -85,6 +99,10 @@
     <tr>
         <th>Reacción Postextracción:  </th>
         <td>{{ donacion.reaccionpostextraccion }}</td>
+    </tr>
+    <tr>
+        <th>Responsable de la Extracción:  </th>
+        <td>{{ donacion.respExtraccion }}</td>
     </tr>
     <tr>
         <th>Comentarios: </th>

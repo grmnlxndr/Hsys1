@@ -65,32 +65,42 @@
             <td><input id="reaccionpostextraccion" name="reaccionpostextraccion"> </td>
         </tr>
         <tr>
-            <td><label>Comentarios: </label></td>
-            <td><textarea id="comentarios" name="comentarios" rows="5" form="donacion_form" style="width: 93%"></textarea></td>
-        </tr>
-        <tr>
-            <td><input type="submit" name="action" value="Guardar y Continuar"/></td>
-            <td><input type="button" value="Cargarlo Luego" onclick="location.href='{{ path('ver_donacion', {'id':donacion.id}) }}'"/></td>
-        </tr> 
-    </table>
-    <input id="numdedonacion" name="numdedonacion" type="hidden" value="{{ donacion.numdedonacion }}" />
-</form>
+            <td><label>Responsable Extracción: </label></td>
+            <td>
+                <select id="respExtraccion" name="respExtraccion">
+                           {% for resp in responsables %}
+                        <option value="{{ resp.username }}">{{ resp.username }}</option>
+                           {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Comentarios: </label></td>
+                <td><textarea id="comentarios" name="comentarios" rows="5" form="donacion_form" style="width: 93%"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="action" value="Guardar y Continuar"/></td>
+                <td><input type="button" value="Cargarlo Luego" onclick="location.href='{{ path('ver_donacion', {'id':donacion.id}) }}'"/></td>
+            </tr> 
+        </table>
+        <input id="numdedonacion" name="numdedonacion" type="hidden" value="{{ donacion.numdedonacion }}" />
+    </form>
 
-<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
-<script>
-    window.onload = function() {
-        cambiarreaccionpostextraccion();
-    }
+    <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+    <script>
+        window.onload = function() {
+            cambiarreaccionpostextraccion();
+        }
     
-    function cambiarreaccionpostextraccion(){
-        $("#reaccionpostextraccion").val($("#selectreaccionpostextraccion").val());
-        if ($("#reaccionpostextraccion").val()=="Otra"){
-            $("#reaccionpostextraccion").show();
-        } else{
-            $("#reaccionpostextraccion").hide();
-        }       
-    };
+        function cambiarreaccionpostextraccion(){
+            $("#reaccionpostextraccion").val($("#selectreaccionpostextraccion").val());
+            if ($("#reaccionpostextraccion").val()=="Otra"){
+                $("#reaccionpostextraccion").show();
+            } else{
+                $("#reaccionpostextraccion").hide();
+            }       
+        };
 
-</script>
+        </script>
 
 {% endblock %}

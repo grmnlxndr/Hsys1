@@ -25,126 +25,149 @@
     </table>
     <br/>
     <form id="donacion_form" name="donacion_form" method="post" action="{{ path('alta_donacion_voluntaria_formulario_guardar') }}">
-       <table>
-           <tr>
-               <td><label>Numero de Donación: </label></td>
-               <td><input name="numdedonacion" id="numdedonacion" style="width: 93%" value="{% if donacion is defined %}{{ donacion.numdedonacion }}{% endif %}"></td>
-           </tr>
-         <tr>
-            <td><label>Tipo de Donación: </label></td>
-            <td><select  id="tipodonacion" name="tipodonacion" style="width: 100%">
-                    <option value="Normal">Normal</option>
-                    <option value="Plaquetas Aféresis">Plaquetas Aféresis</option>
-                    <option value="Eritroféresis">Eritroférisis</option>
-                    <option value="Plasma Aférisis">Plasma Aférisis</option>
-                    <option value="Stem Cells">Stem Cells</option>
-                    <option value="Sangría Terapéutica">Sangría Terapéutica</option>
-                    <option value="Autóloga">Autóloga</option>
-                </select>
-            </td><!required="required">
-        </tr>
-        <tr>
-            <td><label><u>Datos Generales: </u></label></td>
-        </tr>
-        <tr>
-            <td><label>Fecha extracción: </label></td>
-            <td><input  id="fecha" name="fecha" type="date" value="{% if donacion is defined %}{{ donacion.fechextraccion|date('Y-m-d') }}{% else %}{{ "now"|date('Y-m-d') }}{% endif %}" style="width: 93%"/></td><!required="required">
-        </tr>
+        <table>
+            <tr>
+                <td><label><u>Datos Generales: </u></label></td>
+            </tr>
+            <tr>
+                <td><label>Numero de Donación: </label></td>
+                <td><input name="numdedonacion" id="numdedonacion" style="width: 93%" value="{% if donacion is defined %}{{ donacion.numdedonacion }}{% endif %}"></td>
+            </tr>
+            <tr>
+                <td><label>Tipo de Donación: </label></td>
+                <td><select  id="tipodonacion" name="tipodonacion" style="width: 100%">
+                        <option value="Normal">Normal</option>
+                        <option value="Plaquetas Aféresis">Plaquetas Aféresis</option>
+                        <option value="Eritroféresis">Eritroférisis</option>
+                        <option value="Plasma Aférisis">Plasma Aférisis</option>
+                        <option value="Stem Cells">Stem Cells</option>
+                        <option value="Sangría Terapéutica">Sangría Terapéutica</option>
+                        <option value="Autóloga">Autóloga</option>
+                    </select>
+                </td><!required="required">
+            </tr>
+            <tr>
+                <td><label>Fecha extracción: </label></td>
+                <td><input  id="fecha" name="fecha" type="date" value="{% if donacion is defined %}{{ donacion.fechextraccion|date('Y-m-d') }}{% else %}{{ "now"|date('Y-m-d') }}{% endif %}" style="width: 93%"/></td><!required="required">
+            </tr>
 
-        <tr>
-            <td><label>Hospital de extracción: </label></td>
-            <td><select id="selecthospital" name="selecthospital" onchange="cambiarhospital()"> 
+            <tr>
+                <td><label>Hospital de extracción: </label></td>
+                <td><select id="selecthospital" name="selecthospital" onchange="cambiarhospital()"> 
                 {% for hospital in hospitales %}
-                            <option value="{{hospital}}" {% if donacion is defined and donacion.hospital == hospital %}selected{% endif %}>{{hospital}}</option>        
+                                <option value="{{hospital}}" {% if donacion is defined and donacion.hospital == hospital %}selected{% endif %}>{{hospital}}</option>        
                 {% endfor %}
-                </select>        
-            </td>
-            <td><input id="hospital" name="hospital"></td>
-        </tr>
-        
-            <td><label><u>Datos Exámen Físico: </u></label></td>
-        </tr>
-        <tr>
-            <td><label>Peso: </label></td>
-            <td><input  id="peso" name="peso" style="width: 93%" value="{% if donacion is defined %}{{ donacion.peso }}{% endif %}"/></td><!required="required">
-        </tr>
-        <tr>
-            <td><label>Tensión Arterial: </label></td>
-            <td><input  id="tensionarterial" name="tensionarterial" style="width: 93%" value="{% if donacion is defined %}{{ donacion.tensionarterial }}{% endif %}"/></td><!required="required">
-        </tr>
-        <tr>
-            <td><label>Pulso: </label></td>
-            <td><input  id="pulso" name="pulso" style="width: 93%" value="{% if donacion is defined %}{{ donacion.pulso }}{% endif %}"/></td><!required="required">
-        </tr>
-        <tr>
-            <td><label>Temperatura: </label></td>
-            <td><input  id="temperatura" name="temperatura" style="width: 93%" value="{% if donacion is defined %}{{ donacion.temperatura }}{% endif %}"/></td><!required="required">
-        </tr>
-        <tr>
-            <td><label>Hematocrito: </label></td>
-            <td><input  id="hto" name="hto" style="width: 93%" value="{% if donacion is defined %}{{ donacion.hto }}{% endif %}"/></td><!required="required">      
-        </tr>
-        <tr>
-            <td><label>Inspección de brazos: </label></td>
-            <td><input  id="inspeccionbrazos" name="inspeccionbrazos" value="Normal" style="width: 93%" value="{% if donacion is defined %}{{ donacion.inspeccionbrazos }}{% endif %}"/></td><!required="required">
-        </tr>
-        <tr>
-            <td><label>Observaciones: </label></td>
-            <td><input  id="obs" name="obs" style="width: 93%" value="{% if donacion is defined %}{{ donacion.obs }}{% endif %}"/></td><!required="required">
-        </tr>
-        <tr>
-            <td><label><u>Datos de la Bolsa: </u></label></td>
-        </tr>
-        <tr>
-            <td><label>Número de Tubuladura: </label></td>
-            <td><input required="required" id="bolsa" name="bolsa" type="text" value="{% if donacion is defined %}{{ donacion.idbolsa }}{% endif %}"/></td>
-        </tr>
-        <tr>
-            <td><label>Número de Lote: </label></td>
-            <td><input required="required" id="nrolote" name="nrolote" type="text" value="{% if donacion is defined %}{{ donacion.nrolote }}{% endif %}"/></td>
-        </tr>
-        <tr>
-            <td><label>Fecha de Vencimiento: </label></td>
-            <td><input required="required" id="vencimiento" name="vencimiento" type="date" value="{% if donacion is defined %}{{ donacion.vencimientobolsa|date('Y-m-d') }}{% else %}{{ "now"|date('Y-m-d') }}{% endif %}" style="width: 93%"/></td>
-        </tr>
-        <tr>
-            <td><label>Tipo Bolsa: </label></td>
-            <td><select  id="selecttipobolsa" name="selecttipobolsa" style="width: 100%" onchange="cambiatipobolsa()">
-                    <option value="Simple">Simple</option>
-                    <option value="Doble">Doble</option>
-                    <option value="Triple">Triple</option>
-                    <option value="Cuadruple">Cuádruple</option>
-                    <option value="Otro">Otro</option>
-                </select>
-            </td>
-            <td><input id="tipobolsa" name="tipobolsa"></td>
-        </tr>
-        <tr>
-            <td><label>Marca: </label></td>
-            <td><select  id="selectmarca" name="selectmarca" style="width: 100%" onchange="cambiarmarca()">
-                    <option value="Baxter">Baxter</option>
-                    <option value="Grifols">Grifols</option>
-                    <option value="MS">MS</option>
-                    <option value="Kawasumi">Kawasumi</option>
-                    <option value="Rivero">Rivero</option>
-                    <option value="Terumo">Terumo</option>
-                    <option value="Fenwal">Fenwal</option>
-                    <option value="Otra">Otra</option>
-                </select>
-            </td>
-            <td><input id="marca" name="marca"></td>
-        </tr>
-        <tr>
-            <td><label>Anticoagulante: </label></td>
-            <td><select id="selectanticoagulante" name="selectanticoagualente" style="width: 100%" onchange="cambiaranticoagulante()">
-                    <option value="ACD-A">ACD-A</option>
-                    <option value="CPD-A">CPD-A</option>
-                    <option value="SAG-Manitol">SAG-Manitol</option>
-                    <option value="Otro">Otro</option>
-                </select>
-            </td>
-            <td><input id="anticoagulante" name="anticoagulante"></td>
-        </tr>
+                            </select>        
+                   </td>
+                        <td><input id="hospital" name="hospital"></td>
+             </tr>
+             <tr>
+                   <td><label><u>Cuestionario: </u></label></td>
+             </tr>
+             <tr>
+                 <td><label>Responsable Cuestionario: </label></td>
+                   <td>
+                       <select id="respCuestionario" name="respCuestionario">
+                           {% for resp in responsables %}
+                               <option value="{{ resp.username }}">{{ resp.username }}</option>
+                           {% endfor %}
+                       </select>
+                   </td>
+             </tr>
+                    <tr>
+                    <td><label><u>Datos Exámen Físico: </u></label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Peso: </label></td>
+                        <td><input  id="peso" name="peso" style="width: 93%" value="{% if donacion is defined %}{{ donacion.peso }}{% endif %}"/></td><!required="required">
+                    </tr>
+                    <tr>
+                        <td><label>Tensión Arterial: </label></td>
+                        <td><input  id="tensionarterial" name="tensionarterial" style="width: 93%" value="{% if donacion is defined %}{{ donacion.tensionarterial }}{% endif %}"/></td><!required="required">
+                    </tr>
+                    <tr>
+                        <td><label>Pulso: </label></td>
+                        <td><input  id="pulso" name="pulso" style="width: 93%" value="{% if donacion is defined %}{{ donacion.pulso }}{% endif %}"/></td><!required="required">
+                    </tr>
+                    <tr>
+                        <td><label>Temperatura: </label></td>
+                        <td><input  id="temperatura" name="temperatura" style="width: 93%" value="{% if donacion is defined %}{{ donacion.temperatura }}{% endif %}"/></td><!required="required">
+                    </tr>
+                    <tr>
+                        <td><label>Hematocrito: </label></td>
+                        <td><input  id="hto" name="hto" style="width: 93%" value="{% if donacion is defined %}{{ donacion.hto }}{% endif %}"/></td><!required="required">      
+                    </tr>
+                    <tr>
+                        <td><label>Inspección de brazos: </label></td>
+                        <td><input  id="inspeccionbrazos" name="inspeccionbrazos" value="Normal" style="width: 93%" value="{% if donacion is defined %}{{ donacion.inspeccionbrazos }}{% endif %}"/></td><!required="required">
+                    </tr>
+                    <tr>
+                        <td><label>Observaciones: </label></td>
+                        <td><input  id="obs" name="obs" style="width: 93%" value="{% if donacion is defined %}{{ donacion.obs }}{% endif %}"/></td><!required="required">
+                    </tr>
+                    <tr>
+                        <td><label>Responsable Examen: </label></td>
+                        <td>
+                            <select id="respFisico" name="respFisico">
+                                {% for resp in responsables %}
+                                    <option value="{{ resp.username }}">{{ resp.username }}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label><u>Datos de la Bolsa: </u></label></td>
+                    </tr>
+                    <tr>
+                        <td><label>Número de Tubuladura: </label></td>
+                        <td><input required="required" id="bolsa" name="bolsa" type="text" value="{% if donacion is defined %}{{ donacion.idbolsa }}{% endif %}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Número de Lote: </label></td>
+                        <td><input required="required" id="nrolote" name="nrolote" type="text" value="{% if donacion is defined %}{{ donacion.nrolote }}{% endif %}"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Fecha de Vencimiento: </label></td>
+                        <td><input required="required" id="vencimiento" name="vencimiento" type="date" value="{% if donacion is defined %}{{ donacion.vencimientobolsa|date('Y-m-d') }}{% else %}{{ "now"|date('Y-m-d') }}{% endif %}" style="width: 93%"/></td>
+                    </tr>
+                    <tr>
+                        <td><label>Tipo Bolsa: </label></td>
+                        <td><select  id="selecttipobolsa" name="selecttipobolsa" style="width: 100%" onchange="cambiatipobolsa()">
+                                <option value="Simple">Simple</option>
+                                <option value="Doble">Doble</option>
+                                <option value="Triple">Triple</option>
+                                <option value="Cuadruple">Cuádruple</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </td>
+                        <td><input id="tipobolsa" name="tipobolsa"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Marca: </label></td>
+                        <td><select  id="selectmarca" name="selectmarca" style="width: 100%" onchange="cambiarmarca()">
+                                <option value="Baxter">Baxter</option>
+                                <option value="Grifols">Grifols</option>
+                                <option value="MS">MS</option>
+                                <option value="Kawasumi">Kawasumi</option>
+                                <option value="Rivero">Rivero</option>
+                                <option value="Terumo">Terumo</option>
+                                <option value="Fenwal">Fenwal</option>
+                                <option value="Otra">Otra</option>
+                            </select>
+                        </td>
+                        <td><input id="marca" name="marca"></td>
+                    </tr>
+                    <tr>
+                        <td><label>Anticoagulante: </label></td>
+                        <td><select id="selectanticoagulante" name="selectanticoagualente" style="width: 100%" onchange="cambiaranticoagulante()">
+                                <option value="ACD-A">ACD-A</option>
+                                <option value="CPD-A">CPD-A</option>
+                                <option value="SAG-Manitol">SAG-Manitol</option>
+                                <option value="Otro">Otro</option>
+                            </select>
+                        </td>
+                        <td><input id="anticoagulante" name="anticoagulante"></td>
+                    </tr>
        {# <tr>
             <td><label><u>Datos de la Extracción: </u></label></td>
         </tr>
@@ -184,60 +207,60 @@
         </tr>
         <tr>
             #}
-            <td><input type="submit" name="action" value="Guardar y Continuar"/></td>
-        </tr> 
-    </table>
-        <input id="donante" name="donante" type="hidden" value="{{ donante.id }}" />
-    </form>
+                    <td><input type="submit" name="action" value="Guardar y Continuar"/></td>
+                    </tr> 
+                </table>
+                <input id="donante" name="donante" type="hidden" value="{{ donante.id }}" />
+            </form>
 
+
+            <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+            <script>
+                window.onload = function() {
+                    cambiarhospital();
+                    cambiatipobolsa();
+                    cambiarmarca();
+                    cambiaranticoagulante();
+                    }
     
-<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
-<script>
-    window.onload = function() {
-        cambiarhospital();
-        cambiatipobolsa();
-        cambiarmarca();
-        cambiaranticoagulante();
-        }
+                function cambiarhospital(){
+                    $("#hospital").val($("#selecthospital").val());
+                    if ($("#hospital").val()=="Otro"){
+                        $("#hospital").show();
+                    } else{
+                        $("#hospital").hide();
+                    }       
+                };
     
-    function cambiarhospital(){
-        $("#hospital").val($("#selecthospital").val());
-        if ($("#hospital").val()=="Otro"){
-            $("#hospital").show();
-        } else{
-            $("#hospital").hide();
-        }       
-    };
-    
-    function cambiatipobolsa(){
-        $("#tipobolsa").val($("#selecttipobolsa").val());
-        if ($("#tipobolsa").val()=="Otro"){
-            $("#tipobolsa").show();
-        } else{
-            $("#tipobolsa").hide();
-        }       
-    };
+                function cambiatipobolsa(){
+                    $("#tipobolsa").val($("#selecttipobolsa").val());
+                    if ($("#tipobolsa").val()=="Otro"){
+                        $("#tipobolsa").show();
+                    } else{
+                        $("#tipobolsa").hide();
+                    }       
+                };
    
-    function cambiarmarca(){
-        $("#marca").val($("#selectmarca").val());
-        if ($("#marca").val()=="Otra"){
-            $("#marca").show();
-        } else{
-            $("#marca").hide();
-        }       
-    };
+                function cambiarmarca(){
+                    $("#marca").val($("#selectmarca").val());
+                    if ($("#marca").val()=="Otra"){
+                        $("#marca").show();
+                    } else{
+                        $("#marca").hide();
+                    }       
+                };
    
-    function cambiaranticoagulante(){
-        $("#anticoagulante").val($("#selectanticoagulante").val());
-        if ($("#anticoagulante").val()=="Otro"){
-            $("#anticoagulante").show();
-        } else{
-            $("#anticoagulante").hide();
-        }       
-    };
+                function cambiaranticoagulante(){
+                    $("#anticoagulante").val($("#selectanticoagulante").val());
+                    if ($("#anticoagulante").val()=="Otro"){
+                        $("#anticoagulante").show();
+                    } else{
+                        $("#anticoagulante").hide();
+                    }       
+                };
    
     
-</script>
-    
-    
+                </script>
+
+
 {% endblock %}
