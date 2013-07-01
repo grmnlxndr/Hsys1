@@ -227,8 +227,9 @@ class DonacionController extends Controller {
         $em = $this->getDoctrine()->getEntityManager();
 
         $donacion = $em->getRepository('HSYSMainBundle:Donacion')->findOneBy(array('numdedonacion' => $numdedonacion));
-
-        return $this->render('HSYSMainBundle:Donacion:formularioContinuar.html.twig', array('donacion' => $donacion));
+        $responsables = $em->getRepository('HSYSMainBundle:Usuario')->findAll();
+        
+        return $this->render('HSYSMainBundle:Donacion:formularioContinuar.html.twig', array('donacion' => $donacion, 'responsables' => $responsables));
     }
 
 //el encargado de crear una unidad tiene que ser la donacion, el metodo ya esta pero falta implementarlo en este controlador
