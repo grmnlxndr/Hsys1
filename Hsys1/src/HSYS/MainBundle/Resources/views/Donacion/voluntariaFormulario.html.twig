@@ -31,7 +31,7 @@
             </tr>
             <tr>
                 <td><label>Numero de Donación: </label></td>
-                <td><input name="numdedonacion" id="numdedonacion" style="width: 93%" value="{% if donacion is defined %}{{ donacion.numdedonacion }}{% endif %}"></td>
+                <td><input type="number" step="1" name="numdedonacion" id="numdedonacion" style="width: 93%" value="{% if donacion is defined %}{{ donacion.numdedonacion }}{% endif %}"></td>
             </tr>
             <tr>
                 <td><label>Tipo de Donación: </label></td>
@@ -79,23 +79,23 @@
                     </tr>
                     <tr>
                         <td><label>Peso: </label></td>
-                        <td><input  id="peso" name="peso" style="width: 93%" value="{% if donacion is defined %}{{ donacion.peso }}{% endif %}"/></td><!required="required">
+                        <td><input type="number" step="any" id="peso" name="peso" style="width: 93%" value="{% if donacion is defined %}{{ donacion.peso }}{% endif %}"/></td><!required="required">
                     </tr>
                     <tr>
                         <td><label>Tensión Arterial: </label></td>
-                        <td><input  id="tensionarterial" name="tensionarterial" style="width: 93%" value="{% if donacion is defined %}{{ donacion.tensionarterial }}{% endif %}"/></td><!required="required">
+                        <td><input type="number" step="any" id="tensionarterial" name="tensionarterial" style="width: 93%" value="{% if donacion is defined %}{{ donacion.tensionarterial }}{% endif %}"/></td><!required="required">
                     </tr>
                     <tr>
                         <td><label>Pulso: </label></td>
-                        <td><input  id="pulso" name="pulso" style="width: 93%" value="{% if donacion is defined %}{{ donacion.pulso }}{% endif %}"/></td><!required="required">
+                        <td><input type="number" step="any" id="pulso" name="pulso" style="width: 93%" value="{% if donacion is defined %}{{ donacion.pulso }}{% endif %}"/></td><!required="required">
                     </tr>
                     <tr>
                         <td><label>Temperatura: </label></td>
-                        <td><input  id="temperatura" name="temperatura" style="width: 93%" value="{% if donacion is defined %}{{ donacion.temperatura }}{% endif %}"/></td><!required="required">
+                        <td><input type="number" step="any" id="temperatura" name="temperatura" style="width: 93%" value="{% if donacion is defined %}{{ donacion.temperatura }}{% endif %}"/></td><!required="required">
                     </tr>
                     <tr>
                         <td><label>Hematocrito: </label></td>
-                        <td><input  id="hto" name="hto" style="width: 93%" value="{% if donacion is defined %}{{ donacion.hto }}{% endif %}"/></td><!required="required">      
+                        <td><input type="number" step="any" id="hto" name="hto" style="width: 93%" value="{% if donacion is defined %}{{ donacion.hto }}{% endif %}"/></td><!required="required">      
                     </tr>
                     <tr>
                         <td><label>Inspección de brazos: </label></td>
@@ -120,11 +120,11 @@
                     </tr>
                     <tr>
                         <td><label>Número de Tubuladura: </label></td>
-                        <td><input required="required" id="bolsa" name="bolsa" type="text" value="{% if donacion is defined %}{{ donacion.idbolsa }}{% endif %}"/></td>
+                        <td><input type="number" step="1" required="required" id="bolsa" name="bolsa" type="text" value="{% if donacion is defined %}{{ donacion.idbolsa }}{% endif %}"/></td>
                     </tr>
                     <tr>
                         <td><label>Número de Lote: </label></td>
-                        <td><input required="required" id="nrolote" name="nrolote" type="text" value="{% if donacion is defined %}{{ donacion.nrolote }}{% endif %}"/></td>
+                        <td><input type="number" step="1" required="required" id="nrolote" name="nrolote" type="text" value="{% if donacion is defined %}{{ donacion.nrolote }}{% endif %}"/></td>
                     </tr>
                     <tr>
                         <td><label>Fecha de Vencimiento: </label></td>

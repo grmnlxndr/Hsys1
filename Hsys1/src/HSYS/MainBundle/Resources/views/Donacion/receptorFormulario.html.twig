@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td><label>Número de Donación: </label></td>
-                <td><input name="numdedonacion" id="numdedonacion" style="width: 93%"></td>
+                <td><input type="number" step="1" name="numdedonacion" id="numdedonacion" style="width: 93%"></td>
             </tr>        
             <tr>
                 <td><label>Tipo de Donación: </label></td>
@@ -93,23 +93,23 @@
                         </tr>
                         <tr>
                             <td><label>Peso: </label></td>
-                            <td><input  id="peso" name="peso" style="width: 93%"/></td><!required="required">
+                            <td><input type="number" step="any" id="peso" name="peso" style="width: 93%"/></td><!required="required">
                         </tr>
                         <tr>
                             <td><label>Tensión Arterial: </label></td>
-                            <td><input  id="tensionarterial" name="tensionarterial" style="width: 93%"/></td><!required="required">
+                            <td><input type="number" step="any" id="tensionarterial" name="tensionarterial" style="width: 93%"/></td><!required="required">
                         </tr>
                         <tr>
                             <td><label>Pulso: </label></td>
-                            <td><input  id="pulso" name="pulso" style="width: 93%"/></td><!required="required">
+                            <td><input type="number" step="any" id="pulso" name="pulso" style="width: 93%"/></td><!required="required">
                         </tr>
                         <tr>
                             <td><label>Temperatura: </label></td>
-                            <td><input  id="temperatura" name="temperatura" style="width: 93%"/></td><!required="required">
+                            <td><input type="number" step="any" id="temperatura" name="temperatura" style="width: 93%"/></td><!required="required">
                         </tr>
                         <tr>
                             <td><label>Hematocrito: </label></td>
-                            <td><input  id="hto" name="hto" style="width: 93%"/></td><!required="required">      
+                            <td><input type="number" step="any" id="hto" name="hto" style="width: 93%"/></td><!required="required">      
                         </tr>
                         <tr>
                             <td><label>Inspección de brazos: </label></td>
@@ -134,11 +134,11 @@
                             </tr>
                             <tr>
                                 <td><label>Número de Tubuladura: </label></td>
-                                <td><input required="required" id="bolsa" name="bolsa" type="text"/></td>
+                                <td><input type="number" step="1" required="required" id="bolsa" name="bolsa" type="text"/></td>
                             </tr>
                             <tr>
                                 <td><label>Número de Lote: </label></td>
-                                <td><input required="required" id="nrolote" name="nrolote" type="text"/></td>
+                                <td><input type="number" step="1" required="required" id="nrolote" name="nrolote" type="text"/></td>
                             </tr>
                             <tr>
                                 <td><label>Fecha de Vencimiento: </label></td>
@@ -232,50 +232,54 @@
 
                     <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
                     <script>
-                        window.onload = function() {
-                            cambiarhospital();
-                            cambiatipobolsa();
-                            cambiarmarca();
-                            cambiaranticoagulante();
-                            }
-    
-                        function cambiarhospital(){
-                            $("#hospital").val($("#selecthospital").val());
-                            if ($("#hospital").val()=="Otro"){
-                                $("#hospital").show();
-                            } else{
-                                $("#hospital").hide();
-                            }       
-                        };
-    
-                        function cambiatipobolsa(){
-                            $("#tipobolsa").val($("#selecttipobolsa").val());
-                            if ($("#tipobolsa").val()=="Otro"){
-                                $("#tipobolsa").show();
-                            } else{
-                                $("#tipobolsa").hide();
-                            }       
-                        };
-   
-                        function cambiarmarca(){
-                            $("#marca").val($("#selectmarca").val());
-                            if ($("#marca").val()=="Otra"){
-                                $("#marca").show();
-                            } else{
-                                $("#marca").hide();
-                            }       
-                        };
-   
-                        function cambiaranticoagulante(){
-                            $("#anticoagulante").val($("#selectanticoagulante").val());
-                            if ($("#anticoagulante").val()=="Otro"){
-                                $("#anticoagulante").show();
-                            } else{
-                                $("#anticoagulante").hide();
-                            }       
-                        };
-   
-    
+                    window.onload = function() {
+                        cambiarhospital();
+                        cambiatipobolsa();
+                        cambiarmarca();
+                        cambiaranticoagulante();
+                    }
+
+                    function cambiarhospital() {
+                        $("#hospital").val($("#selecthospital").val());
+                        if ($("#hospital").val() == "Otro") {
+                            $("#hospital").show();
+                        } else {
+                            $("#hospital").hide();
+                        }
+                    }
+                    ;
+
+                    function cambiatipobolsa() {
+                        $("#tipobolsa").val($("#selecttipobolsa").val());
+                        if ($("#tipobolsa").val() == "Otro") {
+                            $("#tipobolsa").show();
+                        } else {
+                            $("#tipobolsa").hide();
+                        }
+                    }
+                    ;
+
+                    function cambiarmarca() {
+                        $("#marca").val($("#selectmarca").val());
+                        if ($("#marca").val() == "Otra") {
+                            $("#marca").show();
+                        } else {
+                            $("#marca").hide();
+                        }
+                    }
+                    ;
+
+                    function cambiaranticoagulante() {
+                        $("#anticoagulante").val($("#selectanticoagulante").val());
+                        if ($("#anticoagulante").val() == "Otro") {
+                            $("#anticoagulante").show();
+                        } else {
+                            $("#anticoagulante").hide();
+                        }
+                    }
+                    ;
+
+
                         </script>
 
 
