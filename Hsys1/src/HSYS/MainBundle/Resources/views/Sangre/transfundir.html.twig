@@ -10,7 +10,7 @@
  
  <form id="buscar_form" name="cambiarestado" method="post" action="{{ path('transfundir_unidad',{'id':unidad.id}) }}">
      
-       <input type="checkbox" name="transfundir" id="transfundir" onclick="habilitar()"><label>¿Está seguro que desea transfundir la unidad {{unidad.id}}? </label><br>
+       <input type="checkbox" name="transfundir" id="transfundir" onclick="habilitar()" autofocus="autofocus"><label>¿Está seguro que desea transfundir la unidad {{unidad.id}}? </label><br>
         <input type="submit" value="Transfundir"/>
 
 </form>

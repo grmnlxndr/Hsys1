@@ -47,7 +47,7 @@
             <tr><td><br/></td></tr>
             <tr>
                 <td><label>Seleccione un tipo de exclusión: <label> </td>
-                <td> <select id="tipodeexclusion" name="tipodeexclusion">
+                            <td> <select id="tipodeexclusion" name="tipodeexclusion" autofocus="autofocus">
                {% for tipoexclusion in tiposExclusion %}
                     <option id="{{ tipoexclusion.duracion }}" name="{{tipoexclusion.nombre}}" value="{{ tipoexclusion.id }}">{{ tipoexclusion }}</option>
                {% endfor %}

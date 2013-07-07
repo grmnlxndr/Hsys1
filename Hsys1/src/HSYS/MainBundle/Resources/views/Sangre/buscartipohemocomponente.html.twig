@@ -8,7 +8,7 @@
     <table>
         <tr>
             <td><label for="criterio">Criterio: </label></td>
-            <td><select name="buscar" id="buscar" style="width: 160px">
+            <td><select name="buscar" id="buscar" style="width: 160px" autofocus="autofocus">
                     {% for tipohemocomponente in tiposhemocomponentes %}
                     <option value="{{tipohemocomponente.id}}">{{tipohemocomponente}}</option>
                     {% endfor %}

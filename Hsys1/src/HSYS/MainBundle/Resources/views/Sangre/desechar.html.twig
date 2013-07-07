@@ -14,7 +14,7 @@
     <input type="date" id="fecha" name="fecha" value="{{ 'now' | date('Y-m-d') }}"/>
     <br/>  
     <label>Causa de descarte:</label>
-    <select  id="causadescarte" name="causadescarte">
+    <select  id="causadescarte" name="causadescarte" autofocus="autofocus">
        {% for causa in causadescarte %}
             <option id="{{ causa }}" value="{{ causa }}">{{ causa }}</option>
        {% endfor %}        

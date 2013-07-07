@@ -25,7 +25,7 @@
         {% if donante.baja %}
         <label>El donante se encuentra eliminado</label>
         {% else %}
-        <input type="checkbox" name="aprobado" id="aprobado" onclick="eliminar()"> ¿Está seguro que desea eliminar el donante?<br>
+        <input type="checkbox" name="aprobado" id="aprobado" onclick="eliminar()" autofocus="autofocus"> ¿Está seguro que desea eliminar el donante?<br>
         <input type="submit" value="Eliminar El Donante"/>
         {% endif %}
         

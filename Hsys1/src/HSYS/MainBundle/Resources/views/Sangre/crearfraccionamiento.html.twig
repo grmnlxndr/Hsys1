@@ -33,7 +33,7 @@
         <h3>Agregar nueva unidad</h3>
     <tr>
         <th>Tipo de Hemocomponente: </th>
-        <td><select name="tipohemocomponente" id="tipohemocomponente" style="width: 160px">
+        <td><select name="tipohemocomponente" id="tipohemocomponente" style="width: 160px" autofocus="autofocus">
                     {% for tipohemocomponente in tiposhemocomponentes %}
                     <option id="{{tipohemocomponente.duracion}}" value="{{tipohemocomponente.id}}">{{tipohemocomponente}}</option>
                     {% endfor %}
