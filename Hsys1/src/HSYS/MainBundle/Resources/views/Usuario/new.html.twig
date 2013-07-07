@@ -9,7 +9,7 @@
         <table>
             <tr>
                 <td><label>Nombre de Usuario: </label></td>
-                <td>{{ form_widget(form.username) }}</td>
+                <td>{{ form_widget(form.username, {'attr': {'autofocus': 'autofocus'}}) }}</td>
                 <td>{{ form_errors(form.username) }}</td>
             </tr>
             <tr>

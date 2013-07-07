@@ -11,7 +11,7 @@
         <table>
             <tr>
                 <td><label>Apellido y Nombre: </label></td>
-                <td>{{ form_widget(form.nomapp) }}</td>
+                <td>{{ form_widget(form.nomapp, {'attr': {'autofocus': 'autofocus'}}) }}</td>
                 <td>{{ form_errors(form.nomapp) }}</td>
             </tr>
              {# <tr>
