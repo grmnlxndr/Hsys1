@@ -7,7 +7,7 @@
 <h3>Tabla Anticoagulante:</h3>
 <form id="nuevo_anticoagulante" name="nuevo_anticoagulante" action="{{ path('admin_anticoagulante') }}" method="post">
     <label style="color: #B90302">Insertar nuevo Anticoagulante</label><br/>
-    <label>Nombre: </label>{{ form_widget(form.nombre) }}
+    <label>Nombre: </label>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}
     <input type="submit" value="Agregar"/> {{ form_errors(form.nombre) }}
     {{ form_rest(form) }}
 </form>

@@ -7,7 +7,7 @@
 <h3>Tabla Marca de Bolsa:</h3>
 <form id="nuevo_marcabolsa" name="nuevo_marcabolsa" action="{{ path('admin_marcabolsa') }}" method="post">
     <label style="color: #B90302">Insertar nueva Marca de Bolsa</label><br/>
-    <label>Nombre: </label>{{ form_widget(form.nombre) }}
+    <label>Nombre: </label>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}
     <input type="submit" value="Agregar"/> {{ form_errors(form.nombre) }}
     {{ form_rest(form) }}
 </form>

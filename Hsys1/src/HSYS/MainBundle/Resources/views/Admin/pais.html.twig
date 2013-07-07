@@ -7,7 +7,7 @@
 <h3>Tabla País:</h3>
 <form id="nuevo_pais" name="nuevo_pais" action="{{ path('admin_pais') }}" method="post">
     <label style="color: #B90302">Insertar nuevo País</label><br/>
-    <label>Nombre: </label>{{ form_widget(form.nombre) }}
+    <label>Nombre: </label>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}
     <input type="submit" value="Agregar"/> {{ form_errors(form.nombre) }}
     {{ form_rest(form) }}
 </form>
