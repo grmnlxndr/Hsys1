@@ -7,19 +7,27 @@
 <h3>Tabla Marca de Bolsa:</h3>
 <form id="nuevo_marcabolsa" name="nuevo_marcabolsa" action="{{ path('admin_marcabolsa') }}" method="post">
     <label style="color: #B90302">Insertar nueva Marca de Bolsa</label><br/>
-    <label>Nombre: </label>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}
-    <input type="submit" value="Agregar"/> {{ form_errors(form.nombre) }}
-    {{ form_rest(form) }}
+    <table>
+        <tr>
+            <td><label>Nombre: </label></td><td>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td><td>{{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td><label>Detalle: </label></td><td>{{ form_widget(form.detalle) }}</td><td>{{ form_errors(form.detalle) }}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Agregar"/></td><td colspan="2">{{ form_rest(form) }}</td>
+        </tr>
+    </table>
 </form>
 <br/>
 <h4>Contenido de la tabla:</h4>
 <table class="consulta" style="width: 100%">
     <tr>
-        <th>ID</th><th>Nombre Marca de Bolsa</th>
+        <th>ID</th><th>Nombre Marca de Bolsa</th><th>Detalle</th>
     </tr>
     {% for marcabolsa in marcabolsas %}
     <tr>
-        <td>{{ marcabolsa.id }}</td><td>{{ marcabolsa.nombre }}</td>
+        <td>{{ marcabolsa.id }}</td><td>{{ marcabolsa.nombre }}</td><td>{{ marcabolsa.detalle }}</td>
     </tr>
     {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>

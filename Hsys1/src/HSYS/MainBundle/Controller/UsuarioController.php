@@ -14,7 +14,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 /**
  * Usuario controller.
  *
- * @Route("/usuario")
+ * @Route("/admin/usuario")
  */
 class UsuarioController extends Controller {
 

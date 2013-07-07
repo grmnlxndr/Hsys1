@@ -9,7 +9,10 @@
 <br/>
 <div class="detalle">
     <ul>
-        <li><a href="{{ path('admin_tabla') }}">Haga clic aquí para continuar</a></li>
+        <li><a href="javascript:window.history.back();">Haga clic aquí para volver</a></li>
     </ul>
 </div>
+
+<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+
 {% endblock %}

@@ -7,19 +7,27 @@
 <h3>Tabla País:</h3>
 <form id="nuevo_pais" name="nuevo_pais" action="{{ path('admin_pais') }}" method="post">
     <label style="color: #B90302">Insertar nuevo País</label><br/>
-    <label>Nombre: </label>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}
-    <input type="submit" value="Agregar"/> {{ form_errors(form.nombre) }}
-    {{ form_rest(form) }}
+    <table>
+        <tr>
+            <td><label>Nombre: </label></td><td>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td><td>{{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td><label>Detalle: </label></td><td>{{ form_widget(form.detalle) }}</td><td>{{ form_errors(form.detalle) }}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Agregar"/></td><td colspan="2">{{ form_rest(form) }}</td>
+        </tr>
+    </table>
 </form>
 <br/>
 <h4>Contenido de la tabla:</h4>
 <table class="consulta" style="width: 100%">
     <tr>
-        <th>ID</th><th>Nombre País</th>
+        <th>ID</th><th>Nombre País</th><th>Detalle</th>
     </tr>
     {% for pais in paises %}
     <tr>
-        <td>{{ pais.id }}</td><td>{{ pais.nombre }}</td>
+        <td>{{ pais.id }}</td><td>{{ pais.nombre }}</td><td>{{ pais.detalle }}</td>
     </tr>
     {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>

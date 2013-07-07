@@ -30,6 +30,14 @@ class Pais {
      * @ORM\Column(name="nombre", type="string", length=100, nullable=false, unique=true) 
      */
     private $nombre;
+    
+    /**
+     *
+     * @var string
+     * 
+     * @ORM\Column(name="detalle", type="string", length=255) 
+     */
+    private $detalle;
 
     /**
      * Get id
@@ -59,6 +67,27 @@ class Pais {
      */
     public function getNombre() {
         return $this->nombre;
+    }
+    
+    /**
+     * Set detalle
+     *
+     * @param string $detalle
+     * @return Pais
+     */
+    public function setDetalle($detalle) {
+        $this->detalle = $detalle;
+
+        return $this;
+    }
+
+    /**
+     * Get detalle
+     *
+     * @return string 
+     */
+    public function getDetalle() {
+        return $this->detalle;
     }
 
 }
