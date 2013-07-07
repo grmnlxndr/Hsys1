@@ -73,7 +73,7 @@ class Anticoagulante {
      * Set detalle
      *
      * @param string $detalle
-     * @return Pais
+     * @return Anticoagulante
      */
     public function setDetalle($detalle) {
         $this->detalle = $detalle;

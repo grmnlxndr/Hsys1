@@ -73,7 +73,7 @@ class MarcaBolsa {
      * Set detalle
      *
      * @param string $detalle
-     * @return Pais
+     * @return MarcaBolsa
      */
     public function setDetalle($detalle) {
         $this->detalle = $detalle;

@@ -316,6 +316,14 @@ admin_tipobolsa:
   pattern: /admin/tabla/tipobolsa
   defaults: { _controller: HSYSMainBundle:Admin:tipobolsa }
 
+admin_ocupacion:
+  pattern: /admin/tabla/ocupacion
+  defaults: { _controller: HSYSMainBundle:Admin:ocupacion }
+
+admin_hospital:
+  pattern: /admin/tabla/hospital
+  defaults: { _controller: HSYSMainBundle:Admin:hospital }
+
 #autocargado
 autocargado:
   pattern: /autocargado

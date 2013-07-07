@@ -1,0 +1,38 @@
+{% extends 'HSYSMainBundle:Admin:adminbase.html.twig' %}
+
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+
+<h3>Tabla Hospital:</h3>
+<form id="nuevo_hospital" name="nuevo_hospital" action="{{ path('admin_hospital') }}" method="post">
+    <label style="color: #B90302">Insertar nuevo Hospital</label><br/>
+    <table>
+        <tr>
+            <td><label>Nombre: </label></td><td>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td><td>{{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td><label>Detalle: </label></td><td>{{ form_widget(form.detalle) }}</td><td>{{ form_errors(form.detalle) }}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Agregar"/></td><td colspan="2">{{ form_rest(form) }}</td>
+        </tr>
+    </table>
+</form>
+<br/>
+<h4>Contenido de la tabla:</h4>
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th>ID</th><th>Nombre Hospital</th><th>Detalle</th>
+    </tr>
+    {% for hospital in hospitales %}
+    <tr>
+        <td>{{ hospital.id }}</td><td>{{ hospital.nombre }}</td><td>{{ hospital.detalle }}</td>
+    </tr>
+    {% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+    {% endfor %}
+</table>
+
+{% endblock %}

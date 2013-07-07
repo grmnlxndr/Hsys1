@@ -1,0 +1,38 @@
+{% extends 'HSYSMainBundle:Admin:adminbase.html.twig' %}
+
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+
+<h3>Tabla Ocupacion:</h3>
+<form id="nuevo_ocupacion" name="nuevo_ocupacion" action="{{ path('admin_ocupacion') }}" method="post">
+    <label style="color: #B90302">Insertar nueva Ocupacion</label><br/>
+    <table>
+        <tr>
+            <td><label>Nombre: </label></td><td>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td><td>{{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td><label>Detalle: </label></td><td>{{ form_widget(form.detalle) }}</td><td>{{ form_errors(form.detalle) }}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Agregar"/></td><td colspan="2">{{ form_rest(form) }}</td>
+        </tr>
+    </table>
+</form>
+<br/>
+<h4>Contenido de la tabla:</h4>
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th>ID</th><th>Nombre Ocupacion</th><th>Detalle</th>
+    </tr>
+    {% for ocupacion in ocupaciones %}
+    <tr>
+        <td>{{ ocupacion.id }}</td><td>{{ ocupacion.nombre }}</td><td>{{ ocupacion.detalle }}</td>
+    </tr>
+    {% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+    {% endfor %}
+</table>
+
+{% endblock %}

@@ -7,6 +7,8 @@ use HSYS\MainBundle\Entity\Pais;
 use HSYS\MainBundle\Entity\Anticoagulante;
 use HSYS\MainBundle\Entity\MarcaBolsa;
 use HSYS\MainBundle\Entity\TipoBolsa;
+use HSYS\MainBundle\Entity\Hospital;
+use HSYS\MainBundle\Entity\ocupacion;
 use HSYS\MainBundle\Form\TablaType;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
@@ -112,6 +114,50 @@ class AdminController extends Controller {
         }
         $marcabolsas = $em->getRepository('HSYSMainBundle:MarcaBolsa')->findAll();
         return $this->render('HSYSMainBundle:Admin:marcabolsa.html.twig', array('marcabolsas' => $marcabolsas, 'form' => $form->createView()));
+    }
+
+    /**
+     * 	@Secure(roles="ROLE_ADMIN")
+     */
+    public function ocupacionAction() {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $ocupacion = new ocupacion();
+        $form = $this->createForm(new TablaType(), $ocupacion);
+
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $em->persist($ocupacion);
+                $em->flush();
+                return $this->render('HSYSMainBundle:Admin:confirmacion.html.twig', array('dato' => 'ocupacion', 'nombre' => $ocupacion->getNombre(),));
+            }
+        }
+        $ocupaciones = $em->getRepository('HSYSMainBundle:ocupacion')->findAll();
+        return $this->render('HSYSMainBundle:Admin:ocupacion.html.twig', array('ocupaciones' => $ocupaciones, 'form' => $form->createView()));
+    }
+
+    /**
+     * 	@Secure(roles="ROLE_ADMIN")
+     */
+    public function hospitalAction() {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $hospital = new Hospital();
+        $form = $this->createForm(new TablaType(), $hospital);
+
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $em->persist($hospital);
+                $em->flush();
+                return $this->render('HSYSMainBundle:Admin:confirmacion.html.twig', array('dato' => 'hospital', 'nombre' => $hospital->getNombre(),));
+            }
+        }
+        $hospitales = $em->getRepository('HSYSMainBundle:Hospital')->findAll();
+        return $this->render('HSYSMainBundle:Admin:hospital.html.twig', array('hospitales' => $hospitales, 'form' => $form->createView()));
     }
 
 }
