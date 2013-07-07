@@ -1,0 +1,30 @@
+{% extends 'HSYSMainBundle:Admin:adminbase.html.twig' %}
+
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+
+<h3>Tabla Marca de Bolsa:</h3>
+<form id="nuevo_marcabolsa" name="nuevo_marcabolsa" action="{{ path('admin_marcabolsa') }}" method="post">
+    <label style="color: #B90302">Insertar nueva Marca de Bolsa</label><br/>
+    <label>Nombre: </label>{{ form_widget(form.nombre) }}
+    <input type="submit" value="Agregar"/> {{ form_errors(form.nombre) }}
+    {{ form_rest(form) }}
+</form>
+<br/>
+<h4>Contenido de la tabla:</h4>
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th>ID</th><th>Nombre Marca de Bolsa</th>
+    </tr>
+    {% for marcabolsa in marcabolsas %}
+    <tr>
+        <td>{{ marcabolsa.id }}</td><td>{{ marcabolsa.nombre }}</td>
+    </tr>
+    {% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+    {% endfor %}
+</table>
+
+{% endblock %}

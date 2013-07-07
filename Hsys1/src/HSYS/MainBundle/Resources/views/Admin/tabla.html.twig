@@ -1,0 +1,17 @@
+{% extends "HSYSMainBundle:Admin:adminbase.html.twig" %}
+
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+<h3>Administración de Tablas de Datos</h3>
+<br/>
+<h4>Seleccione la Tabla a editar:</h4>
+<ul>
+    <li><a href="{{ path('admin_pais') }}">País</a></li>
+    <li><a href="{{ path('admin_usuario') }}">Ocupación</a></li>
+    <li><a href="{{ path('admin_usuario') }}">Hospital</a></li>
+    <li><a href="{{ path('admin_tipobolsa') }}">Tipo Bolsa</a></li>
+    <li><a href="{{ path('admin_marcabolsa') }}">Marca Bolsa</a></li>
+    <li><a href="{{ path('admin_anticoagulante') }}">Anticoagulante</a></li>
+</ul>
+{% endblock %}

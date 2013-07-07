@@ -291,6 +291,31 @@ informe_stock:
   pattern: /informes/stock
   defaults: { _controller: HSYSMainBundle:Informes:informestock }
 
+#Admin
+pagina_admin:
+  pattern: /admin
+  defaults: { _controller: HSYSMainBundle:Admin:index }
+
+admin_tabla:
+  pattern: /admin/tabla
+  defaults: { _controller: HSYSMainBundle:Admin:tabla }
+
+admin_pais:
+  pattern: /admin/tabla/pais
+  defaults: { _controller: HSYSMainBundle:Admin:pais }
+
+admin_anticoagulante:
+  pattern: /admin/tabla/anticoagulante
+  defaults: { _controller: HSYSMainBundle:Admin:anticoagulante }
+
+admin_marcabolsa:
+  pattern: /admin/tabla/marcabolsa
+  defaults: { _controller: HSYSMainBundle:Admin:marcabolsa }
+
+admin_tipobolsa:
+  pattern: /admin/tabla/tipobolsa
+  defaults: { _controller: HSYSMainBundle:Admin:tipobolsa }
+
 #autocargado
 autocargado:
   pattern: /autocargado

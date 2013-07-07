@@ -1,0 +1,30 @@
+{% extends 'HSYSMainBundle:Admin:adminbase.html.twig' %}
+
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+
+<h3>Tabla Tipo de Bolsa:</h3>
+<form id="nuevo_tipobolsa" name="nuevo_tipobolsa" action="{{ path('admin_tipobolsa') }}" method="post">
+    <label style="color: #B90302">Insertar nuevo Tipo de Bolsa</label><br/>
+    <label>Nombre: </label>{{ form_widget(form.nombre) }}
+    <input type="submit" value="Agregar"/> {{ form_errors(form.nombre) }}
+    {{ form_rest(form) }}
+</form>
+<br/>
+<h4>Contenido de la tabla:</h4>
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th>ID</th><th>Nombre Tipo de Bolsa</th>
+    </tr>
+    {% for tipobolsa in tipobolsas %}
+    <tr>
+        <td>{{ tipobolsa.id }}</td><td>{{ tipobolsa.nombre }}</td>
+    </tr>
+    {% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+    {% endfor %}
+</table>
+
+{% endblock %}

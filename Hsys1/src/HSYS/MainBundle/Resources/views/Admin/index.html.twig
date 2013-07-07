@@ -1,0 +1,11 @@
+{% extends "HSYSMainBundle:Admin:adminbase.html.twig" %}
+
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+<h3>Administración del Sistema</h3>
+<ul>
+    <li><a href="{{ path('admin_usuario') }}">Administración de Usuarios</a></li>
+    <li><a href="{{ path('admin_tabla') }}">Administración de Tablas de Datos</a></li>
+</ul>
+{% endblock %}

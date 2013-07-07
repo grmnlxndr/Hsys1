@@ -3,11 +3,14 @@
 namespace HSYS\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 
 /**
  * TipoBolsa
  *
  * @ORM\Table()
+ * @ORM\Entity
+ * @UniqueEntity(fields="nombre", message="Nombre ya Existente")
  */
 class TipoBolsa {
 
@@ -24,7 +27,7 @@ class TipoBolsa {
      *
      * @var string
      * 
-     * @ORM\Column(name="nombre", type="string", length=100, nullable=false) 
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false, unique=true) 
      */
     private $nombre;
 
