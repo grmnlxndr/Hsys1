@@ -58,7 +58,7 @@ class SQLServer2008Platform extends SQLServer2005Platform
      */
     public function getDateTimeFormatString()
     {
-        return 'Y-m-d H:i:s.u';
+        return 'Y-m-d H:i:s';
     }
 
     /**
