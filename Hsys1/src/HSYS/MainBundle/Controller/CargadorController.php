@@ -10,7 +10,7 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 class CargadorController extends Controller {
 
 //meter mas datos, como de donante y donaciones, unidades y esas cosas.
-    /**
+    /*
      * 	@Secure(roles="ROLE_ADMIN")
      */
     public function cargaAction() {

@@ -24,7 +24,7 @@ class Donacion {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechextraccion", type="date", nullable=true)
+     * @ORM\Column(name="fechextraccion", type="datetime", nullable=true)
      */
     private $fechextraccion;
 
@@ -38,7 +38,7 @@ class Donacion {
     /**
      * @var \DateTime
      * 
-     * @ORM\Column(name="vencimientobolsa", type="date", nullable=true)
+     * @ORM\Column(name="vencimientobolsa", type="datetime", nullable=true)
      */
     private $vencimientobolsa;
 

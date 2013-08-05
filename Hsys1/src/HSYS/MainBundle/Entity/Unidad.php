@@ -24,28 +24,28 @@ class Unidad {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="vencimiento", type="date", nullable=true)
+     * @ORM\Column(name="vencimiento", type="datetime", nullable=true)
      */
     private $vencimiento;
 
     /**
      * @var \DateTime
      * 
-     * @ORM\Column(name="vencimientobolsa", type="date", nullable=true)
+     * @ORM\Column(name="vencimientobolsa", type="datetime", nullable=true)
      */
     private $vencimientobolsa;
     
     /**
      * @var \DateTime
      * 
-     * @ORM\Column(name="fechadescarte", type="date", nullable=true)
+     * @ORM\Column(name="fechadescarte", type="datetime", nullable=true)
      */
     private $fechadescarte;
     
     /**
      * @var \DateTime
      * 
-     * @ORM\Column(name="fechadesbloqueo", type="date", nullable=true)
+     * @ORM\Column(name="fechadesbloqueo", type="datetime", nullable=true)
      */
     private $fechadesbloqueo;
 

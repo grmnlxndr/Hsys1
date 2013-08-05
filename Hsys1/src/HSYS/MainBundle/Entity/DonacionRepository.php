@@ -55,10 +55,12 @@ class DonacionRepository extends EntityRepository {
     //UPPER(u.name)
     public function findDonacionPorRangoDeFecha($desde, $hasta) {
         if (!$desde) {
-            $desde = new \DateTime('1900-01-01');
+//            $desde = new \DateTime('1900-01-01');
+            $desde = '19000101';
         }
         if (!$hasta) {
-            $hasta = new \DateTime('2999-12-31');
+//            $hasta = new \DateTime('2999-12-31');
+            $hasta = '29991231';
         }
         $em = $this->getEntityManager();
 

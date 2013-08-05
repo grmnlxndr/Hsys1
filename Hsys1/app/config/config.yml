@@ -42,6 +42,7 @@ assetic:
 doctrine:
     dbal:
         driver:   "%database_driver%"
+#        driver_class: Doctrine\DBAL\Driver\PDOSQLSrv\Driver
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"

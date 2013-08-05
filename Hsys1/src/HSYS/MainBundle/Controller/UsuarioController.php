@@ -24,6 +24,8 @@ class UsuarioController extends Controller {
      * @Route("/", name="admin_usuario")
      * @Template()
      * 
+     */
+    /*
      * @Secure(roles="ROLE_ADMIN")
      */
     public function indexAction() {
@@ -38,6 +40,8 @@ class UsuarioController extends Controller {
      * @Route("/{id}/show", name="admin_usuario_show")
      * @Template()
      * 
+     */
+    /*
      * @Secure(roles="ROLE_ADMIN")
      */
     public function showAction($id) {
@@ -62,7 +66,9 @@ class UsuarioController extends Controller {
      *
      * @Route("/new", name="admin_usuario_new")
      * @Template()
-     * 
+     *
+     */
+    /* 
      * @Secure(roles="ROLE_ADMIN")
      */
     public function newAction() {
@@ -81,7 +87,8 @@ class UsuarioController extends Controller {
      * @Route("/create", name="admin_usuario_create")
      * @Method("POST")
      * @Template("HSYSMainBundle:Usuario:new.html.twig")
-     * 
+     */
+    /* 
      * @Secure(roles="ROLE_ADMIN")
      */
     public function createAction(Request $request) {
@@ -110,7 +117,8 @@ class UsuarioController extends Controller {
      *
      * @Route("/{id}/edit", name="admin_usuario_edit")
      * @Template()
-     * 
+     */
+    /* 
      * @Secure(roles="ROLE_ADMIN")
      */
     public function editAction($id) {
@@ -138,7 +146,8 @@ class UsuarioController extends Controller {
      * @Route("/{id}/update", name="admin_usuario_update")
      * @Method("POST")
      * @Template("HSYSMainBundle:Usuario:edit.html.twig")
-     * 
+     */
+    /* 
      * @Secure(roles="ROLE_ADMIN")
      */
     public function updateAction(Request $request, $id) {
@@ -182,7 +191,8 @@ class UsuarioController extends Controller {
      *
      * @Route("/{id}/delete", name="admin_usuario_delete")
      * @Method("POST")
-     * 
+     */
+    /* 
      * @Secure(roles="ROLE_ADMIN")
      */
     public function deleteAction(Request $request, $id) {
