@@ -57,11 +57,16 @@ class DonacionRepository extends EntityRepository {
         if (!$desde) {
 //            $desde = new \DateTime('1900-01-01');
             $desde = '19000101';
+        } else {
+            $desde = substr($desde, 0, 4). substr($desde, 5, 2). substr($desde, 8, 2);
         }
         if (!$hasta) {
 //            $hasta = new \DateTime('2999-12-31');
-            $hasta = '29991231';
+            $hasta = '20790601';
+        } else {
+            $hasta = substr($hasta, 0, 4). substr($hasta, 5, 2). substr($hasta, 8, 2);
         }
+              
         $em = $this->getEntityManager();
 
         $dql = "select d from HSYSMainBundle:Donacion d where d.fechextraccion >= :desde and d.fechextraccion <= :hasta order by d.fechextraccion desc";

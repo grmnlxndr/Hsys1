@@ -183,6 +183,7 @@ class DonacionController extends Controller {
         $donacion->setIdbolsa($idbolsa);
         $fechaformat = new \DateTime;
         $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
+        $fechaformat->setTime(0, 0, 0);
         $donacion->setFechextraccion($fechaformat);
         $donacion->setHospital($hospital);
         $donacion->setPeso($peso);
@@ -196,6 +197,7 @@ class DonacionController extends Controller {
 
         $fechaformatVenc = new \DateTime;
         $fechaformatVenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
+        $fechaformatVenc->setTime(0, 0, 0);
         $fechaVenc = $fechaformatVenc;
 
         $donacion->setVencimientobolsa($fechaformatVenc);
@@ -402,6 +404,7 @@ class DonacionController extends Controller {
         $donacion->setIdbolsa($idbolsa);
         $fechaformat = new \DateTime;
         $fechaformat->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
+        $fechaformat->setTime(0, 0, 0);
         $donacion->setFechextraccion($fechaformat);
         $donacion->setHospital($hospital);
         $donacion->setPeso($peso);
@@ -415,6 +418,7 @@ class DonacionController extends Controller {
 
         $fechaformatVenc = new \DateTime;
         $fechaformatVenc->setDate(substr($vencimiento, 0, 4), substr($vencimiento, 5, 2), substr($vencimiento, 8, 2));
+        $fechaformatVenc->setTime(0, 0, 0);
         $fechaVenc = $fechaformatVenc;
 
         $donacion->setVencimientobolsa($fechaformatVenc);
