@@ -10,14 +10,9 @@
         {# {{ form_widget(form) }} #}
         <table>
             <tr>
-                <td><label>Apellido: </label></td>
-                <td>{{ form_widget(form.Apellido, {'attr': {'autofocus': 'autofocus'}}) }}</td>
-                <td>{{ form_errors(form.Apellido) }}</td>
-            </tr>
-            <tr>
-                <td><label>Nombre: </label></td>
-                <td>{{ form_widget(form.Nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td>
-                <td>{{ form_errors(form.Nombre) }}</td>
+                <td><label>Apellido y Nombre: </label></td>
+                <td>{{ form_widget(form.nomapp, {'attr': {'autofocus': 'autofocus'}}) }}</td>
+                <td>{{ form_errors(form.nomapp) }}</td>
             </tr>
             <tr>
                 <td><label>Tipo Documento: </label></td>
