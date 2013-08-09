@@ -10,9 +10,14 @@
         {# {{ form_widget(form) }} #}
         <table>
             <tr>
-                <td><label>Apellido y Nombre: </label></td>
-                <td>{{ form_widget(form.nomapp, {'attr': {'autofocus': 'autofocus'}}) }}</td>
-                <td>{{ form_errors(form.nomapp) }}</td>
+                <td><label>Apellido: </label></td>
+                <td>{{ form_widget(form.Apellido, {'attr': {'autofocus': 'autofocus'}}) }}</td>
+                <td>{{ form_errors(form.Apellido) }}</td>
+            </tr>
+            <tr>
+                <td><label>Nombre: </label></td>
+                <td>{{ form_widget(form.Nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td>
+                <td>{{ form_errors(form.Nombre) }}</td>
             </tr>
             <tr>
                 <td><label>Tipo Documento: </label></td>
@@ -31,12 +36,12 @@
             <tr id="Donante_tr_dni">
                 <td><label>DNI: </label></td>
                 <td>{{ form_widget(form.dni) }}</td>
-            </tr> 
+            </tr>
             {# <tr>
-                <td><label>AB0/RhD: </label></td>
-                <td>{{ form_widget(form.factorsang) }}</td>
-                <td>{{ form_errors(form.factorsang) }}</td>
-            </tr> #}
+<td><label>AB0/RhD: </label></td>
+<td>{{ form_widget(form.factorsang) }}</td>
+<td>{{ form_errors(form.factorsang) }}</td>
+</tr> #}
             <tr>
                 <td><label>Fecha de Nacimiento: </label></td>
                 <td>{{ form_widget(form.fechnaci) }}</td>
@@ -137,21 +142,21 @@
     <script>
     window.onload = function() {
     $("#Donante_form_paisnac").val("Argentina");
-    $("#Donante_tr_dni").hide(); 
-    $("#Donante_form_provnac").hide(); 
-    $("#provincianacimiento").html("<select name='provnac' id='provnac' onChange='cambiarprovnac()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option>  {% endfor %}</select> ");
+    $("#Donante_tr_dni").hide();
+    $("#Donante_form_provnac").hide();
+    $("#provincianacimiento").html("<select name='provnac' id='provnac' onChange='cambiarprovnac()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option> {% endfor %}</select> ");
     cambiarprovnac();
     // ----------
     $("#Donante_form_pais").val("Argentina");
     $("#Donante_form_provincia").hide();
-    $("#provinciaactual").html("<select name='provincia' id='provincia' onChange='cambiarprovincia()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option>  {% endfor %}</select> ");
+    $("#provinciaactual").html("<select name='provincia' id='provincia' onChange='cambiarprovincia()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option> {% endfor %}</select> ");
     $("#Donante_form_ciudad").val("Resistencia");
     cambiarprovincia();
     };
 
 
     $("#Donante_form_paisnac").change(function(){
-        if ($("#Donante_form_paisnac").val().toLowerCase() == "argentina") { 
+        if ($("#Donante_form_paisnac").val().toLowerCase() == "argentina") {
              cambiarprovnac();
              $("#Donante_form_provnac").hide();
              $("#provnac").show();
@@ -159,7 +164,7 @@
              $("#Donante_form_provnac").val("");
              $("#provnac").hide();
              $("#Donante_form_provnac").show();
-        } 
+        }
     });
 
     function cambiarprovnac(){
@@ -167,7 +172,7 @@
     };
 
     $("#Donante_form_pais").change(function(){
-        if ($("#Donante_form_pais").val().toLowerCase() == "argentina") { 
+        if ($("#Donante_form_pais").val().toLowerCase() == "argentina") {
              cambiarprovincia();
              $("#Donante_form_provincia").hide();
              $("#provincia").show();
@@ -175,7 +180,7 @@
              $("#Donante_form_provincia").val("");
              $("#provincia").hide();
              $("#Donante_form_provincia").show();
-        } 
+        }
     });
 
     function cambiarprovincia(){
