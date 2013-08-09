@@ -132,7 +132,7 @@ class Exclusion {
 
     /**
      * @ORM\ManyToOne(targetEntity="Donante", inversedBy="Exclusion")
-     * @ORM\JoinColumn(name="idDonante", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idDonante", referencedColumnName="idDonante")
      * @return integer
      */
     private $Donante;

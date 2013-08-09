@@ -521,7 +521,7 @@ class Donacion {
 
     /**
      * @ORM\ManyToOne(targetEntity="Donante", inversedBy="Donacion")
-     * @ORM\JoinColumn(name="Donante", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idDonante", referencedColumnName="idDonante")
      * @return integer
      */
     private $Donante;
@@ -536,7 +536,7 @@ class Donacion {
 
     /**
      * @ORM\ManyToOne(targetEntity="Donante", inversedBy="Donacion")
-     * @ORM\JoinColumn(name="Receptor", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idDonanteReceptor", referencedColumnName="idDonante")
      * @return integer
      */
     private $Receptor;
