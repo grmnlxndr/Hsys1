@@ -33,9 +33,16 @@ class Donante {
     /**
      * @var string
      *
-     * @ORM\Column(name="nomapp", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Apellido", type="string", length=50, nullable=false)
      */
-    private $nomapp;
+    private $Apellido;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Nombre", type="string", length=50, nullable=false)
+     */
+    private $Nombre;
 
     /**
      * @var string
@@ -199,16 +206,46 @@ class Donante {
         return $this->id;
     }
 
-    /**
-     * Set nomapp
-     *
-     * @param string $nomapp
-     * @return Donante
+    /*
+     * Set Apellido
+     * 
+     * @param string $nombre
+     * @return Donante 
      */
-    public function setNomapp($nomapp) {
-        $this->nomapp = $nomapp;
-
+    public function setApellido($apellido){
+        $this->Apellido = $apellido;
+        
         return $this;
+    }
+    
+    /**
+     * Get Apellido
+     *
+     * @return string 
+     */
+    public function getApellido() {
+        return $this->Apellido;
+    }
+    
+    /*
+     * Set Nombre
+     * 
+     * @param string $nombre
+     * @return Donante 
+     */
+    public function setNombre($nombre){
+        $this->Nombre = $nombre;
+        
+        return $this;
+    }
+    
+    /**
+     * Get Nombre
+     *
+     * @return string 
+     */
+    public function getNombre() {
+        return $this->Nombre;
     }
 
     /**
@@ -217,7 +254,7 @@ class Donante {
      * @return string 
      */
     public function getNomapp() {
-        return $this->nomapp;
+        return $this->Apellido .", ". $this->Nombre;
     }
 
     /**
@@ -626,7 +663,6 @@ class Donante {
     }
 
     public function getExclusion() {
-//        return $this->orderMultiDimensionalArray($this->Exclusion, $criterio, false);
         return $this->Exclusion;
     }
 
@@ -689,27 +725,6 @@ class Donante {
         $exclusion->setComentario($comentario);
         $exclusion->setDonante($this);
         $this->addExclusion($exclusion);
-    }
-
-    //esto es una prueba... quizas va a volar antes de que se encuentre la solucion. no tocar. Esteban :D
-    //funcion sacada de http://notasweb.com/articulo/php/ordenar-array-multidimensional-por-un-campo-con-php.html
-    function orderMultiDimensionalArray($toOrderArray, $field, $inverse = false) {
-        $position = array();
-        $newRow = array();
-        foreach ($toOrderArray as $key => $row) {
-            $position[$key] = $row[$field];
-            $newRow[$key] = $row;
-        }
-        if ($inverse) {
-            arsort($position);
-        } else {
-            asort($position);
-        }
-        $returnArray = array();
-        foreach ($position as $key => $pos) {
-            $returnArray[] = $newRow[$key];
-        }
-        return $returnArray;
     }
 
 }

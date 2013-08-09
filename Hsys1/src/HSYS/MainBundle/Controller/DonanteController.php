@@ -67,8 +67,8 @@ class DonanteController extends Controller {
                 return 'no es valido';
             }
         }
-
-        return $this->render('HSYSMainBundle:Donante:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
+        $dni = $donante->getDni();
+        return $this->render('HSYSMainBundle:Donante:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,'dni' =>$dni));
     }
     
     /**
