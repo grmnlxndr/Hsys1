@@ -8,8 +8,7 @@ class DonanteType extends AbstractType
 {
    
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('Apellido')
-                ->add('Nombre')
+        $builder->add('nomapp')
                 ->add('dni', 'text'
                 )
 //                ->add('factorsang','choice',array('choices'=> (\HSYS\MainBundle\Entity\factorsang::$factorsang), 'empty_value' =>'SELECCIONE UNO' ))
