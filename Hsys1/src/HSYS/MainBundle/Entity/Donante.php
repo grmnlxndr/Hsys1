@@ -33,17 +33,10 @@ class Donante {
     /**
      * @var string
      *
-     * @ORM\Column(name="Apellido", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nomapp", type="string", length=100, nullable=false)
      */
-    private $Apellido;
+    private $nomapp;
     
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Nombre", type="string", length=50, nullable=false)
-     */
-    private $Nombre;
-
     /**
      * @var string
      * 
@@ -205,47 +198,16 @@ class Donante {
     public function getId() {
         return $this->id;
     }
-
-    /*
-     * Set Apellido
-     * 
-     * @param string $nombre
-     * @return Donante 
-     */
-    public function setApellido($apellido){
-        $this->Apellido = $apellido;
-        
-        return $this;
-    }
     
     /**
-     * Get Apellido
-     *
-     * @return string 
-     */
-    public function getApellido() {
-        return $this->Apellido;
-    }
-    
-    /*
-     * Set Nombre
+     * Set nomapp
      * 
-     * @param string $nombre
+     * @param string $nomapp
      * @return Donante 
      */
-    public function setNombre($nombre){
-        $this->Nombre = $nombre;
-        
+    public function setNomapp($nomapp) {
+        $this->nomapp = $nomapp;
         return $this;
-    }
-    
-    /**
-     * Get Nombre
-     *
-     * @return string 
-     */
-    public function getNombre() {
-        return $this->Nombre;
     }
 
     /**
@@ -254,7 +216,7 @@ class Donante {
      * @return string 
      */
     public function getNomapp() {
-        return $this->Apellido .", ". $this->Nombre;
+        return $this->nomapp;
     }
 
     /**
