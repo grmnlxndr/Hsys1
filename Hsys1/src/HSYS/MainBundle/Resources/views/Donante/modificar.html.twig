@@ -10,33 +10,40 @@
         {# {{ form_widget(form) }} #}
         <table>
             <tr>
-                <td><label>Apellido y Nombre: </label></td>
-                <td>{{ form_widget(form.nomapp, {'attr': {'autofocus': 'autofocus'}}) }}</td>
-                <td>{{ form_errors(form.nomapp) }}</td>
+                <td><label>Apellido: </label></td>
+                <td>{{ form_widget(form.Apellido, {'attr': {'autofocus': 'autofocus'}}) }}</td>
+                <td>{{ form_errors(form.Apellido) }}</td>
             </tr>
-             {# <tr>
-                <td><label>Tipo Documento: </label></td>
-                <td><select id="tipo" name="tipo" onchange="cargarDNI()" style="width: 83%">
-                        <option value="D">DNI</option>
-                        <option value="P">Pasaporte</option>
-                        <option value="C">LC</option>
-                        <option value="E">LE</option>
-                    </select></td>
-            </tr> 
             <tr>
-                <td><label>Número Documento: </label></td>
-                <td><input id="numero" name="numero" onchange="cargarDNI()" style="width: 77%"/></td>
-                <td>{{ form_errors(form.dni) }}</td>
-            </tr> #}
-            <tr id="Donante_tr_dni">
+                <td><label>Nombre: </label></td>
+                <td>{{ form_widget(form.Nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td>
+                <td>{{ form_errors(form.Nombre) }}</td>
+            </tr>
+            
+             {# <tr>
+<td><label>Tipo Documento: </label></td>
+<td><select id="tipo" name="tipo" onchange="cargarDNI()" style="width: 83%">
+<option value="D">DNI</option>
+<option value="P">Pasaporte</option>
+<option value="C">LC</option>
+<option value="E">LE</option>
+</select></td>
+</tr>
+<tr>
+<td><label>Número Documento: </label></td>
+<td><input id="numero" name="numero" onchange="cargarDNI()" style="width: 77%"/></td>
+<td>{{ form_errors(form.dni) }}</td>
+</tr> #}
+            <tr>
                 <td><label>DNI: </label></td>
+                <td><input disabled="disabled" value="{{dni}}"></td>
                 <td>{{ form_widget(form.dni) }}</td>
-            </tr> 
+            </tr>
             {# <tr>
-                <td><label>Factor Sanguíneo: </label></td>
-                <td>{{ form_widget(form.factorsang) }}</td>
-                <td>{{ form_errors(form.factorsang) }}</td>
-            </tr> #}
+<td><label>Factor Sanguíneo: </label></td>
+<td>{{ form_widget(form.factorsang) }}</td>
+<td>{{ form_errors(form.factorsang) }}</td>
+</tr> #}
             <tr>
                 <td><label>Fecha de Nacimiento: </label></td>
                 <td>{{ form_widget(form.fechnaci) }}</td>
@@ -134,9 +141,8 @@
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
     <script>
     window.onload = function() {
-        $("#Donante_form_dni").prop("disabled", true); 
+        $("#Donante_form_dni").hide();
         };
 
         </script>
-
 {% endblock %}
