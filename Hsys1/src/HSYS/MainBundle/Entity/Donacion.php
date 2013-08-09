@@ -3,19 +3,22 @@
 namespace HSYS\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
+
 
 /**
  * Donacion
  *
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\DonacionRepository")
+ * @UniqueEntity(fields="numdedonacion", message="Número ya Existente")
  */
 class Donacion {
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="idDonacion", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -173,7 +176,7 @@ class Donacion {
     /**
      * @var string
      *
-     * @ORM\Column(name="numdedonacion", type="string", length=15, nullable=true)
+     * @ORM\Column(name="numdedonacion", type="string", nullable=false, unique=true, length=15)
      */
     private $numdedonacion;
 
@@ -755,7 +758,7 @@ class Donacion {
 
     /**
      * @ORM\OneToOne(targetEntity="analisis", inversedBy="Donacion")
-     * @ORM\JoinColumn(name="analisis", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idAnalisis", referencedColumnName="idAnalisis")
      * @return integer
      */
     private $analisis;

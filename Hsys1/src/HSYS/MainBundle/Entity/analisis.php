@@ -15,7 +15,7 @@ class analisis {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="idAnalisis", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -494,7 +494,7 @@ class analisis {
 
     /**
      * @ORM\OneToOne(targetEntity="Donacion", mappedBy="analisis")
-     * @ORM\JoinColumn(name="donacion", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idDonacion", referencedColumnName="idDonacion")
      * @return integer
      */
     private $Donacion;

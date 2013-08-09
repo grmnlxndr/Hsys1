@@ -15,7 +15,7 @@ class Unidad {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="idUnidad", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -372,7 +372,7 @@ class Unidad {
 
     /**
      * @ORM\ManyToOne(targetEntity="Donacion", inversedBy="Unidad")
-     * @ORM\JoinColumn(name="Donacion", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idDonacion", referencedColumnName="idDonacion")
      * @return integer
      */
     private $Donacion;
@@ -387,7 +387,7 @@ class Unidad {
 
     /**
      * @ORM\ManyToOne(targetEntity="TipoHemocomponente", inversedBy="Unidad")
-     * @ORM\JoinColumn(name="TipoHemocomponente", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idTipoHemocomponente", referencedColumnName="idTipoHemocomponente")
      * @return integer
      */
     private $TipoHemocomponente;

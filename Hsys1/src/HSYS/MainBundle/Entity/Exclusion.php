@@ -15,7 +15,7 @@ class Exclusion {
     /**
      * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="idExclusion", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -117,7 +117,7 @@ class Exclusion {
 
     /**
      * @ORM\ManyToOne(targetEntity="TipoExclusion", inversedBy="Exclusion")
-     * @ORM\JoinColumn(name="TipoExclusion", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idTipoExclusion", referencedColumnName="idTipoExclusion")
      * @return integer
      */
     private $TipoExclusion;
@@ -132,7 +132,7 @@ class Exclusion {
 
     /**
      * @ORM\ManyToOne(targetEntity="Donante", inversedBy="Exclusion")
-     * @ORM\JoinColumn(name="Donante", referencedColumnName="id")
+     * @ORM\JoinColumn(name="idDonante", referencedColumnName="id")
      * @return integer
      */
     private $Donante;
