@@ -10,16 +10,11 @@
         {# {{ form_widget(form) }} #}
         <table>
             <tr>
-                <td><label>Apellido: </label></td>
-                <td>{{ form_widget(form.Apellido, {'attr': {'autofocus': 'autofocus'}}) }}</td>
-                <td>{{ form_errors(form.Apellido) }}</td>
+                <td><label>Apellido y Nombre: </label></td>
+                <td>{{ form_widget(form.nomapp, {'attr': {'autofocus': 'autofocus'}}) }}</td>
+                <td>{{ form_errors(form.nomapp) }}</td>
             </tr>
-            <tr>
-                <td><label>Nombre: </label></td>
-                <td>{{ form_widget(form.Nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td>
-                <td>{{ form_errors(form.Nombre) }}</td>
-            </tr>
-            
+           
              {# <tr>
                 <td><label>Tipo Documento: </label></td>
                 <td><select id="tipo" name="tipo" onchange="cargarDNI()" style="width: 83%">
@@ -34,9 +29,8 @@
                 <td><input id="numero" name="numero" onchange="cargarDNI()" style="width: 77%"/></td>
                 <td>{{ form_errors(form.dni) }}</td>
             </tr> #}
-            <tr>
+            <tr id="Donante_tr_dni">
                 <td><label>DNI: </label></td>
-                <td><input disabled="disabled" value="{{dni}}"></td>
                 <td>{{ form_widget(form.dni) }}</td>
             </tr> 
             {# <tr>
@@ -141,7 +135,7 @@
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
     <script>
     window.onload = function() {
-        $("#Donante_form_dni").hide(); 
+        $("#Donante_form_dni").prop("disabled", true); 
         };
 
         </script>
