@@ -13,172 +13,179 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 //Type::overrideType('time', 'Doctrine\DBAL\Types\VarDateTimeType');
 
 /**
- * Donante
- *
- * @ORM\Table()
- * @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\DonanteRepository")
- * @UniqueEntity(fields="dni", message="Número ya Existente")
- */
+* Donante
+*
+* @ORM\Table()
+* @ORM\Entity(repositoryClass="HSYS\MainBundle\Entity\DonanteRepository")
+* @UniqueEntity(fields="dni", message="Número ya Existente")
+*/
 class Donante {
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
+* @var integer
+*
+* @ORM\Column(name="id", type="integer")
+* @ORM\Id
+* @ORM\GeneratedValue(strategy="AUTO")
+*/
     private $id;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nomapp", type="string", length=100, nullable=false)
-     */
-    private $nomapp;
+* @var string
+*
+* @ORM\Column(name="Apellido", type="string", length=50, nullable=false)
+*/
+    private $Apellido;
+    
+    /**
+* @var string
+*
+* @ORM\Column(name="Nombre", type="string", length=50, nullable=false)
+*/
+    private $Nombre;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="dni", type="string", nullable=false, unique=true, length=20)  
-     * 
-     */
+* @var string
+*
+* @ORM\Column(name="dni", type="string", nullable=false, unique=true, length=20)
+*
+*/
     private $dni;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="factorsang", type="string", length=20, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="factorsang", type="string", length=20, nullable=true)
+*/
     private $factorsang;
 
     /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="fechnaci", type="datetime", nullable=true)
-     */
+* @var \DateTime
+*
+* @ORM\Column(name="fechnaci", type="datetime", nullable=true)
+*/
     private $fechnaci;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="sexo", type="string", length=10, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="sexo", type="string", length=10, nullable=true)
+*/
     private $sexo;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="ocupacion", type="string", length=100, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="ocupacion", type="string", length=100, nullable=true)
+*/
     private $ocupacion;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="estadocivil", type="string", length=50, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="estadocivil", type="string", length=50, nullable=true)
+*/
     private $estadocivil;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="paisnac", type= "string", length=40, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="paisnac", type= "string", length=40, nullable=true)
+*/
     private $paisnac;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="Provnac", type= "string", length=50, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="Provnac", type= "string", length=50, nullable=true)
+*/
     private $provnac;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="domicilio", type= "string", length=60, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="domicilio", type= "string", length=60, nullable=true)
+*/
     private $domicilio;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="ciudad", type= "string", length=40, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="ciudad", type= "string", length=40, nullable=true)
+*/
     private $ciudad;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="provincia", type= "string", length=40, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="provincia", type= "string", length=40, nullable=true)
+*/
     private $provincia;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="pais", type= "string", length=40, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="pais", type= "string", length=40, nullable=true)
+*/
     private $pais;
     
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="codpostal", type= "string", length=40, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="codpostal", type= "string", length=40, nullable=true)
+*/
     private $codpostal;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="telefono", type= "string", length=30, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="telefono", type= "string", length=30, nullable=true)
+*/
     private $telefono;
     
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="celular", type= "string", length=30, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="celular", type= "string", length=30, nullable=true)
+*/
     private $celular;
     
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="niveleducativo", type= "string", length=30, nullable=true)
-     */
+* @var string
+*
+* @ORM\Column(name="niveleducativo", type= "string", length=30, nullable=true)
+*/
     private $niveleducativo;
     
     /**
-     * @var boolean
-     * 
-     * @ORM\Column(name="donantevoluntario", type= "boolean", nullable=true)
-     */
+* @var boolean
+*
+* @ORM\Column(name="donantevoluntario", type= "boolean", nullable=true)
+*/
     private $donantevoluntario;
    
     /**
-     * @var boolean
-     * 
-     * @ORM\Column(name="leerescribir", type= "boolean", nullable=true)
-     */
+* @var boolean
+*
+* @ORM\Column(name="leerescribir", type= "boolean", nullable=true)
+*/
     private $leerescribir;
     
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="email", type= "string", length=60, nullable=true)
-     * @Assert\Email(message = "El mail '{{ value }}' ingresado no tiene el formato correcto.")
-     */
+* @var string
+*
+* @ORM\Column(name="email", type= "string", length=60, nullable=true)
+* @Assert\Email(message = "El mail '{{ value }}' ingresado no tiene el formato correcto.")
+*/
     private $email;
 
     /**
-     *
-     * @var boolean
-     * 0 esta habiliado.
-     * 1 baja logica.
-     * @ORM\Column(name="baja", type="boolean")  
-     */
+*
+* @var boolean
+* 0 esta habiliado.
+* 1 baja logica.
+* @ORM\Column(name="baja", type="boolean")
+*/
     private $baja;
 
     public function getBaja() {
@@ -191,41 +198,71 @@ class Donante {
     }
 
     /**
-     * Get id
-     *
-     * @return integer 
-     */
+* Get id
+*
+* @return integer
+*/
     public function getId() {
         return $this->id;
     }
 
-    /**
-     * Set nomapp
-     *
-     * @param string $nomapp
-     * @return Donante
-     */
-    public function setNomapp($nomapp) {
-        $this->nomapp = $nomapp;
-
+    /*
+* Set Apellido
+*
+* @param string $nombre
+* @return Donante
+*/
+    public function setApellido($apellido){
+        $this->Apellido = $apellido;
+        
         return $this;
     }
-
+    
     /**
-     * Get nomapp
-     *
-     * @return string 
-     */
-    public function getNomapp() {
-        return $this->nomapp;
+* Get Apellido
+*
+* @return string
+*/
+    public function getApellido() {
+        return $this->Apellido;
+    }
+    
+    /*
+* Set Nombre
+*
+* @param string $nombre
+* @return Donante
+*/
+    public function setNombre($nombre){
+        $this->Nombre = $nombre;
+        
+        return $this;
+    }
+    
+    /**
+* Get Nombre
+*
+* @return string
+*/
+    public function getNombre() {
+        return $this->Nombre;
     }
 
     /**
-     * Set dni
-     *
-     * @param string $dni
-     * @return Donante
-     */
+* Get nomapp
+*
+* @return string
+*/
+    public function getNomapp() {
+        return $this->Apellido .", ". $this->Nombre;
+    }
+
+    /**
+* Set dni
+*
+* @param string $dni
+* @return Donante
+*/
     public function setDni($dni) {
         $this->dni = $dni;
 
@@ -233,20 +270,20 @@ class Donante {
     }
 
     /**
-     * Get dni
-     *
-     * @return string 
-     */
+* Get dni
+*
+* @return string
+*/
     public function getDni() {
         return $this->dni;
     }
 
     /**
-     * Set factorsang
-     *
-     * @param string $factorsang
-     * @return Donante
-     */
+* Set factorsang
+*
+* @param string $factorsang
+* @return Donante
+*/
     public function setFactorsang($factorsang) {
         $this->factorsang = $factorsang;
 
@@ -254,20 +291,20 @@ class Donante {
     }
 
     /**
-     * Get factorsang
-     *
-     * @return string 
-     */
+* Get factorsang
+*
+* @return string
+*/
     public function getFactorsang() {
         return $this->factorsang;
     }
 
     /**
-     * Set fechnaci
-     *
-     * @param \DateTime $fechnaci
-     * @return Donante
-     */
+* Set fechnaci
+*
+* @param \DateTime $fechnaci
+* @return Donante
+*/
     public function setFechnaci($fechnaci) {
         $this->fechnaci = $fechnaci;
 
@@ -275,20 +312,20 @@ class Donante {
     }
 
     /**
-     * Get fechnaci
-     *
-     * @return \DateTime 
-     */
+* Get fechnaci
+*
+* @return \DateTime
+*/
     public function getFechnaci() {
         return $this->fechnaci;
     }
 
     /**
-     * Set sexo
-     *
-     * @param string $sexo
-     * @return Donante
-     */
+* Set sexo
+*
+* @param string $sexo
+* @return Donante
+*/
     public function setSexo($sexo) {
         $this->sexo = $sexo;
 
@@ -296,20 +333,20 @@ class Donante {
     }
 
     /**
-     * Get sexo
-     *
-     * @return string 
-     */
+* Get sexo
+*
+* @return string
+*/
     public function getSexo() {
         return $this->sexo;
     }
 
     /**
-     * Set ocupacion
-     *
-     * @param string $ocupacion
-     * @return Donante
-     */
+* Set ocupacion
+*
+* @param string $ocupacion
+* @return Donante
+*/
     public function setOcupacion($ocupacion) {
         $this->ocupacion = $ocupacion;
 
@@ -317,20 +354,20 @@ class Donante {
     }
 
     /**
-     * Get ocupacion
-     *
-     * @return string 
-     */
+* Get ocupacion
+*
+* @return string
+*/
     public function getOcupacion() {
         return $this->ocupacion;
     }
 
     /**
-     * Set estadocivil
-     *
-     * @param string $estadocivil
-     * @return Donante
-     */
+* Set estadocivil
+*
+* @param string $estadocivil
+* @return Donante
+*/
     public function setEstadocivil($estadocivil) {
         $this->estadocivil = $estadocivil;
 
@@ -338,282 +375,282 @@ class Donante {
     }
 
     /**
-     * Get estadocivil
-     *
-     * @return string 
-     */
+* Get estadocivil
+*
+* @return string
+*/
     public function getEstadocivil() {
         return $this->estadocivil;
     }
 
     /**
-     * Get paisnac
-     *
-     * @return string 
-     */
+* Get paisnac
+*
+* @return string
+*/
     public function getPaisnac() {
         return $this->paisnac;
     }
 
     /**
-     * Set paisnac
-     *
-     * @param string $paisnac
-     * @return Donante
-     */
+* Set paisnac
+*
+* @param string $paisnac
+* @return Donante
+*/
     public function setPaisnac($paisnac) {
         $this->paisnac = $paisnac;
         return $this;
     }
 
     /**
-     * Get ciudad
-     *
-     * @return string 
-     */
+* Get ciudad
+*
+* @return string
+*/
     public function getCiudad() {
         return $this->ciudad;
     }
 
     /**
-     * Set ciudad
-     *
-     * @param string $ciudad
-     * @return Donante
-     */
+* Set ciudad
+*
+* @param string $ciudad
+* @return Donante
+*/
     public function setCiudad($ciudad) {
         $this->ciudad = $ciudad;
         return $this;
     }
 
     /**
-     * Get provnac
-     *
-     * @return string 
-     */
+* Get provnac
+*
+* @return string
+*/
     public function getProvnac() {
         return $this->provnac;
     }
 
     /**
-     * Set provnac
-     *
-     * @param string $provNac
-     * @return Donante
-     */
+* Set provnac
+*
+* @param string $provNac
+* @return Donante
+*/
     public function setProvnac($provnac) {
         $this->provnac = $provnac;
         return $this;
     }
 
     /**
-     * Get domicilio
-     *
-     * @return string 
-     */
+* Get domicilio
+*
+* @return string
+*/
     public function getDomicilio() {
         return $this->domicilio;
     }
 
     /**
-     * Set domicilio
-     *
-     * @param string $domicilio
-     * @return Donante
-     */
+* Set domicilio
+*
+* @param string $domicilio
+* @return Donante
+*/
     public function setDomicilio($domicilio) {
         $this->domicilio = $domicilio;
         return $this;
     }
 
     /**
-     * Get provincia
-     *
-     * @return string 
-     */
+* Get provincia
+*
+* @return string
+*/
     public function getProvincia() {
         return $this->provincia;
     }
 
     /**
-     * Set provincia
-     *
-     * @param string $provincia
-     * @return Donante
-     */
+* Set provincia
+*
+* @param string $provincia
+* @return Donante
+*/
     public function setProvincia($provincia) {
         $this->provincia = $provincia;
         return $this;
     }
 
     /**
-     * Get pais
-     *
-     * @return string 
-     */
+* Get pais
+*
+* @return string
+*/
     public function getPais() {
         return $this->pais;
     }
 
     /**
-     * Set pais
-     *
-     * @param string $pais
-     * @return Donante
-     */
+* Set pais
+*
+* @param string $pais
+* @return Donante
+*/
     public function setPais($pais) {
         $this->pais = $pais;
         return $this;
     }
     
     /**
-     * Get codpostal
-     *
-     * @return string 
-     */
+* Get codpostal
+*
+* @return string
+*/
     public function getCodpostal() {
         return $this->codpostal;
     }
 
     /**
-     * Set codpostal
-     *
-     * @param string $codpostal
-     * @return Donante
-     */
+* Set codpostal
+*
+* @param string $codpostal
+* @return Donante
+*/
     public function setCodpostal($codpostal) {
         $this->codpostal = $codpostal;
         return $this;
     }
 
     /**
-     * Get telefono
-     *
-     * @return string 
-     */
+* Get telefono
+*
+* @return string
+*/
     public function getTelefono() {
         return $this->telefono;
     }
 
     /**
-     * Set telefono
-     *
-     * @param string $telefono
-     * @return Donante
-     */
+* Set telefono
+*
+* @param string $telefono
+* @return Donante
+*/
     public function setTelefono($telefono) {
         $this->telefono = $telefono;
         return $this;
     }
     
     /**
-     * Get celular
-     *
-     * @return string 
-     */
+* Get celular
+*
+* @return string
+*/
     public function getCelular() {
         return $this->celular;
     }
 
     /**
-     * Set celular
-     *
-     * @param string $celular
-     * @return Donante
-     */
+* Set celular
+*
+* @param string $celular
+* @return Donante
+*/
     public function setCelular($celular) {
         $this->celular = $celular;
         return $this;
     }
     
     /**
-     * Get email
-     *
-     * @return string 
-     */
+* Get email
+*
+* @return string
+*/
     public function getEmail() {
         return $this->email;
     }
 
     /**
-     * Set email
-     *
-     * @param string $email
-     * @return Donante
-     */
+* Set email
+*
+* @param string $email
+* @return Donante
+*/
     public function setEmail($email) {
         $this->email = $email;
         return $this;
     }
     
     /**
-     * Get niveleducativo
-     *
-     * @return string 
-     */
+* Get niveleducativo
+*
+* @return string
+*/
     public function getNiveleducativo() {
         return $this->niveleducativo;
     }
 
     /**
-     * Set niveleducativo
-     *
-     * @param string $niveleducativo
-     * @return Donante
-     */
+* Set niveleducativo
+*
+* @param string $niveleducativo
+* @return Donante
+*/
     public function setNiveleducativo($niveleducativo) {
         $this->niveleducativo = $niveleducativo;
         return $this;
     }
     
     /**
-     * Get donantevoluntario
-     *
-     * @return boolean 
-     */
+* Get donantevoluntario
+*
+* @return boolean
+*/
     public function getDonantevoluntario() {
         return $this->donantevoluntario;
     }
 
     /**
-     * Set donantevoluntario
-     *
-     * @param boolean $donantevoluntario
-     * @return Donante
-     */
+* Set donantevoluntario
+*
+* @param boolean $donantevoluntario
+* @return Donante
+*/
     public function setDonantevoluntario($donantevoluntario) {
         $this->donantevoluntario = $donantevoluntario;
         return $this;
     }
     
     /**
-     * Get leerescribir
-     *
-     * @return boolean 
-     */
+* Get leerescribir
+*
+* @return boolean
+*/
     public function getLeerescribir() {
         return $this->leerescribir;
     }
 
     /**
-     * Set leerescribir
-     *
-     * @param boolean $leerescribir
-     * @return Donante
-     */
+* Set leerescribir
+*
+* @param boolean $leerescribir
+* @return Donante
+*/
     public function setLeerescribir($leerescribir) {
         $this->leerescribir = $leerescribir;
         return $this;
     }
     
     /**
-     * @ORM\OneToMany(targetEntity="Exclusion", mappedBy="Donante", cascade={"persist"})
-     */
+* @ORM\OneToMany(targetEntity="Exclusion", mappedBy="Donante", cascade={"persist"})
+*/
     private $Exclusion;
 
     /**
-     * @ORM\OneToMany(targetEntity="Donacion", mappedBy="Donante")
-     */
+* @ORM\OneToMany(targetEntity="Donacion", mappedBy="Donante")
+*/
     private $Donaciones;
 
     public function __construct() {
@@ -626,7 +663,6 @@ class Donante {
     }
 
     public function getExclusion() {
-//        return $this->orderMultiDimensionalArray($this->Exclusion, $criterio, false);
         return $this->Exclusion;
     }
 
@@ -679,7 +715,7 @@ class Donante {
             $duracion = $tipoExclusion->getDuracion();
         }
         if ($duracion != 0) {
-            $sumar = '+' . $duracion  . ' day';
+            $sumar = '+' . $duracion . ' day';
             $nuevafecha = strtotime($sumar, strtotime($fechaingreso->format('Y-m-d')));
             $nuevafecha = date('Y-m-j', $nuevafecha);
             $fechaformat1 = new \DateTime;
@@ -689,27 +725,6 @@ class Donante {
         $exclusion->setComentario($comentario);
         $exclusion->setDonante($this);
         $this->addExclusion($exclusion);
-    }
-
-    //esto es una prueba... quizas va a volar antes de que se encuentre la solucion. no tocar. Esteban :D
-    //funcion sacada de http://notasweb.com/articulo/php/ordenar-array-multidimensional-por-un-campo-con-php.html
-    function orderMultiDimensionalArray($toOrderArray, $field, $inverse = false) {
-        $position = array();
-        $newRow = array();
-        foreach ($toOrderArray as $key => $row) {
-            $position[$key] = $row[$field];
-            $newRow[$key] = $row;
-        }
-        if ($inverse) {
-            arsort($position);
-        } else {
-            asort($position);
-        }
-        $returnArray = array();
-        foreach ($position as $key => $pos) {
-            $returnArray[] = $newRow[$key];
-        }
-        return $returnArray;
     }
 
 }
