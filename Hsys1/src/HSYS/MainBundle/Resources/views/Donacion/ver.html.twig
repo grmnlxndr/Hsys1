@@ -7,7 +7,6 @@
         {% if donacion.anulado is null %}
 <div class="detalle">
     <ul>
-        <li><a href="{{ path('modificar_donacion',{'id':donacion.id}) }}">Modificar</a></li>
         <li><a href= "{{ path('anular_donacion',{'id':donacion.id}) }}">Anular</a></li>
         <li><a href="{{ path('excluir_donante_por_donacion',{'donanteid':donacion.donante.id, 'donacionid' : donacion.id}) }}">Crear una exclusión</a></li>
         {% if donacion.terminado == false %}   
