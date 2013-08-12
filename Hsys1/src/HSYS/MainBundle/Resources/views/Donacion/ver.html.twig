@@ -36,18 +36,18 @@
     </tr>
     <tr>
         <th>Hospital de extracción:  </th>
-        <td>{{ donacion.hospital }}</td>
+        <td>{{ donacion.Establecimiento.EstDesc }}</td>
     </tr>
     <tr>
         <th>Responsable de la Donación:  </th>
-        <td>{{ donacion.respDonacion }}</td>
+        <td>{{ respDonacion }}</td>
     </tr>
     <tr>
         <th colspan="2">Datos del Cuestionario</th>
     </tr>
     <tr>
         <th>Responsable del Cuestionario:  </th>
-        <td>{{ donacion.respCuestionario }}</td>
+        <td>{{ respCuestionario }}</td>
     </tr>
     <tr>
         <th colspan="2">Datos del Exámen Físico</th>
@@ -58,7 +58,7 @@
     </tr>
     <tr>
         <th>Tensión Arterial:  </th>
-        <td>{{ donacion.tensionarterial }}</td>
+        <td>{{ donacion.tensionarterial }}-{{ donacion.tensionarterialmax }}</td>
     </tr>
     <tr>
         <th>Pulso:  </th>
@@ -82,7 +82,7 @@
     </tr>
     <tr>
         <th>Responsable del Examen:  </th>
-        <td>{{ donacion.respFisico }}</td>
+        <td>{{ respFisico }}</td>
     </tr>
     <tr>
         <th colspan="2">Datos de la Extracción</th>
@@ -101,7 +101,7 @@
     </tr>
     <tr>
         <th>Responsable de la Extracción:  </th>
-        <td>{{ donacion.respExtraccion }}</td>
+        <td>{% if respExtraccion %}{{ respExtraccion }}{% endif %}</td>
     </tr>
     <tr>
         <th>Comentarios: </th>

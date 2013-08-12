@@ -89,6 +89,10 @@ class Anticoagulante {
     public function getDetalle() {
         return $this->detalle;
     }
+    
+    public function __toString() {
+        return $this->getNombre();
+    }
 
 }
 

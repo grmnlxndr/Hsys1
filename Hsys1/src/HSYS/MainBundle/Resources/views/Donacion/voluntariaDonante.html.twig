@@ -34,7 +34,7 @@
         <td><a>{{ donante.id }}</a></td>
         <td><a>{{ donante.nomapp }}</a></td>
         <td><a>{{ donante.dni }}</a></td>
-        <td class="link"><a href="{{ path('alta_donacion_voluntaria_formulario', {'id':donante.id})  }}">Seleccionar</a></td>
+        <td class="link"><a href="{{ path('alta_extraccion_voluntaria_form', {'don':donante.id})  }}">Seleccionar</a></td>
     </tr>
 {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>

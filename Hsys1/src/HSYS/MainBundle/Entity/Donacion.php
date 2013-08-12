@@ -5,7 +5,6 @@ namespace HSYS\MainBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 
-
 /**
  * Donacion
  *
@@ -52,40 +51,43 @@ class Donacion {
      */
     private $nrolote;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tipobolsa", type="string", length=20, nullable=true)
-     */
-    private $tipobolsa;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="marca", type="string", length=30, nullable=true)
-     */
-    private $marca;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="anticoagulante", type="string", length=20, nullable=true)
-     */
-    private $anticoagulante;
-
+//    /**
+//     * 
+//     * @var string
+//     *
+//     * @ORM\Column(name="tipobolsa", type="string", length=20, nullable=true)
+//     */
+//    private $tipobolsa;
+//    /**
+//     * SERA ELIMINADO
+//     * 
+//     * @var string
+//     *
+//     * @ORM\Column(name="marca", type="string", length=30, nullable=true)
+//     */
+//    private $marca;
+//    /**
+//     * SERA ELIMINADO
+//     * 
+//     * @var string
+//     *
+//     * @ORM\Column(name="anticoagulante", type="string", length=20, nullable=true)
+//     */
+//    private $anticoagulante;
     // /**
     //  * @var string
     //  *
     //  * @ORM\Column(name="localidad", type="string", length=50, nullable=true)
     //  */
     // private $localidad;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="hospital", type="string", length=50, nullable=true)
-     */
-    private $hospital;
+//    /**
+//     * SERA ELIMINADO
+//     * 
+//     * @var string
+//     *
+//     * @ORM\Column(name="hospital", type="string", length=50, nullable=true)
+//     */
+//    private $hospital;
 
     /**
      * @var string
@@ -137,6 +139,13 @@ class Donacion {
      * @ORM\Column(name="tensionarterial", type="string", length=20, nullable=true)
      */
     private $tensionarterial;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tensionarterialmax", type="string", length=20, nullable=true)
+     */
+    private $tensionarterialmax;
 
     /**
      * @var string
@@ -311,26 +320,26 @@ class Donacion {
         return $this->nrolote;
     }
 
-    /**
-     * Set tipobolsa
-     *
-     * @param string $tipobolsa
-     * @return Unidad
-     */
-    public function setTipobolsa($tipobolsa) {
-        $this->tipobolsa = $tipobolsa;
-
-        return $this;
-    }
-
-    /**
-     * Get tipobolsa
-     *
-     * @return string 
-     */
-    public function getTipobolsa() {
-        return $this->tipobolsa;
-    }
+//    /**
+//     * Set tipobolsa
+//     *
+//     * @param string $tipobolsa
+//     * @return Unidad
+//     */
+//    public function setTipobolsa($tipobolsa) {
+//        $this->tipobolsa = $tipobolsa;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get tipobolsa
+//     *
+//     * @return string 
+//     */
+//    public function getTipobolsa() {
+//        return $this->tipobolsa;
+//    }
 
     /**
      * Set marca
@@ -353,27 +362,26 @@ class Donacion {
         return $this->marca;
     }
 
-    /**
-     * Set anticoagulante
-     *
-     * @param string $anticoagulante
-     * @return Unidad
-     */
-    public function setAnticoagulante($anticoagulante) {
-        $this->anticoagulante = $anticoagulante;
-
-        return $this;
-    }
-
-    /**
-     * Get anticoagulante
-     *
-     * @return string 
-     */
-    public function getAnticoagulante() {
-        return $this->anticoagulante;
-    }
-
+//    /**
+//     * Set anticoagulante
+//     *
+//     * @param string $anticoagulante
+//     * @return Unidad
+//     */
+//    public function setAnticoagulante($anticoagulante) {
+//        $this->anticoagulante = $anticoagulante;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get anticoagulante
+//     *
+//     * @return string 
+//     */
+//    public function getAnticoagulante() {
+//        return $this->anticoagulante;
+//    }
     // /**
     //  * Set localidad
     //  *
@@ -549,6 +557,66 @@ class Donacion {
         return $this->Receptor;
     }
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Establecimiento", inversedBy="Donacion")
+     * @ORM\JoinColumn(name="idEst", referencedColumnName="idEst")
+     * @return integer
+     */
+    private $Establecimiento;
+
+    public function setEstablecimiento(\HSYS\MainBundle\Entity\Establecimiento $Establecimiento) {
+        $this->Establecimiento = $Establecimiento;
+    }
+
+    public function getEstablecimiento() {
+        return $this->Establecimiento;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="TipoBolsa", inversedBy="Donacion")
+     * @ORM\JoinColumn(name="idTipoBolsa", referencedColumnName="idTipoBolsa")
+     * @return integer
+     */
+    private $TipoBolsa;
+
+    public function setTipoBolsa(\HSYS\MainBundle\Entity\TipoBolsa $TipoBolsa) {
+        $this->TipoBolsa = $TipoBolsa;
+    }
+
+    public function getTipoBolsa() {
+        return $this->TipoBolsa;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MarcaBolsa", inversedBy="Donacion")
+     * @ORM\JoinColumn(name="idMarcaBolsa", referencedColumnName="idMarcaBolsa")
+     * @return integer
+     */
+    private $MarcaBolsa;
+
+    public function setMarcaBolsa(\HSYS\MainBundle\Entity\MarcaBolsa $MarcaBolsa) {
+        $this->MarcaBolsa = $MarcaBolsa;
+    }
+
+    public function getMarcaBolsa() {
+        return $this->MarcaBolsa;
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Anticoagulante", inversedBy="Donacion")
+     * @ORM\JoinColumn(name="idAnticoagulante", referencedColumnName="idAnticoagulante")
+     * @return integer
+     */
+    private $Anticoagulante;
+
+    public function setAnticoagulante(\HSYS\MainBundle\Entity\Anticoagulante $Anticoagulante) {
+        $this->Anticoagulante = $Anticoagulante;
+    }
+
+    public function getAnticoagulante() {
+        return $this->Anticoagulante;
+    }
+
     //DATOS EXAMEN FISICO
     /**
      * Set peso
@@ -588,6 +656,27 @@ class Donacion {
      */
     public function setTensionarterial($tensionarterial) {
         $this->tensionarterial = $tensionarterial;
+
+        return $this;
+    }
+
+    /**
+     * Get tensionarterialmax
+     *
+     * @return string 
+     */
+    public function getTensionarterialmax() {
+        return $this->tensionarterialmax;
+    }
+
+    /**
+     * Set tensionarterialmax
+     *
+     * @param string $tensionarterialmax
+     * @return Donacion
+     */
+    public function setTensionarterialmax($tensionarterialmax) {
+        $this->tensionarterialmax = $tensionarterialmax;
 
         return $this;
     }
@@ -704,6 +793,10 @@ class Donacion {
 
     public function __construct() {
         $this->Unidades = new \Doctrine\Common\Collections\ArrayCollection();
+        $hoy = new \Datetime('now');
+        $hoy->setTime(0, 0, 0);
+        $this->setFechextraccion($hoy);
+        $this->setVencimientobolsa($hoy);
     }
 
     public function addUnidades(\HSYS\MainBundle\Entity\Unidad $Unidades) {
@@ -801,9 +894,8 @@ class Donacion {
     }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="respCuestionario", type="string", length=255, nullable=true)
+     * @ORM\Column(name="idRespCuestionario", type="integer", nullable=true)
+     * @var type 
      */
     private $respCuestionario;
 
@@ -817,9 +909,8 @@ class Donacion {
     }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="respFisico", type="string", length=255, nullable=true)
+     * @ORM\Column(name="idRespFisico", type="integer", nullable=true)
+     * @var type 
      */
     private $respFisico;
 
@@ -833,9 +924,8 @@ class Donacion {
     }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="respExtraccion", type="string", length=255, nullable=true)
+     * @ORM\Column(name="idRespExtraccion", type="integer", nullable=true)
+     * @var type 
      */
     private $respExtraccion;
 
@@ -849,9 +939,8 @@ class Donacion {
     }
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="respDonacion", type="string", length=255, nullable=true)
+     * @ORM\Column(name="idRespDonacion", type="integer", nullable=true)
+     * @var type 
      */
     private $respDonacion;
 

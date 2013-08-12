@@ -15,7 +15,7 @@ class DonanteType extends AbstractType
 // ->add('factorsang','choice',array('choices'=> (\HSYS\MainBundle\Entity\factorsang::$factorsang), 'empty_value' =>'SELECCIONE UNO' ))
 // ->add('fechnaci')
                 ->add('fechnaci', 'date', array(
-                    'widget' => 'choice',
+                    'widget' => 'single_text',
                     'empty_value' => array('year' => 'AAAA', 'month' => 'MM', 'day' => 'DD'),
                     'years' => range(1902,2037),
                     'months' => range(1,12),
