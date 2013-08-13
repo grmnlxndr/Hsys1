@@ -6,12 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 
-//use Doctrine\DBAL\Types\Type;
-//
-//Type::overrideType('datetime', 'Doctrine\DBAL\Types\VarDateTimeType');
-//Type::overrideType('datetimetz', 'Doctrine\DBAL\Types\VarDateTimeType');
-//Type::overrideType('time', 'Doctrine\DBAL\Types\VarDateTimeType');
-
 /**
  * Donante
  *
@@ -55,7 +49,7 @@ class Donante {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechnaci", type="datetime", nullable=true)
+     * @ORM\Column(name="fechnaci", type="date", nullable=true)
      */
     private $fechnaci;
 

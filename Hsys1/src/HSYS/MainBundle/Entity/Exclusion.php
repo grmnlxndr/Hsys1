@@ -24,7 +24,7 @@ class Exclusion {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechini", type="datetime", nullable=true)
+     * @ORM\Column(name="fechini", type="date", nullable=true)
      */
     private $fechini;
 
@@ -39,7 +39,7 @@ class Exclusion {
      * //esto tiene que ser nulleable!.
      * @var \DateTime
      *
-     * @ORM\Column(name="fechfin", type="datetime", nullable=true)
+     * @ORM\Column(name="fechfin", type="date", nullable=true)
      */
     private $fechfin;
 

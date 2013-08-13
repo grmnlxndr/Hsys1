@@ -24,7 +24,7 @@ class analisis {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechanalisis", type="datetime", nullable=true)
+     * @ORM\Column(name="fechanalisis", type="date", nullable=true)
      */
     private $fechanalisis;
 
