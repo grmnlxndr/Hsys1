@@ -20,4 +20,19 @@ use Symfony\Component\Locale\Stub\StubNumberFormatter;
 
 class NumberFormatter extends StubNumberFormatter
 {
+      public function getSymbol($attr) {
+        switch ($attr) {
+            case NumberFormatter::CURRENCY_SYMBOL:
+                return '$';
+            case NumberFormatter::DECIMAL_SEPARATOR_SYMBOL:
+                return '.';
+            case NumberFormatter::DIGIT_SYMBOL:
+                return '#';
+            case NumberFormatter::EXPONENTIAL_SYMBOL:
+                return 'E';
+            case NumberFormatter::GROUPING_SEPARATOR_SYMBOL:
+                return ',';
+                ;
+        }
+    }
 }
