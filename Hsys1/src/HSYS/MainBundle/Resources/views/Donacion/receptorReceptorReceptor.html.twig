@@ -54,7 +54,7 @@
         <td><a>{{ receptor.id }}</a></td>
         <td><a>{{ receptor.nomapp }}</a></td>
         <td><a>{{ receptor.dni }}</a></td>
-        <td class="link"><a href="{{ path('alta_donacion_receptor_formulario', {'don':donante.id, 'rec':receptor.id})  }}">Seleccionar</a></td>
+        <td class="link"><a href="{{ path('alta_extraccion_receptor_form', {'don':donante.id, 'rec':receptor.id})  }}">Seleccionar</a></td>
     </tr>
 {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>

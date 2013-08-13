@@ -1,0 +1,167 @@
+{% extends 'HSYSMainBundle:Donacion:donacionbase.html.twig' %}
+
+{% block title %}Donación Voluntaria{% endblock %}
+
+{% block contenido %}
+
+<h3>Donante:</h3>
+{% if donante.excluido %}
+<div class="consulta"><img src="{{ asset('images/error.png') }}"/>    DONANTE EXCLUIDO</div>
+{% endif %}
+    <table class="detalle">
+        <tr>
+            <th>ID: </th>
+            <td>{{ donante.id }}</td>
+        </tr>
+        <tr>
+            <th>Apellido y Nombre:  </th>
+            <td>{{ donante.nomapp }}</td>
+        </tr>
+        <tr>
+            <th>Factor Sangíneo: </th>
+            <td>{{ donante.factorsang }}</td>
+        </tr>
+    </table>
+    <br/>
+    {% if receptor %}
+    <h3>Receptor:</h3>
+    <table class="detalle">
+        <tr>
+            <th>ID: </th>
+            <td>{{ receptor.id }}</td>
+        </tr>
+        <tr>
+            <th>Apellido y Nombre:  </th>
+            <td>{{ receptor.nomapp }}</td>
+        </tr>
+        <tr>
+            <th>Factor Sangíneo: </th>
+            <td>{{ receptor.factorsang }}</td>
+        </tr>
+    </table>
+    <br/>
+    {% endif %}
+    {% if receptor %}
+    <form action="{{ path('alta_extraccion_receptor_form', {'don': donante.id,'rec': receptor.id}) }}" method="post">
+    {% else %}
+            <form action="{{ path('alta_extraccion_voluntaria_form', {'don': donante.id}) }}" method="post">
+    {% endif %}
+                    <table>
+                        <tr>
+                            <td><h3>Nueva Donación: </h3></td>
+                        </tr>
+                        <tr>
+                            <td><label><u>Datos Generales: </u></label></td>
+                        </tr>
+                        <tr>
+                            <td><label>Número de Donación: </label></td>
+                            <td>{{ form_widget(form.numdedonacion, {'attr': {'autofocus': 'autofocus'}}) }}</td>
+                            <td>{{ form_errors(form.numdedonacion) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Tipo de Donación: </label></td>
+                            <td>{{ form_widget(form.tipodonacion, {'attr':{'style': 'width: 171px'}}) }}</td>
+                            <td>{{ form_errors(form.tipodonacion) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Fecha de Extracción: </label></td>
+                            <td>{{ form_widget(form.fechextraccion) }}</td>
+                            <td>{{ form_errors(form.fechextraccion) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Establecimiento: </label></td>
+                            <td>{{ form_widget(form.hospital, {'attr':{'style': 'width: 171px'}}) }}</td>
+                            <td>{{ form_errors(form.hospital) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label><u>Cuestionario: </u></label></td>
+                        </tr>
+                        <tr>
+                            <td><label>Responsable Cuestionario: </label></td>
+                            <td>{{ form_widget(form.respCuestionario, {'attr':{'style': 'width: 171px'}}) }}</td>
+                            <td>{{ form_errors(form.respCuestionario) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label><u>Datos Exámen Físico: </u></label></td>
+                        </tr>
+                        <tr>
+                            <td><label>Peso: </label></td>
+                            <td>{{ form_widget(form.peso) }} Kg</td>
+                            <td>{{ form_errors(form.peso) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Tension Arterial: </label></td>
+                            <td>{{ form_widget(form.tensionarterial, {'attr':{'style': 'width: 71px','placeholder': 'Min'}}) }}-{{ form_widget(form.tensionarterialmax, {'attr':{'style': 'width: 70px','placeholder': 'Max'}}) }}</td>
+                            <td>{{ form_errors(form.tensionarterial) }}{{ form_errors(form.tensionarterialmax) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Pulso: </label></td>
+                            <td>{{ form_widget(form.pulso) }}</td>
+                            <td>{{ form_errors(form.pulso) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Temperatura: </label></td>
+                            <td>{{ form_widget(form.temperatura) }} °C</td>
+                            <td>{{ form_errors(form.temperatura) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Hematocrito: </label></td>
+                            <td>{{ form_widget(form.hto) }}</td>
+                            <td>{{ form_errors(form.hto) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Inspección de Brazos: </label></td>
+                            <td>{{ form_widget(form.inspeccionbrazos) }}</td>
+                            <td>{{ form_errors(form.inspeccionbrazos) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Observaciones: </label></td>
+                            <td>{{ form_widget(form.obs, {'attr':{'style': 'width: 159px'}}) }}</td>
+                            <td>{{ form_errors(form.obs) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Responsable Examen Físico: </label></td>
+                            <td>{{ form_widget(form.respFisico, {'attr':{'style': 'width: 171px'}}) }}</td>
+                            <td>{{ form_errors(form.respFisico) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label><u>Datos de la Bolsa: </u></label></td>
+                        </tr>
+                        <tr>
+                            <td><label>Número de Tubuladura: </label></td>
+                            <td>{{ form_widget(form.idbolsa) }}</td>
+                            <td>{{ form_errors(form.idbolsa) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Número de Lote: </label></td>
+                            <td>{{ form_widget(form.nrolote) }}</td>
+                            <td>{{ form_errors(form.nrolote) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Vencimiento de la Bolsa: </label></td>
+                            <td>{{ form_widget(form.vencimientobolsa) }}</td>
+                            <td>{{ form_errors(form.vencimientobolsa) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Tipo de Bolsa: </label></td>
+                            <td>{{ form_widget(form.tipoBolsa, {'attr':{'style': 'width: 171px'}}) }}</td>
+                            <td>{{ form_errors(form.tipoBolsa) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Marca de Bolsa: </label></td>
+                            <td>{{ form_widget(form.marcaBolsa, {'attr':{'style': 'width: 171px'}}) }}</td>
+                            <td>{{ form_errors(form.marcaBolsa) }}</td>
+                        </tr>
+                        <tr>
+                            <td><label>Anticoagulante: </label></td>
+                            <td>{{ form_widget(form.anticoagulante, {'attr':{'style': 'width: 171px'}}) }}</td>
+                            <td>{{ form_errors(form.anticoagulante) }}</td>
+                        </tr>
+                    </table>
+        {{ form_rest(form) }}
+        {{ form_errors(form) }}
+
+                    <input type="submit" value="Guardar y Continuar" />
+                </form>
+
+{% endblock %}

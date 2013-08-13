@@ -28,7 +28,7 @@
 
 #}
 <br/>
-<form id="donacion_form" name="donacion_form" method="post" action="{{ path('alta_donacion_voluntaria_confirmar') }}">
+<form id="donacion_form" name="donacion_form" method="post" action="{{ path('alta_extraccion_confirmar') }}">
     <table>
         <tr>
             <td><label><u>Datos de la Extracción: </u></label></td>
@@ -69,7 +69,7 @@
             <td>
                 <select id="respExtraccion" name="respExtraccion" style="width: 100%">
                            {% for resp in responsables %}
-                        <option value="{{ resp.username }}">{{ resp.username }}</option>
+                        <option value="{{ resp.id }}">{{ resp.username }}</option>
                            {% endfor %}
                     </select>
                 </td>

@@ -7,132 +7,131 @@
         {% if donacion.anulado is null %}
 <div class="detalle">
     <ul>
-        <li><a href="{{ path('modificar_donacion',{'id':donacion.id}) }}">Modificar</a></li>
         <li><a href= "{{ path('anular_donacion',{'id':donacion.id}) }}">Anular</a></li>
         <li><a href="{{ path('excluir_donante_por_donacion',{'donanteid':donacion.donante.id, 'donacionid' : donacion.id}) }}">Crear una exclusión</a></li>
         {% if donacion.terminado == false %}   
-        <li><a href="{{ path('alta_donacion_voluntaria_formulario_terminado',{'numdedonacion':donacion.numdedonacion}) }}">Continuar</a></li> 
+            <li><a href="{{ path('alta_donacion_voluntaria_formulario_terminado',{'numdedonacion':donacion.numdedonacion}) }}">Continuar</a></li> 
         {% endif %}
-   </ul>
-</div>
+            </ul>
+        </div>
         {%else%}
         <div class="consulta"><img src="{{ asset('images/error.png') }}"/>Donación anulada, Causa: {{donacion.anulado}} </div>
         {%endif%}
-<br/>
-<table class="detalle">
-    <tr>
-        <th colspan="2">Datos Generales</th>
-    </tr>
-    <tr>
-        <th>Número de Donación: </th>
-        <td>{{ donacion.numdedonacion }}</td>
-    </tr>
-    <tr>
-        <th>Fecha de extracción:  </th>
-        <td>{{ donacion.fechextraccion|date('d/m/Y') }}</td>
-    </tr>
-    <tr>
-        <th>Tipo Donación:  </th>
-        <td>{{ donacion.tipodonacion }}</td>
-    </tr>
-    <tr>
-        <th>Hospital de extracción:  </th>
-        <td>{{ donacion.hospital }}</td>
-    </tr>
-    <tr>
-        <th>Responsable de la Donación:  </th>
-        <td>{{ donacion.respDonacion }}</td>
-    </tr>
-    <tr>
-        <th colspan="2">Datos del Cuestionario</th>
-    </tr>
-    <tr>
-        <th>Responsable del Cuestionario:  </th>
-        <td>{{ donacion.respCuestionario }}</td>
-    </tr>
-    <tr>
-        <th colspan="2">Datos del Exámen Físico</th>
-    </tr>
-    <tr>
-        <th>Peso:  </th>
-        <td>{{ donacion.peso }} Kg</td>
-    </tr>
-    <tr>
-        <th>Tensión Arterial:  </th>
-        <td>{{ donacion.tensionarterial }}</td>
-    </tr>
-    <tr>
-        <th>Pulso:  </th>
-        <td>{{ donacion.pulso }}</td>
-    </tr>
-    <tr>
-        <th>Temperatura:  </th>
-        <td>{{ donacion.temperatura }} ºC</td>
-    </tr>
-    <tr>
-        <th>Hto: </th>
-        <td>{{ donacion.hto }}</td>
-    </tr>
-    <tr>
-        <th>Inpección de brazos: </th>
-        <td>{{ donacion.inspeccionbrazos }}</td>
-    </tr>
-    <tr>
-        <th>Observaciones:  </th>
-        <td>{{ donacion.obs }}</td>
-    </tr>
-    <tr>
-        <th>Responsable del Examen:  </th>
-        <td>{{ donacion.respFisico }}</td>
-    </tr>
-    <tr>
-        <th colspan="2">Datos de la Extracción</th>
-    </tr>
-    <tr>
-        <th>Flebotomía:  </th>
-        <td>{{ donacion.flebotomia }}</td>
-    </tr>
-    <tr>
-        <th>Punción:  </th>
-        <td>{{ donacion.puncion }}</td>
-    </tr>
-    <tr>
-        <th>Reacción Postextracción:  </th>
-        <td>{{ donacion.reaccionpostextraccion }}</td>
-    </tr>
-    <tr>
-        <th>Responsable de la Extracción:  </th>
-        <td>{{ donacion.respExtraccion }}</td>
-    </tr>
-    <tr>
-        <th>Comentarios: </th>
-        <td>{{ donacion.comentario }}</td>
-    </tr>
-    <tr>
-        <th colspan="2">Datos del Donante</th>
-    </tr>
-    <tr>
-        <th>ID del Donante: </th>
-        <td>{{ donacion.donante.id }}</td>
-    </tr>
-    <tr>
-        <th>Nombre del Donante: </th>
-        <td>{{ donacion.donante.nomapp }}</td>
-    </tr>
+            <br/>
+            <table class="detalle">
+                <tr>
+                    <th colspan="2">Datos Generales</th>
+                </tr>
+                <tr>
+                    <th>Número de Donación: </th>
+                    <td>{{ donacion.numdedonacion }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha de extracción:  </th>
+                    <td>{{ donacion.fechextraccion|date('d/m/Y') }}</td>
+                </tr>
+                <tr>
+                    <th>Tipo Donación:  </th>
+                    <td>{{ donacion.tipodonacion }}</td>
+                </tr>
+                <tr>
+                    <th>Hospital de extracción:  </th>
+                    <td>{{ donacion.hospital }}</td>
+                </tr>
+                <tr>
+                    <th>Responsable de la Donación:  </th>
+                    <td>{{ respDonacion }}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Datos del Cuestionario</th>
+                </tr>
+                <tr>
+                    <th>Responsable del Cuestionario:  </th>
+                    <td>{{ respCuestionario }}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Datos del Exámen Físico</th>
+                </tr>
+                <tr>
+                    <th>Peso:  </th>
+                    <td>{{ donacion.peso }} Kg</td>
+                </tr>
+                <tr>
+                    <th>Tensión Arterial:  </th>
+                    <td>{{ donacion.tensionarterial }}-{{ donacion.tensionarterialmax }}</td>
+                </tr>
+                <tr>
+                    <th>Pulso:  </th>
+                    <td>{{ donacion.pulso }}</td>
+                </tr>
+                <tr>
+                    <th>Temperatura:  </th>
+                    <td>{{ donacion.temperatura }} ºC</td>
+                </tr>
+                <tr>
+                    <th>Hto: </th>
+                    <td>{{ donacion.hto }}</td>
+                </tr>
+                <tr>
+                    <th>Inpección de brazos: </th>
+                    <td>{{ donacion.inspeccionbrazos }}</td>
+                </tr>
+                <tr>
+                    <th>Observaciones:  </th>
+                    <td>{{ donacion.obs }}</td>
+                </tr>
+                <tr>
+                    <th>Responsable del Examen:  </th>
+                    <td>{{ respFisico }}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Datos de la Extracción</th>
+                </tr>
+                <tr>
+                    <th>Flebotomía:  </th>
+                    <td>{{ donacion.flebotomia }}</td>
+                </tr>
+                <tr>
+                    <th>Punción:  </th>
+                    <td>{{ donacion.puncion }}</td>
+                </tr>
+                <tr>
+                    <th>Reacción Postextracción:  </th>
+                    <td>{{ donacion.reaccionpostextraccion }}</td>
+                </tr>
+                <tr>
+                    <th>Responsable de la Extracción:  </th>
+                    <td>{% if respExtraccion %}{{ respExtraccion }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Comentarios: </th>
+                    <td>{{ donacion.comentario }}</td>
+                </tr>
+                <tr>
+                    <th colspan="2">Datos del Donante</th>
+                </tr>
+                <tr>
+                    <th>ID del Donante: </th>
+                    <td>{{ donacion.donante.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre del Donante: </th>
+                    <td>{{ donacion.donante.nomapp }}</td>
+                </tr>
     {% if donacion.receptor %}
-    <tr>
-        <th colspan="2">Datos del Receptor</th>
-    </tr>
-    <tr>
-        <th>ID del Receptor: </th>
-        <td>{{ donacion.receptor.id }}</td>
-    </tr>
-    <tr>
-        <th>Nombre del Receptor: </th>
-        <td>{{ donacion.receptor.nomapp }}</td>
-    </tr>
+                <tr>
+                    <th colspan="2">Datos del Receptor</th>
+                </tr>
+                <tr>
+                    <th>ID del Receptor: </th>
+                    <td>{{ donacion.receptor.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre del Receptor: </th>
+                    <td>{{ donacion.receptor.nomapp }}</td>
+                </tr>
     {% endif %}
-</table>
-<br/>
+            </table>
+            <br/>
 
 {% endblock %}
