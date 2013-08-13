@@ -30,7 +30,7 @@ class Pais {
      * @ORM\Column(name="nombre", type="string", length=100, nullable=false, unique=true) 
      */
     private $nombre;
-    
+
     /**
      *
      * @var string
@@ -68,7 +68,7 @@ class Pais {
     public function getNombre() {
         return $this->nombre;
     }
-    
+
     /**
      * Set detalle
      *
@@ -88,6 +88,10 @@ class Pais {
      */
     public function getDetalle() {
         return $this->detalle;
+    }
+
+    public function __toString() {
+        return $this->getNombre();
     }
 
 }

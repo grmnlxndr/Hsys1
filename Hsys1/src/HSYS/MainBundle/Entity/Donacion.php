@@ -701,6 +701,10 @@ class Donacion {
 
     public function __construct() {
         $this->Unidades = new \Doctrine\Common\Collections\ArrayCollection();
+        
+        $hoy = new \Datetime('now');
+        $this->setFechextraccion($hoy);
+        $this->setVencimientobolsa($hoy);
     }
 
     public function addUnidades(\HSYS\MainBundle\Entity\Unidad $Unidades) {

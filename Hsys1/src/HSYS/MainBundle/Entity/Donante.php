@@ -612,6 +612,9 @@ class Donante {
     public function __construct() {
         $this->Exclusion = new \Doctrine\Common\Collections\ArrayCollection();
         $this->Donaciones = new \Doctrine\Common\Collections\ArrayCollection();
+        
+        $hoy = new \Datetime('now');
+        $this->setFechnaci($hoy);
     }
 
     public function addExclusion(\HSYS\MainBundle\Entity\Exclusion $Exclusion) {

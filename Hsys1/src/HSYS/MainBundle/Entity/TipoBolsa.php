@@ -90,5 +90,9 @@ class TipoBolsa {
         return $this->detalle;
     }
 
+    public function __toString() {
+        return $this->getNombre();
+    }
+
 }
 

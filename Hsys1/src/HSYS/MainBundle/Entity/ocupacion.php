@@ -105,6 +105,10 @@ class ocupacion {
         return $this->detalle;
     }
 
+    public function __toString() {
+        return $this->getNombre();
+    }
+
 }
 
 ?>

@@ -103,6 +103,10 @@ class Hospital {
         return $this->detalle;
     }
 
+    public function __toString() {
+        return $this->getNombre();
+    }
+
 }
 
 ?>

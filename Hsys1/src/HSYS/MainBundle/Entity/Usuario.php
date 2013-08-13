@@ -203,10 +203,10 @@ class Usuario implements UserInterface, \Serializable {
      */
     public function serialize() {
         return \serialize(array
-                    ($this->id,
-                    $this->username,
-                    $this->salt,
-                    $this->password));
+            ($this->id,
+            $this->username,
+            $this->salt,
+            $this->password));
     }
 
     /**
@@ -219,6 +219,10 @@ class Usuario implements UserInterface, \Serializable {
                 $this->salt,
                 $this->password,
                 ) = \unserialize($serialized);
+    }
+
+    public function __toString() {
+        return $this->getUsername();
     }
 
 }
