@@ -597,7 +597,7 @@ class Donacion {
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="anticoagulante", inversedBy="Donacion")
+     * @ORM\ManyToOne(targetEntity="Anticoagulante", inversedBy="Donacion")
      * @ORM\JoinColumn(name="anticoagulante", referencedColumnName="id")
      * @return integer
      */
