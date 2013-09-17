@@ -1,0 +1,45 @@
+{% extends 'HSYSMainBundle:Donacion:donacionbase.html.twig' %}
+
+{% block title %}Asignar Receptor a la donacion {{ id }}{% endblock %}
+
+{% block contenido %}
+<h3>Buscar Donación por Donante:</h3>
+
+<form id="buscar_form" name="buscar_form" method="post" action="{{ path('asignar_receptor', {'id': id} ) }}">
+    <table>
+        <tr>
+            <td><label>Búsqueda: </label></td>
+            <td><input id="buscar" name="buscar" type="text" style="width: 120px" autofocus="autofocus"/></td>
+            <td><label for="criterio">Criterio: </label></td>
+            <td><select name="criterio" id="criterio" style="width: 120px">
+                    <option value="id">Número Donante</option>
+                    <option value="dni" selected>DNI</option>
+                    <option value="pasaporte">Pasaporte</option>
+                    <option value="civica">L.C.</option>
+                    <option value="enrolamiento">L.E.</option>
+                    <option value="nomapp">Apellido y Nombre</option>
+                </select></td>
+            <td><input type="submit" value="Buscar"/></td>
+        </tr>
+    </table>
+</form>
+<br/>
+{% if donantes  is defined %}
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th>Núm. Donante</th><th> Apellido y Nombre </th><th> DNI </th><th> Seleccionar </th>
+    </tr>
+{% for donante in donantes %}
+    <tr>
+        <td><a>{{ donante.id }}</a></td>
+        <td><a>{{ donante.nomapp }}</a></td>
+        <td><a>{{ donante.dni }}</a></td>
+        <td class="link"><a href="{{ path('asignar_receptor_final', {'don':id, 'rec':donante.id})  }}">Asignar</a></td>
+    </tr>
+{% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+{% endfor %}
+</table>
+{% endif %}
+{% endblock %}

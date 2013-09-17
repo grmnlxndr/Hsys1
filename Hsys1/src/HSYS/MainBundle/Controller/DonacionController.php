@@ -567,6 +567,34 @@ class DonacionController extends Controller {
         return $this->render('HSYSMainBundle:Donacion:nuevoForm.html.twig', array('donante' => $donante, 'receptor' => $receptor, 'form' => $form->createView()));
     }
     
+    /**
+     * @Secure(roles="ROLE_PERSONAL")
+     */
+    public function asignarReceptorAction($id){
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getEntityManager();
+        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
+        $donantes = null;
+        if ($donacion->getReceptor()->getId() != 1){
+            return $this->render('HSYSMainBundle:Donacion:error.html.twig', array('razon' => 'ACCESO DENEGADO: No se puede asignar receptor'));
+        }
+        if ($request->getMethod() == 'POST'){
+            $busqueda = $request->request->get('buscar');
+            $criterio = $request->request->get('criterio');
+            $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
+        }
+        return $this->render('HSYSMainBundle:Donacion:buscarReceptor.html.twig', array('id' => $id , 'donantes' => $donantes));
+    }
+    
+    public function asignarReceptorFinalAction($don,$rec){
+        $em = $this->getDoctrine()->getEntityManager();
+        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($don);
+        $receptor = $em->getRepository('HSYSMainBundle:Donante')->find($rec);
+        $donacion->setReceptor($receptor);
+        $em->persist($donacion);
+        $em->flush();
+        return $this->render('HSYSMainBundle:Donacion:confirmacion.html.twig', array('id' => $don , 'accion' => 'asignado el receptor'));
+    }
 
 }
 

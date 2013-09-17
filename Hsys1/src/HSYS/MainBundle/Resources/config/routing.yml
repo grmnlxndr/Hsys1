@@ -151,6 +151,14 @@ alta_extraccion_receptor_form:
 alta_extraccion_confirmar:
   pattern: /donacion/voluntaria/confirmar
   defaults: { _controller: HSYSMainBundle:Donacion:formConfirmar }
+
+asignar_receptor:
+  pattern: /donacion/asignarreceptor/{id}
+  defaults: { _controller: HSYSMainBundle:Donacion:asignarReceptor }
+  
+asignar_receptor_final:
+  pattern: /donacion/asignarreceptor/{don}/{rec}
+  defaults: { _controller: HSYSMainBundle:Donacion:asignarReceptorFinal }
  
 #SANGRE
 pagina_sangre:
