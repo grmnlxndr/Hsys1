@@ -6,13 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 
 /**
- * Pais
+ * Provincia
  *
  * @ORM\Table()
  * @ORM\Entity
  * @UniqueEntity(fields="nombre", message="Nombre ya Existente")
  */
-class Pais {
+class Localidad {
 
     /**
      * @var integer
@@ -52,7 +52,7 @@ class Pais {
      * Set nombre
      *
      * @param string $nombre
-     * @return Pais
+     * @return Provincia
      */
     public function setNombre($nombre) {
         $this->nombre = $nombre;
@@ -73,7 +73,7 @@ class Pais {
      * Set detalle
      *
      * @param string $detalle
-     * @return Pais
+     * @return Provincia
      */
     public function setDetalle($detalle) {
         $this->detalle = $detalle;
@@ -93,35 +93,20 @@ class Pais {
     public function __toString() {
         return $this->getNombre();
     }
-
-    /**
-     * @ORM\OneToMany(targetEntity="Provincia", mappedBy="Provincia")
-     */
-    private $Provincias;
     
-    /**
-     * add Provincia
-     *
-     * @param string $detalle
-     * @return Pais
+     /**
+     * @ORM\ManyToOne(targetEntity="Provincia", inversedBy="Localidad")
+     * @ORM\JoinColumn(name="Provincia", referencedColumnName="id")
+     * @return integer
      */
-    public function addProvincias($provincia) {
-        $this->Provincias = $provincia;
+    private $Provincia;
 
-        return $this;
+    public function setProvincia(\HSYS\MainBundle\Entity\Provincia $provincia) {
+        $this->Provincia = $provincia;
     }
 
-    /**
-     * Get Provincia
-     *
-     * @return string 
-     */
-    public function getProvincias() {
-        return $this->Provincias;
-    }
-    
-    public function __construct() {
-        $this->Provincias = new \Doctrine\Common\Collections\ArrayCollection();
+    public function getPais() {
+        return $this->Provincia;
     }
     
 }
