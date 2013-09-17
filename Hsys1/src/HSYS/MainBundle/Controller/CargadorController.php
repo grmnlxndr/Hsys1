@@ -200,6 +200,205 @@ class CargadorController extends Controller {
         $role->setName("ROLE_PERSONAL");
         $em->persist($role);
         $em->flush();
+        
+        // Carga de donante 1
+        $donante = new \HSYS\MainBundle\Entity\Donante();
+        $donante->setDni('D0');
+        $donante->setNomapp('NO ESPECIFICADO');
+        $donante->setBaja(false);
+        $em->persist($donante);
+        $em->flush();
+        
+        // Carga de marca de Bolsas
+        $marca = new \HSYS\MainBundle\Entity\MarcaBolsa();
+        $marca->setNombre('Baxter');
+        $em->persist($marca);
+        $em->flush();
+        
+        $marca = new \HSYS\MainBundle\Entity\MarcaBolsa();
+        $marca->setNombre('Grifols');
+        $em->persist($marca);
+        $em->flush();
+        
+        $marca = new \HSYS\MainBundle\Entity\MarcaBolsa();
+        $marca->setNombre('MS');
+        $em->persist($marca);
+        $em->flush();
+        
+        $marca = new \HSYS\MainBundle\Entity\MarcaBolsa();
+        $marca->setNombre('Kawasumi');
+        $em->persist($marca);
+        $em->flush();
+        
+        $marca = new \HSYS\MainBundle\Entity\MarcaBolsa();
+        $marca->setNombre('Rivero');
+        $em->persist($marca);
+        $em->flush();
+        
+        $marca = new \HSYS\MainBundle\Entity\MarcaBolsa();
+        $marca->setNombre('Terumo');
+        $em->persist($marca);
+        $em->flush();
+        
+        // Carga de Anticoagulantes
+        $ant = new \HSYS\MainBundle\Entity\Anticoagulante();
+        $ant->setNombre('ACD-A');
+        $em->persist($ant);
+        $em->flush();
+        
+        $ant = new \HSYS\MainBundle\Entity\Anticoagulante();
+        $ant->setNombre('CPD-A');
+        $em->persist($ant);
+        $em->flush();
+        
+        $ant = new \HSYS\MainBundle\Entity\Anticoagulante();
+        $ant->setNombre('SAG-Manitol');
+        $em->persist($ant);
+        $em->flush();
+        
+        // Carga de tipo bolsa
+        $bolsa = new \HSYS\MainBundle\Entity\TipoBolsa();
+        $bolsa->setNombre('Simple');
+        $em->persist($bolsa);
+        $em->flush();
+        
+        $bolsa = new \HSYS\MainBundle\Entity\TipoBolsa();
+        $bolsa->setNombre('Doble');
+        $em->persist($bolsa);
+        $em->flush();
+        
+        $bolsa = new \HSYS\MainBundle\Entity\TipoBolsa();
+        $bolsa->setNombre('Triple');
+        $em->persist($bolsa);
+        $em->flush();
+        
+        $bolsa = new \HSYS\MainBundle\Entity\TipoBolsa();
+        $bolsa->setNombre('Cuádruple');
+        $em->persist($bolsa);
+        $em->flush();
+        
+        $bolsa = new \HSYS\MainBundle\Entity\TipoBolsa();
+        $bolsa->setNombre('Niños');
+        $em->persist($bolsa);
+        $em->flush();
+        
+        // Carga Hospitales
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Perrando');
+        $em->persist($hosp);
+        $em->flush();
+        
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Gral. San Martin');
+        $em->persist($hosp);
+        $em->flush();
+        
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Las Breñas');
+        $em->persist($hosp);
+        $em->flush();
+        
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Charata');
+        $em->persist($hosp);
+        $em->flush();
+        
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Hermoso Campo');
+        $em->persist($hosp);
+        $em->flush();
+        
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Castelli');
+        $em->persist($hosp);
+        $em->flush();
+        
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Villa Ángela');
+        $em->persist($hosp);
+        $em->flush();
+        
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Tres Isletas');
+        $em->persist($hosp);
+        $em->flush();
+        
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Las Palmas');
+        $em->persist($hosp);
+        $em->flush();
+        
+        $hosp = new \HSYS\MainBundle\Entity\Hospital();
+        $hosp->setNombre('Colectas Externas');
+        $em->persist($hosp);
+        $em->flush();
+        
+        // Carga Ocupaciones
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Jubilado');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Ama de Casa');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Empleado Público');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Secretario');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Médico');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Comerciante');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Trabajador Independiente');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Empleado Privado');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Desocupado');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Estudiante');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Estudiante Universitario');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Docente');
+        $em->persist($ocu);
+        $em->flush();
+        
+        $ocu = new \HSYS\MainBundle\Entity\ocupacion();
+        $ocu->setNombre('Docente Universitario');
+        $em->persist($ocu);
+        $em->flush();
+        
 
         return array('Listo' => 'tosta hecho');
     }
