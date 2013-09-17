@@ -1,0 +1,15 @@
+{% extends 'HSYSMainBundle:Donante:donantebase.html.twig' %}
+
+{% block title %}ERROR{% endblock %}
+
+{% block contenido %}
+<div class="consulta">
+    <img src="{{ asset('images/error.png') }}"/> ERROR. {{ razon }}.
+</div>
+<br/>
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('pagina_donante') }}">Haga clic aquí para continuar</a></li>
+    </ul>
+</div>
+{% endblock %}

@@ -44,6 +44,9 @@ class DonanteController extends Controller {
     * 	@Secure(roles="ROLE_MEDICO")
     */
     public function modificarAction($id) {
+        if ($id == 1){
+            return $this->render('HSYSMainBundle:Donante:error.html.twig', array('razon' => 'ACCESO DENEGADO: No se puede modificar este donante'));
+        };
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
 
@@ -207,6 +210,9 @@ class DonanteController extends Controller {
     * 	@Secure(roles="ROLE_ADMIN")
     */
     public function eliminarAction($id) {
+        if ($id == 1){
+            return $this->render('HSYSMainBundle:Donante:error.html.twig', array('razon' => 'ACCESO DENEGADO: No se puede eliminar este donante'));
+        };
         $em = $this->getDoctrine()->getEntityManager();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
         $request = $this->getRequest();
