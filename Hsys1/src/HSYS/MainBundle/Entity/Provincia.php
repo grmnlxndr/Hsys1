@@ -6,13 +6,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 
 /**
- * Pais
+ * Provincia
  *
  * @ORM\Table()
  * @ORM\Entity
  * @UniqueEntity(fields="nombre", message="Nombre ya Existente")
  */
-class Pais {
+class Provincia {
 
     /**
      * @var integer
@@ -52,7 +52,7 @@ class Pais {
      * Set nombre
      *
      * @param string $nombre
-     * @return Pais
+     * @return Provincia
      */
     public function setNombre($nombre) {
         $this->nombre = $nombre;
@@ -73,7 +73,7 @@ class Pais {
      * Set detalle
      *
      * @param string $detalle
-     * @return Pais
+     * @return Provincia
      */
     public function setDetalle($detalle) {
         $this->detalle = $detalle;
@@ -95,33 +95,48 @@ class Pais {
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="Provincia", mappedBy="Provincia")
+     * @ORM\OneToMany(targetEntity="Localidad", mappedBy="Provincia")
      */
-    private $Provincias;
+    private $Localidades;
     
     /**
-     * add Provincia
+     * add Localidad
      *
      * @param string $detalle
-     * @return Pais
+     * @return Provincia
      */
-    public function addProvincias($provincia) {
-        $this->Provincias = $provincia;
+    public function addLocalidades($localidad) {
+        $this->Localidades = $localidad;
 
         return $this;
     }
 
     /**
-     * Get Provincia
+     * Get Localidad
      *
      * @return string 
      */
-    public function getProvincias() {
-        return $this->Provincias;
+    public function getLocalidades() {
+        return $this->Localidades;
     }
     
     public function __construct() {
-        $this->Provincias = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->Localidades = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+     /**
+     * @ORM\ManyToOne(targetEntity="Pais", inversedBy="Provincia")
+     * @ORM\JoinColumn(name="Pais", referencedColumnName="id")
+     * @return integer
+     */
+    private $Pais;
+
+    public function setPais(\HSYS\MainBundle\Entity\Pais $pais) {
+        $this->Pais = $pais;
+    }
+
+    public function getPais() {
+        return $this->Pais;
     }
     
 }
