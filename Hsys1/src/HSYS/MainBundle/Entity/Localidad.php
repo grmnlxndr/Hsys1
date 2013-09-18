@@ -10,7 +10,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
  *
  * @ORM\Table()
  * @ORM\Entity
- * @UniqueEntity(fields="nombre", message="Nombre ya Existente")
  */
 class Localidad {
 
@@ -27,7 +26,7 @@ class Localidad {
      *
      * @var string
      * 
-     * @ORM\Column(name="nombre", type="string", length=100, nullable=false, unique=true) 
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false) 
      */
     private $nombre;
 
@@ -105,7 +104,7 @@ class Localidad {
         $this->Provincia = $provincia;
     }
 
-    public function getPais() {
+    public function getProvincia() {
         return $this->Provincia;
     }
     

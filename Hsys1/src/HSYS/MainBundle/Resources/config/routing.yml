@@ -320,6 +320,14 @@ admin_pais:
   pattern: /admin/tabla/pais
   defaults: { _controller: HSYSMainBundle:Admin:pais }
 
+admin_provincia:
+  pattern: /admin/tabla/provincia
+  defaults: { _controller: HSYSMainBundle:Admin:provincia }
+  
+admin_localidad:
+  pattern: /admin/tabla/localidad
+  defaults: { _controller: HSYSMainBundle:Admin:localidad }
+
 admin_anticoagulante:
   pattern: /admin/tabla/anticoagulante
   defaults: { _controller: HSYSMainBundle:Admin:anticoagulante }

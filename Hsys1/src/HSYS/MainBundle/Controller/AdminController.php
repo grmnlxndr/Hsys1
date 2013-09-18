@@ -4,12 +4,16 @@ namespace HSYS\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use HSYS\MainBundle\Entity\Pais;
+use HSYS\MainBundle\Entity\Provincia;
+use HSYS\MainBundle\Entity\Localidad;
 use HSYS\MainBundle\Entity\Anticoagulante;
 use HSYS\MainBundle\Entity\MarcaBolsa;
 use HSYS\MainBundle\Entity\TipoBolsa;
 use HSYS\MainBundle\Entity\Hospital;
 use HSYS\MainBundle\Entity\ocupacion;
 use HSYS\MainBundle\Form\TablaType;
+use HSYS\MainBundle\Form\ProvinciaType;
+use HSYS\MainBundle\Form\LocalidadType;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class AdminController extends Controller {
@@ -48,6 +52,50 @@ class AdminController extends Controller {
         }
         $paises = $em->getRepository('HSYSMainBundle:Pais')->findAll();
         return $this->render('HSYSMainBundle:Admin:pais.html.twig', array('paises' => $paises, 'form' => $form->createView()));
+    }
+    
+    /**
+     * 	@Secure(roles="ROLE_ADMIN")
+     */
+    public function provinciaAction() {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $provincia = new Provincia();
+        $form = $this->createForm(new ProvinciaType(), $provincia);
+
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $em->persist($provincia);
+                $em->flush();
+                return $this->render('HSYSMainBundle:Admin:confirmacion.html.twig', array('dato' => 'provincia', 'nombre' => $provincia->getNombre(),));
+            }
+        }
+        $provincias = $em->getRepository('HSYSMainBundle:Provincia')->findAll();
+        return $this->render('HSYSMainBundle:Admin:provincia.html.twig', array('provincias' => $provincias, 'form' => $form->createView()));
+    }
+
+    /**
+     * 	@Secure(roles="ROLE_ADMIN")
+     */
+    public function localidadAction() {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $localidad = new Localidad();
+        $form = $this->createForm(new LocalidadType(), $localidad);
+
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $em->persist($localidad);
+                $em->flush();
+                return $this->render('HSYSMainBundle:Admin:confirmacion.html.twig', array('dato' => 'localidad', 'nombre' => $localidad->getNombre(),));
+            }
+        }
+        $localidades = $em->getRepository('HSYSMainBundle:Localidad')->findAll();
+        return $this->render('HSYSMainBundle:Admin:localidad.html.twig', array('localidades' => $localidades, 'form' => $form->createView()));
     }
 
     /**

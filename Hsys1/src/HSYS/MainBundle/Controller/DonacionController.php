@@ -586,6 +586,9 @@ class DonacionController extends Controller {
         return $this->render('HSYSMainBundle:Donacion:buscarReceptor.html.twig', array('id' => $id , 'donantes' => $donantes));
     }
     
+    /**
+     * @Secure(roles="ROLE_PERSONAL")
+     */
     public function asignarReceptorFinalAction($don,$rec){
         $em = $this->getDoctrine()->getEntityManager();
         $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($don);

@@ -3,14 +3,12 @@
 namespace HSYS\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
 
 /**
  * Provincia
  *
  * @ORM\Table()
  * @ORM\Entity
- * @UniqueEntity(fields="nombre", message="Nombre ya Existente")
  */
 class Provincia {
 
@@ -27,7 +25,7 @@ class Provincia {
      *
      * @var string
      * 
-     * @ORM\Column(name="nombre", type="string", length=100, nullable=false, unique=true) 
+     * @ORM\Column(name="nombre", type="string", length=100, nullable=false) 
      */
     private $nombre;
 
@@ -137,6 +135,11 @@ class Provincia {
 
     public function getPais() {
         return $this->Pais;
+    }
+    
+        
+    public function getCompleto() {
+        return $this->nombre.' - '. $this->Pais;
     }
     
 }

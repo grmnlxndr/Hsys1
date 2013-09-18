@@ -1,0 +1,41 @@
+{% extends 'HSYSMainBundle:Admin:adminbase.html.twig' %}
+
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+
+<h3>Tabla Localidad:</h3>
+<form id="nuevo_localidad" name="nuevo_localidad" action="{{ path('admin_localidad') }}" method="post">
+    <label style="color: #B90302">Insertar nueva Localidad</label><br/>
+    <table>
+        <tr>
+            <td><label>Nombre: </label></td><td>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td><td>{{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td><label>Detalle: </label></td><td>{{ form_widget(form.detalle) }}</td><td>{{ form_errors(form.detalle) }}</td>
+        </tr>
+        <tr>
+            <td><label>Provincia al que pertenece: </label></td><td>{{ form_widget(form.Provincia) }}</td><td>{{ form_errors(form.Provincia) }}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Agregar"/></td><td colspan="2">{{ form_rest(form) }}</td>
+        </tr>
+    </table>
+</form>
+<br/>
+<h4>Contenido de la tabla:</h4>
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th>ID</th><th>Nombre Localidad</th><th>Detalle</th><th>Provincia</th>
+    </tr>
+    {% for localidad in localidades %}
+    <tr>
+        <td>{{ localidad.id }}</td><td>{{ localidad.nombre }}</td><td>{{ localidad.detalle }}</td><td>{{ localidad.Provincia }}</td>
+    </tr>
+    {% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+    {% endfor %}
+</table>
+
+{% endblock %}
