@@ -3,7 +3,7 @@
 {% block title %}Asignar Receptor a la donacion {{ id }}{% endblock %}
 
 {% block contenido %}
-<h3>Buscar Donación por Donante:</h3>
+<h3>Asignar Receptor a la donacion {{ id }}: </h3>
 
 <form id="buscar_form" name="buscar_form" method="post" action="{{ path('asignar_receptor', {'id': id} ) }}">
     <table>
@@ -24,7 +24,7 @@
     </table>
 </form>
 <br/>
-{% if donantes  is defined %}
+{% if donantes  is not null %}
 <table class="consulta" style="width: 100%">
     <tr>
         <th>Núm. Donante</th><th> Apellido y Nombre </th><th> DNI </th><th> Seleccionar </th>

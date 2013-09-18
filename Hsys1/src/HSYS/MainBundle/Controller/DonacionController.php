@@ -589,6 +589,9 @@ class DonacionController extends Controller {
     public function asignarReceptorFinalAction($don,$rec){
         $em = $this->getDoctrine()->getEntityManager();
         $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($don);
+        if ($donacion->getReceptor()->getId() != 1){
+            return $this->render('HSYSMainBundle:Donacion:error.html.twig', array('razon' => 'ACCESO DENEGADO: No se puede asignar receptor'));
+        }
         $receptor = $em->getRepository('HSYSMainBundle:Donante')->find($rec);
         $donacion->setReceptor($receptor);
         $em->persist($donacion);
