@@ -24,8 +24,8 @@ class UsuarioController extends Controller {
      * @Route("/", name="admin_usuario")
      * @Template()
      * 
-     */
-    /*
+     *
+     *
      * @Secure(roles="ROLE_ADMIN")
      */
     public function indexAction() {
@@ -145,8 +145,8 @@ class UsuarioController extends Controller {
      *
      * @Route("/{id}/edit", name="admin_usuario_edit")
      * @Template()
-     */
-    /* 
+     *
+     * 
      * @Secure(roles="ROLE_ADMIN")
      */
     public function editAction($id) {
@@ -174,8 +174,8 @@ class UsuarioController extends Controller {
      * @Route("/{id}/update", name="admin_usuario_update")
      * @Method("POST")
      * @Template("HSYSMainBundle:Usuario:edit.html.twig")
-     */
-    /* 
+     *
+     * 
      * @Secure(roles="ROLE_ADMIN")
      */
     public function updateAction(Request $request, $id) {
@@ -219,8 +219,8 @@ class UsuarioController extends Controller {
      *
      * @Route("/{id}/delete", name="admin_usuario_delete")
      * @Method("POST")
-     */
-    /* 
+     *
+     * 
      * @Secure(roles="ROLE_ADMIN")
      */
     public function deleteAction(Request $request, $id) {
@@ -240,6 +240,32 @@ class UsuarioController extends Controller {
         }
 
         return $this->redirect($this->generateUrl('admin_usuario'));
+    }
+    
+    /**
+     * Deletes a Usuario entity.
+     *
+     * @Route("/{id}/eliminar", name="admin_usuario_eliminar")
+     * @Template("HSYSMainBundle:Usuario:eliminar.html.twig")
+     *
+     * 
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function eliminarAction($id) {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('HSYSMainBundle:Usuario')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+
+        $deleteForm = $this->createDeleteForm($id);
+
+        return array(
+            'entity' => $entity,
+            'delete_form' => $deleteForm->createView(),
+        );
     }
 
     private function createDeleteForm($id) {

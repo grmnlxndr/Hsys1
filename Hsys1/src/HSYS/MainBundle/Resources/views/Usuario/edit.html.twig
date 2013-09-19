@@ -33,12 +33,13 @@
                 Volver al Listado de Usuarios
             </a>
         </li>
+        {% if app.security.getToken().getUser().getId() != entity.id %}
         <li>
-            <form action="{{ path('admin_usuario_delete', { 'id': entity.id }) }}" method="post" style="background-color: transparent; border-color: transparent">
-            {{ form_widget(delete_form) }}
-                    <button type="submit" style="background-color: transparent; font-family: 'Trebuchet MS', Verdana, Arial; font-size: 1.0em; color: white; font-weight: bold; border-color: transparent; ">Eliminar</button>
-                </form>
-            </li>
+            <a href="{{ path('admin_usuario_eliminar', { 'id': entity.id }) }}">
+                Eliminar
+            </a>
+        </li>
+            {% endif %}
         </ul>
     </div>
 {% endblock %}

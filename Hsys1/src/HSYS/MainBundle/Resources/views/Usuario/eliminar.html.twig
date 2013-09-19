@@ -1,0 +1,29 @@
+{% extends "HSYSMainBundle:Usuario:usuariobase.html.twig" %}
+
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+<h3>Eliminar Usuario: {{ entity.id }}</h3>
+<br/>
+<table class="detalle">
+    <tr>
+        <th>Id</th>
+        <td>{{ entity.id }}</td>
+    </tr>
+    <tr>
+        <th>Nombre de Usuario</th>
+        <td>{{ entity.username }}</td>
+    </tr>
+</table>
+<br/>
+
+<form action="{{ path('admin_usuario_delete', { 'id': entity.id }) }}" method="post">
+    <p>¿Está realmente seguro de eliminar ese usuario? Su eliminación puede ocasionar errores en el sistema.</p>
+    <p>Sólo hágalo cuando nunca utilizó dicho usuario, en otro caso, utilice "Desactivar" usuario.</p>
+    <p>Si está realmente seguro, haga clic en ELIMINAR.</p>
+    <br/>   
+   {{ form_widget(delete_form) }}
+    <input action="action" type="button" value="Volver sin Eliminar" onclick="history.go(-1)" />
+    <input type="submit" value="ELIMINAR"/>
+</form>
+{% endblock %}
