@@ -30,7 +30,7 @@ class Donante {
      * @ORM\Column(name="nomapp", type="string", length=100, nullable=false)
      */
     private $nomapp;
-    
+
     /**
      * @var string
      * 
@@ -115,7 +115,7 @@ class Donante {
      * @ORM\Column(name="pais", type= "string", length=40, nullable=true)
      */
     private $pais;
-    
+
     /**
      * @var string
      * 
@@ -129,35 +129,35 @@ class Donante {
      * @ORM\Column(name="telefono", type= "string", length=30, nullable=true)
      */
     private $telefono;
-    
+
     /**
      * @var string
      * 
      * @ORM\Column(name="celular", type= "string", length=30, nullable=true)
      */
     private $celular;
-    
+
     /**
      * @var string
      * 
      * @ORM\Column(name="niveleducativo", type= "string", length=30, nullable=true)
      */
     private $niveleducativo;
-    
+
     /**
      * @var boolean
      * 
      * @ORM\Column(name="donantevoluntario", type= "boolean", nullable=true)
      */
     private $donantevoluntario;
-   
+
     /**
      * @var boolean
      * 
      * @ORM\Column(name="leerescribir", type= "boolean", nullable=true)
      */
     private $leerescribir;
-    
+
     /**
      * @var string
      * 
@@ -192,7 +192,7 @@ class Donante {
     public function getId() {
         return $this->id;
     }
-    
+
     /**
      * Set nomapp
      * 
@@ -231,6 +231,19 @@ class Donante {
      * @return string 
      */
     public function getDni() {
+        //return $this->dni;
+        if (substr($this->dni, 0, 1) == 'D') {
+            return 'DNI - ' . substr($this->dni, 1);
+        }
+        if (substr($this->dni, 0, 1) == 'P') {
+            return 'Pasaporte - ' . substr($this->dni, 1);
+        }
+        if (substr($this->dni, 0, 1) == 'C') {
+            return 'LC - ' . substr($this->dni, 1);
+        }
+        if (substr($this->dni, 0, 1) == 'E') {
+            return 'LE - ' . substr($this->dni, 1);
+        }
         return $this->dni;
     }
 
@@ -458,7 +471,7 @@ class Donante {
         $this->pais = $pais;
         return $this;
     }
-    
+
     /**
      * Get codpostal
      *
@@ -498,7 +511,7 @@ class Donante {
         $this->telefono = $telefono;
         return $this;
     }
-    
+
     /**
      * Get celular
      *
@@ -518,7 +531,7 @@ class Donante {
         $this->celular = $celular;
         return $this;
     }
-    
+
     /**
      * Get email
      *
@@ -538,7 +551,7 @@ class Donante {
         $this->email = $email;
         return $this;
     }
-    
+
     /**
      * Get niveleducativo
      *
@@ -558,7 +571,7 @@ class Donante {
         $this->niveleducativo = $niveleducativo;
         return $this;
     }
-    
+
     /**
      * Get donantevoluntario
      *
@@ -578,7 +591,7 @@ class Donante {
         $this->donantevoluntario = $donantevoluntario;
         return $this;
     }
-    
+
     /**
      * Get leerescribir
      *
@@ -598,7 +611,7 @@ class Donante {
         $this->leerescribir = $leerescribir;
         return $this;
     }
-    
+
     /**
      * @ORM\OneToMany(targetEntity="Exclusion", mappedBy="Donante", cascade={"persist"})
      */
@@ -612,7 +625,7 @@ class Donante {
     public function __construct() {
         $this->Exclusion = new \Doctrine\Common\Collections\ArrayCollection();
         $this->Donaciones = new \Doctrine\Common\Collections\ArrayCollection();
-        
+
         $hoy = new \Datetime('now');
         $this->setFechnaci($hoy);
     }
@@ -665,16 +678,16 @@ class Donante {
     }
 
     public function excluir(\HSYS\MainBundle\Entity\TipoExclusion $tipoExclusion, $comentario, $fechaingreso, $duracion = null) {
-        
+
         $exclusion = new Exclusion;
         $exclusion->setTipoExclusion($tipoExclusion);
         $exclusion->setDonante($this);
         $exclusion->setFechini($fechaingreso);
-        if ($duracion == null){
+        if ($duracion == null) {
             $duracion = $tipoExclusion->getDuracion();
         }
         if ($duracion != 0) {
-            $sumar = '+' . $duracion  . ' day';
+            $sumar = '+' . $duracion . ' day';
             $nuevafecha = strtotime($sumar, strtotime($fechaingreso->format('Y-m-d')));
             $nuevafecha = date('Y-m-j', $nuevafecha);
             $fechaformat1 = new \DateTime;

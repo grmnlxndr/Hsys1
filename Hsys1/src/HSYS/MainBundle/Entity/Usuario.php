@@ -2,14 +2,14 @@
 
 namespace HSYS\MainBundle\Entity;
 
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  *  @ORM\Entity
  *  @ORM\Table(name ="admin_user")
  */
-class Usuario implements UserInterface, \Serializable {
+class Usuario implements AdvancedUserInterface, \Serializable {
 
     /**
      *
@@ -37,6 +37,12 @@ class Usuario implements UserInterface, \Serializable {
      * @ORM\Column(name="salt",type="string", length=255)
      */
     protected $salt;
+
+    /**
+     *
+     * @ORM\Column(name="isActive",type="boolean")
+     */
+    protected $isActive;
 
     /**
      * @ORM\ManyToMany(targetEntity="Role")
@@ -112,6 +118,24 @@ class Usuario implements UserInterface, \Serializable {
      */
     public function getSalt() {
         return $this->salt;
+    }
+
+    /**
+     * Set isActive
+     * 
+     * @param boolean $isActive
+     */
+    public function setIsActive($isActive) {
+        $this->isActive = $isActive;
+    }
+
+    /**
+     * Get isActive
+     * 
+     * @return isActive
+     */
+    public function getIsActive() {
+        return $this->isActive;
     }
 
     /**
@@ -203,10 +227,7 @@ class Usuario implements UserInterface, \Serializable {
      */
     public function serialize() {
         return \serialize(array
-            ($this->id,
-            $this->username,
-            $this->salt,
-            $this->password));
+            ($this->id,));
     }
 
     /**
@@ -215,10 +236,29 @@ class Usuario implements UserInterface, \Serializable {
     public function unserialize($serialized) {
         list (
                 $this->id,
-                $this->username,
-                $this->salt,
-                $this->password,
                 ) = \unserialize($serialized);
+    }
+
+    //metodos de la interfaz AdvancedUserInterface
+    
+    //Por si expiro la cuenta, pero no usamos, asi que nunca expira.
+    public function isAccountNonExpired() {
+        return true;
+    }
+
+    //Por si se bloqueo la cuenta, pero no usamos, asi que nunca se bloquea.
+    public function isAccountNonLocked() {
+        return true;
+    }
+
+    //Por si las credenciales expiraron, pero no usamos, asi que nunca expiran.
+    public function isCredentialsNonExpired() {
+        return true;
+    }
+
+    //por si la cuenta esta activa, usamos con el atributo "isActive".
+    public function isEnabled() {
+        return $this->isActive;
     }
 
     public function __toString() {

@@ -13,6 +13,7 @@
            {# <th>Password</th>
             <th>Salt</th> #}
             <th>Ver</th>
+            <th>Act/Desact</th>
             <th>Editar</th>
         </tr>
 
@@ -25,6 +26,9 @@
                           <td>{{ entity.salt }}</td> #}
             <td class="link">
                 <a href="{{ path('admin_usuario_show', { 'id': entity.id }) }}">Ver</a>
+            </td>
+            <td class="link">
+                {% if app.security.getToken().getUser().getId() != entity.id %}<a href="{{ path('admin_activar', { 'id': entity.id }) }}">{% if entity.isActive %}Desactivar{% else %}Activar{% endif %}</a>{% endif %}
             </td>
             <td class="link">
                 <a href="{{ path('admin_usuario_edit', { 'id': entity.id }) }}">Editar</a>

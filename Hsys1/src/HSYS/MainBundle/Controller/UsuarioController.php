@@ -80,6 +80,33 @@ class UsuarioController extends Controller {
             'form' => $form->createView(),
         );
     }
+    
+    /**
+     * @Route("/activar/{id}", name="admin_activar")
+     * @Secure (roles="ROLE_ADMIN")
+     */
+    public function activoInactivoAction($id) {
+        $request = $this->getRequest();
+        $em = $this->getDoctrine()->getManager();
+//        $entity = new Usuario();
+        $entity = $em->getRepository("HSYSMainBundle:Usuario")->find($id);
+        
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Usuario entity.');
+        }
+        
+        if ($entity->getIsActive() == true) {
+            $entity->setIsActive(false);
+        } else {
+            $entity->setIsActive(true);
+        }
+        
+        $em->persist($entity);
+        $em->flush();
+        
+        return $this->redirect($request->headers->get('referer'));
+        
+    }
 
     /**
      * Creates a new Usuario entity.
@@ -98,6 +125,7 @@ class UsuarioController extends Controller {
 
         if ($form->isValid()) {
             $this->setSecurePassword($entity);
+            $entity->setIsActive(true);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
