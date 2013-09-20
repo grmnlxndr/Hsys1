@@ -519,7 +519,7 @@ class DonacionController extends Controller {
             return $this->redirect($this->generateUrl('pagina_donacion'));
         }
     }
-    
+
     /**
      *   @Secure(roles="ROLE_PERSONAL")
      */
@@ -566,40 +566,61 @@ class DonacionController extends Controller {
         }
         return $this->render('HSYSMainBundle:Donacion:nuevoForm.html.twig', array('donante' => $donante, 'receptor' => $receptor, 'form' => $form->createView()));
     }
-    
+
     /**
      * @Secure(roles="ROLE_PERSONAL")
      */
-    public function asignarReceptorAction($id){
+    public function asignarReceptorAction($id) {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
         $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
         $donantes = null;
-        if ($donacion->getReceptor()->getId() != 1){
+        if ($donacion->getReceptor()->getId() != 1) {
             return $this->render('HSYSMainBundle:Donacion:error.html.twig', array('razon' => 'ACCESO DENEGADO: No se puede asignar receptor'));
         }
-        if ($request->getMethod() == 'POST'){
+        if ($request->getMethod() == 'POST') {
             $busqueda = $request->request->get('buscar');
             $criterio = $request->request->get('criterio');
             $donantes = $em->getRepository('HSYSMainBundle:Donante')->findDonante($busqueda, $criterio);
         }
-        return $this->render('HSYSMainBundle:Donacion:buscarReceptor.html.twig', array('id' => $id , 'donantes' => $donantes));
+        return $this->render('HSYSMainBundle:Donacion:buscarReceptor.html.twig', array('id' => $id, 'donantes' => $donantes));
     }
-    
+
     /**
      * @Secure(roles="ROLE_PERSONAL")
      */
-    public function asignarReceptorFinalAction($don,$rec){
+    public function asignarReceptorFinalAction($don, $rec) {
         $em = $this->getDoctrine()->getEntityManager();
         $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($don);
-        if ($donacion->getReceptor()->getId() != 1){
+        if ($donacion->getReceptor()->getId() != 1) {
             return $this->render('HSYSMainBundle:Donacion:error.html.twig', array('razon' => 'ACCESO DENEGADO: No se puede asignar receptor'));
         }
         $receptor = $em->getRepository('HSYSMainBundle:Donante')->find($rec);
         $donacion->setReceptor($receptor);
         $em->persist($donacion);
         $em->flush();
-        return $this->render('HSYSMainBundle:Donacion:confirmacion.html.twig', array('id' => $don , 'accion' => 'asignado el receptor'));
+        return $this->render('HSYSMainBundle:Donacion:confirmacion.html.twig', array('id' => $don, 'accion' => 'asignado el receptor'));
+    }
+
+    /**
+     * @Secure(roles="ROLE_MEDICO")
+     */
+    public function imprimirCodigoAction() {
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $desde = $request->get('desde');
+            $hasta = $request->get('hasta');
+            if ($desde > $hasta) {
+                return $this->redirect($request->headers->get('referer'));
+            }
+            $codigos = array();
+            for ($index = $desde; $index <= $hasta; $index++) {
+                $codigos [] = $index;
+            }
+            return $this->render('HSYSMainBundle:Donacion:imprimircodigo.html.twig', array('codigos' => $codigos));
+        }
+
+        return $this->render('HSYSMainBundle:Donacion:imprimircodigobuscar.html.twig');
     }
 
 }

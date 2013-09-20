@@ -159,6 +159,10 @@ asignar_receptor:
 asignar_receptor_final:
   pattern: /donacion/asignarreceptor/{don}/{rec}
   defaults: { _controller: HSYSMainBundle:Donacion:asignarReceptorFinal }
+
+imprimir_codigo:
+  pattern: /donacion/imprimircodigo
+  defaults: { _controller: HSYSMainBundle:Donacion:imprimirCodigo }
  
 #SANGRE
 pagina_sangre:
