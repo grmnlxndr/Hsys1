@@ -104,7 +104,7 @@ class Provincia {
      * @return Provincia
      */
     public function addLocalidades($localidad) {
-        $this->Localidades = $localidad;
+        $this->Localidades[] = $localidad;
 
         return $this;
     }

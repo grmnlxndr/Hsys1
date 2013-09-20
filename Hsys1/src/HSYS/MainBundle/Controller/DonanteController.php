@@ -36,8 +36,11 @@ class DonanteController extends Controller {
                 return $this->redirect($this->generateUrl('ver_donante', array('id' => $donante->getId())));
             }
         }
-        $provincias = \HSYS\MainBundle\Entity\Provincias::$provincias;
-        return $this->render('HSYSMainBundle:Donante:nuevo.html.twig', array('form' => $form->createView(),'provincias' => $provincias));
+        // $provincias = \HSYS\MainBundle\Entity\Provincias::$provincias;
+        $em = $this->getDoctrine()->getEntityManager();
+        $paises = $em->getRepository('HSYSMainBundle:pais')->findAll();
+      
+        return $this->render('HSYSMainBundle:Donante:nuevo.html.twig', array('form' => $form->createView(),'paises' => $paises));
     }
     
     /**
@@ -234,6 +237,18 @@ class DonanteController extends Controller {
         return $this->render('HSYSMainBundle:Donante:impresioncuestionario.html.twig', array('donante' => $donante));
     }
 
+    public function buscarProvinciaAction($id){
+        $em = $this->getDoctrine()->getEntityManager();
+        $provincias = $em->getRepository('HSYSMainBundle:Provincia')->findBy(array('Pais' => $id));
+        return $this->render('HSYSMainBundle:Donante:buscarprov.html.twig', array('provincias' => $provincias));
+    }
+
+    public function buscarLocalidadAction($id){
+        $em = $this->getDoctrine()->getEntityManager();
+        $localidades = $em->getRepository('HSYSMainBundle:Localidad')->findBy(array('Provincia' => $id));
+        return $this->render('HSYSMainBundle:Donante:buscarlocal.html.twig', array('localidades' => $localidades));
+    }
+    
 }
 
 ?>

@@ -89,12 +89,18 @@
             </tr>
             <tr>
                 <td><label>País de Nacimiento: </label></td>
-                <td>{{ form_widget(form.paisnac) }}</td>
+                <td><select name='paisNaci' id='paisNaci' onChange='cambiarPaisNaci()'>
+                        {% for pais in paises %} 
+                            <option value='{{pais.id}}' name='{{pais}}' {% if pais == 'Argentina'%} selected='selected' {%endif%}> {{pais}} </option>
+                        {% endfor %}
+                    </select>
+                    {{ form_widget(form.paisnac) }}</td>
                 <td>{{ form_errors(form.paisnac) }}</td>
             </tr>
             <tr>
                 <td><label>Provincia de Nacimiento: </label></td>
-                <td> <a id="provincianacimiento" ></a>{{ form_widget(form.provnac) }}</td>
+                <td> <select id="provNaci" onChange="cambiarProvNaci()"></select> 
+                    {{ form_widget(form.provnac) }}</td>
                 <td>{{ form_errors(form.provnac) }}</td>
             </tr>
             <tr>
@@ -102,17 +108,24 @@
             </tr>
             <tr>
                 <td><label>País: </label></td>
-                <td>{{ form_widget(form.pais) }}</td>
+                <td><select name='paisActual' id='paisActual' onChange='cambiarPaisActual()'>
+                        {% for pais in paises %} 
+                            <option value='{{pais.id}}' name='{{pais}}' {% if pais == 'Argentina'%} selected='selected' {%endif%}> {{pais}} </option>
+                        {% endfor %}
+                    </select>
+                    {{ form_widget(form.pais) }}</td>
                 <td>{{ form_errors(form.pais) }}</td>
             </tr>
             <tr>
                 <td><label>Provincia: </label></td>
-                <td><a id="provinciaactual"></a>{{ form_widget(form.provincia) }}</td>
+                <td><select id="provActual" onChange="cambiarProvActual()"></select> 
+                    {{ form_widget(form.provincia) }}</td>
                 <td>{{ form_errors(form.provincia) }}</td>
             </tr>
             <tr>
                 <td><label>Ciudad: </label></td>
-                <td>{{ form_widget(form.ciudad) }}</td>
+                <td><select id="ciudadActual" onChange="cambiarCiudadActual()"></select> 
+                    {{ form_widget(form.ciudad) }}</td>
                 <td>{{ form_errors(form.ciudad) }}</td>
             </tr>
             <tr>
@@ -133,58 +146,41 @@
 {{ form_errors(form) }}
 
 
-    <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
-    <script>
-    window.onload = function() {
-    $("#Donante_form_paisnac").val("Argentina");
-    $("#Donante_tr_dni").hide(); 
-    $("#Donante_form_provnac").hide(); 
-    $("#provincianacimiento").html("<select name='provnac' id='provnac' onChange='cambiarprovnac()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option>  {% endfor %}</select> ");
-    cambiarprovnac();
-    // ----------
-    $("#Donante_form_pais").val("Argentina");
-    $("#Donante_form_provincia").hide();
-    $("#provinciaactual").html("<select name='provincia' id='provincia' onChange='cambiarprovincia()'> {% for provincia in provincias %} <option value='{{provincia}}' {% if provincia == 'Chaco'%} selected='selected' {%endif%} > {{provincia}} </option>  {% endfor %}</select> ");
-    $("#Donante_form_ciudad").val("Resistencia");
-    cambiarprovincia();
-    };
-
-
-    $("#Donante_form_paisnac").change(function(){
-        if ($("#Donante_form_paisnac").val().toLowerCase() == "argentina") { 
-             cambiarprovnac();
-             $("#Donante_form_provnac").hide();
-             $("#provnac").show();
-        }else{
-             $("#Donante_form_provnac").val("");
-             $("#provnac").hide();
-             $("#Donante_form_provnac").show();
-        } 
-    });
-
-    function cambiarprovnac(){
-        $("#Donante_form_provnac").val($("#provnac option:selected").attr("value"));
-    };
-
-    $("#Donante_form_pais").change(function(){
-        if ($("#Donante_form_pais").val().toLowerCase() == "argentina") { 
-             cambiarprovincia();
-             $("#Donante_form_provincia").hide();
-             $("#provincia").show();
-        }else{
-             $("#Donante_form_provincia").val("");
-             $("#provincia").hide();
-             $("#Donante_form_provincia").show();
-        } 
-    });
-
-    function cambiarprovincia(){
-        $("#Donante_form_provincia").val($("#provincia option:selected").attr("value"));
-    };
+<script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
     
+   <script>   
     function cargarDNI(){
         $("#Donante_form_dni").val($("#tipo option:selected").attr("value")+$("#numero").val());
-        };
+    };
+    
+    function cambiarPaisNaci(){
+        $("#Donante_form_paisnac").val($("#paisNaci option:selected").attr('name'));
+        $("#provNaci").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisNaci option:selected").val()));
+        $("#Donante_form_provnac").val('');
+    };
+    
+    function cambiarProvNaci(){
+        $("select option[value='X']").remove();
+        $("#Donante_form_provnac").val($("#provNaci option:selected").attr('name'));
+    }
 
-        </script>
+    function cambiarPaisActual(){
+        $("#Donante_form_pais").val($("#paisActual option:selected").attr('name'));
+        $("#provActual").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisActual option:selected").val()));
+        $("#Donante_form_provincia").val('');
+    }
+    
+    function cambiarProvActual(){
+        $("select option[value='X']").remove();
+        $("#Donante_form_provincia").val($("#provActual option:selected").attr('name'));
+        $("#ciudadActual").load("{{path ('buscarlocal_donante',{'id':''})}}".concat('/',$("#provActual option:selected").val()));
+        $("#Donante_form_ciudad").val('');
+    }
+    
+    function cambiarCiudadActual(){
+        $("select option[value='X']").remove();
+        $("#Donante_form_ciudad").val($("#ciudadActual option:selected").attr('name')); 
+    }
+    
+</script> 
 {% endblock %}

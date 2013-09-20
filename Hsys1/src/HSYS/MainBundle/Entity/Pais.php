@@ -106,7 +106,7 @@ class Pais {
      * @return Pais
      */
     public function addProvincias($provincia) {
-        $this->Provincias = $provincia;
+        $this->Provincias[] = $provincia;
 
         return $this;
     }
@@ -114,7 +114,7 @@ class Pais {
     /**
      * Get Provincia
      *
-     * @return string 
+     * @return provincia 
      */
     public function getProvincias() {
         return $this->Provincias;

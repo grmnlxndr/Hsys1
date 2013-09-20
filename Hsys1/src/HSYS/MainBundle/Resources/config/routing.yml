@@ -47,6 +47,14 @@ imprimir_donante:
   pattern: /donante/imprimir/{id}
   defaults: { _controller: HSYSMainBundle:Donante:imprimirDonante }
 
+buscarprov_donante:
+  pattern: /donante/provincias/{id}
+  defaults: { _controller: HSYSMainBundle:Donante:buscarProvincia }
+
+buscarlocal_donante:
+  pattern: /donante/localidad/{id}
+  defaults: { _controller: HSYSMainBundle:Donante:buscarLocalidad }
+
 #EXTRACCIONES/DONACION
 pagina_donacion:
   pattern: /donacion
