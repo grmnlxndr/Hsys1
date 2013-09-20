@@ -27,9 +27,13 @@
             <td class="link">
                 <a href="{{ path('admin_usuario_show', { 'id': entity.id }) }}">Ver</a>
             </td>
+                {% if app.security.getToken().getUser().getId() != entity.id %}
             <td class="link">
-                {% if app.security.getToken().getUser().getId() != entity.id %}<a href="{{ path('admin_activar', { 'id': entity.id }) }}">{% if entity.isActive %}Desactivar{% else %}Activar{% endif %}</a>{% endif %}
+                <a href="{{ path('admin_activar', { 'id': entity.id }) }}">{% if entity.isActive %}Desactivar{% else %}Activar{% endif %}</a>
             </td>
+            {% else %}
+            <td><b>------</b></td>
+                {% endif %}
             <td class="link">
                 <a href="{{ path('admin_usuario_edit', { 'id': entity.id }) }}">Editar</a>
             </td>
