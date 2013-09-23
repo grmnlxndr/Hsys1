@@ -11,6 +11,7 @@ use HSYS\MainBundle\Entity\MarcaBolsa;
 use HSYS\MainBundle\Entity\TipoBolsa;
 use HSYS\MainBundle\Entity\Hospital;
 use HSYS\MainBundle\Entity\ocupacion;
+use HSYS\MainBundle\Entity\CausaAnulacionDonacion;
 use HSYS\MainBundle\Form\TablaType;
 use HSYS\MainBundle\Form\ProvinciaType;
 use HSYS\MainBundle\Form\LocalidadType;
@@ -206,6 +207,28 @@ class AdminController extends Controller {
         }
         $hospitales = $em->getRepository('HSYSMainBundle:Hospital')->findAll();
         return $this->render('HSYSMainBundle:Admin:hospital.html.twig', array('hospitales' => $hospitales, 'form' => $form->createView()));
+    }
+    
+    /**
+     * 	@Secure(roles="ROLE_ADMIN")
+     */
+    public function causaanulaciondonacionAction() {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $causa = new CausaAnulacionDonacion();
+        $form = $this->createForm(new TablaType(), $causa);
+
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $em->persist($causa);
+                $em->flush();
+                return $this->render('HSYSMainBundle:Admin:confirmacion.html.twig', array('dato' => 'causa', 'nombre' => $causa->getNombre(),));
+            }
+        }
+        $causas = $em->getRepository('HSYSMainBundle:CausaAnulacionDonacion')->findAll();
+        return $this->render('HSYSMainBundle:Admin:causa.html.twig', array('causas' => $causas, 'form' => $form->createView()));
     }
 
 }

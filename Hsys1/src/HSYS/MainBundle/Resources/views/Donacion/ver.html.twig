@@ -16,7 +16,7 @@
     </ul>
         </div>
         {%else%}
-        <div class="consulta"><img src="{{ asset('images/error.png') }}"/>Donación anulada, Causa: {{donacion.anulado}} </div>
+        <div class="consulta"><img src="{{ asset('images/error.png') }}"/>Donación anulada</div>
         {%endif%}
             <br/>
             <table class="detalle">
@@ -74,7 +74,7 @@
                     <td>{{ donacion.hto }}</td>
                 </tr>
                 <tr>
-                    <th>Inpección de brazos: </th>
+                    <th>Inspección de brazos: </th>
                     <td>{{ donacion.inspeccionbrazos }}</td>
                 </tr>
                 <tr>
@@ -132,6 +132,23 @@
                     <td>{{ donacion.receptor.nomapp }}</td>
                 </tr>
     {% endif %}
+                {% if donacion.anulado is not null %}
+                <tr>
+                    <th colspan="2">Datos de la Anulación</th>
+                </tr>
+                <tr>
+                    <th>Causa de la anulación: </th>
+                    <td>{{ donacion.anulado }}</td>
+                </tr>
+                <tr>
+                    <th>Fecha de la anulación: </th>
+                    <td>{{ donacion.fechaanulacion|date('d/m/Y') }}</td>
+                </tr>
+                <tr>
+                    <th>Comentario de la anulación: </th>
+                    <td>{{ donacion.comentarioanulacion }}</td>
+                </tr>
+                {% endif %}
             </table>
             <br/>
 

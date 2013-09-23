@@ -27,19 +27,41 @@
     </tr>
 </table>
 <br/>
+<h3>Anular Donación</h3>
 <form action="{{ path('anular_donacion', {'id':donacion.id}) }}" method="post">
-    <h3>Anular Donación</h3>
+
     <table>
         <tr>
-            <th>Causa</th>
-            <td><input name="causa" id="causa" autofocus="autofocus"></td>
+            <td><label>Fecha de Anulación: </label></td>
+            <td><input type="date" value="{{ 'now' | date('Y-m-d') }}" name="fecha" id="fecha" autofocus="autofocus"></td>
         </tr>
         <tr>
-            <th>Comentario</th>
-            <td><textarea name="comentario" id="comentario" rows="4" cols="50">{{donacion.comentario}}</textarea></td>
-        </tr>
-    </table>
-    <br>
-    <input type="submit" id="enviar" name="enviar"/>
-</form>
+            <td><label>Causa: </label></td>
+            <td><select name="causa" id="causa" style="width:164px">
+                {% for causa in causas %}<option id="{{ causa }}" value="{{ causa }}">{{ causa }}</option>{% endfor %}
+                        </select></td>
+                </tr>
+                <tr>
+                    <td><label>Comentario: </label></td>
+                    <td><textarea name="comentario" id="comentario" rows="4" cols="50"></textarea></td>
+                </tr>
+            </table>
+            <br/>
+            <input type="checkbox" name="anular" id="anular" onclick="habilitar()"><label> ¿Está seguro que desea anular la donación {{donacion.numdedonacion}}? </label><br>
+            <br/>
+            <input type="submit" value="Anular Donación"/>
+        </form>
+
+        <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
+        <script>
+                $('input[type="submit"]').attr('disabled', 'disabled');
+                function habilitar() {
+                    if (anular.checked) {
+                        $('input[type="submit"]').removeAttr('disabled');
+                    } else {
+                        $('input[type="submit"]').attr('disabled', 'disabled');
+                    }
+                }
+                ;
+            </script>
 {%endblock%}

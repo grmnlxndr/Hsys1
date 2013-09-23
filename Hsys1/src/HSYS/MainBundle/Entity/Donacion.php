@@ -113,6 +113,13 @@ class Donacion {
      * @ORM\Column(name="comentario", type="string", length=150, nullable=true)
      */
     private $comentario;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="comentarioanulacion", type="string", length=150, nullable=true)
+     */
+    private $comentarioanulacion;
 
     /**
      * @var string
@@ -185,6 +192,13 @@ class Donacion {
      * @ORM\Column(name="numdedonacion", type="string", length=15, nullable=true, unique=true)
      */
     private $numdedonacion;
+    
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaanulacion", type="date", nullable=true)
+     */
+    private $fechaanulacion;
 
     /**
      *
@@ -253,6 +267,27 @@ class Donacion {
      */
     public function getFechextraccion() {
         return $this->fechextraccion;
+    }
+    
+    /**
+     * Set fechaanulacion
+     *
+     * @param \DateTime $fechaanulacion
+     * @return Donacion
+     */
+    public function setFechaanulacion($fechaanulacion) {
+        $this->fechaanulacion = $fechaanulacion;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaanulacion
+     *
+     * @return \DateTime 
+     */
+    public function getFechaanulacion() {
+        return $this->fechaanulacion;
     }
 
     /**
@@ -498,6 +533,27 @@ class Donacion {
      */
     public function getComentario() {
         return $this->comentario;
+    }
+    
+    /**
+     * Set comentarioanulacion
+     *
+     * @param string $comentarioanulacion
+     * @return Donacion
+     */
+    public function setComentarioanulacion($comentarioanulacion) {
+        $this->comentarioanulacion = $comentarioanulacion;
+
+        return $this;
+    }
+
+    /**
+     * Get comentario
+     *
+     * @return string 
+     */
+    public function getComentarioanulacion() {
+        return $this->comentarioanulacion;
     }
 
     /**
@@ -874,7 +930,7 @@ class Donacion {
      * @var boolean
      * anulado = "null" donacion no anulada.
      * anulado = "motivo" donacion anulada (baja logica) 
-     * @ORM\Column(name="anulado", type="string", length=40, nullable=true)  
+     * @ORM\Column(name="anulado", type="string", length=100, nullable=true)  
      */
     private $anulado;
 

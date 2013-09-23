@@ -31,15 +31,15 @@
 
     <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
     <script>
-               $('input[type="submit"]').attr('disabled', 'disabled');
-               function habilitar() {
-                   if (desechar.checked) {
-                       $('input[type="submit"]').removeAttr('disabled');
-                   } else {
-                       $('input[type="submit"]').attr('disabled', 'disabled');
-                   }
-               }
-               ;
+            $('input[type="submit"]').attr('disabled', 'disabled');
+            function habilitar() {
+                if (desechar.checked) {
+                    $('input[type="submit"]').removeAttr('disabled');
+                } else {
+                    $('input[type="submit"]').attr('disabled', 'disabled');
+                }
+            }
+            ;
         </script>
-    </script>
+
 {%endblock%}
