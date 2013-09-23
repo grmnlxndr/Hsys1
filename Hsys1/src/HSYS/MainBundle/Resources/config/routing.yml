@@ -364,6 +364,10 @@ admin_causaanulaciondonacion:
   pattern: /admin/tabla/causaanulaciondonacion
   defaults: { _controller: HSYSMainBundle:Admin:causaanulaciondonacion }
 
+admin_niveleducativo:
+  pattern: /admin/tabla/niveleducativo
+  defaults: { _controller: HSYSMainBundle:Admin:niveleducativo }
+
 #autocargado
 autocargado:
   pattern: /autocargado

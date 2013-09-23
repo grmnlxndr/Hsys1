@@ -12,6 +12,7 @@ use HSYS\MainBundle\Entity\TipoBolsa;
 use HSYS\MainBundle\Entity\Hospital;
 use HSYS\MainBundle\Entity\ocupacion;
 use HSYS\MainBundle\Entity\CausaAnulacionDonacion;
+use HSYS\MainBundle\Entity\NivelEducativo;
 use HSYS\MainBundle\Form\TablaType;
 use HSYS\MainBundle\Form\ProvinciaType;
 use HSYS\MainBundle\Form\LocalidadType;
@@ -229,6 +230,28 @@ class AdminController extends Controller {
         }
         $causas = $em->getRepository('HSYSMainBundle:CausaAnulacionDonacion')->findAll();
         return $this->render('HSYSMainBundle:Admin:causa.html.twig', array('causas' => $causas, 'form' => $form->createView()));
+    }
+    
+    /**
+     * 	@Secure(roles="ROLE_ADMIN")
+     */
+    public function niveleducativoAction() {
+        $em = $this->getDoctrine()->getEntityManager();
+
+        $nivel = new NivelEducativo();
+        $form = $this->createForm(new TablaType(), $nivel);
+
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bind($request);
+            if ($form->isValid()) {
+                $em->persist($nivel);
+                $em->flush();
+                return $this->render('HSYSMainBundle:Admin:confirmacion.html.twig', array('dato' => 'nivel', 'nombre' => $nivel->getNombre(),));
+            }
+        }
+        $niveles = $em->getRepository('HSYSMainBundle:NivelEducativo')->findAll();
+        return $this->render('HSYSMainBundle:Admin:nivel.html.twig', array('niveles' => $niveles, 'form' => $form->createView()));
     }
 
 }
