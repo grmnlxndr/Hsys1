@@ -59,7 +59,7 @@
             </tr>
             <tr>
                 <td><label>Nivel Educativo: </label></td>
-                <td>{{ form_widget(form.niveleducativo) }}</td>
+                <td>{{ form_widget(form.niveleducativo, {'attr':{'style': 'width: 173px'}}) }}</td>
                 <td>{{ form_errors(form.niveleducativo) }}</td>
             </tr>
             <tr>
@@ -69,7 +69,7 @@
             </tr>
             <tr>
                 <td><label>Estado Civil: </label></td>
-                <td>{{ form_widget(form.estadocivil) }}</td>
+                <td>{{ form_widget(form.estadocivil, {'attr':{'style': 'width: 173px'}}) }}</td>
                 <td>{{ form_errors(form.estadocivil) }}</td>
             </tr>
             <tr>
@@ -89,9 +89,10 @@
             </tr>
             <tr>
                 <td><label>País de Nacimiento: </label></td>
-                <td><select name='paisNaci' id='paisNaci' onChange='cambiarPaisNaci()'>
+                <td><select name='paisNaci' id='paisNaci' onChange='cambiarPaisNaci()' style="width:173px">
+                        <option value="X1" name="X1"></option>
                         {% for pais in paises %} 
-                            <option value='{{pais.id}}' name='{{pais}}' {% if pais == 'Argentina'%} selected='selected' {%endif%}> {{pais}} </option>
+                            <option value='{{pais.id}}' name='{{pais}}'> {{pais}} </option>
                         {% endfor %}
                     </select>
                     {{ form_widget(form.paisnac) }}</td>
@@ -99,7 +100,7 @@
             </tr>
             <tr>
                 <td><label>Provincia de Nacimiento: </label></td>
-                <td> <select id="provNaci" onChange="cambiarProvNaci()"></select> 
+                <td> <select id="provNaci" onChange="cambiarProvNaci()" style="width:173px"></select> 
                     {{ form_widget(form.provnac) }}</td>
                 <td>{{ form_errors(form.provnac) }}</td>
             </tr>
@@ -108,9 +109,10 @@
             </tr>
             <tr>
                 <td><label>País: </label></td>
-                <td><select name='paisActual' id='paisActual' onChange='cambiarPaisActual()'>
+                <td><select name='paisActual' id='paisActual' onChange='cambiarPaisActual()' style="width:173px">
+                        <option value="X2" name="X2"></option>
                         {% for pais in paises %} 
-                            <option value='{{pais.id}}' name='{{pais}}' {% if pais == 'Argentina'%} selected='selected' {%endif%}> {{pais}} </option>
+                            <option value='{{pais.id}}' name='{{pais}}'> {{pais}} </option>
                         {% endfor %}
                     </select>
                     {{ form_widget(form.pais) }}</td>
@@ -118,13 +120,13 @@
             </tr>
             <tr>
                 <td><label>Provincia: </label></td>
-                <td><select id="provActual" onChange="cambiarProvActual()"></select> 
+                <td><select id="provActual" onChange="cambiarProvActual()" style="width:173px"></select> 
                     {{ form_widget(form.provincia) }}</td>
                 <td>{{ form_errors(form.provincia) }}</td>
             </tr>
             <tr>
                 <td><label>Ciudad: </label></td>
-                <td><select id="ciudadActual" onChange="cambiarCiudadActual()"></select> 
+                <td><select id="ciudadActual" onChange="cambiarCiudadActual()" style="width:173px"></select> 
                     {{ form_widget(form.ciudad) }}</td>
                 <td>{{ form_errors(form.ciudad) }}</td>
             </tr>
@@ -149,11 +151,22 @@
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
     
    <script>   
+    
+    window.onload = function() {
+    $("#Donante_tr_dni").hide(); 
+    $("#Donante_form_paisnac").hide(); 
+    $("#Donante_form_provnac").hide(); 
+    $("#Donante_form_pais").hide();
+    $("#Donante_form_provincia").hide();
+    $("#Donante_form_ciudad").hide();
+    };
+    
     function cargarDNI(){
         $("#Donante_form_dni").val($("#tipo option:selected").attr("value")+$("#numero").val());
     };
     
     function cambiarPaisNaci(){
+        $("select option[value='X1']").remove();
         $("#Donante_form_paisnac").val($("#paisNaci option:selected").attr('name'));
         $("#provNaci").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisNaci option:selected").val()));
         $("#Donante_form_provnac").val('');
@@ -165,6 +178,7 @@
     }
 
     function cambiarPaisActual(){
+        $("select option[value='X2']").remove();
         $("#Donante_form_pais").val($("#paisActual option:selected").attr('name'));
         $("#provActual").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisActual option:selected").val()));
         $("#Donante_form_provincia").val('');
