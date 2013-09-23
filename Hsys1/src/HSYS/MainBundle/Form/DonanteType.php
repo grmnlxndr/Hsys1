@@ -29,7 +29,10 @@ class DonanteType extends AbstractType
                         ),
                     'empty_value' => 'SELECCIONE UNA',
                 ))
-                ->add('ocupacion', 'choice', array('choices'=>(\HSYS\MainBundle\Entity\ocupacion::$ocupacion),'empty_value'=>'SELECCIONE UNA'))
+                ->add('ocupacion', 'entity', array(
+                    'class' => 'HSYSMainBundle:ocupacion',
+                    'empty_value' => 'SELECCIONE UNA',
+                ))
                 ->add('estadocivil', 'choice', array(
                     'choices' => array(
                         'Soltero'=> 'Soltero',
@@ -42,6 +45,7 @@ class DonanteType extends AbstractType
                 ))
                 ->add('niveleducativo','entity', array(
                     'class' => 'HSYSMainBundle:NivelEducativo',
+                    'empty_value' => 'SELECCIONE UNO',
                 ))
 //                ->add('niveleducativo', 'choice', array(
 //                    'choices' => array(
