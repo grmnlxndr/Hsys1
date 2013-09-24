@@ -9,9 +9,19 @@
 <form id="nuevo_form" action="{{ path('alta_donante') }}" method="post">
         {# {{ form_widget(form) }} #}
         <table>
-            <tr>
+            {#<tr>
                 <td><label>Apellido y Nombre: </label></td>
                 <td>{{ form_widget(form.nomapp, {'attr': {'autofocus': 'autofocus'}}) }}</td>
+                <td>{{ form_errors(form.nomapp) }}</td>
+            </tr>#}
+            <tr>
+                <td><label>Apellido: </label></td>
+                <td>{{ form_widget(form.nomapp)}} <input id="Apellido" onChange="cabiarNomApp()"/> </td>
+                <td>{{ form_errors(form.nomapp) }}</td>
+            </tr>
+            <tr>
+                <td><label>Nombre: </label></td>
+                <td><input id="Nombre" onChange="cabiarNomApp()"/> </td>
                 <td>{{ form_errors(form.nomapp) }}</td>
             </tr>
             <tr>
@@ -159,10 +169,15 @@
     $("#Donante_form_pais").hide();
     $("#Donante_form_provincia").hide();
     $("#Donante_form_ciudad").hide();
+    $("#Donante_form_nomapp").hide();
     $("#provactualcarga").hide();
     $("#ciudadactualcarga").hide();
     $("#provnacicarga").hide();
     };
+    
+    function cabiarNomApp(){
+        $("#Donante_form_nomapp").val($("#Apellido").val().concat(", ",$("#Nombre").val()));
+    }
     
     function cargarDNI(){
         $("#Donante_form_dni").val($("#tipo option:selected").attr("value")+$("#numero").val());
