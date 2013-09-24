@@ -187,6 +187,8 @@
         $("#provactualcarga").show();
         $("#provActual").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisActual option:selected").val()));
         $("#Donante_form_provincia").val('');
+        $("#Donante_form_ciudad").val('');
+        $("#ciudadActual").html(' ');
     }
     
     function cambiarProvActual(){

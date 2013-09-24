@@ -96,7 +96,7 @@
                         {% for provincia in provinciasnac %} 
                         <option value='{{provincia.id}}' name='{{provincia}}' {% if provincia == donante.provnac %} selected='selected' {% endif %}> {{provincia}} </option>
                         {% endfor %}
-                    </select> 
+                    </select> <img id="provnacicarga" src="{{ asset('images/ajax-loader.gif') }}"/>
                     {{ form_widget(form.provnac) }}</td>
                 <td>{{ form_errors(form.provnac) }}</td>
             </tr>
@@ -121,7 +121,7 @@
                         {% for provinciaActual in provinciasActual %} 
                             <option value='{{provinciaActual.id}}' name='{{provinciaActual}}' {% if provinciaActual == donante.provincia %} selected='selected' {% endif %}> {{provinciaActual}} </option>
                         {% endfor %}
-                    </select> 
+                    </select> <img id="provactualcarga" src="{{ asset('images/ajax-loader.gif') }}"/>
                     {{ form_widget(form.provincia) }}</td>
                 <td>{{ form_errors(form.provincia) }}</td>
             </tr>
@@ -132,7 +132,7 @@
                         {% for ciudadActual in ciudadesActual %} 
                             <option value='{{ciudadActual.id}}' name='{{ciudadActual}}' {% if ciudadActual == donante.ciudad %} selected='selected' {% endif %}> {{ciudadActual}} </option>
                         {% endfor %}
-                    </select> 
+                    </select> <img id="ciudadactualcarga" src="{{ asset('images/ajax-loader.gif') }}"/>
                     {{ form_widget(form.ciudad) }}</td>
                 <td>{{ form_errors(form.ciudad) }}</td>
             </tr>
@@ -162,12 +162,17 @@
         $("#Donante_form_pais").hide();
         $("#Donante_form_provincia").hide();
         $("#Donante_form_ciudad").hide();
+        
+        $("#provactualcarga").hide();
+        $("#ciudadactualcarga").hide();
+        $("#provnacicarga").hide();
     };
     
     
     function cambiarPaisNaci(){
         $("select option[value='X1']").remove();
         $("#Donante_form_paisnac").val($("#paisNaci option:selected").attr('name'));
+        $("#provnacicarga").show();
         $("#provNaci").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisNaci option:selected").val()));
         $("#Donante_form_provnac").val('');
     };
@@ -180,6 +185,7 @@
     function cambiarPaisActual(){
         $("select option[value='X2']").remove();
         $("#Donante_form_pais").val($("#paisActual option:selected").attr('name'));
+        $("#provactualcarga").show();
         $("#provActual").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisActual option:selected").val()));
         $("#Donante_form_provincia").val('');
         $("#Donante_form_ciudad").val('');
@@ -189,6 +195,7 @@
     function cambiarProvActual(){
         $("select option[value='X']").remove();
         $("#Donante_form_provincia").val($("#provActual option:selected").attr('name'));
+        $("#ciudadactualcarga").show();
         $("#ciudadActual").load("{{path ('buscarlocal_donante',{'id':''})}}".concat('/',$("#provActual option:selected").val()));
         $("#Donante_form_ciudad").val('');
     }
