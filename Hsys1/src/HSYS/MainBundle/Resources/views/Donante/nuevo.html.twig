@@ -100,7 +100,7 @@
             </tr>
             <tr>
                 <td><label>Provincia de Nacimiento: </label></td>
-                <td> <select id="provNaci" onChange="cambiarProvNaci()" style="width:173px"></select> 
+                <td> <select id="provNaci" onChange="cambiarProvNaci()" style="width:173px"></select>  <img id="provnacicarga" src="{{ asset('images/ajax-loader.gif') }}"/>
                     {{ form_widget(form.provnac) }}</td>
                 <td>{{ form_errors(form.provnac) }}</td>
             </tr>
@@ -120,13 +120,13 @@
             </tr>
             <tr>
                 <td><label>Provincia: </label></td>
-                <td><select id="provActual" onChange="cambiarProvActual()" style="width:173px"></select> 
+                <td><select id="provActual" onChange="cambiarProvActual()" style="width:173px"></select> <img id="provactualcarga" src="{{ asset('images/ajax-loader.gif') }}"/>
                     {{ form_widget(form.provincia) }}</td>
                 <td>{{ form_errors(form.provincia) }}</td>
             </tr>
             <tr>
                 <td><label>Ciudad: </label></td>
-                <td><select id="ciudadActual" onChange="cambiarCiudadActual()" style="width:173px"></select> 
+                <td><select id="ciudadActual" onChange="cambiarCiudadActual()" style="width:173px"></select>  <img id="ciudadactualcarga" src="{{ asset('images/ajax-loader.gif') }}"/>
                     {{ form_widget(form.ciudad) }}</td>
                 <td>{{ form_errors(form.ciudad) }}</td>
             </tr>
@@ -159,6 +159,9 @@
     $("#Donante_form_pais").hide();
     $("#Donante_form_provincia").hide();
     $("#Donante_form_ciudad").hide();
+    $("#provactualcarga").hide();
+    $("#ciudadactualcarga").hide();
+    $("#provnacicarga").hide();
     };
     
     function cargarDNI(){
@@ -168,6 +171,7 @@
     function cambiarPaisNaci(){
         $("select option[value='X1']").remove();
         $("#Donante_form_paisnac").val($("#paisNaci option:selected").attr('name'));
+        $("#provnacicarga").show();
         $("#provNaci").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisNaci option:selected").val()));
         $("#Donante_form_provnac").val('');
     };
@@ -180,6 +184,7 @@
     function cambiarPaisActual(){
         $("select option[value='X2']").remove();
         $("#Donante_form_pais").val($("#paisActual option:selected").attr('name'));
+        $("#provactualcarga").show();
         $("#provActual").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisActual option:selected").val()));
         $("#Donante_form_provincia").val('');
     }
@@ -187,6 +192,7 @@
     function cambiarProvActual(){
         $("select option[value='X']").remove();
         $("#Donante_form_provincia").val($("#provActual option:selected").attr('name'));
+        $("#ciudadactualcarga").show();
         $("#ciudadActual").load("{{path ('buscarlocal_donante',{'id':''})}}".concat('/',$("#provActual option:selected").val()));
         $("#Donante_form_ciudad").val('');
     }

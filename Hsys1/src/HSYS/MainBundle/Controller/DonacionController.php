@@ -482,19 +482,24 @@ class DonacionController extends Controller {
 
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
+            $fechanoformat = $request->request->get('fecha');
+            $fecha = new \DateTime;
+            $fecha->setDate(substr($fechanoformat, 0,4), substr($fechanoformat, 5,2), substr($fechanoformat, 8,2));
             $causa = $request->request->get('causa');
             $comentario = $request->request->get('comentario');
 
-            $donacion->setComentario($comentario);
-
+            $donacion->setFechaanulacion($fecha);
             $donacion->anularDonacion($causa);
-
+            $donacion->setComentarioanulacion($comentario);
+            
             $em->persist($donacion);
             $em->flush();
 
             return $this->redirect($this->generateUrl('ver_donacion', array('id' => $id)));
         }
-        return $this->render('HSYSMainBundle:Donacion:anularDonacion.html.twig', array('donacion' => $donacion));
+        
+        $causas = $em->getRepository('HSYSMainBundle:CausaAnulacionDonacion')->findAll();
+        return $this->render('HSYSMainBundle:Donacion:anularDonacion.html.twig', array('donacion' => $donacion, 'causas' => $causas));
     }
 
     /**

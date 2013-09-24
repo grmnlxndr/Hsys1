@@ -4,7 +4,16 @@
 
 {% block contenido %}
 <div class="consulta">
-    Enhorabuena, {% if dato == 'pais' %}el país {{ nombre }}{% endif %}{% if dato == 'provincia' %}la provincia {{ nombre }}{% endif %}{% if dato == 'localidad' %}la localidad {{ nombre }}{% endif %}{% if dato == 'anticoagulante' %}el anticoagulante {{ nombre }}{% endif %}{% if dato == 'marcabolsa' %}la marca de bolsa {{ nombre }}{% endif %}{% if dato == 'tipobolsa' %}el tipo de bolsa {{ nombre }}{% endif %}{% if dato == 'ocupacion' %}la ocupación {{ nombre }}{% endif %}{% if dato == 'hospital' %}el hospital {{ nombre }}{% endif %} ha sido correctamente guardado.
+    Enhorabuena, {% if dato == 'pais' %}el país "{{ nombre }}"{% endif %}
+                 {% if dato == 'provincia' %}la provincia "{{ nombre }}"{% endif %}
+                 {% if dato == 'localidad' %}la localidad "{{ nombre }}"{% endif %}
+                 {% if dato == 'anticoagulante' %}el anticoagulante "{{ nombre }}"{% endif %}
+                 {% if dato == 'marcabolsa' %}la marca de bolsa "{{ nombre }}"{% endif %}
+                 {% if dato == 'tipobolsa' %}el tipo de bolsa "{{ nombre }}"{% endif %}
+                 {% if dato == 'ocupacion' %}la ocupación "{{ nombre }}"{% endif %}
+                 {% if dato == 'causa' %}la causa de anulación de donación "{{ nombre }}"{% endif %}
+                 {% if dato == 'nivel' %}el nivel educativo "{{ nombre }}"{% endif %}
+                 {% if dato == 'hospital' %}el hospital "{{ nombre }}"{% endif %} ha sido correctamente guardado.
 </div>
 <br/>
 <div class="detalle">

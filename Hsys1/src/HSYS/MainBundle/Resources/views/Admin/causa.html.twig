@@ -1,0 +1,38 @@
+{% extends 'HSYSMainBundle:Admin:adminbase.html.twig' %}
+
+{% block title %}ADMIN{% endblock %}
+
+{% block contenido %}
+
+<h3>Tabla Causa de Anulación de Donación:</h3>
+<form id="nueva_causa" name="nueva_causa" action="{{ path('admin_causaanulaciondonacion') }}" method="post">
+    <label style="color: #B90302">Insertar nueva Causa de Anulación de Donación</label><br/>
+    <table>
+        <tr>
+            <td><label>Nombre: </label></td><td>{{ form_widget(form.nombre, {'attr': {'autofocus': 'autofocus'}}) }}</td><td>{{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td><label>Detalle: </label></td><td>{{ form_widget(form.detalle) }}</td><td>{{ form_errors(form.detalle) }}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Agregar"/></td><td colspan="2">{{ form_rest(form) }}</td>
+        </tr>
+    </table>
+</form>
+<br/>
+<h4>Contenido de la tabla:</h4>
+<table class="consulta" style="width: 100%">
+    <tr>
+        <th>ID</th><th>Nombre Causa</th><th>Detalle</th>
+    </tr>
+    {% for causa in causas %}
+    <tr>
+        <td>{{ causa.id }}</td><td>{{ causa.nombre }}</td><td>{{ causa.detalle }}</td>
+    </tr>
+    {% else %}
+    <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>
+    <br/>
+    {% endfor %}
+</table>
+
+{% endblock %}
