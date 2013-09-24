@@ -73,8 +73,17 @@ class DonanteController extends Controller {
                 return 'no es valido';
             }
         }
+        $paises = $em->getRepository('HSYSMainBundle:Pais')->findAll();
         
-        return $this->render('HSYSMainBundle:Donante:modificar.html.twig', array('form' => $form->createView(), 'id' => $id,));
+        $paisnac = $em->getRepository('HSYSMainBundle:Pais')->findOneByNombre($donante->getPaisnac());
+        $provinciasnac = $em->getRepository('HSYSMainBundle:Provincia')->findBy(array('Pais' => $paisnac->getId()));
+        
+        $paisActual = $em->getRepository('HSYSMainBundle:Pais')->findOneByNombre($donante->getPais());
+        $provinciasActual = $em->getRepository('HSYSMainBundle:Provincia')->findBy(array('Pais' => $paisActual->getId()));
+        $provinciaActual =  $em->getRepository('HSYSMainBundle:Provincia')->findOneBy(array('Pais' => $paisActual->getId(), 'nombre'=>$donante->getProvincia()));
+        $ciudadesActual = $em->getRepository('HSYSMainBundle:Localidad')->findBy(array('Provincia' => $provinciaActual->getId()));
+        
+        return $this->render('HSYSMainBundle:Donante:modificar.html.twig', array('form' => $form->createView(),'donante'=>$donante, 'id' => $id,'paises'=>$paises, 'provinciasnac'=>$provinciasnac, 'provinciasActual' => $provinciasActual, 'ciudadesActual'=>$ciudadesActual));
     }
     
     /**
