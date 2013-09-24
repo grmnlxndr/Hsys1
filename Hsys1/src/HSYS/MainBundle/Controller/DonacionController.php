@@ -285,8 +285,13 @@ class DonacionController extends Controller {
         $em->flush();
 
         $donante = $donacion->getDonante();
-        $comentario = 'Excluido por donación voluntaria Nro: ' . $donacion->getNumdedonacion();
-        $tipodeexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findOneBy(array('nombre' => 'Exclusion por donacion'));
+        $comentario = 'Excluido por donación: ' . $donacion->getNumdedonacion();
+        
+        if($donante->getSexo()=="Masculino"){
+            $tipodeexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findOneBy(array('nombre' => 'Exclusion por donacion','grado'=>"Masculino"));
+        }else{
+            $tipodeexclusion = $em->getRepository('HSYSMainBundle:TipoExclusion')->findOneBy(array('nombre' => 'Exclusion por donacion','grado'=>"Femenino"));
+        };
         $donante->excluir($tipodeexclusion, $comentario, $donacion->getFechextraccion());
         $em->persist($donante);
         $em->flush();

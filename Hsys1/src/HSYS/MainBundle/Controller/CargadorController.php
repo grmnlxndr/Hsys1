@@ -133,7 +133,16 @@ class CargadorController extends Controller {
 
         $exclusion = new TipoExclusion;
         $exclusion->setNombre("Exclusion por donacion");
-        $exclusion->setDuracion("60");
+        $exclusion->setGrado("Masculino");
+        $exclusion->setDuracion("20");
+
+        $em->persist($exclusion);
+        $em->flush();
+
+        $exclusion = new TipoExclusion;
+        $exclusion->setNombre("Exclusion por donacion");
+        $exclusion->setGrado("Femenino");
+        $exclusion->setDuracion("30");
 
         $em->persist($exclusion);
         $em->flush();
