@@ -24,7 +24,7 @@ class InformesController extends Controller {
         if ($request->getMethod() == 'POST') {
             $em = $this->getDoctrine()->getEntityManager();
             $fecha = $request->request->get('fecha');
-            $analisis = $em->getRepository('HSYSMainBundle:Analisis')->findAnalisisPorFecha($fecha);
+            $analisis = $em->getRepository('HSYSMainBundle:analisis')->findAnalisisPorFecha($fecha);
             return $this->render('HSYSMainBundle:Informes:informeanalisisimprimir.html.twig', array('analisis' => $analisis, 'fecha' => $fecha,));
         }
         return $this->render('HSYSMainBundle:Informes:informeanalisis.html.twig');
