@@ -141,7 +141,7 @@ class AnalisisController extends Controller
             $em = $this->getDoctrine()->getEntityManager();
             $busqueda = $request->request->get('buscar');
             $criterio = $request->request->get('criterio');
-            $analisis = $em->getRepository('HSYSMainBundle:Analisis')->findAnalisis($busqueda, $criterio);
+            $analisis = $em->getRepository('HSYSMainBundle:analisis')->findAnalisis($busqueda, $criterio);
             return $this->render('HSYSMainBundle:Analisis:index.html.twig', array('analisis' => $analisis,));
         } else {
             return $this->redirect($this->generateUrl('pagina_analisis'));
@@ -155,7 +155,7 @@ class AnalisisController extends Controller
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
 
-        $analisis = $em->getRepository('HSYSMainBundle:Analisis')->find($id);
+        $analisis = $em->getRepository('HSYSMainBundle:analisis')->find($id);
         //$fechanalisis = $analisis->getfechanalisis();
         //hacer mas lindo el error
         if (!$analisis) {
@@ -191,7 +191,7 @@ class AnalisisController extends Controller
     */
     public function verAction($id){
         $em = $this->getDoctrine()->getEntityManager();
-        $analisis = $em->getRepository('HSYSMainBundle:Analisis')->find($id);
+        $analisis = $em->getRepository('HSYSMainBundle:analisis')->find($id);
         if (!$analisis){
             return $this->redirect('pagina_analisis');
         }
