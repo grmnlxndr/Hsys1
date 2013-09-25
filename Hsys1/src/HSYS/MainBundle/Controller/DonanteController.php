@@ -38,7 +38,7 @@ class DonanteController extends Controller {
         }
         // $provincias = \HSYS\MainBundle\Entity\Provincias::$provincias;
         $em = $this->getDoctrine()->getEntityManager();
-        $paises = $em->getRepository('HSYSMainBundle:pais')->findAll();
+        $paises = $em->getRepository('HSYSMainBundle:Pais')->findAll();
       
         return $this->render('HSYSMainBundle:Donante:nuevo.html.twig', array('form' => $form->createView(),'paises' => $paises));
     }
@@ -53,7 +53,7 @@ class DonanteController extends Controller {
         $request = $this->getRequest();
         $em = $this->getDoctrine()->getEntityManager();
 
-        $donante = $em->getRepository('HSYSMainBundle:donante')->find($id);
+        $donante = $em->getRepository('HSYSMainBundle:Donante')->find($id);
         //hacer mas lindo el error
         if (!$donante) {
             throw $this->createNotFoundException(
