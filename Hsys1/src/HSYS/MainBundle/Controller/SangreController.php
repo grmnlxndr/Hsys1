@@ -118,9 +118,7 @@ class SangreController extends Controller {
         $estados = \HSYS\MainBundle\Entity\estadoUnidad::$estados;
         $analisis = $unidad->getDonacion()->getAnalisis();
         if (!$analisis) {
-            throw $this->createNotFoundException(
-                    'La donación no tiene Análisis.' . $id
-            );
+            return $this->render('HSYSMainBundle:Sangre:error.html.twig', array('razon' => 'Todavía no se ha realizado un análisis de esta unidad'));
         }
         if ($request->getMethod() == 'POST') {
             $unidad->setEstado("Desbloqueado");
