@@ -328,6 +328,10 @@ class DonacionController extends Controller {
     public function receptorReceptorAction($don) {
         $em = $this->getDoctrine()->getEntityManager();
         $donante = $em->getRepository('HSYSMainBundle:Donante')->find($don);
+        
+        if ($donante->excluido()){
+            return $this->render('HSYSMainBundle:Donacion:error.html.twig', array('razon' => 'No se puede realizar la donación, el donante se encuentra excluido'));
+        };
 
         $request = $this->getRequest();
 
@@ -574,6 +578,9 @@ class DonacionController extends Controller {
                 return $this->render('HSYSMainBundle:Donacion:formularioContinuar.html.twig', array('donacion' => $donacion, 'responsables' => $responsables));
             }
         }
+        if ($donante->excluido()){
+            return $this->render('HSYSMainBundle:Donacion:error.html.twig', array('razon' => 'No se puede realizar la donación, el donante se encuentra excluido'));
+        };
         return $this->render('HSYSMainBundle:Donacion:nuevoForm.html.twig', array('donante' => $donante, 'receptor' => $receptor, 'form' => $form->createView()));
     }
 
