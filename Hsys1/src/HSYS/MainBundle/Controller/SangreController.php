@@ -95,7 +95,7 @@ class SangreController extends Controller {
             $buscar = $request->request->get('buscar');
             $unidades = $em->getRepository('HSYSMainBundle:Unidad')->findUnidadPorDonacion($buscar);
         };
-        return $this->render('HSYSMainBundle:Sangre:Buscardonacion.html.twig', array('unidades' => $unidades, 'metodo' => $metodo));
+        return $this->render('HSYSMainBundle:Sangre:buscardonacion.html.twig', array('unidades' => $unidades, 'metodo' => $metodo));
     }
 
     /**
