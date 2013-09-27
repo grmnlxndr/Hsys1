@@ -55,7 +55,8 @@ class Usuario implements AdvancedUserInterface, \Serializable {
 
     public function __construct() {
         $this->user_roles = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+        $this->setIsActive(true);
+        }
 
     /**
      * Get id

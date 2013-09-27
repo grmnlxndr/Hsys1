@@ -68,7 +68,7 @@ class UsuarioController extends Controller {
      * @Template()
      *
      */
-    /* 
+    /*
      * @Secure(roles="ROLE_ADMIN")
      */
     public function newAction() {
@@ -80,7 +80,7 @@ class UsuarioController extends Controller {
             'form' => $form->createView(),
         );
     }
-    
+
     /**
      * @Route("/activar/{id}", name="admin_activar")
      * @Secure (roles="ROLE_ADMIN")
@@ -90,22 +90,21 @@ class UsuarioController extends Controller {
         $em = $this->getDoctrine()->getManager();
 //        $entity = new Usuario();
         $entity = $em->getRepository("HSYSMainBundle:Usuario")->find($id);
-        
+
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
-        
+
         if ($entity->getIsActive() == true) {
             $entity->setIsActive(false);
         } else {
             $entity->setIsActive(true);
         }
-        
+
         $em->persist($entity);
         $em->flush();
-        
+
         return $this->redirect($request->headers->get('referer'));
-        
     }
 
     /**
@@ -115,7 +114,7 @@ class UsuarioController extends Controller {
      * @Method("POST")
      * @Template("HSYSMainBundle:Usuario:new.html.twig")
      */
-    /* 
+    /*
      * @Secure(roles="ROLE_ADMIN")
      */
     public function createAction(Request $request) {
@@ -159,12 +158,12 @@ class UsuarioController extends Controller {
         }
 
         $editForm = $this->createForm(new UsuarioType(), $entity);
-        $deleteForm = $this->createDeleteForm($id);
+//        $deleteForm = $this->createDeleteForm($id);
 
         return array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -187,14 +186,13 @@ class UsuarioController extends Controller {
             throw $this->createNotFoundException('Unable to find Usuario entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+//        $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createForm(new UsuarioType(), $entity);
 
         $request = $this->getRequest();
         $current_pass = $entity->getPassword();
 
         $editForm->bind($request);
-
 
         if ($editForm->isValid()) {
             if ($current_pass != $entity->getPassword()) {
@@ -203,14 +201,14 @@ class UsuarioController extends Controller {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_usuario_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_usuario'));
         }
 
 
         return array(
             'entity' => $entity,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
+//            'delete_form' => $deleteForm->createView(),
         );
     }
 
@@ -241,7 +239,7 @@ class UsuarioController extends Controller {
 
         return $this->redirect($this->generateUrl('admin_usuario'));
     }
-    
+
     /**
      * Deletes a Usuario entity.
      *

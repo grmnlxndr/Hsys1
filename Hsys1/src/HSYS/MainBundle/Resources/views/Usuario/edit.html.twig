@@ -22,7 +22,13 @@
             <td>{{ form_widget(edit_form.user_roles) }}</td>
             <td>{{ form_errors(edit_form.user_roles) }}</td>
         </tr>
+        <tr>
+            <td><label>Usuario Activo: </label></td>
+            <td>{{ form_widget(edit_form.isActive) }}</td>
+            <td>{{ form_errors(edit_form.isActive) }}</td>
+        </tr>
     </table>
+        {{ form_rest(edit_form) }}
     <input type="submit" value="Editar"/>
 </form>
 <br/>
@@ -40,6 +46,6 @@
             </a>
         </li>
             {% endif %}
-        </ul>
-    </div>
+    </ul>
+</div>
 {% endblock %}
