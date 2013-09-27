@@ -8,10 +8,6 @@ use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class InformesController extends Controller {
 
-    /**
-    * 	@Secure(roles="ROLE_MEDICO")
-    * 	@Secure(roles="ROLE_BIOQUIMICO")
-    */
     public function indexAction() {
         return $this->render('HSYSMainBundle:Informes:index.html.twig');
     }
