@@ -3,11 +3,11 @@
 
 {% block sidebar %}
 <ul>
-    <li><a href="{{ path('pagina_donante') }}" title="Donantes">Donantes</a></li>
-    <li><a href="{{ path('pagina_donacion') }}" title="Extracciones">Extracciones</a></li>
-    <li><a href="{{ path('pagina_sangre') }}" title="Sangre">Sangre</a></li>
-    <li><a href="{{ path('pagina_analisis') }}" title="Serología">Serología</a></li>
-    <li><a href="{{ path('pagina_informes') }}" title="Informes">Informes</a></li>
+    {% if is_granted('ROLE_PERSONAL') %}<li><a href="{{ path('pagina_donante') }}" title="Donantes">Donantes</a></li>{%endif%}
+    {% if is_granted('ROLE_PERSONAL') %}<li><a href="{{ path('pagina_donacion') }}" title="Extracciones">Extracciones</a></li>{%endif%}
+    {% if is_granted('ROLE_PERSONAL') %}<li><a href="{{ path('pagina_sangre') }}" title="Sangre">Sangre</a></li>{%endif%}
+    {% if is_granted('ROLE_BIOQUIMICO') %}<li><a href="{{ path('pagina_analisis') }}" title="Serología">Serología</a></li>{%endif%}
+    {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('pagina_informes') }}" title="Informes">Informes</a></li>{%endif%}
     
 </ul>
 {% endblock %}

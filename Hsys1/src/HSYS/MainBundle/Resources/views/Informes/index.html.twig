@@ -5,12 +5,12 @@
 {% block contenido %}
 <h3>Seleccione tipo de informe a generar:</h3>
 <ul>
-    <li><a href="{{ path('informe_analisis') }}">Informe Diario de Serología</a></li>
-    <li><a href="{{ path('informe_descarte') }}">Informe de Descarte de Unidades</a></li>
-    <li><a href="{{ path('informe_desbloqueo') }}">Informe de Desbloqueo de Unidades</a></li>
-    <li><a href="{{ path('informe_voluntario') }}">Informe de Donantes Voluntarios</a></li>
-    <li><a href="{{ path('informe_extraccion') }}">Informe de Extracciones</a></li>
-    <li><a href="{{ path('informe_vencimiento') }}">Informe de Unidades por Vencer</a></li>
-    <li><a href="{{ path('informe_stock') }}">Informe de Unidades en Stock</a></li>
+    {% if is_granted('ROLE_BIOQUIMICO') %}<li><a href="{{ path('informe_analisis') }}">Informe Diario de Serología</a></li>{%endif%}
+    {% if is_granted('ROLE_ADMIN')%}<li><a href="{{ path('informe_descarte') }}">Informe de Descarte de Unidades</a></li>{%endif%}
+    {% if is_granted('ROLE_ADMIN')%}<li><a href="{{ path('informe_desbloqueo') }}">Informe de Desbloqueo de Unidades</a></li>{%endif%}
+    {% if is_granted('ROLE_ADMIN')%}<li><a href="{{ path('informe_voluntario') }}">Informe de Donantes Voluntarios</a></li{%endif%}
+    {% if is_granted('ROLE_ADMIN')%}<li><a href="{{ path('informe_extraccion') }}">Informe de Extracciones</a></li>{%endif%}
+    {% if is_granted('ROLE_MEDICO')%}<li><a href="{{ path('informe_vencimiento') }}">Informe de Unidades por Vencer</a></li>{%endif%}
+    {% if is_granted('ROLE_MEDICO')%}<li><a href="{{ path('informe_stock') }}">Informe de Unidades en Stock</a></li>{%endif%}
 </ul>
 {% endblock %}
