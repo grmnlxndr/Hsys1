@@ -8,6 +8,7 @@
     {% if is_granted('ROLE_PERSONAL') %}<li><a href="{{ path('pagina_sangre') }}" title="Sangre">Sangre</a></li>{%endif%}
     {% if is_granted('ROLE_BIOQUIMICO') %}<li><a href="{{ path('pagina_analisis') }}" title="Serología">Serología</a></li>{%endif%}
     {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('pagina_informes') }}" title="Informes">Informes</a></li>{%endif%}
+    <li><a href="{{ path('login') }}" title="Login">Login</a></li>
     
 </ul>
 {% endblock %}
