@@ -9,7 +9,11 @@
     <ul>
         <li><a href="{{ path('anular_donacion',{'id':donacion.id}) }}">Anular</a></li>
         <li><a href="{{ path('excluir_donante_por_donacion',{'donanteid':donacion.donante.id, 'donacionid' : donacion.id}) }}">Crear una exclusión</a></li>
+            {% if donacion.receptor is not null %}
+            {% if donacion.receptor.id == 1 %}
         <li><a href="{{ path('asignar_receptor',{'id':donacion.id}) }}">Asignar Receptor</a></li>
+        {% endif %}
+        {% endif %}
         {% if donacion.terminado == false %}   
             <li><a href="{{ path('alta_donacion_voluntaria_formulario_terminado',{'numdedonacion':donacion.numdedonacion}) }}">Continuar</a></li> 
         {% endif %}
