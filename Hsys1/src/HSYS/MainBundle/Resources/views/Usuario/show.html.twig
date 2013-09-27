@@ -15,12 +15,8 @@
         <td>{{ entity.username }}</td>
     </tr>
     <tr>
-        <th>Contraseña</th>
-        <td>{{ entity.password }}</td>
-    </tr>
-    <tr>
-        <th>Salt</th>
-        <td>{{ entity.salt }}</td>
+        <th>Roles</th>
+        <td>{% for rol in entity.roles %}{{ rol }} {% endfor %}</td>
     </tr>
 </table>
 <br/>
