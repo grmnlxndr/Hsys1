@@ -99,6 +99,7 @@ class AnalisisController extends Controller
         $form = $this->createForm(new analisisType(), $analisis);
         
         $factorsanguineo = \HSYS\MainBundle\Entity\factorsang::$factorsang;
+        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
         
         if ($request->getMethod() == 'POST') {
             $form->bind($request);
@@ -108,7 +109,6 @@ class AnalisisController extends Controller
 //                $fechanalisis->setDate(substr($fecha, 0, 4), substr($fecha, 5, 2), substr($fecha, 8, 2));
 //                $analisis->setFechanalisis($fechanalisis);
                 
-                $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
                 $donacion->setAnalisis($analisis);
                 $analisis->setDonacion($donacion);
                 
@@ -121,7 +121,10 @@ class AnalisisController extends Controller
             }
         }
 
-        $donacion = $em->getRepository('HSYSMainBundle:Donacion')->find($id);
+        if ($donacion->getDonante()->getFactorsang()==NULL){
+            return $this->render('HSYSMainBundle:Analisis:error.html.twig', array('razon' => 'El Donante no posee AB0/RhD'));
+        };
+        
         return $this->render('HSYSMainBundle:Analisis:nuevoForm.html.twig', array('analisis'=> $analisis,'form' => $form->createView(), 'donacion' => $donacion,'factorsanguineo'=>$factorsanguineo));
     }
     
