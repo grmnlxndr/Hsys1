@@ -110,14 +110,14 @@ class Donacion {
     /**
      * @var string
      *
-     * @ORM\Column(name="comentario", type="string", length=150, nullable=true)
+     * @ORM\Column(name="comentario", type="text", nullable=true)
      */
     private $comentario;
     
     /**
      * @var string
      *
-     * @ORM\Column(name="comentarioanulacion", type="string", length=150, nullable=true)
+     * @ORM\Column(name="comentarioanulacion", type="text", nullable=true)
      */
     private $comentarioanulacion;
 
@@ -182,7 +182,7 @@ class Donacion {
     /**
      * @var string
      *
-     * @ORM\Column(name="obs", type="string", length=20, nullable=true)
+     * @ORM\Column(name="obs", type="text", nullable=true)
      */
     private $obs;
 

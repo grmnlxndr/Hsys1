@@ -31,7 +31,7 @@ class Exclusion {
     /**
      * @var string
      *
-     * @ORM\Column(name="comentario", type="string", length=255, nullable=true)
+     * @ORM\Column(name="comentario", type="text", nullable=true)
      */
     private $comentario;
 

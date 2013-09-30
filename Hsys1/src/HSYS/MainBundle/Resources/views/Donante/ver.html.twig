@@ -138,7 +138,7 @@
                             Permanente
                                                 {%endif%}</a></td>
                     <td valign="middle" align="center"><a>{{ exclusion.tipoexclusion }}</a></td>
-                    <td valign="middle" align="center"><a>{{ exclusion.comentario }}</a></td>
+                    <td valign="middle" align="center"><a>{{ exclusion.comentario| truncate(100) }}</a></td>
                 </tr>
 {% endfor %}
 

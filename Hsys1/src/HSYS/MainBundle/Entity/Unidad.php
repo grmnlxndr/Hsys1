@@ -101,7 +101,7 @@ class Unidad {
     /**
      * @var string
      *
-     * @ORM\Column(name="comentarios", type="string", length=1400, nullable=true)
+     * @ORM\Column(name="comentarios", type="text", nullable=true)
      */
     private $comentarios;
 
