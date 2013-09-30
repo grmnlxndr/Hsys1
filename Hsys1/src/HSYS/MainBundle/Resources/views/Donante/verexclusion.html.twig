@@ -1,0 +1,33 @@
+{% extends 'HSYSMainBundle:Donante:donantebase.html.twig' %}
+
+{% block title %}Ver Exclusion {{ exclusion.id }}{% endblock %}
+
+{% block contenido %}
+<table class="detalle">
+    <tr>
+        <th>ID: </th>
+        <td>{{ exclusion.id }}</td>
+    </tr>
+    <tr>
+        <th>Fecha de Inicio:  </th>
+        <td>{{ exclusion.fechini | date("d/m/Y") }}</td>
+    </tr>
+    <tr>
+        <th>Fecha de Fin: </th>
+        <td>{% if exclusion.fechfin != null%}
+                 {{ exclusion.fechfin | date("d/m/Y") }}
+            {%else%}
+                 Permanente
+            {%endif%}</td>
+    </tr>
+    <tr>
+        <th>Tipo de exclusion:</th>
+        <td>{{ exclusion.tipoexclusion}}</td>
+    </tr>
+    <tr>
+        <th>Comentario:</th>
+        <td>{{ exclusion.comentario}}</td>
+    </tr>
+</table>
+
+{% endblock %}

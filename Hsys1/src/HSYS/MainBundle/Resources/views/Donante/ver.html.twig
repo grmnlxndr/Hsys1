@@ -130,7 +130,7 @@
         </tr>
 {% for exclusion in donante.exclusion %}
         <tr>
-            <td valign="middle" align="center"><a>{{ exclusion.id }}</a></td>
+            <td valign="middle" align="center" class="link"><a href="{{path('verexclusion_donante',{'id':exclusion.id})}}">{{ exclusion.id }}</a></td>
             <td valign="middle" align="center"><a>{{ exclusion.fechini | date("d/m/Y") }}</a></td>
             <td valign="middle" align="center"><a>{% if exclusion.fechfin != null%}
                                                     {{ exclusion.fechfin | date("d/m/Y") }}

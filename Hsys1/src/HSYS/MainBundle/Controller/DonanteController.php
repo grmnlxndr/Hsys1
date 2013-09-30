@@ -258,6 +258,20 @@ class DonanteController extends Controller {
         return $this->render('HSYSMainBundle:Donante:buscarlocal.html.twig', array('localidades' => $localidades));
     }
     
-}
 
+   /**
+    * 	@Secure(roles="ROLE_PERSONAL")
+    */
+    public function verexclusionAction($id) {
+        $em = $this->getDoctrine()->getEntityManager();
+        $exlusion = $em->getRepository('HSYSMainBundle:Exclusion')->find($id);
+        
+        if (!$exlusion) {
+            throw $this->createNotFoundException(
+                    'No se encontro la exclusion: ' . $id
+            );
+        }
+        return $this->render('HSYSMainBundle:Donante:verexclusion.html.twig', array('exclusion' => $exlusion));
+    }
+}
 ?>

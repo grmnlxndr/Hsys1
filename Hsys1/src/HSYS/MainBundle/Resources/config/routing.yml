@@ -55,6 +55,10 @@ buscarlocal_donante:
   pattern: /donante/localidad/{id}
   defaults: { _controller: HSYSMainBundle:Donante:buscarLocalidad }
 
+verexclusion_donante:
+  pattern: /donante/exclusion/{id}
+  defaults: { _controller: HSYSMainBundle:Donante:verexclusion }
+
 #EXTRACCIONES/DONACION
 pagina_donacion:
   pattern: /donacion
