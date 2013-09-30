@@ -4,7 +4,7 @@
 
 {% block contenido %}
     {% if error %}
-<div>{{ error.message }}</div>
+<div class="consulta"><img src="{{ asset('images/error.png') }}"/> {{ error.message|trans({},'messages') }}</div>
 {% endif %}
 <form action="{{ path('login_check') }}" method="post">
 <label for="username">Usuario:</label>
