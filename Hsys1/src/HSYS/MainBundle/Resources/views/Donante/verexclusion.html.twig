@@ -3,6 +3,14 @@
 {% block title %}Ver Exclusion {{ exclusion.id }}{% endblock %}
 
 {% block contenido %}
+<div class="detalle">
+    <ul>
+        <li><a href="{{ path('ver_donante',{'id':exclusion.donante.id}) }}">Ver Donante</a></li>
+    </ul>
+</div>
+
+<br>
+
 <table class="detalle">
     <tr>
         <th>ID: </th>
@@ -24,10 +32,12 @@
         <th>Tipo de exclusion:</th>
         <td>{{ exclusion.tipoexclusion}}</td>
     </tr>
-    <tr>
-        <th>Comentario:</th>
-        <td>{{ exclusion.comentario}}</td>
-    </tr>
 </table>
+    
+</br>
 
+<table class="detalle">
+        <tr><th>Comentarios: </th></tr>
+        <tr><td>{{ exclusion.comentario }}</td></tr>
+</table>
 {% endblock %}
