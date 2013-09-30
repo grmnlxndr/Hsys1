@@ -59,14 +59,21 @@ class Donante {
      * @ORM\Column(name="sexo", type="string", length=10, nullable=true)
      */
     private $sexo;
+//
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column(name="ocupacion", type="string", length=100, nullable=true)
+//     */
+//    private $ocupacion;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="ocupacion", type="string", length=100, nullable=true)
+     * @ORM\ManyToOne(targetEntity="ocupacion", inversedBy="Donante")
+     * @ORM\JoinColumn(name="ocupacion", referencedColumnName="id")
+     * @return integer
      */
     private $ocupacion;
-
+    
     /**
      * @var string
      *
@@ -136,14 +143,21 @@ class Donante {
      * @ORM\Column(name="celular", type= "string", length=30, nullable=true)
      */
     private $celular;
+//
+//    /**
+//     * @var string
+//     * 
+//     * @ORM\Column(name="niveleducativo", type= "string", length=30, nullable=true)
+//     */
+//    private $niveleducativo;
 
     /**
-     * @var string
-     * 
-     * @ORM\Column(name="niveleducativo", type= "string", length=30, nullable=true)
+     * @ORM\ManyToOne(targetEntity="NivelEducativo", inversedBy="Donante")
+     * @ORM\JoinColumn(name="niveleducativo", referencedColumnName="id")
+     * @return integer
      */
     private $niveleducativo;
-
+    
     /**
      * @var boolean
      * 

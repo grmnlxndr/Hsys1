@@ -25,7 +25,6 @@ class DonanteType extends AbstractType
                     'choices' => array(
                         'Masculino' => 'Masculino',
                         'Femenino' => 'Femenino',
-                        'Otro' =>   'Otro',
                         ),
                     'empty_value' => 'SELECCIONE UNA',
                 ))
