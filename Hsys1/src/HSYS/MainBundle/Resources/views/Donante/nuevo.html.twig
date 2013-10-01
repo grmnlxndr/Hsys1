@@ -99,7 +99,7 @@
             </tr>
             <tr>
                 <td><label>País de Nacimiento: </label></td>
-                <td><select name='paisNaci' id='paisNaci' onChange='cambiarPaisNaci()' style="width:173px">
+                <td><select name='paisNaci' id='paisNaci' onChange='cambiarPaisNaci()' onclick="cargo()" style="width:173px">
                         <option value="X1" name="X1"></option>
                         {% for pais in paises %} 
                             <option value='{{pais.id}}' name='{{pais}}'> {{pais}} </option>
@@ -110,7 +110,7 @@
             </tr>
             <tr>
                 <td><label>Provincia de Nacimiento: </label></td>
-                <td> <select id="provNaci" onChange="cambiarProvNaci()" style="width:173px"></select>  <img id="provnacicarga" src="{{ asset('images/ajax-loader.gif') }}"/>
+                <td> <select id="provNaci" onChange="cambiarProvNaci()" onclick="cargo()" style="width:173px"></select>  <img id="provnacicarga" src="{{ asset('images/ajax-loader.gif') }}"/>
                     {{ form_widget(form.provnac) }}</td>
                 <td>{{ form_errors(form.provnac) }}</td>
             </tr>
@@ -119,7 +119,7 @@
             </tr>
             <tr>
                 <td><label>País: </label></td>
-                <td><select name='paisActual' id='paisActual' onChange='cambiarPaisActual()' style="width:173px">
+                <td><select name='paisActual' id='paisActual' onChange='cambiarPaisActual()' onclick="cargo()" style="width:173px">
                         <option value="X2" name="X2"></option>
                         {% for pais in paises %} 
                             <option value='{{pais.id}}' name='{{pais}}'> {{pais}} </option>
@@ -130,13 +130,13 @@
             </tr>
             <tr>
                 <td><label>Provincia: </label></td>
-                <td><select id="provActual" onChange="cambiarProvActual()" style="width:173px"></select> <img id="provactualcarga" src="{{ asset('images/ajax-loader.gif') }}"/>
+                <td><select id="provActual" onChange="cambiarProvActual()" onclick="cargo()" style="width:173px"></select> <img id="provactualcarga" src="{{ asset('images/ajax-loader.gif') }}"/>
                     {{ form_widget(form.provincia) }}</td>
                 <td>{{ form_errors(form.provincia) }}</td>
             </tr>
             <tr>
                 <td><label>Ciudad: </label></td>
-                <td><select id="ciudadActual" onChange="cambiarCiudadActual()" style="width:173px"></select>  <img id="ciudadactualcarga" src="{{ asset('images/ajax-loader.gif') }}"/>
+                <td><select id="ciudadActual" onChange="cambiarCiudadActual()" onclick="cargo()" style="width:173px"></select>  <img id="ciudadactualcarga" src="{{ asset('images/ajax-loader.gif') }}"/>
                     {{ form_widget(form.ciudad) }}</td>
                 <td>{{ form_errors(form.ciudad) }}</td>
             </tr>
@@ -161,6 +161,7 @@
 <script src="{{ asset('js/jquery-1.9.1.js') }}"></script>
     
    <script>   
+    var cargando = false;
     
     window.onload = function() {
     $("#Donante_tr_dni").hide(); 
@@ -175,6 +176,7 @@
     $("#provnacicarga").hide();
     };
     
+    
     function cabiarNomApp(){
         $("#Donante_form_nomapp").val($("#Apellido").val().concat(", ",$("#Nombre").val()));
     }
@@ -187,6 +189,7 @@
         $("select option[value='X1']").remove();
         $("#Donante_form_paisnac").val($("#paisNaci option:selected").attr('name'));
         $("#provnacicarga").show();
+        cargando = true;
         $("#provNaci").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisNaci option:selected").val()));
         $("#Donante_form_provnac").val('');
     };
@@ -200,6 +203,7 @@
         $("select option[value='X2']").remove();
         $("#Donante_form_pais").val($("#paisActual option:selected").attr('name'));
         $("#provactualcarga").show();
+        cargando = true;
         $("#provActual").load("{{path ('buscarprov_donante',{'id':''})}}".concat('/',$("#paisActual option:selected").val()));
         $("#Donante_form_provincia").val('');
         $("#Donante_form_ciudad").val('');
@@ -210,6 +214,7 @@
         $("select option[value='X']").remove();
         $("#Donante_form_provincia").val($("#provActual option:selected").attr('name'));
         $("#ciudadactualcarga").show();
+        cargando = true;
         $("#ciudadActual").load("{{path ('buscarlocal_donante',{'id':''})}}".concat('/',$("#provActual option:selected").val()));
         $("#Donante_form_ciudad").val('');
     }
@@ -218,6 +223,10 @@
         $("select option[value='X']").remove();
         $("#Donante_form_ciudad").val($("#ciudadActual option:selected").attr('name')); 
     }
-    
+    function cargo(){
+        if(cargando==true){
+            return false;
+        }
+    }
 </script> 
 {% endblock %}
