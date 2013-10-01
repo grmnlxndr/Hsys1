@@ -28,7 +28,7 @@
 
 <table class="consulta" style="width: 100%">
     <tr>
-        <th>Núm. Donante</th><th> Apellido y Nombre </th><th> Documento </th><th> Ver </th><th> Modificar </th>
+        <th>Núm. Donante</th><th> Apellido y Nombre </th><th> Documento </th><th> Ver </th>{% if is_granted('ROLE_MEDICO') %}<th> Modificar </th>{% endif %}
     </tr>
 {% for donante in donantes %}
     <tr>
@@ -36,7 +36,7 @@
         <td><a>{{ donante.nomapp }}</a></td>
         <td><a>{{ donante.dni }}</a></td>
         <td class="link"><a href="{{ path('ver_donante', {'id':donante.id})  }}">Ver</a></td>
-        <td class="link"><a href="{{ path('modificar_donante', {'id':donante.id})  }}">Modificar</a></td>
+        {% if is_granted('ROLE_MEDICO') %}<td class="link"><a href="{{ path('modificar_donante', {'id':donante.id})  }}">Modificar</a></td>{% endif %}
     </tr>
 {% else %}
     <div class="consulta"><img src="{{ asset('images/error.png') }}"/>    NO SE HAN ENCONTRADO DATOS</div>

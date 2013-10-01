@@ -65,7 +65,9 @@ class DonacionController extends Controller {
             $em = $this->getDoctrine()->getEntityManager();
             $numero = $request->request->get('numDonacion');
             if ($numero == '') {
-                return $this->redirect($this->generateUrl('pagina_donacion'));
+//                return $this->redirect($this->generateUrl('pagina_donacion'));
+                $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findAll();
+                return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig', array('donaciones' => $donaciones,));
             } else {
                 $donaciones = $em->getRepository('HSYSMainBundle:Donacion')->findDonacionPorId($numero);
                 return $this->render('HSYSMainBundle:Donacion:buscarNumero.html.twig', array('donaciones' => $donaciones,));
