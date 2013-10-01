@@ -38,7 +38,6 @@ class DonanteType extends AbstractType
                         'Casado'=> 'Casado',
                         'Divorciado'=> 'Divorciado',
                         'Viudo'=> 'Viudo',
-                        'Otro'=> 'Otro',
                     ),
                     'empty_value' => 'SELECCIONE UNA',
                 ))
