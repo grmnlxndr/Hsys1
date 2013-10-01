@@ -71,7 +71,7 @@
     <h3> Unidades Fraccionadas </h3>
     {% include 'HSYSMainBundle:Sangre:resultados.html.twig' with {'unidades': unidades} %}
     <br>
-<input type="submit" value="Terminar"/></td>
+    <input type=button value="Terminar" onclick="aceptar()" /></td>
 </form>
 
 
@@ -139,5 +139,13 @@ if (cambiardias.checked) {
     $('#cantidaddedias').attr('disabled','disabled');
     }
     };
+    
+    
+function aceptar() {
+    var pregunta = confirm("¿Desea terminar el Fraccionamiento?");
+    if (pregunta){
+       $("#verUnidad").submit();
+    };
+}
 </script>
 {% endblock %}
