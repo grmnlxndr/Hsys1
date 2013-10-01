@@ -24,7 +24,7 @@
 {% if donaciones %}
 <table class="consulta" style="width: 100%">
     <tr>
-        <th> ID </th><th> Tipo Donación </th><th> Fecha </th><th> Ver </th>{#<th> Crear una exclusión </th>#}<th> Anular </th>
+        <th> ID </th><th> Tipo Donación </th><th> Fecha </th><th> Ver </th>{#<th> Crear una exclusión </th>#}{% if is_granted('ROLE_MEDICO') %}<th> Anular </th>{% endif %}
     </tr>
 {% for donacion in donaciones %}
     <tr>
@@ -33,10 +33,12 @@
         <td><a>{{ donacion.fechextraccion|date('d/m/Y') }}</a></td>
         <td class="link"><a href="{{ path('ver_donacion', {'id':donacion.id}) }}">Ver</a></td>
         {#<td class="link"><a href="{{ path('exclusion_donacion', {'id':donacion.id})  }}"> Crear una exclusión </a></td>#}
-        {% if donacion.anulado is null %}
-        <td class="link"><a href="{{ path('anular_donacion', {'id':donacion.id}) }}">Anular</a></td>
-        {% else %}
-        <td></td>
+        {% if is_granted('ROLE_MEDICO') %}
+            {% if donacion.anulado is null %}
+                <td class="link"><a href="{{ path('anular_donacion', {'id':donacion.id}) }}">Anular</a></td>
+            {% else %}
+                <td></td>
+            {% endif %}
         {% endif %}
     </tr>
     
@@ -54,7 +56,7 @@
 
 <table class="consulta" style="width: 100%">
     <tr>
-        <th> ID </th><th> Tipo Donación </th><th> Fecha </th><th> Ver </th><th> Anular </th>
+        <th> ID </th><th> Tipo Donación </th><th> Fecha </th><th> Ver </th>{% if is_granted('ROLE_MEDICO') %}<th> Anular </th>{% endif %}
     </tr>
 {% for receptor in receptores %}
     <tr>
@@ -62,10 +64,12 @@
         <td><a>{{ receptor.tipodonacion }}</a></td>
         <td><a>{{ receptor.fechextraccion|date('d/m/Y') }}</a></td>
         <td class="link"><a href="{{ path('ver_donacion', {'id':receptor.id}) }}">Ver</a></td>
-        {% if receptor.anulado is null %}
-        <td class="link"><a href="{{ path('anular_donacion', {'id':receptor.id}) }}">Anular</a></td>
-        {% else %}
-        <td></td>
+        {% if is_granted('ROLE_MEDICO') %}
+            {% if receptor.anulado is null %}
+                <td class="link"><a href="{{ path('anular_donacion', {'id':receptor.id}) }}">Anular</a></td>
+            {% else %}
+                <td></td>
+            {% endif %}
         {% endif %}
     </tr>
 {% else %}

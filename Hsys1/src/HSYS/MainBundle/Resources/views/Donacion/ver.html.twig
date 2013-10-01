@@ -7,7 +7,7 @@
         {% if donacion.anulado is null %}
 <div class="detalle">
     <ul>
-        <li><a href="{{ path('anular_donacion',{'id':donacion.id}) }}">Anular</a></li>
+        {% if is_granted('ROLE_MEDICO') %}<li><a href="{{ path('anular_donacion',{'id':donacion.id}) }}">Anular</a></li>{% endif %}
         <li><a href="{{ path('excluir_donante_por_donacion',{'donanteid':donacion.donante.id, 'donacionid' : donacion.id}) }}">Crear una exclusión</a></li>
             {% if donacion.receptor is not null %}
             {% if donacion.receptor.id == 1 %}
