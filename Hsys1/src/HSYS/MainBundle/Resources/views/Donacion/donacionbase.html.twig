@@ -18,8 +18,8 @@
             <li><a href="{{ path('alta_donacion_autodonacion') }}" title="Autodonación">Autodonación</a></li>
         </ul>
     </li>
-    <li><a href="{{ path('imprimir_codigo') }}" title="Imprimir Códigos de Barra">Imprimir Códigos de Barra</a></li>
-    <li><a href="{{ path('informe_extraccion') }}" title="Informe de Extracciones">Informe de Extracciones</a></li>
+    {% if is_granted('ROLE_MEDICO') %}<li><a href="{{ path('imprimir_codigo') }}" title="Imprimir Códigos de Barra">Imprimir Códigos de Barra</a></li>{% endif %}
+    {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('informe_extraccion') }}" title="Informe de Extracciones">Informe de Extracciones</a></li>{% endif %}
 </ul>
 {% endblock %}
 

@@ -17,10 +17,10 @@
     </li>
 </ul>
 <ul>
-    <li><a href="{{ path('informe_vencimiento') }}" title="Informe Unidades a Vencer">Informe Unidades a Vencer</a></li>
-    <li><a href="{{ path('informe_descarte') }}" title="Informe Unidades Descartadas">Informe Unidades Descartadas</a></li>
-    <li><a href="{{ path('informe_desbloqueo') }}" title="Informe Unidades Desbloqueadas">Informe Unidades Desbloqueadas</a></li>
-    <li><a href="{{ path('informe_stock') }}" title="Informe Unidades en Stock">Informe Unidades en Stock</a></li>
+    {% if is_granted('ROLE_MEDICO') %}<li><a href="{{ path('informe_vencimiento') }}" title="Informe Unidades a Vencer">Informe Unidades a Vencer</a></li>{% endif %}
+    {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('informe_descarte') }}" title="Informe Unidades Descartadas">Informe Unidades Descartadas</a></li>{% endif %}
+    {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('informe_desbloqueo') }}" title="Informe Unidades Desbloqueadas">Informe Unidades Desbloqueadas</a></li>{% endif %}
+    {% if is_granted('ROLE_MEDICO') %}<li><a href="{{ path('informe_stock') }}" title="Informe Unidades en Stock">Informe Unidades en Stock</a></li>{% endif %}
 </ul>
 {% endblock %}
 

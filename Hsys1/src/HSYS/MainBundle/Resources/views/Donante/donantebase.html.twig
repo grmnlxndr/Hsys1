@@ -8,7 +8,7 @@
     <li><a href="{{ path('pagina_donante') }}" title="Consultar Donante">Consultar Donante</a></li>
 </ul>
 <ul>
-    <li><a href="{{ path('informe_voluntario') }}" title="Informe Donantes Voluntarios">Informe Donantes Voluntarios</a></li>
+    {% if is_granted('ROLE_ADMIN') %}<li><a href="{{ path('informe_voluntario') }}" title="Informe Donantes Voluntarios">Informe Donantes Voluntarios</a></li>{% endif %}
 </ul>
 {% endblock %}
 

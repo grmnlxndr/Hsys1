@@ -6,17 +6,25 @@
 
 <div class="detalle">
     <ul>
-        {% if "Desbloqueado" in estados %}
-        <li><a href="{{ path('desbloquear_unidad',{'id':unidad.id}) }}">Desbloquear</a></li>
+        {% if is_granted('ROLE_MEDICO') %}
+            {% if "Desbloqueado" in estados %}
+            <li><a href="{{ path('desbloquear_unidad',{'id':unidad.id}) }}">Desbloquear</a></li>
+            {% endif %}
         {% endif %}
-        {% if "Transfundido" in estados %}
-        <li><a href="{{ path('transfundir_unidad',{'id':unidad.id}) }}">Transfundir</a></li>
+        {% if is_granted('ROLE_MEDICO') %}
+            {% if "Transfundido" in estados %}
+            <li><a href="{{ path('transfundir_unidad',{'id':unidad.id}) }}">Transfundir</a></li>
+            {% endif %}
         {% endif %}
-        {% if "Descartado" in estados %}
-        <li><a href="{{ path('desechar_unidad',{'id':unidad.id}) }}">Descartar</a></li>
+        {% if is_granted('ROLE_MEDICO') %}
+            {% if "Descartado" in estados %}
+            <li><a href="{{ path('desechar_unidad',{'id':unidad.id}) }}">Descartar</a></li>
+            {% endif %}
         {% endif %}
-        {% if "Bloqueado" in estados %}
-        <li><a href="{{ path('bloquear_unidad',{'id':unidad.id}) }}">Bloquear</a></li>
+        {% if is_granted('ROLE_MEDICO') %}
+            {% if "Bloqueado" in estados %}
+            <li><a href="{{ path('bloquear_unidad',{'id':unidad.id}) }}">Bloquear</a></li>
+            {% endif %}
         {% endif %}
         {% if unidad.tipohemocomponente == "Sangre Entera" and "Fraccionado" in estados %}
         <li><a href="{{ path('crearfraccionamiento_unidad',{'id':unidad.id}) }}">Crear Fraccionamiento</a></li>
