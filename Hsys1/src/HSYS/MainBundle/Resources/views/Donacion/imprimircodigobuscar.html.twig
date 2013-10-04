@@ -4,9 +4,7 @@
 
 {% block contenido %}
 <h3>Generar Codigos de Barra:</h3>
-<br/>
-Ingrese entre qué valores quiere imprimir los códigos de barra.
-<br/>
+<p>Ingrese entre qué valores desea imprimir los códigos de barra. El rango debe ser menor a 500.</p>
 <form id="buscar_form" name="buscar_form" method="post" action="{{ path('imprimir_codigo') }}">
     <table>
         <tr>

@@ -635,6 +635,9 @@ class DonacionController extends Controller {
             if ($desde > $hasta) {
                 return $this->redirect($request->headers->get('referer'));
             }
+            if (($hasta - $desde) > 500){
+                return $this->render('HSYSMainBundle:Donacion:error.html.twig', array('razon' => 'Seleccione un rango menor a 500 para imprimir'));
+            }
             $codigos = array();
             for ($index = $desde; $index <= $hasta; $index++) {
                 $codigos [] = $index;
