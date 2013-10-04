@@ -4,6 +4,7 @@ namespace HSYS\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity as UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Donacion
@@ -34,6 +35,7 @@ class Donacion {
      * @var string
      *
      * @ORM\Column(name="idbolsa", type="string", length=20, nullable=true)
+     * @Assert\Range(min = 0)
      */
     private $idbolsa;
 
@@ -48,6 +50,7 @@ class Donacion {
      * @var string
      *
      * @ORM\Column(name="nrolote", type="string", length=20, nullable=true)
+     * @Assert\Range(min = 0)
      */
     private $nrolote;
 
@@ -134,6 +137,7 @@ class Donacion {
      * @var string
      *
      * @ORM\Column(name="peso", type="string", length=20, nullable=true)
+     * @Assert\Range(min = 0)
      */
     private $peso;
 
@@ -141,6 +145,7 @@ class Donacion {
      * @var string
      *
      * @ORM\Column(name="tensionarterial", type="string", length=20, nullable=true)
+     * @Assert\Range(min = 0)
      */
     private $tensionarterial;
 
@@ -148,6 +153,7 @@ class Donacion {
      * @var string
      *
      * @ORM\Column(name="tensionarterialmax", type="string", length=20, nullable=true)
+     * @Assert\Range(min = 0)
      */
     private $tensionarterialmax;
 
@@ -155,6 +161,7 @@ class Donacion {
      * @var string
      *
      * @ORM\Column(name="pulso", type="string", length=20, nullable=true)
+     * @Assert\Range(min = 0)
      */
     private $pulso;
 
@@ -162,6 +169,7 @@ class Donacion {
      * @var string
      *
      * @ORM\Column(name="temperatura", type="string", length=20, nullable=true)
+     * @Assert\Range(min = 0)
      */
     private $temperatura;
 
@@ -169,6 +177,7 @@ class Donacion {
      * @var string
      *
      * @ORM\Column(name="hto", type="string", length=20, nullable=true)
+     * @Assert\Range(min = 0)
      */
     private $hto;
 
@@ -190,6 +199,7 @@ class Donacion {
      * @var string
      *
      * @ORM\Column(name="numdedonacion", type="string", length=15, nullable=true, unique=true)
+     * @Assert\Range(min = 1)
      */
     private $numdedonacion;
     
